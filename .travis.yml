@@ -1,4 +1,3 @@
-
 sudo: false
 dist: trusty
 group: deprecated-2017Q4 # To fix NPM timeout errors
