@@ -1,0 +1,71 @@
+---
+sidebar: sidebar
+permalink: reference_integration_faq.html
+keywords: faq, questions, integration, migration, cloud manager, cloud central, authentication, users, accounts, email, ldap, scripts, automation
+summary: When upgrading to Cloud Manager 3.5, NetApp will choose specific Cloud Manager systems to integrate with NetApp Cloud Central, if they are not already integrated. This FAQ can answer questions that you might have about the process.
+---
+
+= Frequently asked questions: Integrating Cloud Manager with NetApp Cloud Central
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+When upgrading to Cloud Manager 3.5, NetApp will choose specific Cloud Manager systems to integrate with NetApp Cloud Central, if they are not already integrated. This FAQ can answer questions that you might have about the process.
+
+== What is NetApp Cloud Central?
+
+NetApp Cloud Central provides a centralized location to access and manage NetApp cloud data services. These services enable you to run critical applications in the cloud, create automated DR sites, back up your SaaS data, and effectively migrate and control data across multiple clouds.
+
+== Why is NetApp integrating my Cloud Manager system with Cloud Central?
+
+Cloud Manager’s integration with NetApp Cloud Central provides several benefits, including a simplified deployment experience, a single location to view and manage multiple Cloud Manager systems, and centralized user authentication.
+
+== What happens during the integration process?
+
+NetApp migrates all local user accounts in your Cloud Manager system to the centralized user authentication available in Cloud Central.
+
+== How does centralized user authentication work?
+
+With centralized user authentication, you can use the same set of credentials across Cloud Manager systems and between Cloud Manager and other data services, such as Cloud Sync. It’s also easy to reset your password if you forget it.
+
+== Do I need to sign up for a Cloud Central user account?
+
+NetApp will create a Cloud Central user account for you when we integrate your Cloud Manager system with Cloud Central. You simply need to reset your password to complete the registration process.
+
+== What if I already have a Cloud Central user account?
+
+If the email address that you use to log in to Cloud Manager matches the email address for a Cloud Central user account, then you can log right in to your Cloud Manager system.
+
+== What if my Cloud Manager system has multiple user accounts?
+
+NetApp migrates all local user accounts to Cloud Central user accounts. Every user needs to reset his or her password.
+
+== What if I have a user account that uses the same email address across multiple Cloud Manager systems?
+
+You just need to reset your password once and then you can use the same Cloud Central user account to log in to each Cloud Manager system.
+
+== What if my local user account uses an invalid email address?
+
+Resetting your password requires a valid email address. Contact us through the chat icon that is available in the lower right of the Cloud Manager interface.
+
+== What if I have automation scripts for Cloud Manager APIs?
+
+All APIs are backwards compatible. You will need to update scripts that use passwords, if you change your password when you reset it.
+
+== What if my Cloud Manager system uses LDAP?
+
+If your system uses LDAP, NetApp cannot automatically integrate the system with Cloud Central. You need to manually perform the following steps:
+
+. Deploy a new Cloud Manager system from https://cloud.netapp.com/[NetApp Cloud Central^].
+. https://services.cloud.netapp.com/misc/federation-support[Set up LDAP with the new system^].
+. link:task_adding_ontap_cloud.html[Discover existing Cloud Volumes ONTAP systems] from the new Cloud Manager system.
+. Delete the old Cloud Manager system.
+
+== Does it matter where I installed my Cloud Manager system?
+
+No. NetApp will integrate systems with Cloud Central no matter where they reside, whether that’s in AWS, Azure, or on your premises.
+
+NOTE: The only exception is the AWS Commercial Cloud Services Environment.

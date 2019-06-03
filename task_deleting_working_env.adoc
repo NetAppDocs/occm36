@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: task_deleting_working_env.html
+keywords: terminate, delete, working environment, remove, cloudformation
+summary: It is best to delete Cloud Volumes ONTAP systems from Cloud Manager, rather than from AWS or Azure.
+---
+
+= Deleting a Cloud Volumes ONTAP working environment
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+It is best to delete Cloud Volumes ONTAP systems from Cloud Manager, rather than from AWS or Azure. For example, if you terminate a licensed Cloud Volumes ONTAP instance from AWS, you cannot use the license key for another instance. You must delete the working environment from Cloud Manager to release the license.
+
+.About this task
+
+When you delete a working environment, Cloud Manager terminates instances, deletes disks, and snapshots.
+
+IMPORTANT: Cloud Volumes ONTAP instances have termination protection enabled to help prevent accidental termination from AWS. However, if you do terminate a Cloud Volumes ONTAP instance from AWS, you must go to the AWS CloudFormation console and delete the instance's stack. The stack name is the name of the working environment.
+
+.Steps
+
+. From the working environment, click menu icon and then click *Delete*.
+
+. Type the name of the working environment and then click *Delete*.
++
+It can take up to 5 minutes to delete the working environment.

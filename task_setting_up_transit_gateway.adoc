@@ -1,0 +1,69 @@
+---
+sidebar: sidebar
+permalink: task_setting_up_transit_gateway.html
+keywords: transit gateway, aws, amazon web services, transit gateway, floating ip, client access, nas, outside, vpc, virtual private cloud, route table
+summary: Set up an AWS transit gateway to enable NAS client access to floating IP addresses from outside the VPC where Cloud Volumes ONTAP resides. This is beneficial because floating IPs automatically migrate between nodes when failures occur.
+---
+
+= Setting up an AWS transit gateway for HA pairs in multiple AZs
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Set up an AWS transit gateway to enable access to an HA pair's floating IP addresses from outside the VPC where the HA pair resides.
+
+When a Cloud Volumes ONTAP HA configuration is spread across multiple AWS Availability Zones, floating IP addresses are required for NAS data access from within the VPC. These floating IP addresses can migrate between nodes when failures occur, but they are not natively accessible from outside the VPC. Separate private IP addresses provide data access from outside the VPC, but they don't provide automatic failover.
+
+Floating IP addresses are also required for the cluster management interface and the optional SVM management LIF.
+
+If you set up an AWS transit gateway, you enable access to the floating IP addresses from outside the VPC where the HA pair resides. That means NAS clients and NetApp management tools outside the VPC can access the floating IPs.
+
+Here's an example that shows two VPCs connected by a transit gateway. An HA system resides in one VPC, while a client resides in the other. You could then mount a NAS volume on the client using the floating IP address.
+
+image:diagram_transit_gateway.png[A diagram that shows an HA configuration in one VPC, with floating IPs routed to ENIs, a client in another VPC, with floating IPs routed to the transit gateway, and a transit gateway, with floating IPs routed to the VPC1 route table.]
+
+The following steps illustrate how to set up a similar configuration.
+
+.Steps
+
+. https://docs.aws.amazon.com/vpc/latest/tgw/tgw-getting-started.html[Create a transit gateway and attach the VPCs to the gateway^].
+
+. Create routes in the transit gateway's route table by specifying the HA pair's floating IP addresses.
++
+You can find the floating IP addresses on the Working Environment Information page in Cloud Manager. Here's an example:
++
+image:screenshot_floating_ips.gif[A screenshot of Cloud Manager that shows the floating IP addresses for the cluster management interface, two NFS and CIFS data interfaces, and the SVM management interface.]
++
+The following sample image shows the route table for the transit gateway. It includes routes to the CIDR blocks of the two VPCs and four floating IP addresses used by Cloud Volumes ONTAP.
++
+image:screenshot_transit_gateway1.png[A screenshot of the AWS console that shows the route table for the transit gateway. It includes routes to the CIDR blocks of the two VPCs and four floating IP addresses used by Cloud Volumes ONTAP.]
+
+. Modify the route table of VPCs that need to access the floating IP addresses.
+.. Add route entries to the floating IP addresses.
+.. Add a route entry to the CIDR block of the VPC where the HA pair resides.
++
+The following sample image shows the route table for VPC 2, which includes routes to VPC 1 and the floating IP addresses.
++
+image:screenshot_transit_gateway2.png[A screenshot of the AWS console that shows the route table for VPC 2, which includes routes to VPC 1 and the floating IP addresses.]
+
+. Modify the route table for the HA pair's VPC by adding a route to the VPC that needs access to the floating IP addresses.
++
+This step is important because it completes the routing between the VPCs.
++
+The following sample image shows the route table for VPC 1. It includes a route to the floating IP addresses and to VPC 2, which is where a client resides. Cloud Manager automatically added the floating IPs to the route table when it deployed the HA pair.
++
+image:screenshot_transit_gateway3.png[A screenshot of the AWS console that shows the route table for VPC 1. It includes a route to the floating IP addresses and to VPC 2, which is where a client resides.]
+
+. Mount volumes to clients using the floating IP address.
++
+You can find the correct IP address in Cloud Manager by selecting a volume and clicking *Mount Command*.
++
+image:screenshot_mount.gif[Screen shot: Shows the Mount Command which is available when you select a volume.]
+
+*Related links*
+
+* link:concept_ha.html[High-availability pairs in AWS]
+* link:reference_networking_aws.html[Networking requirements for Cloud Volumes ONTAP in AWS]

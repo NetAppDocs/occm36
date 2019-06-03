@@ -1,0 +1,54 @@
+---
+sidebar: sidebar
+permalink: task_setting_up_users_tenants.html
+keywords: users, adding, creating, tenants
+summary: Cloud Manager enables you to add additional Cloud Central users to Cloud Manager and to isolate working environments by using tenants.
+---
+
+= Setting up users and tenants
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Cloud Manager enables you to add additional Cloud Central users to Cloud Manager and to isolate working environments by using tenants.
+
+== Adding users to Cloud Manager
+
+If additional users need to use your Cloud Manager system, they must sign up for an account in NetApp Cloud Central. You can then add the users to Cloud Manager.
+
+.Steps
+
+. If the user does not yet have an account in NetApp Cloud Central, send them a link to your Cloud Manager system and have them sign up.
++
+Wait until the user confirms that they have signed up for an account.
+
+. In Cloud Manager, click the user icon and then click *View Users*.
+
+. Click *New User*.
+
+. Enter the email address associated with the user account, select a role, and click *Add*.
+
+.What's next?
+
+Inform the user that they can now log in to the Cloud Manager system.
+
+== Creating tenants
+
+Tenants enable you to isolate your working environments into separate groups. You create one or more working environments within a tenant. link:concept_storage_management.html#storage-isolation-using-tenants[Learn more about tenants].
+
+.Steps
+
+. Click the tenants icon and then click *Add Tenant*.
++
+image:screenshot_tenants_icon.gif[Screen shot: Shows the tenant icon (a push pin) and the Add Tenant button, which are available in the upper right of the Cloud Manager console.]
+
+. Enter a name, description, and cost center, if needed.
+
+. Click *Save*.
+
+.What's next?
+
+You can now switch to this new tenant and add Tenant Admins and Working Environment Admins to this tenant.

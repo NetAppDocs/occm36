@@ -1,0 +1,41 @@
+---
+sidebar: sidebar
+permalink: task_removing.html
+keywords: working environments, removing, remove, rediscover
+summary: The Cloud Manager Admin can remove a Cloud Volumes ONTAP working environment to move it to another system or to troubleshoot discovery issues.
+---
+
+= Removing Cloud Volumes ONTAP working environments
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+The Cloud Manager Admin can remove a Cloud Volumes ONTAP working environment to move it to another system or to troubleshoot discovery issues.
+
+.About this task
+
+Removing a Cloud Volumes ONTAP working environment removes it from Cloud Manager. It does not delete the Cloud Volumes ONTAP system. You can later rediscover the working environment.
+
+Removing a working environment from Cloud Manager enables you to do the following:
+
+* Rediscover it in another tenant
+* Rediscover it from another Cloud Manager system
+* Rediscover it if you had problems during the initial discovery
+
+.Steps
+
+. In the upper-right corner of the Cloud Manager console, click the task drop-down list, and then select *Tools*.
+
+. From the Tools page, click *Launch*.
+
+. Select the Cloud Volumes ONTAP working environment that you want to remove.
+
+. On the Review and Approve page, click *Go*.
+
+.Result
+
+Cloud Manager removes the working environment. Users can rediscover this working environment from the Working Environments page at any time.

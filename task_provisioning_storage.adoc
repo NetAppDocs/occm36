@@ -1,0 +1,177 @@
+---
+sidebar: sidebar
+permalink: task_provisioning_storage.html
+keywords: storage, provisioning, iscsi, nfs, cifs, volumes, aggregates, provision, create, quotas, nas, san, LUNs, quotas, qtree, add, advanced allocation
+summary: You can provision additional NFS and CIFS storage for your Cloud Volumes ONTAP systems from Cloud Manager by managing volumes and aggregates.
+---
+
+= Provisioning storage
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+You can provision additional NFS and CIFS storage for your Cloud Volumes ONTAP systems from Cloud Manager by managing volumes and aggregates. If you need to create iSCSI storage, you should do so from System Manager.
+
+IMPORTANT: All disks and aggregates must be created and deleted directly from Cloud Manager. You should not perform these actions from another management tool. Doing so can impact system stability, hamper the ability to add disks in the future, and potentially generate redundant cloud provider fees.
+
+image:workflow_storage_provisioning.png[This illustration shows the steps to provision storage for Cloud Volumes ONTAP: if using NFS, create volumes in Cloud Manager and if using CIFS or iSCSI, create aggregates in Cloud Manager and then provision storage in System Manager.]
+
+== Provisioning volumes
+
+If you need more storage after you launch a Cloud Volumes ONTAP system, you can provision new NFS and CIFS volumes from Cloud Manager.
+
+.Before you begin
+
+If you want to use CIFS in AWS, you must have set up DNS and Active Directory. For details, see link:reference_networking_aws.html[Networking requirements for Cloud Volumes ONTAP for AWS].
+
+.Steps
+
+. On the Working Environments page, double-click the name of the Cloud Volumes ONTAP system on which you want to provision volumes.
+
+. Create a new volume on any aggregate or on a specific aggregate:
++
+[cols=2*,options="header",cols="30,70"]
+|===
+| Action
+| Steps
+| Create a new volume and let Cloud Manager choose the containing aggregate |	Click *Add New Volume*.
+| Create a new volume on a specific aggregate
+a|
+.. Click the menu icon, and then click *Advanced > Advanced allocation*.
+.. Click the menu for an aggregate.
+.. Click *Create volume*.
+|===
+
+. Enter details for the new volume, and then click *Continue*.
++
+Some of the fields in this page are self-explanatory. The following table describes fields for which you might need guidance:
++
+[cols=2*,options="header",cols="30,70"]
+|===
+| Field
+| Description
+| Size | The maximum size that you can enter largely depends on whether you enable thin provisioning, which enables you to create a volume that is bigger than the physical storage currently available to it.
+
+| Access control (for NFS only) | An export policy defines the clients in the subnet that can access the volume. By default, Cloud Manager enters a value that provides access to all instances in the subnet.
+
+| Permissions and Users / Groups (for CIFS only) | These fields enable you to control the level of access to a share for users and groups (also called access control lists or ACLs). You can specify local or domain Windows users or groups, or UNIX users or groups. If you specify a domain Windows user name, you must include the user's domain using the format domain\username.
+
+| Snapshot Policy | A Snapshot copy policy specifies the frequency and number of automatically created NetApp Snapshot copies. A NetApp Snapshot copy is a point-in-time file system image that has no performance impact and requires minimal storage. You can choose the default policy or none. You might choose none for transient data: for example, tempdb for Microsoft SQL Server.
+|===
+
+. If you chose the CIFS protocol and the CIFS server has not been set up, specify details for the server in the Create a CIFS Server dialog box, and then click *Save and continue*:
++
+[cols=2*,options="header",cols="30,70"]
+|===
+| Field
+| Description
+
+| DNS Primary and Secondary IP Address | The IP addresses of the DNS servers that provide name resolution for the CIFS server.
+
+The listed DNS servers must contain the service location records (SRV) needed to locate the Active Directory LDAP servers and domain controllers for the domain that the CIFS server will join.
+
+| Active Directory Domain to join |	The FQDN of the Active Directory (AD) domain that you want the CIFS server to join.
+
+| Credentials authorized to join the domain |	The name and password of a Windows account with sufficient privileges to add computers to the specified Organizational Unit (OU) within the AD domain.
+
+| CIFS server NetBIOS name | A CIFS server name that is unique in the AD domain.
+
+| Organizational Unit | The organizational unit within the AD domain to associate with the CIFS server. The default is CN=Computers.
+
+| DNS Domain | The DNS domain for the Cloud Volumes ONTAP storage virtual machine (SVM). In most cases, the domain is the same as the AD domain.
+
+| NTP Server | Select *Use Active Directory Domain* to configure an NTP server using the Active Directory DNS. If you need to configure an NTP server using a different address, then you should use the API. See the link:api.html[Cloud Manager API Developer Guide^] for details.
+|===
+
+. On the Usage Profile, Disk Type, and Tiering Policy page, choose whether you want to enable storage efficiency features, choose a disk type, and edit the S3 tiering policy, if needed.
++
+For help, refer to the following:
+
+* link:task_planning_your_config.html#choosing-a-volume-usage-profile[Understanding volume usage profiles]
+* link:task_planning_your_config.html#sizing-your-system-in-aws[Sizing your system in AWS]
+* link:task_planning_your_config.html#sizing-your-system-in-azure[Sizing your system in Azure]
+* link:concept_data_tiering.html[Data tiering overview]
+
+. Click *Go*.
+
+.Result
+
+Cloud Volumes ONTAP provisions the volume.
+
+.After you finish
+
+If you provisioned a CIFS share, give users or groups permissions to the files and folders and verify that those users can access the share and create a file.
+
+If you want to apply quotas to volumes, you must use System Manager or the CLI. Quotas enable you to restrict or track the disk space and number of files used by a user, group, or qtree.
+
+== Provisioning volumes on the second node in an HA configuration
+
+By default, Cloud Manager creates volumes on the first node in an HA configuration. If you need an active-active configuration, in which both nodes serve data to clients, you must create aggregates and volumes on the second node.
+
+.Steps
+
+. On the Working Environments page, double-click the name of the Cloud Volumes ONTAP working environment on which you want to manage aggregates.
+
+. Click the menu icon and then click *Advanced > Advanced allocation*.
+
+. Click *Add Aggregate* and then create the aggregate.
+
+. For Home Node, choose the second node in the HA pair.
+
+. After Cloud Manager creates the aggregate, select it and then click *Create volume*.
+
+. Enter details for the new volume, and then click *Create*.
+
+.After you finish
+
+You can create additional volumes on this aggregate if required.
+
+IMPORTANT: For HA pairs deployed in multiple AWS Availability Zones, you must mount the volume to clients by using the floating IP address of the node on which the volume resides.
+
+== Creating aggregates
+
+You can create aggregates yourself or let Cloud Manager do it for you when it creates volumes. The benefit of creating aggregates yourself is that you can choose the underlying disk size, which enables you to size your aggregate for the capacity or the performance that you need.
+
+.Steps
+
+. On the Working Environments page, double-click the name of the Cloud Volumes ONTAP instance on which you want to manage aggregates.
+
+. Click the menu icon, and then click *Advanced > Advanced allocation*.
+
+. Click *Add Aggregate* and then specify details for the aggregate.
++
+For help with disk type and disk size, see link:task_planning_your_config.html[Planning your configuration].
+
+. Click *Go*, and then click *Approve and Purchase*.
+
+== Provisioning iSCSI LUNs
+
+If you want to create iSCSI LUNs, you need to do so from System Manager.
+
+.Before you begin
+
+* The Host Utilities must be installed and set up on the hosts that will connect to the LUN.
+
+* You must have recorded the iSCSI initiator name from the host. You need to supply this name when you create an igroup for the LUN.
+
+* Before you create volumes in System Manager, you must ensure that you have an aggregate with sufficient space. You need to create aggregates in Cloud Manager. For details, see link:task_provisioning_storage.html#creating-aggregates[Creating aggregates].
+
+.About this task
+
+These steps describe how to use System Manager for version 9.3 and later.
+
+.Steps
+
+. link:task_connecting_to_otc.html[Log in to System Manager].
+
+. Click *Storage > LUNs*.
+
+. Click *Create* and follow the prompts to create the LUN.
+
+. Connect to the LUN from your hosts.
++
+For instructions, see the http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61343[Host Utilities documentation^] for your operating system.

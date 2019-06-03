@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: task_installing_https_cert.html
+keywords: https certificate, certificate, adding, installing, ca, certificate authority, format, encoding
+summary: By default, Cloud Manager uses a self-signed certificate for HTTPS access to the web console. You can install a certificate signed by a certificate authority (CA), which provides better security protection than a self-signed certificate.
+---
+
+= Installing an HTTPS certificate for secure access
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+By default, Cloud Manager uses a self-signed certificate for HTTPS access to the web console. You can install a certificate signed by a certificate authority (CA), which provides better security protection than a self-signed certificate.
+
+.Steps
+
+. In the upper right of the Cloud Manager console, click the task drop-down list, and then select *HTTPS Setup*.
+
+. In the HTTPS Setup page, install a certificate by generating a certificate signing request (CSR) or by installing your own CA-signed certificate:
++
+[cols=2*,options="header",cols="25,75"]
+|===
+| Option
+| Description
+| Generate a CSR
+a|
+.. Enter the host name or DNS of the Cloud Manager host (its Common Name), and then click *Generate CSR*.
++
+Cloud Manager displays a certificate signing request.
+
+.. Use the CSR to submit an SSL certificate request to a CA.
++
+The certificate must use the Privacy Enhanced Mail (PEM) Base-64 encoded X.509 format.
+
+.. Copy the contents of the signed certificate, paste it in the Certificate field, and then click *Install*.
+
+| Install your own CA-signed certificate
+a|
+.. Select *Install CA-signed certificate*.
+
+.. Load both the certificate file and the private key and then click *Install*.
++
+The certificate must use the Privacy Enhanced Mail (PEM) Base-64 encoded X.509 format.
+|===
+
+.Result
+
+Cloud Manager now uses the CA-signed certificate to provide secure HTTPS access. The following image shows a Cloud Manager system that is configured for secure access:
+
+image:screenshot_https_cert.gif[Screen shot: Shows the HTTPS Setup page after you install a signed certificate. The page shows the certificate properties and an option to renew the certificate.]

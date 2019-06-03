@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: task_editing_users.html
+keywords: editing, users, user accounts, modify, modifying, report, notification, password, notification report
+summary: You can modify user accounts in Cloud Manager by enabling and disabling the notification report.
+---
+
+= Editing user accounts
+:hardbreaks:
+:doctype: book
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+You can modify user accounts in Cloud Manager by enabling and disabling the notification report.
+
+.About this task
+
+Password and user information must be changed in https://cloud.netapp.com[NetApp Cloud Central^].
+
+.Steps
+. In the upper-right corner of the Cloud Manager console, click the user icon, and then select *View Users*.
+
+. Select the menu icon at the end of the row and click *Edit User*.
++
+image:screenshot_edit_user.gif[Screen shot: Shows the menu to edit a user account. The menu is located next to the user name.]
+
+. In the User Settings page, modify the user account.

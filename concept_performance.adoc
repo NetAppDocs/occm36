@@ -1,0 +1,20 @@
+---
+sidebar: sidebar
+permalink: concept_performance.html
+keywords: performance, technical report, TR, workload
+summary: You can review performance results to help you decide which workloads are appropriate for Cloud Volumes ONTAP.
+---
+
+= Performance
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can review performance results to help you decide which workloads are appropriate for Cloud Volumes ONTAP.
+
+For Cloud Volumes ONTAP for AWS, refer to https://www.netapp.com/us/media/tr-4383.pdf[NetApp Technical Report 4383: Performance Characterization of Cloud Volumes ONTAP in Amazon Web Services with Application Workloads^].
+
+For Cloud Volumes ONTAP for Microsoft Azure, refer to https://www.netapp.com/us/media/tr-4671.pdf[NetApp Technical Report 4671: Performance Characterization of Cloud Volumes ONTAP in Azure with Application Workloads^].

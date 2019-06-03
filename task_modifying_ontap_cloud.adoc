@@ -1,0 +1,177 @@
+---
+sidebar: sidebar
+permalink: task_modifying_ontap_cloud.html
+keywords: license, licensing, install, instance type, virtual machine type, VM type, change, modify, configuration, subscription, paygo, pay-as-you-go, pay as you go, byol, password, MTU, jumbo frames, c4.xlarge, c4.8xlarge, HA pair, file, license file, install, upload, change, modify, svm, storage virtual machine, password, route tables, nlf
+summary: You might need to change the configuration of Cloud Volumes ONTAP instances as your storage needs change. For example, you can change between pay-as-you-go configurations, change the instance or VM type, and move to an alternate subscription.
+---
+
+= Modifying Cloud Volumes ONTAP systems
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+You might need to change the configuration of Cloud Volumes ONTAP instances as your storage needs change. For example, you can change between pay-as-you-go configurations, change the instance or VM type, and move to an alternate subscription.
+
+== Installing license files on Cloud Volumes ONTAP BYOL systems
+
+If Cloud Manager cannot obtain a BYOL license file from NetApp, you can obtain the file yourself and then manually upload the file to Cloud Manager so it can install the license on the Cloud Volumes ONTAP system.
+
+.Steps
+
+. Go to the https://register.netapp.com/register/getlicensefile[NetApp License File Generator^] and log in using your NetApp Support Site credentials.
+
+. Enter your password, choose your product (either *NetApp Cloud Volumes ONTAP BYOL for AWS*, *NetApp Cloud Volumes ONTAP BYOL for Azure*, or *NetApp Cloud Volumes ONTAP BYOL HA for AWS*), enter the serial number, confirm that you have read and accepted the privacy policy, and then click *Submit*.
++
+*Example*
++
+image:screenshot_license_generator.gif[Screen shot: Shows an example of the NetApp License File Generator web page filled out, including a password, a product (NetApp Cloud Volumes ONTAP BYOL for AWS), and a product serial number.]
+
+. Choose whether you want to receive the serialnumber.NLF JSON file through email or direct download.
+
+. In Cloud Manager, open the Cloud Volumes ONTAP BYOL working environment.
+
+. Click the menu icon and then click *License*.
++
+image:screenshot_menu_license.gif[A screenshot that shows menu icon in a working environment. The License option enables you to upload a license file.]
+
+. Click *Upload License File*.
+
+. Click *Upload* and then select the file.
+
+.Result
+
+Cloud Manager installs the new license file on the Cloud Volumes ONTAP system.
+
+== Changing the instance or virtual machine type for Cloud Volumes ONTAP
+
+You can choose from several instance or virtual machine types when you launch Cloud Volumes ONTAP in AWS or Azure. You can change the instance or virtual machine type at any time if you determine that it is undersized or oversized for your needs.
+
+.About this task
+
+* The operation restarts Cloud Volumes ONTAP.
++
+For single node systems, I/O is interrupted.
++
+For HA pairs, the change is nondisruptive. HA pairs continue to serve data.
+
+* Changing the instance or virtual machine type affects AWS or Azure service charges.
+
+.Steps
+
+. From the working environment, click the menu icon, and then click *Change license or instance* for AWS or click *Change license or VM* for Azure.
+
+. If you are using a pay-as-you-go configuration, you can optionally choose a different license.
+
+. Select an instance or virtual machine type, select the check box to confirm that you understand the implications of the change, and then click *OK*.
+
+.Result
+
+Cloud Volumes ONTAP reboots with the new configuration.
+
+== Changing between pay-as-you-go configurations
+
+After you launch pay-as-you-go Cloud Volumes ONTAP systems, you can change between the Explore, Standard, and Premium configurations at any time by modifying the license. Changing the license increases or decreases the raw capacity limit and enables you to choose from different EC2 instance types or Azure virtual machine types.
+
+.About this task
+
+Note the following about changing between pay-as-you-go licenses:
+
+* The operation restarts Cloud Volumes ONTAP.
++
+For single node systems, I/O is interrupted.
++
+For HA pairs, the change is nondisruptive. HA pairs continue to serve data.
+
+* Changing the instance or virtual machine type affects AWS or Azure service charges.
+
+.Steps
+
+. From the working environment, click the menu icon, and then click *Change license or instance* for AWS or click *Change license or VM* for Azure.
+
+. Select a license type and an instance type or virtual machine type, select the check box to confirm that you understand the implications of the change, and then click *OK*.
+
+.Result
+
+Cloud Volumes ONTAP reboots with the new license, instance type or virtual machine type, or both.
+
+== Moving to an alternate Cloud Volumes ONTAP configuration
+
+If you want to move between a pay-as-you-go subscription and a BYOL subscription or between a single Cloud Volumes ONTAP system and an HA pair, you can deploy a new system and then replicate data from the existing system to the new system.
+
+.Steps
+
+. Create a new Cloud Volumes ONTAP working environment.
++
+link:task_deploying_otc_aws.html[Launching Cloud Volumes ONTAP in AWS]
+link:task_deploying_otc_azure.html[Launching Cloud Volumes ONTAP in Azure]
+
+. link:task_replicating_data.html[Set up one-time data replication] between the systems for each volume that you must replicate.
+
+. Terminate the Cloud Volumes ONTAP system that you no longer need by link:task_deleting_working_env.html[deleting the original working environment].
+
+== Modifying the storage virtual machine name
+
+Cloud Manager automatically names the storage virtual machine (SVM) for Cloud Volumes ONTAP. You can modify the name of the SVM if you have strict naming standards. For example, you might want it to match how you name the SVMs for your ONTAP clusters.
+
+.Steps
+
+. From the working environment, click the menu icon, and then click *Information*.
+
+. Click the edit icon to the right of the SVM name.
++
+image:screenshot_svm.gif[Screen shot: Shows the SVM Name field and the edit icon that you must click to modify the SVM name.]
+
+. In the Modify SVM Name dialog box, modify the SVM name, and then click *Save*.
+
+== Changing the password for Cloud Volumes ONTAP
+
+Cloud Volumes ONTAP includes a cluster admin account. You can change the password for this account from Cloud Manager, if needed.
+
+IMPORTANT: You should not change the password for the admin account through System Manager or the CLI. The password will not be reflected in Cloud Manager. As a result, Cloud Manager cannot monitor the instance properly.
+
+.Steps
+
+. From the working environment, click the menu icon, and then click *Advanced > Set password*.
+. Enter the new password twice and then click *Save*.
++
+The new password must be different than one of the last six passwords that you used.
+
+== Changing the network MTU for c4.4xlarge and c4.8xlarge instances
+
+By default, Cloud Volumes ONTAP is configured to use 9,000 MTU (also called jumbo frames) when you choose the c4.4xlarge instance or the c4.8xlarge instance in AWS. You can change the network MTU to 1,500 bytes if that is more appropriate for your network configuration.
+
+.About this task
+
+A network maximum transmission unit (MTU) of 9,000 bytes can provide the highest maximum network throughput possible for specific configurations.
+
+9,000 MTU is a good choice if clients in the same VPC communicate with the Cloud Volumes ONTAP system and some or all of those clients also support 9,000 MTU. If traffic leaves the VPC, packet fragmentation can occur, which degrades performance.
+
+A network MTU of 1,500 bytes is a good choice if clients or systems outside of the VPC communicate with the Cloud Volumes ONTAP system.
+
+.Steps
+
+. From the working environment, click the menu icon and then click *Advanced > Network Utilization*.
+
+. Select *Standard* or *Jumbo Frames*.
+
+. Click *Change*.
+
+== Changing route tables associated with HA pairs in multiple AWS AZs
+
+You can modify the AWS route tables that include routes to the floating IP addresses for an HA pair. You might do this if new NFS or CIFS clients need to access an HA pair in AWS.
+
+.Steps
+
+. From the working environment, click the menu icon and then click *Information*.
+
+. Click *Route Tables*.
+
+. Modify the list of selected route tables and then click *Save*.
+
+.Result
+
+Cloud Manager sends an AWS request to modify the route tables.

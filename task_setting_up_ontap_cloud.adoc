@@ -1,0 +1,59 @@
+---
+sidebar: sidebar
+permalink: task_setting_up_ontap_cloud.html
+keywords: set up, setting up, ntp, time, synch, autosupport, asup, ems, lif, svm, backup, configuration files, config, snapcenter, snapdrive, ntp server, svm management lif, management lif
+summary: After you deploy Cloud Volumes ONTAP, you can set it up by synchronizing the system time using NTP and by performing a few optional tasks from either System Manager or the CLI.
+---
+
+= Setting up Cloud Volumes ONTAP
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+After you deploy Cloud Volumes ONTAP, you can set it up by synchronizing the system time using NTP and by performing a few optional tasks from either System Manager or the CLI.
+
+[cols=2*,options="header",cols="30,70"]
+|===
+| Task
+
+| Description
+
+| Synchronize the system time using NTP a|	Specifying an NTP server synchronizes the time between the systems in your network, which can help prevent issues due to time differences.
+
+Specify an NTP server using the Cloud Manager API or from the user interface when you set up a CIFS server.
+
+* link:task_managing_storage.html#modifying-the-cifs-server[Modifying the CIFS server]
+* link:api.html[Cloud Manager API Developer Guide^]
+
+For example, here's the API for a single-node system in AWS:
+
+image:screenshot_ntp_server_api.gif[A screenshot of the Swagger interface that shows the NTP API call.]
+
+| Optional: Configure AutoSupport | AutoSupport proactively monitors the health of your system and automatically sends messages to NetApp technical support by default.
+
+If the Cloud Manager Admin added a proxy server to Cloud Manager before you launched your instance, Cloud Volumes ONTAP is configured to use that proxy server for AutoSupport messages.
+
+You should test AutoSupport to ensure that it can send messages. For instructions, see the System Manager Help or the http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html[ONTAP 9 System Administration Reference^].
+
+| Optional: Configure EMS | The Event Management System (EMS) collects and displays information about events that occur on Cloud Volumes ONTAP systems. To receive event notifications, you can set event destinations (email addresses, SNMP trap hosts, or syslog servers) and event routes for a particular event severity.
+
+You can configure EMS using the CLI. For instructions, see the http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-ems/home.html[ONTAP 9 EMS Configuration Express Guide^].
+
+| Optional: Create an SVM management network interface (LIF) for HA systems in multiple AWS Availability Zones
+a| A storage virtual machine (SVM) management network interface (LIF) is required if you want to use SnapCenter or SnapDrive for Windows with an HA pair. The SVM management LIF must use a _floating_ IP address when using an HA pair across multiple AWS Availability Zones.
+
+Cloud Manager prompts you to specify the floating IP address when you launch the HA pair. If you did not specify the IP address, you can create the SVM Management LIF yourself from System Manager or the CLI. The following example shows how to create the LIF from the CLI:
+....
+network interface create -vserver svm_cloud -lif svm_mgmt -role data -data-protocol none -home-node cloud-01 -home-port e0a -address 10.0.2.126 -netmask 255.255.255.0 -status-admin up -firewall-policy mgmt
+....
+
+| Optional: Change the backup location of configuration files | Cloud Volumes ONTAP automatically creates configuration backup files that contain information about the configurable options that it needs to operate properly.
+
+By default, Cloud Volumes ONTAP backs up the files to the Cloud Manager host every eight hours. If you want to send the backups to an alternate location, you can change the location to an FTP or HTTP server in your data center or in AWS. For example, you might already have a backup location for your FAS storage systems.
+
+You can change the backup location using the CLI. See the http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sag/home.html[ONTAP 9 System Administration Reference^].
+|===

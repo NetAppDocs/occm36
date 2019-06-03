@@ -1,0 +1,47 @@
+---
+sidebar: sidebar
+permalink: reference_networking_azure.html
+keywords: networking, network, requirements, connection, connections, vnet, security group, security groups, subnet, vpn, internet, proxy, HTTP, private, proxy server, routing, firewall, autosupport, connection, jump host, outbound, ports, blob, service endpoint
+summary: You must set up your Azure networking so Cloud Volumes ONTAP systems can operate properly.
+---
+
+= Networking requirements for Cloud Volumes ONTAP in Azure
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You must set up your Azure networking so Cloud Volumes ONTAP systems can operate properly.
+
+****
+Looking for the list of endpoints to which Cloud Manager requires access? They're now maintained in a single location. link:reference_networking_cloud_manager.html[Click here for details].
+****
+
+Outbound internet access for Cloud Volumes ONTAP::
+Cloud Volumes ONTAP requires outbound internet access to send messages to NetApp AutoSupport, which proactively monitors the health of your storage.
++
+Routing and firewall policies must allow AWS HTTP/HTTPS traffic to the following endpoints so Cloud Volumes ONTAP can send AutoSupport messages:
++
+* \https://support.netapp.com/aods/asupmessage
+* support.netapp.com/asupprod/post/1.0/postAsup
+
+Security groups::
+You do not need to create security groups because Cloud Manager does that for you. If you need to use your own, refer to link:reference_security_groups_azure.html[Security group rules].
+
+Connection from Cloud Volumes ONTAP to Azure Blob storage for data tiering::
+If you want to tier cold data to Azure Blob storage, you do not need to set up a VNet service endpoint as long as Cloud Manager has the required permissions:
++
+[source,json]
+"Microsoft.Network/virtualNetworks/subnets/write",
+"Microsoft.Network/routeTables/join/action",
++
+These permissions are included in the latest https://mysupport.netapp.com/cloudontap/iampolicies[Cloud Manager policy].
++
+For details about setting up data tiering, see link:task_tiering.html[Tiering cold data to low-cost object storage].
+
+Connections to ONTAP systems in other networks::
+To replicate data between a Cloud Volumes ONTAP system in Azure and ONTAP systems in other networks, you must have a VPN connection between the Azure VNet and the other network—for example, an AWS VPC or your corporate network.
++
+For instructions, refer to https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal[Microsoft Azure Documentation: Create a Site-to-Site connection in the Azure portal^].

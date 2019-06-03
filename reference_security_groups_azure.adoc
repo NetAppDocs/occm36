@@ -1,0 +1,228 @@
+---
+sidebar: sidebar
+permalink: reference_security_groups_azure.html
+keywords: security group, security groups, rules, ports, azure, inbound, outbound, rules
+summary: Cloud Manager creates Azure security groups that include the inbound and outbound rules that Cloud Manager and Cloud Volumes ONTAP need to operate successfully. You might want to refer to the ports for testing purposes or if you need to use your own.
+---
+
+= Security group rules for Azure
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Cloud Manager creates Azure security groups that include the inbound and outbound rules that Cloud Manager and Cloud Volumes ONTAP need to operate successfully. You might want to refer to the ports for testing purposes or if you prefer your to use own security groups.
+
+== Rules for Cloud Manager
+
+The security group for Cloud Manager requires both inbound and outbound rules.
+
+=== Inbound rules for Cloud Manager
+
+The source for inbound rules in the predefined security group is 0.0.0.0/0.
+
+[cols="10,10,80",width=100%,options="header"]
+|===
+
+| Protocol
+| Port
+| Purpose
+
+| SSH | 22 | Provides SSH access to the Cloud Manager host
+| HTTP | 80 |	Provides HTTP access from client web browsers to the Cloud Manager web console
+| HTTPS |	443 |	Provides HTTPS access from client web browsers to the Cloud Manager web console
+
+|===
+
+=== Outbound rules for Cloud Manager
+
+The predefined security group for Cloud Manager opens all outbound traffic. If that is acceptable, follow the basic outbound rules. If you need more rigid rules, use the advanced outbound rules.
+
+==== Basic outbound rules
+
+The predefined security group for Cloud Manager includes the following outbound rules.
+
+[cols=3*,options="header",width=70%,cols="20,20,60"]
+|===
+
+| Protocol
+| Port
+| Purpose
+
+| All TCP | All | All outbound traffic
+| All UDP | All |	All outbound traffic
+
+|===
+
+==== Advanced outbound rules
+
+If you need rigid rules for outbound traffic, you can use the following information to open only those ports that are required for outbound communication by Cloud Manager.
+
+NOTE: The source IP address is the Cloud Manager host.
+
+[cols=5*,options="header,autowidth"]
+|===
+
+| Service
+| Protocol
+| Port
+| Destination
+| Purpose
+
+.9+| Active Directory | TCP	| 88 | Active Directory forest | Kerberos V authentication
+| TCP	| 139 | Active Directory forest | NetBIOS service session
+| TCP	| 389 | Active Directory forest | LDAP
+| TCP	| 445 | Active Directory forest | Microsoft SMB/CIFS over TCP with NetBIOS framing
+| TCP	| 464 | Active Directory forest | Kerberos V change & set password (SET_CHANGE)
+| TCP	| 749 | Active Directory forest | Active Directory Kerberos V change & set password (RPCSEC_GSS)
+| UDP	| 137 | Active Directory forest | NetBIOS name service
+| UDP	| 138 | Active Directory forest | NetBIOS datagram service
+| UDP	| 464 | Active Directory forest | Kerberos key administration
+| API calls and AutoSupport | HTTPS | 443 | Outbound internet and ONTAP cluster management LIF | API calls to AWS and ONTAP, and sending AutoSupport messages to NetApp
+| API calls | TCP	| 3000 | ONTAP cluster management LIF | API calls to ONTAP
+| DNS | UDP	| 53 | DNS | Used for DNS resolve by Cloud Manager
+
+|===
+
+== Rules for Cloud Volumes ONTAP
+
+The security group for Cloud Volumes ONTAP requires both inbound and outbound rules.
+
+=== Inbound rules for single node systems
+
+[cols="8,13,8,8,13,13,8,27",options="header"]
+|===
+
+| Priority
+| Name
+| Port
+| Protocol
+| Source
+| Destination
+| Action
+| Description
+
+| 1000 | inbound_ssh | 22 | TCP | Any | Any | Allow | SSH access to the IP address of the cluster management LIF or a node management LIF
+| 1001 | inbound_http | 80  | TCP | Any | Any | Allow | HTTP access to the System Manager web console using the IP address of the cluster management LIF
+| 1002 | inbound_111_tcp | 111 | TCP | Any | Any | Allow | Remote procedure call for NFS
+| 1003 | inbound_111_udp | 111 | UDP | Any | Any | Allow | Remote procedure call for NFS
+| 1004 | inbound_139 | 139 | TCP | Any | Any | Allow | NetBIOS service session for CIFS
+| 1005 | inbound_161-162 _tcp | 161-162 | TCP | Any | Any | Allow | Simple network management protocol
+| 1006 | inbound_161-162 _udp | 161-162 | UDP | Any | Any | Allow | Simple network management protocol
+| 1007 | inbound_443 | 443 | TCP | Any | Any | Allow | HTTPS access to the System Manager web console using the IP address of the cluster management LIF
+| 1008 | inbound_445 | 445 | TCP | Any | Any | Allow | Microsoft SMB/CIFS over TCP with NetBIOS framing
+| 1009 | inbound_635_tcp | 635 | TCP | Any | Any | Allow | NFS mount
+| 1010 | inbound_635_udp | 635 | TCP | Any | Any | Allow | NFS mount
+| 1011 | inbound_749 | 749 | TCP | Any | Any | Allow | Kerberos
+| 1012 | inbound_2049_tcp | 2049 | TCP | Any | Any | Allow | NFS server daemon
+| 1013 | inbound_2049_udp | 2049 | UDP | Any | Any | Allow | NFS server daemon
+| 1014 | inbound_3260 | 3260 | TCP | Any | Any | Allow | iSCSI access through the iSCSI data LIF
+| 1015 | inbound_4045-4046_tcp | 4045-4046 | TCP | Any | Any | Allow | NFS lock daemon and network status monitor
+| 1016 | inbound_4045-4046_udp | 4045-4046 | UDP | Any | Any | Allow | NFS lock daemon and network status monitor
+| 1017 | inbound_10000 | 10000 | TCP | Any | Any | Allow | Backup using NDMP
+| 1018 | inbound_11104-11105 | 11104-11105 | TCP | Any | Any | Allow | SnapMirror data transfer
+| 3000 | inbound_deny _all_tcp | Any | TCP | Any | Any | Deny | Block all other TCP inbound traffic
+| 3001 | inbound_deny _all_udp | Any | UDP | Any | Any | Deny | Block all other UDP inbound traffic
+| 65000 | AllowVnetInBound | Any | Any | VirtualNetwork | VirtualNetwork | Allow | Inbound traffic from within the VNet
+| 65001 | AllowAzureLoad BalancerInBound  | Any | Any | AzureLoadBalancer | Any | Allow | Data traffic from the Azure Standard Load Balancer
+| 65500 | DenyAllInBound | Any | Any | Any | Any | Deny | Block all other inbound traffic
+
+|===
+
+=== Inbound rules for HA systems
+
+NOTE: HA systems have less inbound rules than single node systems because inbound data traffic goes through the Azure Standard Load Balancer. Because of this, traffic from the Load Balancer should be open, as shown in the "AllowAzureLoadBalancerInBound" rule.
+
+[cols="8,13,8,8,13,13,8,27",options="header"]
+|===
+
+| Priority
+| Name
+| Port
+| Protocol
+| Source
+| Destination
+| Action
+| Description
+
+| 100 | inbound_443 | 443 | Any | Any | Any | Allow | HTTPS access to the System Manager web console using the IP address of the cluster management LIF
+| 101 | inbound_111_tcp | 111 | Any | Any | Any | Allow | Remote procedure call for NFS
+| 102 | inbound_2049_tcp | 2049 | Any | Any | Any | Allow | NFS server daemon
+| 111 | inbound_ssh | 22 | Any | Any | Any | Allow | SSH access to the IP address of the cluster management LIF or a node management LIF
+| 121 | inbound_53 | 53 | Any | Any | Any | Allow | DNS and CIFS
+| 65000 | AllowVnetInBound | Any | Any | VirtualNetwork | VirtualNetwork | Allow | Inbound traffic from within the VNet
+| 65001 | AllowAzureLoad BalancerInBound | Any | Any | AzureLoadBalancer | Any | Allow | Data traffic from the Azure Standard Load Balancer
+| 65500 | DenyAllInBound | Any | Any | Any | Any | Deny | Block all other inbound traffic
+
+|===
+
+=== Outbound rules for Cloud Volumes ONTAP
+
+The predefined security group for Cloud Volumes ONTAP opens all outbound traffic. If that is acceptable, follow the basic outbound rules. If you need more rigid rules, use the advanced outbound rules.
+
+==== Basic outbound rules
+
+The predefined security group for Cloud Volumes ONTAP includes the following outbound rules.
+
+[cols=3*,options="header",width=70%,cols="20,20,60"]
+|===
+
+| Protocol
+| Port
+| Purpose
+
+| All TCP |	All |	All outbound traffic
+| All UDP |	All |	All outbound traffic
+
+|===
+
+==== Advanced outbound rules
+
+If you need rigid rules for outbound traffic, you can use the following information to open only those ports that are required for outbound communication by Cloud Volumes ONTAP.
+
+NOTE: The source is the interface (IP address) on the Cloud Volumes ONTAP system.
+
+[cols="10,10,10,20,20,40",width=100%,options="header"]
+|===
+
+| Service
+| Protocol
+| Port
+| Source
+| Destination
+| Purpose
+
+.18+| Active Directory | TCP | 88 | Node management LIF | Active Directory forest | Kerberos V authentication
+| UDP | 137 | Node management LIF | Active Directory forest | NetBIOS name service
+| UDP | 138 | Node management LIF | Active Directory forest | NetBIOS datagram service
+| TCP | 139 | Node management LIF | Active Directory forest | NetBIOS service session
+| TCP | 389 | Node management LIF | Active Directory forest | LDAP
+| TCP | 445 | Node management LIF | Active Directory forest | Microsoft SMB/CIFS over TCP with NetBIOS framing
+| TCP | 464 | Node management LIF | Active Directory forest | Kerberos V change & set password (SET_CHANGE)
+| UDP | 464 | Node management LIF | Active Directory forest | Kerberos key administration
+| TCP | 749 | Node management LIF | Active Directory forest | Kerberos V change & set Password (RPCSEC_GSS)
+| TCP | 88 | Data LIF (NFS, CIFS) | Active Directory forest | Kerberos V authentication
+| UDP | 137 | Data LIF (NFS, CIFS) | Active Directory forest | NetBIOS name service
+| UDP | 138 | Data LIF (NFS, CIFS) | Active Directory forest | NetBIOS datagram service
+| TCP | 139 | Data LIF (NFS, CIFS) | Active Directory forest | NetBIOS service session
+| TCP | 389 | Data LIF (NFS, CIFS) | Active Directory forest | LDAP
+| TCP | 445 | Data LIF (NFS, CIFS) | Active Directory forest | Microsoft SMB/CIFS over TCP with NetBIOS framing
+| TCP | 464 | Data LIF (NFS, CIFS) | Active Directory forest | Kerberos V change & set password (SET_CHANGE)
+| UDP | 464 | Data LIF (NFS, CIFS) | Active Directory forest | Kerberos key administration
+| TCP | 749 | Data LIF (NFS, CIFS) | Active Directory forest | Kerberos V change & set password (RPCSEC_GSS)
+| DHCP | UDP | 68 | Node management LIF | DHCP | DHCP client for first-time setup
+| DHCPS | UDP | 67 | Node management LIF | DHCP | DHCP server
+| DNS | UDP | 53 | Node management LIF and data LIF (NFS, CIFS) | DNS | DNS
+| NDMP | TCP | 18600–18699 | Node management LIF | Destination servers | NDMP copy
+| SMTP | TCP | 25 | Node management LIF | Mail server | SMTP alerts, can be used for AutoSupport
+.4+| SNMP | TCP | 161 | Node management LIF | Monitor server | Monitoring by SNMP traps
+| UDP | 161 | Node management LIF | Monitor server | Monitoring by SNMP traps
+| TCP | 162 | Node management LIF | Monitor server | Monitoring by SNMP traps
+| UDP | 162 | Node management LIF | Monitor server | Monitoring by SNMP traps
+.2+| SnapMirror | TCP | 11104 | Intercluster LIF | ONTAP intercluster LIFs | Management of intercluster communication sessions for SnapMirror
+| TCP | 11105 | Intercluster LIF | ONTAP intercluster LIFs | SnapMirror data transfer
+| Syslog | UDP | 514 | Node management LIF | Syslog server | Syslog forward messages
+
+|===

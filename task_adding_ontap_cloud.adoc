@@ -1,0 +1,36 @@
+---
+sidebar: sidebar
+permalink: task_adding_ontap_cloud.html
+keywords: discover, discovering, add, adding, existing
+summary: You can discover and add existing Cloud Volumes ONTAP systems to Cloud Manager.
+---
+
+= Adding existing Cloud Volumes ONTAP systems to Cloud Manager
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can discover and add existing Cloud Volumes ONTAP systems to Cloud Manager. You might do this if your Cloud Manager system became unusable and you launched a new system, but you could not restore all Cloud Volumes ONTAP systems from a recent Cloud Manager backup.
+
+.Before you begin
+
+You must know the password for the Cloud Volumes ONTAP admin user account.
+
+.Steps
+
+. On the Working Environments page, click *Add Working Environment*.
+
+. Under Discover, select *Cloud Volumes ONTAP*.
++
+image:screenshot_discover_otc.gif[Screen shot: Shows the Cloud Volumes ONTAP icon for creating or discovering an instance.]
+
+. On the Region page, choose the region where the instances are running, and then select the instances.
+
+. On the Credentials page, enter the password for the Cloud Volumes ONTAP admin user, and then click *Go*.
+
+.Result
+
+Cloud Manager adds the Cloud Volumes ONTAP instances to the tenant.

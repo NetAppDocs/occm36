@@ -1,0 +1,23 @@
+---
+sidebar: sidebar
+permalink: task_setting_up_cloud_manager.html
+keywords:
+summary: You can start creating Cloud Volumes ONTAP systems right after you deploy Cloud Manager. However, you might want to perform additional setup first by setting up the AWS Key Management Service, installing an HTTPS certificate, and more.
+---
+
+= Setting up Cloud Manager
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+You can start creating Cloud Volumes ONTAP systems right after you deploy Cloud Manager. However, you might want to perform additional setup first by adding cloud provider accounts, setting up the AWS Key Management Service, installing an HTTPS certificate, and more.
+
+* link:task_adding_cloud_accounts.html[Adding cloud provider accounts to Cloud Manager]
+* link:task_adding_nss_accounts.html[Adding NetApp Support Site accounts to Cloud Manager]
+* link:task_installing_https_cert.html[Installing an HTTPS certificate]
+* link:task_setting_up_users_tenants.html[Setting up users and tenants]
+* link:task_setting_up_kms.html[Setting up the AWS KMS]

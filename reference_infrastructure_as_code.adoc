@@ -1,0 +1,31 @@
+---
+sidebar: sidebar
+permalink: reference_infrastructure_as_code.html
+keywords: ansible, playbook, automation
+summary: DevOps teams use a variety of tools to automate the setup of new environments, which allows them to treat infrastructure as code. Two such tools are Ansible and Terraform. We have developed Ansible and Terraform samples that DevOps team can use with Cloud Manager to automate and integrate Cloud Volumes ONTAP with infrastructure as code.
+---
+
+= Automation samples for infrastructure as code
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Use the resources on this page to get help integrating Cloud Manager and Cloud Volumes ONTAP with your https://www.netapp.com/us/info/what-is-infrastructure-as-code-iac.aspx[infrastructure as code^].
+
+DevOps teams use a variety of tools to automate the setup of new environments, which allows them to treat infrastructure as code. Two such tools are Ansible and Terraform. We have developed Ansible and Terraform samples that DevOps team can use with Cloud Manager to automate and integrate Cloud Volumes ONTAP with infrastructure as code.
+
+https://github.com/edarzi/cloud-manager-automation-samples[View the automation samples^].
+
+For example, you can use sample Ansible playbooks to deploy Cloud Manager and Cloud Volumes ONTAP, create an aggregate, and create a volume. Modify the samples for your environment or create new playbooks based on the samples.
+
+*Related links*
+
+* https://cloud.netapp.com/blog/using-cloud-manager-rest-apis-with-federated-access[NetApp Cloud Blog: Using Cloud Manager REST APIs with Federated Access^]
+* https://cloud.netapp.com/blog/cloud-automation-with-cloud-volumes-ontap-rest[NetApp Cloud Blog: Cloud Automation with Cloud Volumes ONTAP and REST^]
+* https://cloud.netapp.com/blog/automated-data-cloning-for-cloud-based-testing[NetApp Cloud Blog: Automated Data Cloning for Cloud-Based Testing of Software Applications^]
+* https://blog.netapp.com/infrastructure-as-code-accelerated-with-ansible-netapp/[NetApp Blog: Infrastructure-As-Code (IaC) Accelerated with Ansible + NetApp^]
+* https://netapp.io/configuration-management-and-automation/[NetApp thePub: Configuration Management & Automation with Ansible^]
+* https://netapp.io/2019/03/25/simplicity-at-its-finest-roles-for-ansible-ontap-use/[NetApp thePub: Roles for Ansible ONTAP use^]

@@ -1,0 +1,45 @@
+---
+sidebar: sidebar
+permalink: concept_licensing.html
+keywords: licenses, licensing, byol, license, subscription, renewal, expire, netapp support site, account, credentials, file, license file, upload, nlf
+summary: Each Cloud Volumes ONTAP BYOL system must have a license installed with an active subscription. Cloud Manager simplifies the licensing process by managing licenses for you and by notifying you before they expire.
+---
+
+= Licensing
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Each Cloud Volumes ONTAP BYOL system must have a license installed with an active subscription. If an active license is not installed, the Cloud Volumes ONTAP system shuts itself down after 30 days. Cloud Manager simplifies the process by managing licenses for you and by notifying you before they expire.
+
+[discrete]
+=== License management for a new system
+
+When you create a BYOL system, Cloud Manager prompts you for a NetApp Support Site account. Cloud Manager uses the account to download the license file from NetApp and to install it on the Cloud Volumes ONTAP system.
+
+link:task_adding_nss_accounts.html[Learn how to add NetApp Support Site accounts to Cloud Manager].
+
+If Cloud Manager cannot access the license file over the secure internet connection, you can obtain the file yourself and then manually upload the file to Cloud Manager. For instructions, see link:task_modifying_ontap_cloud.html#installing-license-files-on-cloud-volumes-ontap-byol-systems[Installing license files on Cloud Volumes ONTAP BYOL systems].
+
+[discrete]
+=== License expiration
+
+Cloud Manager warns you 30 days before a license is due to expire and again when the license expires. The following image shows a 30-day expiration warning:
+
+image:screenshot_warning.gif[Screen shot: Shows a Cloud Volumes ONTAP working environment that includes a warning icon. The icon indicates that an action is required.]
+
+You can select the working environment to review the message.
+
+If you do not renew the license in time, the Cloud Volumes ONTAP system shuts itself down. If you restart it, it shuts itself down again.
+
+NOTE: Cloud Volumes ONTAP can also notify you through email, an SNMP traphost, or syslog server using EMS (Event Management System) event notifications. For instructions, see the http://docs.netapp.com/ontap-9/topic/com.netapp.doc.exp-ems/home.html[ONTAP 9 EMS Configuration Express Guide^].
+
+[discrete]
+=== License renewal
+
+When you renew a BYOL subscription by contacting a NetApp representative, Cloud Manager automatically obtains the new license from NetApp and installs it on the Cloud Volumes ONTAP system.
+
+If Cloud Manager cannot access the license file over the secure internet connection, you can obtain the file yourself and then manually upload the file to Cloud Manager. For instructions, see link:task_modifying_ontap_cloud.html#installing-license-files-on-cloud-volumes-ontap-byol-systems[Installing license files on Cloud Volumes ONTAP BYOL systems].

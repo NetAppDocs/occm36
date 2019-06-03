@@ -1,0 +1,296 @@
+---
+sidebar: sidebar
+permalink: reference_security_groups.html
+keywords: security group, security groups, rules, ports, aws, inbound, outbound, rules
+summary: Cloud Manager creates AWS security groups that include the inbound and outbound rules that Cloud Manager and Cloud Volumes ONTAP need to operate successfully. You might want to refer to the ports for testing purposes or if you need to use your own.
+---
+
+= Security group rules for AWS
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Cloud Manager creates AWS security groups that include the inbound and outbound rules that Cloud Manager and Cloud Volumes ONTAP need to operate successfully. You might want to refer to the ports for testing purposes or if you prefer your to use own security groups.
+
+== Rules for Cloud Manager
+
+The security group for Cloud Manager requires both inbound and outbound rules.
+
+=== Inbound rules for Cloud Manager
+
+The source for inbound rules in the predefined security group is 0.0.0.0/0.
+
+[cols="10,10,80",width=100%,options="header"]
+|===
+
+| Protocol
+| Port
+| Purpose
+
+| SSH | 22 | Provides SSH access to the Cloud Manager host
+| HTTP | 80 |	Provides HTTP access from client web browsers to the Cloud Manager web console
+| HTTPS |	443 |	Provides HTTPS access from client web browsers to the Cloud Manager web console
+
+|===
+
+=== Outbound rules for Cloud Manager
+
+The predefined security group for Cloud Manager opens all outbound traffic. If that is acceptable, follow the basic outbound rules. If you need more rigid rules, use the advanced outbound rules.
+
+==== Basic outbound rules
+
+The predefined security group for Cloud Manager includes the following outbound rules.
+
+[cols=3*,options="header",width=70%,cols="20,20,60"]
+|===
+
+| Protocol
+| Port
+| Purpose
+
+| All TCP | All | All outbound traffic
+| All UDP | All |	All outbound traffic
+
+|===
+
+==== Advanced outbound rules
+
+If you need rigid rules for outbound traffic, you can use the following information to open only those ports that are required for outbound communication by Cloud Manager.
+
+NOTE: The source IP address is the Cloud Manager host.
+
+[cols=5*,options="header,autowidth"]
+|===
+
+| Service
+| Protocol
+| Port
+| Destination
+| Purpose
+
+.9+| Active Directory | TCP	| 88 | Active Directory forest | Kerberos V authentication
+| TCP	| 139 | Active Directory forest | NetBIOS service session
+| TCP	| 389 | Active Directory forest | LDAP
+| TCP	| 445 | Active Directory forest | Microsoft SMB/CIFS over TCP with NetBIOS framing
+| TCP	| 464 | Active Directory forest | Kerberos V change & set password (SET_CHANGE)
+| TCP	| 749 | Active Directory forest | Active Directory Kerberos V change & set password (RPCSEC_GSS)
+| UDP	| 137 | Active Directory forest | NetBIOS name service
+| UDP	| 138 | Active Directory forest | NetBIOS datagram service
+| UDP	| 464 | Active Directory forest | Kerberos key administration
+| API calls and AutoSupport | HTTPS | 443 | Outbound internet and ONTAP cluster management LIF | API calls to AWS and ONTAP, and sending AutoSupport messages to NetApp
+| API calls | TCP	| 3000 | ONTAP cluster management LIF | API calls to ONTAP
+| DNS | UDP	| 53 | DNS | Used for DNS resolve by Cloud Manager
+
+|===
+
+== Rules for Cloud Volumes ONTAP
+
+The security group for Cloud Volumes ONTAP requires both inbound and outbound rules.
+
+=== Inbound rules for Cloud Volumes ONTAP
+
+The source for inbound rules in the predefined security group is 0.0.0.0/0.
+
+[cols="10,10,80",width=100%,options="header"]
+|===
+
+| Protocol
+| Port
+| Purpose
+
+| All ICMP | All | Pinging the instance
+| HTTP | 80 |	HTTP access to the System Manager web console using the IP address of the cluster management LIF
+| HTTPS |	443 |	HTTPS access to the System Manager web console using the IP address of the cluster management LIF
+| SSH |	22 | SSH access to the IP address of the cluster management LIF or a node management LIF
+| TCP |	111 |	Remote procedure call for NFS
+| TCP |	139 | NetBIOS service session for CIFS
+| TCP |	161-162 |	Simple network management protocol
+| TCP |	445 |	Microsoft SMB/CIFS over TCP with NetBIOS framing
+| TCP |	635 |	NFS mount
+| TCP |	749 |	Kerberos
+| TCP |	2049 |	NFS server daemon
+| TCP |	3260 |	iSCSI access through the iSCSI data LIF
+| TCP |	4045 |	NFS lock daemon
+| TCP | 4046 | Network status monitor for NFS
+| TCP |	10000 |	Backup using NDMP
+| TCP |	11104 |	Management of intercluster communication sessions for SnapMirror
+| TCP | 11105 | SnapMirror data transfer using intercluster LIFs
+| UDP |	111 | Remote procedure call for NFS
+| UDP |	161-162 |	Simple network management protocol
+| UDP |	635 |	NFS mount
+| UDP |	2049 | NFS server daemon
+| UDP |	4045 | NFS lock daemon
+| UDP | 4046 | Network status monitor for NFS
+| UDP | 4049 | NFS rquotad protocol
+
+|===
+
+=== Outbound rules for Cloud Volumes ONTAP
+
+The predefined security group for Cloud Volumes ONTAP opens all outbound traffic. If that is acceptable, follow the basic outbound rules. If you need more rigid rules, use the advanced outbound rules.
+
+==== Basic outbound rules
+
+The predefined security group for Cloud Volumes ONTAP includes the following outbound rules.
+
+[cols=3*,options="header",width=70%,cols="20,20,60"]
+|===
+
+| Protocol
+| Port
+| Purpose
+
+| All ICMP |	All |	All outbound traffic
+| All TCP |	All |	All outbound traffic
+| All UDP |	All |	All outbound traffic
+
+|===
+
+==== Advanced outbound rules
+
+If you need rigid rules for outbound traffic, you can use the following information to open only those ports that are required for outbound communication by Cloud Volumes ONTAP.
+
+NOTE: The source is the interface (IP address) on the Cloud Volumes ONTAP system.
+
+[cols="10,10,10,20,20,40",width=100%,options="header"]
+|===
+
+| Service
+| Protocol
+| Port
+| Source
+| Destination
+| Purpose
+
+.18+| Active Directory | TCP | 88 | Node management LIF | Active Directory forest | Kerberos V authentication
+| UDP | 137 | Node management LIF | Active Directory forest | NetBIOS name service
+| UDP | 138 | Node management LIF | Active Directory forest | NetBIOS datagram service
+| TCP | 139 | Node management LIF | Active Directory forest | NetBIOS service session
+| TCP | 389 | Node management LIF | Active Directory forest | LDAP
+| TCP | 445 | Node management LIF | Active Directory forest | Microsoft SMB/CIFS over TCP with NetBIOS framing
+| TCP | 464 | Node management LIF | Active Directory forest | Kerberos V change & set password (SET_CHANGE)
+| UDP | 464 | Node management LIF | Active Directory forest | Kerberos key administration
+| TCP | 749 | Node management LIF | Active Directory forest | Kerberos V change & set Password (RPCSEC_GSS)
+| TCP | 88 | Data LIF (NFS, CIFS) | Active Directory forest | Kerberos V authentication
+| UDP | 137 | Data LIF (NFS, CIFS) | Active Directory forest | NetBIOS name service
+| UDP | 138 | Data LIF (NFS, CIFS) | Active Directory forest | NetBIOS datagram service
+| TCP | 139 | Data LIF (NFS, CIFS) | Active Directory forest | NetBIOS service session
+| TCP | 389 | Data LIF (NFS, CIFS) | Active Directory forest | LDAP
+| TCP | 445 | Data LIF (NFS, CIFS) | Active Directory forest | Microsoft SMB/CIFS over TCP with NetBIOS framing
+| TCP | 464 | Data LIF (NFS, CIFS) | Active Directory forest | Kerberos V change & set password (SET_CHANGE)
+| UDP | 464 | Data LIF (NFS, CIFS) | Active Directory forest | Kerberos key administration
+| TCP | 749 | Data LIF (NFS, CIFS) | Active Directory forest | Kerberos V change & set password (RPCSEC_GSS)
+.3+| Cluster | All traffic | All traffic | All LIFs on one node | All LIFs on the other node | Intercluster communications (Cloud Volumes ONTAP HA only)
+| TCP | 3000 | Node management LIF | HA mediator | ZAPI calls (Cloud Volumes ONTAP HA only)
+| ICMP | 1 | Node management LIF | HA mediator | Keep alive (Cloud Volumes ONTAP HA only)
+| DHCP | UDP | 68 | Node management LIF | DHCP | DHCP client for first-time setup
+| DHCPS | UDP | 67 | Node management LIF | DHCP | DHCP server
+| DNS | UDP | 53 | Node management LIF and data LIF (NFS, CIFS) | DNS | DNS
+| NDMP | TCP | 18600–18699 | Node management LIF | Destination servers | NDMP copy
+| SMTP | TCP | 25 | Node management LIF | Mail server | SMTP alerts, can be used for AutoSupport
+.4+| SNMP | TCP | 161 | Node management LIF | Monitor server | Monitoring by SNMP traps
+| UDP | 161 | Node management LIF | Monitor server | Monitoring by SNMP traps
+| TCP | 162 | Node management LIF | Monitor server | Monitoring by SNMP traps
+| UDP | 162 | Node management LIF | Monitor server | Monitoring by SNMP traps
+.2+| SnapMirror | TCP | 11104 | Intercluster LIF | ONTAP intercluster LIFs | Management of intercluster communication sessions for SnapMirror
+| TCP | 11105 | Intercluster LIF | ONTAP intercluster LIFs | SnapMirror data transfer
+| Syslog | UDP | 514 | Node management LIF | Syslog server | Syslog forward messages
+
+|===
+
+== Rules for the HA mediator external security group
+
+The predefined external security group for the Cloud Volumes ONTAP HA mediator includes the following inbound and outbound rules.
+
+=== Inbound rules
+
+The source for inbound rules is 0.0.0.0/0.
+
+[cols=3*,options="header",width=70%,cols="20,20,60"]
+|===
+
+| Protocol
+| Port
+| Purpose
+
+| SSH |	22 | SSH connections to the HA mediator
+| TCP |	3000 | RESTful API access from Cloud Manager
+
+|===
+
+=== Outbound rules
+
+The predefined security group for the HA mediator opens all outbound traffic. If that is acceptable, follow the basic outbound rules. If you need more rigid rules, use the advanced outbound rules.
+
+==== Basic outbound rules
+
+The predefined security group for the HA mediator includes the following outbound rules.
+
+[cols=3*,options="header",width=70%,cols="20,20,60"]
+|===
+
+| Protocol
+| Port
+| Purpose
+
+| All TCP |	All |	All outbound traffic
+| All UDP |	All |	All outbound traffic
+
+|===
+
+==== Advanced outbound rules
+
+If you need rigid rules for outbound traffic, you can use the following information to open only those ports that are required for outbound communication by the HA mediator.
+
+[cols="10,10,10,20,50",width=70%,options="header"]
+|===
+
+| Service
+| Protocol
+| Port
+| Destination
+| Purpose
+
+| API	| HTTPS | 443 | AWS API services | Assist with storage failover
+| API	| UDP | 53 | AWS API services | Assist with storage failover
+
+|===
+
+NOTE: Rather than open these two ports, you can use a private endpoint instead.
+
+== Rules for the HA mediator internal security group
+
+The predefined internal security group for the Cloud Volumes ONTAP HA mediator includes the following rules. Cloud Manager always creates this security group. You do not have the option to use your own.
+
+=== Inbound rules
+
+The predefined security group includes the following inbound rules.
+
+[cols=3*,options="header",width=70%,cols="20,20,60"]
+|===
+
+| Protocol
+| Port
+| Purpose
+
+| All traffic | All | Communication between the HA mediator and HA nodes
+
+|===
+
+=== Outbound rules
+
+The predefined security group includes the following outbound rules.
+
+[cols=3*,options="header",width=70%,cols="20,20,60"]
+|===
+
+| Protocol
+| Port
+| Purpose
+
+| All traffic |	All |	Communication between the HA mediator and HA nodes
+
+|===

@@ -1,0 +1,47 @@
+---
+sidebar: sidebar
+permalink: task_backing_up_restoring.html
+keywords: backing up, back up, backup, restore, restoring
+summary: Cloud Manager enables you to back up and restore its database to protect your configuration and troubleshoot issues.
+---
+
+= Backing up and restoring Cloud Manager
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Cloud Manager enables you to back up and restore its database to protect your configuration and troubleshoot issues.
+
+== Backing up Cloud Manager
+
+It is a good practice to back up the Cloud Manager database on a periodic basis. If you experience problems, you can restore Cloud Manager from a previous backup.
+
+.Steps
+. In the upper right of the Cloud Manager console, click the task drop-down list, and then select *Tools*.
+
+. Click *Backup*.
++
+image:screenshot_backup.gif[Screen shot: Shows the Backup button in the Tools page.]
+
+. When prompted, save the backup file to a secure location so that you can retrieve it when needed.
+
+== Restoring Cloud Manager from a backup
+
+Restoring Cloud Manager from a backup replaces existing data with the data from the backup.
+
+.Steps
+
+. In the upper-right hand corner of the Cloud Manager console, click the task drop-down list, and then select *Tools*.
+
+. Click *Restore*.
+
+. Click *OK* to confirm.
+
+. Select the backup.
+
+.Result
+
+Cloud Manager restores the database from the backup file.

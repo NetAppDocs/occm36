@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: task_changing_volume_view.html
+keywords: volume view, changing, selecting, switching, views
+summary: You can switch to the Cloud Manager Volume View, which enables you to create volumes in AWS without having to manage Cloud Volumes ONTAP storage systems.
+---
+
+= Changing to the Volume View
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Cloud Manager provides two management views: the Storage System View for managing storage systems across a hybrid cloud and the Volume View for creating volumes in AWS without having to manage storage systems. You can switch between these views, but those instances should be rare because a single view should meet your needs.
+
+For more information about the Volume View, see link:concept_storage_management.html#simplified-storage-management-using-the-volume-view[Simplified storage management using the Volume View].
+
+.Steps
+
+. In the upper right of the Cloud Manager console, click the menu, and then click *View Selection*.
+
+. On the View Selection page, select *Storage System View*, and then click *Switch*.
+
+.Result
+
+Cloud Manager switches to the Volume View.

@@ -1,0 +1,69 @@
+---
+sidebar: sidebar
+permalink: task_syncing_s3.html
+keywords: sync, data, s3, cloud sync, bucket, service, sync to s3, volume sync
+summary: You can sync data from ONTAP volumes to an AWS S3 bucket by integrating a working environment with NetApp Cloud Sync. You can then use the synced data as a secondary copy or for data processing using AWS services like EMR and Redshift.
+---
+
+= Syncing data to AWS S3
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can sync data from ONTAP volumes to an AWS S3 bucket by integrating a working environment with https://www.netapp.com/us/cloud/data-sync-saas-product-details[NetApp Cloud Sync^]. You can then use the synced data as a secondary copy or for data processing using AWS services like EMR and Redshift.
+
+== How the sync to S3 feature works
+
+You can integrate a working environment with the Cloud Sync service at any time. When you integrate a working environment, the Cloud Sync service syncs data from the selected volumes to a single S3 bucket. The integration works with Cloud Volumes ONTAP working environments, as well as ONTAP clusters that are on-premises or part of a NetApp Private Storage (NPS) configuration.
+
+To sync the data, the service launches a data broker instance in your VPC. Cloud Sync uses one data broker per working environment to sync data from volumes to an S3 bucket. After the initial sync, the service syncs any changed data once per day at midnight.
+
+image:screenshot_sync_to_s3.gif[Screen shot: Shows a conceptual image of volumes from a working environment being synced to an S3 bucket by a data broker.]
+
+If you want to perform advanced Cloud Sync actions, go directly to the Cloud Sync service. From there, you can perform actions such as syncing from S3 to an NFS server, choosing different S3 buckets for volumes, and modifying schedules.
+
+NOTE: The sync to S3 feature is available for Cloud Manager Admins and Tenant Admins only.
+
+=== 14-day free trial
+
+If you are a new Cloud Sync user, your first 14 days are free. After the free trial ends, you must pay for each _sync relationship_ at an hourly rate or by purchasing licenses. Each volume that you sync to an S3 bucket is considered a sync relationship. You can set up both payment options directly from Cloud Sync in the License Settings page.
+
+=== How to get help
+
+Use the following options for any support related to the Cloud Manager sync to S3 feature or for Cloud Sync in general:
+
+* General product feedback: ng-cloudsync-contact@netapp.com
+* Technical Support options:
+** NetApp Cloud Sync Communities
+** In-product chat (lower-right corner of Cloud Manager)
+
+== Integrating a working environment with the Cloud Sync service
+
+If you want to sync volumes to AWS S3 directly from Cloud Manager, then you must integrate the working environment with the Cloud Sync service.
+
+video::3hOtLs70_xE[youtube, width=848, height=480]
+
+.Steps
+
+. Open a working environment and click *Sync to S3*.
+
+. Click *Sync* and follow the prompts to sync your data to S3.
+
+NOTE: You cannot sync data protection volumes to S3. The volumes must be writable.
+
+== Managing volume sync relationships
+
+After you integrate a working environment with the Cloud Sync service, you can sync additional volumes, stop syncing a volume, and remove the integration with Cloud Sync.
+
+.Steps
+
+. On the Working Environments page, double-click the working environment on which you want to manage sync relationships.
+
+. If you want to enable or disable sync to S3 for a volume, select the volume and then click *Sync to S3* or *Delete Sync Relationship*.
+
+. If you want to delete all sync relationships for a working environment, click the *Sync to S3* tab and then click *Delete Sync*.
++
+This action does not delete synced data from the S3 bucket. If the data broker is not being used in any other sync relationships, then the Cloud Sync service deletes the data broker.

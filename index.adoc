@@ -1,0 +1,46 @@
+---
+sidebar: sidebar
+permalink: index.html
+summary: Welcome to the documentation portal for Cloud Manager and Cloud Volumes ONTAP.
+---
+
+= Cloud Manager and Cloud Volumes ONTAP documentation
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+OnCommand Cloud Manager enables you to deploy and manage NetApp Cloud Volumes ONTAP, which is a data management solution that provides protection, visibility, and control for your cloud-based workloads.
+
+== Discover what's new
+
+* link:reference_new_occm.html[What's new in Cloud Manager]
+* https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_new_95.html[What's new in Cloud Volumes ONTAP^]
+
+== Get started
+
+* link:task_getting_started_aws.html[Get started in AWS]
+* link:task_getting_started_azure.html[Get started in Azure]
+* https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_supported_configs_95.html[Find supported configurations for Cloud Volumes ONTAP^]
+* link:reference_networking_cloud_manager.html[Review detailed networking requirements for Cloud Manager]
+* link:reference_networking_aws.html[Review detailed networking requirements for Cloud Volumes ONTAP for AWS]
+* link:reference_networking_azure.html[Review detailed networking requirements for Cloud Volumes ONTAP for Azure]
+* link:task_planning_your_config.html[Plan your Cloud Volumes ONTAP configuration]
+
+== Automate with APIs
+
+* link:api.html[API Developer Guide^]
+* link:reference_infrastructure_as_code.html[Automation samples]
+
+== Learn about Cloud Manager and Cloud Volumes ONTAP
+
+video::9I5QToO6ZpU[youtube, width=848, height=480]
+
+https://www.youtube.com/playlist?list=PLdXI3bZJEw7lnoRo8FBKsX1zHbK8AQOoT[Watch additional videos^]
+
+== Connect with peers, get help, and find more information
+
+* https://community.netapp.com/t5/Cloud-Data-Services/ct-p/CDS[NetApp Community: Cloud Data Services^]
+* https://mysupport.netapp.com/cloudontap[NetApp Cloud Volumes ONTAP Support^]
+* link:reference_additional_info.html[Where to get help and find more information]

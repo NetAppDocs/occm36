@@ -1,0 +1,34 @@
+---
+sidebar: sidebar
+permalink: task_protecting_ransomware.html
+keywords: snapshot policy, ransomware, protection, fpolicy, block, extension, attacks
+summary: Ransomware attacks can cost a business time, resources, and reputation. Cloud Manager enables you to implement the NetApp solution for ransomware, which provides effective tools for visibility, detection, and remediation.
+---
+
+= Improving protection against ransomware
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Ransomware attacks can cost a business time, resources, and reputation. Cloud Manager enables you to implement the NetApp solution for ransomware, which provides effective tools for visibility, detection, and remediation.
+
+.Steps
+
+. From the working environment, click the *Ransomware* icon.
++
+image:screenshot_ransomware_icon.gif[A screenshot that shows the Ransomware icon that is available in the top right of the page when viewing a working environment.]
+
+. Implement the NetApp solution for ransomware:
+
+.. Click *Activate Snapshot Policy*, if you have volumes that do not have a Snapshot policy enabled.
++
+NetApp Snapshot technology provides the industry’s best solution for ransomware remediation. The key to a successful recovery is restoring from uninfected backups. Snapshot copies are read-only, which prevents ransomware corruption. They can also provide the granularity to create images of a single file copy or a complete disaster recovery solution.
+
+.. Click *Activate FPolicy* to enable ONTAP's FPolicy solution, which can block file operations based on a file's extension.
++
+This preventative solution improves protection from ransomware attacks by blocking common ransomware file types.
+
+image:screenshot_ransomware_protection.gif[A screenshot that shows the Ransomware Protection page that is available from within a working environment. The screen shows the number of volumes without a Snapshot Policy and the ability to block ransomware file extensions.]

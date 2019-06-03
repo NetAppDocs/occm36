@@ -1,0 +1,192 @@
+---
+sidebar: sidebar
+permalink: reference_networking_cloud_manager.html
+keywords: networking, network, requirements, connection, connections, vpc, security group, security groups, subnets, proxy server, vpn, outbound, inbound, connections, jump host, URL, URLs, endpoints, endpoint, ports
+summary: You must set up your networking so that Cloud Manager can deploy Cloud Volumes ONTAP systems in AWS or in Microsoft Azure. The most important step is ensuring outbound internet access to various endpoints.
+---
+
+= Networking requirements for Cloud Manager
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You must set up your networking so that Cloud Manager can deploy Cloud Volumes ONTAP systems in AWS or in Microsoft Azure. The most important step is ensuring outbound internet access to various endpoints.
+
+TIP: If your network uses a proxy server for all communication to the internet, Cloud Manager prompts you to specify the proxy during setup. You can also specify the proxy server from the Settings page. Refer to link:task_configuring_proxy.html[Configuring Cloud Manager to use a proxy server].
+
+== Connection to target networks
+
+Cloud Manager requires a network connection to the AWS VPCs and Azure VNets in which you want to deploy Cloud Volumes ONTAP.
+
+For example, if you install Cloud Manager in your corporate network, then you must set up a VPN connection to the AWS VPC or Azure VNet in which you launch Cloud Volumes ONTAP.
+
+== Outbound internet access
+
+Cloud Manager requires outbound internet access to deploy and manage Cloud Volumes ONTAP. Outbound internet access is also required when accessing Cloud Manager from your web browser and when running the Cloud Manager installer on a Linux host.
+
+The following sections identify the specific endpoints.
+
+Outbound internet access to manage Cloud Volumes ONTAP in AWS::
+Cloud Manager requires outbound internet access to contact the following endpoints when deploying and managing Cloud Volumes ONTAP in AWS:
++
+[cols="43,57",options="header"]
+|===
+| Endpoints
+| Purpose
+a|
+AWS services (amazonaws.com):
+
+*	CloudFormation
+*	Elastic Compute Cloud (EC2)
+*	Key Management Service (KMS)
+*	Security Token Service (STS)
+*	Simple Storage Service (S3)
+
+The exact endpoint depends on the region in which you deploy Cloud Volumes ONTAP. https://docs.aws.amazon.com/general/latest/gr/rande.html[Refer to AWS documentation for details.^]
+| Enables Cloud Manager to deploy and manage Cloud Volumes ONTAP in AWS.
+
+| api.services.cloud.netapp.com:443 | API requests to NetApp Cloud Central.
+
+| cloud.support.netapp.com.s3.us-west-1.amazonaws.com	| Provides access to software images, manifests, and templates.
+
+|
+cognito-idp.us-east-1.amazonaws.com
+cognito-identity.us-east-1.amazonaws.com
+| Enables Cloud Manager to access and download manifests, templates, and Cloud Volumes ONTAP upgrade images.
+
+| kinesis.us-east-1.amazonaws.com	| Enables NetApp to stream data from audit records.
+
+| \https://netapp-cloud-account.auth0.com | Communication with NetApp Cloud Central for centralized user authentication.
+
+|
+\https://support.netapp.com/aods/asupmessage
+support.netapp.com/asupprod/post/1.0/postAsup
+| Communication with NetApp AutoSupport.
+|
+\https://support.netapp.com/svcgw
+\https://support.netapp.com/ServiceGW/entitlement
+| Communication with NetApp for licensing and support registration.
+
+|
+\https://packages.cloud.google.com/yum
+\https://github.com/NetApp/trident/releases/download/
+| Required to connect Cloud Volumes ONTAP systems with a Kubernetes cluster. The endpoints enable installation of NetApp Trident.
+
+a| Various third-party locations, for example:
+
+* \https://repo1.maven.org/maven2
+* \https://oss.sonatype.org/content/repositories
+* \https://repo.typesafe.org
+
+Third-party locations are subject to change.
+
+| During upgrades, Cloud Manager downloads the latest packages for third-party dependencies.
+|===
+
+Outbound internet access to manage Cloud Volumes ONTAP in Azure::
+Cloud Manager requires outbound internet access to contact the following endpoints when deploying and managing Cloud Volumes ONTAP in Microsoft Azure:
++
+[cols="43,57",options="header"]
+|===
+| Endpoints
+| Purpose
+|
+
+\https://management.azure.com
+\https://login.microsoftonline.com
+
+| Enables Cloud Manager to deploy and manage Cloud Volumes ONTAP in most Azure regions.
+
+|
+\https://management.microsoftazure.de
+\https://login.microsoftonline.de
+| Enables Cloud Manager to deploy and manage Cloud Volumes ONTAP in the Azure Germany regions.
+
+|
+\https://management.usgovcloudapi.net
+\https://login.microsoftonline.com
+| Enables Cloud Manager to deploy and manage Cloud Volumes ONTAP in the Azure US Gov regions.
+
+| api.services.cloud.netapp.com:443 | API requests to NetApp Cloud Central.
+
+| cloud.support.netapp.com.s3.us-west-1.amazonaws.com	| Provides access to software images, manifests, and templates.
+
+|
+cognito-idp.us-east-1.amazonaws.com
+cognito-identity.us-east-1.amazonaws.com
+sts.amazonaws.com
+| Enables Cloud Manager to access and download manifests, templates, and Cloud Volumes ONTAP upgrade images.
+
+| kinesis.us-east-1.amazonaws.com	| Enables NetApp to stream data from audit records.
+
+| \https://netapp-cloud-account.auth0.com | Communication with NetApp Cloud Central for centralized user authentication.
+
+| \https://mysupport.netapp.com | Communication with NetApp AutoSupport.
+|
+\https://support.netapp.com/svcgw
+\https://support.netapp.com/ServiceGW/entitlement
+| Communication with NetApp for licensing and support registration.
+
+|
+\https://packages.cloud.google.com/yum
+\https://github.com/NetApp/trident/releases/download/
+| Required to connect Cloud Volumes ONTAP systems with a Kubernetes cluster. The endpoints enable installation of NetApp Trident.
+
+a| Various third-party locations, for example:
+
+* \https://repo1.maven.org/maven2
+* \https://oss.sonatype.org/content/repositories
+* \https://repo.typesafe.org
+
+Third-party locations are subject to change.
+
+| During upgrades, Cloud Manager downloads the latest packages for third-party dependencies.
+|===
+
+Outbound internet access from your web browser::
+Users must access Cloud Manager from a web browser. The machine running the web browser must have connections to the following endpoints:
++
+[cols="43,57",options="header"]
+|===
+| Endpoints
+| Purpose
+|
+The Cloud Manager host
+
+a| You must enter the host's IP address from a web browser to load the Cloud Manager console.
+
+If you deploy Cloud Manager in AWS, the easiest way to provide access is by allocating a public IP address. However, if you want to use a private IP address instead, users can access the console through either of the following:
+
+** A jump host in the VPC that has a connection to Cloud Manager
+** A host in your network that has a VPN connection to the private IP address
+
+|
+\https://auth0.com
+\https://cdn.auth0.com
+\https://netapp-cloud-account.auth0.com
+\https://services.cloud.netapp.com
+
+| Your web browser connects to these endpoints for centralized user authentication through NetApp Cloud Central.
+
+| \https://widget.intercom.io
+| For in-product chat that enables you to talk to NetApp cloud experts.
+
+|===
+
+Outbound internet access to install Cloud Manager on a Linux host::
+The Cloud Manager installer must access the following URLs during the installation process:
+
+* \http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+* \https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+* \https://s3.amazonaws.com/aws-cli/awscli-bundle.zip
+
+== Ports and security groups
+
+* If you deploy Cloud Manager from Cloud Central or from the marketplace images, refer to the following:
+** link:reference_security_groups.html#rules-for-cloud-manager[Security group rules for Cloud Manager in AWS]
+** link:reference_security_groups_azure.html#rules-for-cloud-manager[Security group rules for Cloud Manager in Azure]
+
+* If you install Cloud Manager on an existing Linux host, see link:reference_cloud_mgr_reqs.html[Cloud Manager host requirements].
