@@ -1,0 +1,62 @@
+---
+sidebar: sidebar
+permalink: reference_cloud_mgr_reqs.html
+keywords: configurations, ec2, vm, ports, ram, operating system, os, host, requirement, requirements, hypervisor, disk, space, mysql, centos, rhel, red hat, cpu, disk space, 3306
+summary: If you install Cloud Manager on your own host, then you must verify support for your configuration, which includes operating system requirements, port requirements, and so on.
+---
+
+= Cloud Manager host requirements
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+If you install Cloud Manager on your own host, then you must verify support for your configuration, which includes operating system requirements, port requirements, and so on.
+
+Supported AWS EC2 instance types::
+t3.medium (recommended), t2.medium, and m4.large
+
+Supported Azure VM sizes::
+A2, D2 v2, or D2 v3 (based on availability)
+
+Supported operating systems::
+* CentOS 7.2
+* CentOS 7.3
+* CentOS 7.4
+* Red Hat Enterprise Linux 7.2
+* Red Hat Enterprise Linux 7.3
+* Red Hat Enterprise Linux 7.4
++
+The Red Hat Enterprise Linux system must be registered with Red Hat Subscription Management. If it is not registered, the system cannot access repositories to update required 3rd party software during Cloud Manager installation.
++
+Cloud Manager is supported on English-language versions of these operating systems.
+
+Hypervisor::  A bare metal or hosted hypervisor that is certified to run CentOS or Red Hat Enterprise Linux
+https://access.redhat.com/certified-hypervisors[Red Hat Solution: Which hypervisors are certified to run Red Hat Enterprise Linux?^]
+
+CPU:: 2.27 GHz or higher with two cores
+
+RAM:: 4 GB
+
+Free disk space:: 50 GB
+
+Outbound internet access::
+Outbound internet access is required when installing Cloud Manager and when using Cloud Manager to deploy Cloud Volumes ONTAP. For a list of endpoints, see link:reference_networking_cloud_manager.html[Networking requirements for Cloud Manager].
+
+Ports::
+The following ports must be available:
+* 80 for HTTP access
+* 443 for HTTPS access
+* 3306 for the Cloud Manager database
+* 8080 for the Cloud Manager API proxy
++
+If other services are using these ports, Cloud Manager installation fails.
++
+NOTE: There is a potential conflict with port 3306. If another instance of MySQL is running on the host, it uses port 3306 by default. You must change the port that the existing MySQL instance uses.
++
+You can change the default HTTP and HTTPS ports when you install Cloud Manager. You cannot change the default port for the MySQL database. If you change the HTTP and HTTPS ports, you must ensure that users can access the Cloud Manager web console from a remote host:
++
+** Modify the security group to allow inbound connections through the ports.
+** Specify the port when you enter the URL to the Cloud Manager web console.

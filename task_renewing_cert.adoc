@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: task_renewing_cert.html
+keywords: https certificate, certificate, renewing
+summary: You should renew the Cloud Manager HTTPS certificate before it expires to ensure secure access to the Cloud Manager web console. If you do not renew the certificate before it expires, a warning appears when users access the web console using HTTPS.
+---
+
+= Renewing the Cloud Manager HTTPS certificate
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You should renew the Cloud Manager HTTPS certificate before it expires to ensure secure access to the Cloud Manager web console. If you do not renew the certificate before it expires, a warning appears when users access the web console using HTTPS.
+
+.Steps
+
+. In the upper right of the Cloud Manager console, click the task drop-down list, and then select *HTTPS Setup*.
++
+Details about the Cloud Manager certificate displays, including the expiration date.
+
+. Click *Renew HTTPS Certificate* and follow the steps to generate a CSR or install your own CA-signed certificate.
+
+.Result
+
+Cloud Manager uses the new CA-signed certificate to provide secure HTTPS access.

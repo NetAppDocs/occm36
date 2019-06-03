@@ -1,0 +1,47 @@
+---
+sidebar: sidebar
+permalink: concept_worm.html
+keywords: worm, write once, read many, snaplock, enterprise, retain, retention, period
+summary: You can activate write once, read many (WORM) storage on a Cloud Volumes ONTAP system to retain files in unmodified form for a specified retention period. WORM files are protected at the file level.
+---
+
+= WORM storage
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can activate write once, read many (WORM) storage on a Cloud Volumes ONTAP system to retain files in unmodified form for a specified retention period. WORM storage is powered by SnapLock technology in Enterprise mode, which means WORM files are protected at the file level.
+
+Once a file has been committed to WORM storage, it cannot be modified, even after the retention period has expired. A tamper-proof clock determines when the retention period for a WORM file has elapsed.
+
+After the retention period has elapsed, you are responsible for deleting any files that you no longer need.
+
+[discrete]
+=== Activating WORM storage
+
+You can activate WORM storage on a Cloud Volumes ONTAP system when you create a new working environment. This includes specifying an activation code and setting the default retention period for files. You can obtain an activation code by using the chat icon in the lower right of the Cloud Manager interface.
+
+NOTE: You cannot activate WORM storage on individual volumes--WORM must be activated at the system level.
+
+The following image shows how to activate WORM storage when creating a working environment:
+
+image:screenshot_enabling_worm.gif[Shows the WORM option that is available when creating a new working environment.]
+
+[discrete]
+=== Committing files to WORM
+
+You can use an application to commit files to WORM over NFS or CIFS, or use the ONTAP CLI to autocommit files to WORM automatically. You can also use a WORM appendable file to retain data that is written incrementally, like log information.
+
+After you activate WORM storage on a Cloud Volumes ONTAP system, you must use the ONTAP CLI for all management of WORM storage. For instructions, refer to http://docs.netapp.com/ontap-9/topic/com.netapp.doc.pow-arch-con/home.html[ONTAP documentation^].
+
+NOTE: Cloud Volumes ONTAP support for WORM storage is equivalent to SnapLock Enterprise mode.
+
+[discrete]
+=== Limitations
+
+* If you delete or move a disk directly from AWS or Azure, then a volume can be deleted before its expiry date.
+
+* When WORM storage is activated, data tiering to object storage cannot be enabled.

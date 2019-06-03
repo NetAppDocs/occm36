@@ -1,0 +1,82 @@
+---
+sidebar: sidebar
+permalink: task_managing_volume_view.html
+keywords: NFS volumes, volume view, managing, cloning, clone, delete, deleting, access, disk
+summary: You can manage NFS volumes by cloning them, managing data access, changing the underlying disk type, and more.
+---
+
+= Managing NFS volumes
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can manage NFS volumes by cloning them, managing data access, changing the underlying disk type, and more.
+
+== Cloning volumes
+
+If you need an instantaneous copy of your data without using a lot of disk space, you can create a clone of an existing volume.
+
+.About this task
+
+The cloned volume is a writable, point-in-time copy that is space-efficient because it uses a small amount of space for metadata, and then only consumes additional space as data is changed or added.
+
+.Steps
+
+. In the Volumes tab, place your mouse cursor over the volume, select the menu icon, and then click *Clone*.
+
+. Modify the name of the cloned volume, if needed, and then click *Clone*.
+
+.Result
+
+Cloud Manager creates a new volume that is a clone of an existing volume.
+
+== Managing data access to volumes
+
+When you create a volume, Cloud Manager makes the volume available to all EC2 instances in the VPC in which the volume was created. You can modify this default value if you need to restrict data access to the volume.
+
+.Steps
+
+. In the Volumes tab, place your mouse cursor over the volume, select the menu icon, and then click *Manage Access*.
+
+. Modify the volume access list, and then click *Save*.
+
+== Changing the underlying AWS disk for a volume
+
+You can change the underlying AWS disk that a volume uses to provide storage. For example, if higher performance is needed, you can change from a Throughput Optimized HDD to a General Purpose SSD.
+
+.Steps
+
+. In the Volumes tab, place your mouse cursor over the volume, select the menu icon, and then click *Change Disk*.
+
+. Select the AWS disk type and click *Change*.
+
+.Result
+
+Cloud Manager moves the volume to an existing aggregate that uses the selected disk type or it creates a new aggregate for the volume.
+
+== Viewing and modifying AWS resources
+
+When you create a new volume, Cloud Manager allocates the AWS instances and EBS storage required for that volume. If required, you can view details about AWS instances and EBS storage, change instance types, and turn instances off and on.
+
+.Steps
+
+. Click *AWS Resources*.
++
+The list of AWS instances displays. You can view details such as instance type, AWS location, and the volumes attached to the instance.
+
+. If required, select the menu icon next to the Status column, and then choose one of the available actions:
++
+image:screenshot_volume_view_resources.gif[Screen shot that shows the available actions on the AWS Resources page in the Volume View.]
+
+== Deleting volumes
+
+You can delete volumes that you no longer need.
+
+.Steps
+
+. In the Volumes tab, place your mouse cursor over the volume, select the menu icon, and then click *Delete*.
+
+. Click *Delete* to confirm that you want to delete the volume.

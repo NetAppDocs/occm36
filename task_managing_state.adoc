@@ -1,0 +1,70 @@
+---
+sidebar: sidebar
+permalink: task_managing_state.html
+keywords: schedule, schedules, scheduling, shutdowns, shut down, restart, stop, stopping, turn off, weekday, weekend
+summary: You can stop and start Cloud Volumes ONTAP from Cloud Manager to manage your cloud compute costs.
+---
+
+= Managing the state of Cloud Volumes ONTAP
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can stop and start Cloud Volumes ONTAP from Cloud Manager to manage your cloud compute costs.
+
+== Scheduling automatic shutdowns of Cloud Volumes ONTAP
+
+You might want to shut down Cloud Volumes ONTAP during specific time intervals to lower your compute costs. Rather than do this manually, you can configure Cloud Manager to automatically shut down and then restart systems at specific times.
+
+.About this task
+
+When you schedule an automatic shutdown of your Cloud Volumes ONTAP system, Cloud Manager postpones the shutdown if an active data transfer is in progress. Cloud Manager shuts down the system after the transfer is complete.
+
+This task schedules automatic shutdowns of both nodes in an HA pair.
+
+.Steps
+
+. From the working environment, click the clock icon:
++
+image:screenshot_shutdown_icon.gif[Screen shot: Shows the icon that loads the automatic shutdown page.]
+
+. Specify the shutdown schedule:
+
+.. Choose whether you want to shut down the system every day, every weekday, every weekend, or any combination of the three options.
+
+.. Specify when you want to turn off the system and for how long you want it turned off.
++
+*Example*
++
+The following image shows a schedule that instructs Cloud Manager to shut down the system every Saturday at 12:00 a.m. for 48 hours. Cloud Manager restarts the system every Monday at 12:00 a.m.
++
+image:screenshot_shutdown.gif[Screen shot: Shows a shutdown schedule that shuts down Cloud Volumes ONTAP every weekend at 12:00 AM for 48 hours.]
+
+. Click *Save*.
+
+.Result
+
+Cloud Manager saves the schedule. The clock icon changes to indicate that a schedule is set: image:screenshot_shutdown_icon_scheduled.gif[Screen shot: Shows the automatic shutdown icon after a schedule is defined.]
+
+== Stopping Cloud Volumes ONTAP
+
+Stopping Cloud Volumes ONTAP saves you from accruing compute costs and creates snapshots of the root and boot disks, which can be helpful for troubleshooting.
+
+.About this task
+
+When you stop an HA pair, Cloud Manager shuts down both nodes.
+
+.Steps
+
+. From the working environment, click the *Turn off* icon.
++
+image:screenshot_otc_turn_off.gif[Screen shot: Shows the icon to turn off a Cloud Volumes ONTAP system.]
+
+. Keep the option to create snapshots enabled because the snapshots can enable system recovery.
+
+. Click *Turn Off*.
++
+It can take up to a few minutes to stop the system. You can restart systems at a later time from the working environment page.

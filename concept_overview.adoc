@@ -1,0 +1,54 @@
+---
+sidebar: sidebar
+permalink: concept_overview.html
+keywords: overview, concepts, features, use case
+summary: OnCommand Cloud Manager enables you to deploy Cloud Volumes ONTAP, which provides enterprise-class features for your cloud storage, and to easily replicate data across hybrid clouds built on NetApp.
+---
+
+= Cloud Manager and Cloud Volumes ONTAP overview
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+OnCommand Cloud Manager enables you to deploy Cloud Volumes ONTAP, which provides enterprise-class features for your cloud storage, and to easily replicate data across hybrid clouds built on NetApp.
+
+== Cloud Manager
+
+Cloud Manager was built with simplicity in mind. It guides you through Cloud Volumes ONTAP setup in a few steps, eases data management by offering simplified storage provisioning and automated capacity management, enables drag-and-drop data replication across a hybrid cloud, and more.
+
+Cloud Manager is required to deploy and manage Cloud Volumes ONTAP, but it can also discover and provision storage for on-premises ONTAP clusters. This provides a central point of control for your cloud and on-premises storage infrastructure.
+
+You can run Cloud Manager in the cloud or in your network—it just needs a connection to the networks in which you want to deploy Cloud Volumes ONTAP. The following image shows Cloud Manager running in AWS and managing Cloud Volumes ONTAP systems in AWS and Azure. It also shows data replication across a hybrid cloud.
+
+image:diagram_cloud_manager_overview.png[Shows the components that Cloud Manager can manage across your hybrid cloud: a Cloud Volumes ONTAP system serving EBS storage to EC2 compute, a Cloud Volumes ONTAP system serving Azure storage to virtual machines, and data replication across a hybrid cloud and multi-cloud environment.]
+
+https://www.netapp.com/us/products/data-infrastructure-management/cloud-manager.aspx[Learn more about Cloud Manager^]
+
+== Cloud Volumes ONTAP
+
+Cloud Volumes ONTAP is a software-only storage appliance that runs the ONTAP data management software in the cloud. You can use Cloud Volumes ONTAP for production workloads, disaster recovery, DevOps, file shares, and database management.
+
+Cloud Volumes ONTAP extends enterprise storage to the cloud with the following key features:
+
+* Storage efficiencies
+Leverage built-in data deduplication, data compression, thin provisioning, and cloning to minimize storage costs.
+
+* High availability
+Ensure enterprise reliability and continuous operations in case of failures in your cloud environment.
+
+* Data replication
+Cloud Volumes ONTAP leverages SnapMirror, NetApp’s industry-leading replication technology, to replicate on-premises data to the cloud so it’s easy to have secondary copies available for multiple use cases.
+
+* Data tiering
+Switch between high and low-performance storage pools on-demand without taking applications offline.
+
+* Application consistency
+Ensure consistency of NetApp Snapshot copies using NetApp SnapCenter.
+
+NOTE: Licenses for ONTAP features are included with Cloud Volumes ONTAP, except for NetApp Volume Encryption.
+
+https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_supported_configs_95.html[View supported Cloud Volumes ONTAP configurations^]
+
+https://www.netapp.com/us/cloud/ontap-cloud-native-product-details[Learn more about Cloud Volumes ONTAP^]

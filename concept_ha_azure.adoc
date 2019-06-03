@@ -1,0 +1,74 @@
+---
+sidebar: sidebar
+permalink: concept_ha_azure.html
+keywords: high availability, HA, concepts, understanding, overview, takeover, giveback, rpo, rto, nondisruptive, ha pairs, node, nodes, recovery point objective, recovery time objective, nas, nfs, cifs, iscsi, mpio, alua, failover, failure, azure, shared storage, active, passive, load balancer, availability set, storage accounts, page blobs
+summary: A Cloud Volumes ONTAP high availability (HA) pair provides enterprise reliability and continuous operations in case of failures in your cloud environment. In Azure, storage is shared between the two nodes.
+---
+
+= High-availability pairs in Azure
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+A Cloud Volumes ONTAP high availability (HA) pair provides enterprise reliability and continuous operations in case of failures in your cloud environment. In Azure, storage is shared between the two nodes.
+
+== HA components
+
+A Cloud Volumes ONTAP HA configuration in Azure includes the following components:
+
+image:diagram_ha_azure.png[A conceptual image that shows a load balancer managing incoming traffic from Cloud Manager and clients, two Cloud Volumes ONTAP nodes in an Availability Set, SSD disks for boot data, and Page Blobs for customer data.]
+
+Note the following about the Azure components that Cloud Manager deploys for you:
+
+Azure Standard Load Balancer::
+The load balancer manages incoming traffic to the Cloud Volumes ONTAP HA pair.
+
+Availability Set::
+The Availability Set ensures that the nodes are in different fault and update domains.
+
+Storage::
+Customer data resides on Premium Storage page blobs. Each node has access to the other node's storage.
+Additional storage is also required for boot and root data:
++
+* A node's boot data resides on a Premium SSD Managed Disk.
+* A node's root data resides on a Premium Storage page blob.
+
+== RPO and RTO
+
+An HA configuration maintains high availability of your data as follows:
+
+* The recovery point objective (RPO) is 0 seconds.
+Your data is transactionally consistent with no data loss.
+
+* The recovery time objective (RTO) is 60 seconds.
+In the event of an outage, data should be available in 60 seconds or less.
+
+== Storage takeover and giveback
+
+Similar to a physical ONTAP cluster, storage in an Azure HA pair is shared between nodes. Connections to the partner's storage allows each node to access the other's storage in the event of a _takeover_. Network path failover mechanisms ensure that clients and hosts continue to communicate with the surviving node. The partner _gives back_ storage when the node is brought back on line.
+
+For NAS configurations, data IP addresses automatically migrate between HA nodes if failures occur.
+
+For iSCSI, Cloud Volumes ONTAP uses multipath I/O (MPIO) and Asymmetric Logical Unit Access (ALUA) to manage path failover between the active-optimized and non-optimized paths.
+
+NOTE: For information about which specific host configurations support ALUA, see the http://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool^] and the Host Utilities Installation and Setup Guide for your host operating system.
+
+== Storage configurations
+
+You can use an HA pair as an active-active configuration, in which both nodes serve data to clients, or as an active-passive configuration, in which the passive node responds to data requests only if it has taken over storage for the active node.
+
+== HA limitations
+
+The following limitations affect Cloud Volumes ONTAP HA pairs in Azure:
+
+* HA pairs are supported with Cloud Volumes ONTAP Standard, Premium, and BYOL. Explore is not supported.
+* Data tiering is not supported.
+* NFSv4 is not supported. NFSv3 is supported.
+* HA pairs are not supported in some regions.
++
+https://cloud.netapp.com/cloud-volumes-global-regions[See the list of supported Azure regions^].
+
+link:task_deploying_otc_azure.html[Learn how to deploy an HA system in Azure].

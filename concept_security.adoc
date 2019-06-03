@@ -1,0 +1,70 @@
+---
+sidebar: sidebar
+permalink: concept_security.html
+keywords: security, encryption, antivirus, concepts, key managers, safenet, kms, keys, vscan, encrypt, aws, key management service, cmk, customer master key, data at rest, data-at-rest, netapp storage encryption, certificate signing request, csr, certificate, ca certificate, virus, scan, virus scan, certificate authority, netapp volume encryption, nve, volume encryption, key management server, ransomware, fpolicy, snapshots
+summary: Cloud Volumes ONTAP supports data encryption and provides protection against viruses and ransomware.
+---
+
+= Security
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Cloud Volumes ONTAP supports data encryption and provides protection against viruses and ransomware.
+
+== Encryption of data at rest
+
+Cloud Volumes ONTAP supports the following encryption technologies:
+
+* NetApp Volume Encryption (starting with Cloud Volumes ONTAP 9.5)
+* AWS Key Management Service
+* Azure Storage Service Encryption
+
+You can use NetApp Volume Encryption with native AWS and Azure encryption, which encrypt data at the hypervisor level.
+
+=== NetApp Volume Encryption
+
+NetApp Volume Encryption (NVE) is a software-based technology for encrypting data at rest one volume at a time. Data, Snapshot copies, and metadata are encrypted. Access to the data is given by a unique XTS-AES-256 key, one per volume.
+
+Cloud Volumes ONTAP supports NetApp Volume Encryption with an external key management server. An Onboard Key Manager is not supported. You can find the supported key managers in the http://mysupport.netapp.com/matrix[NetApp Interoperability Matrix Tool^] under the *Key Managers* solution.
+
+You can enable NetApp Volume Encryption on a new or existing volume by using the CLI or System Manager. Cloud Manager does not support NetApp Volume Encryption. For instructions, see link:task_encrypting_volumes.html[Encrypting volumes with NetApp Volume Encryption].
+
+=== AWS Key Management Service
+
+When you launch a Cloud Volumes ONTAP system in AWS, you can enable data encryption using the http://docs.aws.amazon.com/kms/latest/developerguide/overview.html[AWS Key Management Service (KMS)^]. Cloud Manager requests data keys using a customer master key (CMK).
+
+If you want to use this encryption option, then you must ensure that the AWS KMS is set up appropriately. For details, see link:task_setting_up_kms.html[Setting up the AWS KMS].
+
+=== Azure Storage Service Encryption
+
+https://azure.microsoft.com/en-us/documentation/articles/storage-service-encryption/[Azure Storage Service Encryption^] for data at rest is enabled by default for Cloud Volumes ONTAP data in Azure. No setup is required.
+
+NOTE: Customer-managed keys are not supported with Cloud Volumes ONTAP.
+
+== ONTAP virus scanning
+
+You can use integrated antivirus functionality on ONTAP systems to protect data from being compromised by viruses or other malicious code.
+
+ONTAP virus scanning, called _Vscan_, combines best-in-class third-party antivirus software with ONTAP features that give you the flexibility you need to control which files get scanned and when.
+
+For information about the vendors, software, and versions supported by Vscan, see the http://mysupport.netapp.com/matrix[NetApp Interoperability Matrix^].
+
+For information about how to configure and manage the antivirus functionality on ONTAP systems, see the http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-acg/home.html[ONTAP 9 Antivirus Configuration Guide^].
+
+== Ransomware protection
+
+Ransomware attacks can cost a business time, resources, and reputation. Cloud Manager enables you to implement the NetApp solution for ransomware, which provides effective tools for visibility, detection, and remediation.
+
+* Cloud Manager identifies volumes that are not protected by a Snapshot policy and enables you to activate the default Snapshot policy on those volumes.
++
+Snapshot copies are read-only, which prevents ransomware corruption. They can also provide the granularity to create images of a single file copy or a complete disaster recovery solution.
+
+* Cloud Manager also enables you to block common ransomware file extensions by enabling ONTAP's FPolicy solution.
+
+image:screenshot_ransomware_protection.gif[A screenshot that shows the Ransomware Protection page that is available from within a working environment. The screen shows the number of volumes without a Snapshot Policy and the ability to block ransomware file extensions.]
+
+link:task_protecting_ransomware.html[Learn how to implement the NetApp solution for ransomware].

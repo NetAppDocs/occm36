@@ -1,0 +1,96 @@
+---
+sidebar: sidebar
+permalink: task_setting_up_kms.html
+keywords: encryption, kms, key management service, cmk, customer master key, master key, key, permissions
+summary: If you want to use Amazon encryption with Cloud Volumes ONTAP, then you need to set up the AWS Key Management Service.
+---
+
+= Setting up the AWS KMS
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+If you want to use Amazon encryption with Cloud Volumes ONTAP, then you need to set up the AWS Key Management Service (KMS).
+
+.Steps
+
+. Ensure that an active Customer Master Key (CMK) exists.
++
+The CMK can be an AWS-managed CMK or a customer-managed CMK. It can be in the same AWS account as Cloud Manager and Cloud Volumes ONTAP or in a different AWS account.
++
+https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys[AWS Documentation: Customer Master Keys (CMKs)^]
+
+. Modify the key policy for each CMK by adding the IAM role that provides permissions to Cloud Manager as a _key user_.
++
+Adding the IAM role as a key user gives Cloud Manager permissions to use the CMK with Cloud Volumes ONTAP.
++
+https://docs.aws.amazon.com/kms/latest/developerguide/editing-keys.html[AWS Documentation: Editing Keys^]
+
+. If the CMK is in a different AWS account, complete the following steps:
+
+.. Go to the KMS console from the account where the CMK resides.
+
+.. Select the key.
+
+.. In the *General configuration* pane, copy the ARN of the key.
++
+You'll need to provide the ARN to Cloud Manager when you create the Cloud Volumes ONTAP system.
+
+.. In the *Other AWS accounts* pane, add the AWS account that provides Cloud Manager with permissions.
++
+In most cases, this is the account where Cloud Manager resides. If Cloud Manager wasn't installed in AWS, it would be the account for which you provided AWS access keys to Cloud Manager.
++
+image:screenshot_cmk_add_accounts.gif[This screenshot shows the "Add other AWS accounts" button from the AWS KMS console.]
++
+image:screenshot_cmk_add_accounts_dialog.gif[This screenshot shows the "Other AWS accounts" dialog box from the AWS KMS console.]
+
+.. Now switch to the AWS account that provides Cloud Manager with permissions and open the IAM console.
+
+.. Create an IAM policy that includes the permissions listed below.
+
+.. Attach the policy to the IAM role or IAM user that provides permissions to Cloud Manager.
++
+The following policy provides the permissions that Cloud Manager needs to use the CMK from the external AWS account. Be sure to modify the region and account ID in the "Resource" sections.
++
+[source,json]
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowUseOfTheKey",
+            "Effect": "Allow",
+            "Action": [
+                "kms:Encrypt",
+                "kms:Decrypt",
+                "kms:ReEncrypt*",
+                "kms:GenerateDataKey*",
+                "kms:DescribeKey"
+            ],
+            "Resource": [
+                "arn:aws:kms:us-east-1:externalaccountid:key/externalkeyid"
+            ]
+        },
+        {
+            "Sid": "AllowAttachmentOfPersistentResources",
+            "Effect": "Allow",
+            "Action": [
+                "kms:CreateGrant",
+                "kms:ListGrants",
+                "kms:RevokeGrant"
+            ],
+            "Resource": [
+                "arn:aws:kms:us-east-1:externalaccountid:key/externalaccountid"
+            ],
+            "Condition": {
+                "Bool": {
+                    "kms:GrantIsForAWSResource": true
+                }
+            }
+        }
+    ]
+}
++
+For additional details about this process, see https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying.html#key-policy-modifying-external-accounts[AWS Documentation: Allowing External AWS Accounts to Access a CMK^].

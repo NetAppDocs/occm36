@@ -1,0 +1,119 @@
+---
+sidebar: sidebar
+permalink: task_provisioning_volume_view.html
+keywords: NFS volumes, volume view, creating, mounting, provisioning, create, nfs volumes
+summary: You can use Cloud Manager to create NFS volumes that provide enterprise-class features on top of AWS storage.
+---
+
+= Creating and mounting NFS volumes
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+You can use Cloud Manager to create NFS volumes that provide enterprise-class features on top of AWS storage.
+
+== Creating NFS volumes
+
+You can create a volume attached to a single AWS instance or to an instance that is mirrored to another instance to provide high availability.
+
+.Steps
+
+. In the Volumes tab, click *Create New Volume*.
+
+. On the Create New Volume page, select a volume type:
++
+[cols=2*,options="header",cols="15,85"]
+|===
+
+| Option
+| Description
+
+| Create Volume	| Creates a volume attached to a single AWS instance.
+
+| Create HA volume | Creates a volume attached to a single AWS instance and mirrored to another instance to provide high availability in case of failures. Click the Info icon to see additional details about the instances required for an HA volume.
+|===
+
+. If you chose Create Volume, specify details for your first volume, and then click *Create*.
++
+The following table describes fields for which you might need guidance:
++
+[cols=2*,options="header",cols="15,85"]
+|===
+
+| Field
+| Description
+
+| Size | The maximum size for the volume depends on the capacity available in existing storage systems.
+Thin provisioning is automatically enabled on the volume, which enables you to create a volume that is bigger than the physical storage currently available to it. Instead of preallocating storage space, space is allocated to each volume as data is written.
+
+| AWS Disk Type
+a| You should choose the disk that meets your requirements for both performance and cost.
+
+* General Purpose SSD disks balance cost and performance for a broad range of workloads. Performance is defined in terms of IOPS.
+
+* Throughput Optimized HDD disks are for frequently accessed workloads that require fast and consistent throughput at a lower price.
+
+* Cold HDD disks are meant for backups, or infrequently accessed data, because the performance is very low. Like Throughput Optimized HDD disks, performance is defined in terms of throughput.
+
+For more details, refer to http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html[AWS Documentation: EBS Volume Types^].
+|===
++
+The following image shows the Create Volume page filled out:
++
+image:screenshot_volume_view_create.gif[Screen shot: Shows the Create New Volume page filled out.]
+
+. If you chose Create HA volume, specify details for the volume, and then click *Create*.
++
+The following table describes fields for which you might need guidance:
++
+[cols=2*,options="header",cols="15,85"]
+|===
+
+| Field
+| Description
+| Size	| The maximum size for the volume depends on the capacity available in existing storage systems.
+Thin provisioning is automatically enabled on the volume, which enables you to create a volume that is bigger than the physical storage currently available to it. Instead of preallocating storage space, space is allocated to each volume as data is written.
+
+| AWS Disk Type
+a| You should choose the disk that meets your requirements for both performance and cost.
+
+* General Purpose SSD disks balance cost and performance for a broad range of workloads. Performance is defined in terms of IOPS.
+
+* Throughput Optimized HDD disks are for frequently accessed workloads that require fast and consistent throughput.
+
+For more details, refer to http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html[AWS Documentation: EBS Volume Types^].
+
+| Location	| You should choose a VPC that includes three subnets in three separate Availability Zones.
+
+| Nodes and Mediator	| If possible, Cloud Manager chooses separate Availability Zones for each instance because it is the supported and optimal configuration.
+
+| Floating IP |	The IP addresses must be outside of the CIDR block for all VPCs in the region.
+
+| Route Table	| If you have more than one route table, it is very important to select the correct route tables. Otherwise, some clients might not have access to the HA pair.
+
+For more details, refer to  http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html[AWS Documentation: Route Tables^].
+|===
++
+The following image shows the Nodes and Mediator page. Each instance is in a separate Availability Zone.
++
+image:screenshot_volume_view_ha_network.gif[Screen shot: Shows AWS networking selections for the two Cloud Volumes ONTAP nodes and the mediator. Each instance is in a separate Availability Zone and subnet.]
+
+.Result
+
+Cloud Manager creates the volume on an existing system or on a new system. If a new system is required, creating the volume can take approximately 25 minutes.
+
+== Mounting volumes to Linux hosts
+
+After you create a volume, you should mount it to your hosts so that they can access the volume.
+
+.Steps
+
+. In the Volumes tab, place your mouse cursor over the volume, select the menu icon, and then click *Mount*.
+
+. Click *Copy*.
+
+. On your Linux hosts, modify the copied text by changing the destination directory, and then enter the command to mount the volume.

@@ -1,0 +1,61 @@
+---
+sidebar: sidebar
+permalink: task_launching_aws_mktp.html
+keywords: install, installation, installing, marketplace, aws, launch, launching, ec2 console
+summary: It is best to launch Cloud Manager in AWS using NetApp Cloud Central, but you can launch it from the AWS Marketplace, if needed.
+---
+
+= Launching Cloud Manager from the AWS Marketplace
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+
+It is best to launch Cloud Manager in AWS using https://cloud.netapp.com[NetApp Cloud Central^], but you can launch it from the AWS Marketplace, if needed.
+
+TIP: If you launch Cloud Manager from the AWS Marketplace, Cloud Manager is still integrated with NetApp Cloud Central. link:concept_cloud_central.html[Learn more about the integration].
+
+.About this task
+
+The following steps describe how to launch the instance from the EC2 Console because the console enables you to attach an IAM role to the Cloud Manager instance. This is not possible using the 1-Click option.
+
+.Steps
+
+. Create an IAM policy and role for the EC2 instance:
+
+.. Download the Cloud Manager IAM policy from the following location:
++
+https://mysupport.netapp.com/cloudontap/iampolicies[NetApp OnCommand Cloud Manager: AWS and Azure Policies^]
+
+.. From the IAM console, create your own policy by copying and pasting the text from the Cloud Manager IAM policy.
+
+.. Create an IAM role with the role type Amazon EC2 and attach the policy that you created in the previous step to the role.
+
+. Go to the https://aws.amazon.com/marketplace/pp/B018REK8QG[Cloud Manager page on the AWS Marketplace^].
+
+. Click *Continue*.
+
+. On the Custom Launch tab, click *Launch with EC2 Console* for your region, and then make your selections:
+
+.. Depending on region availability, choose the t3.medium (recommended), t2.medium, or m4.large instance type.
+
+.. Select a VPC, subnet, IAM role, and other configuration options that meet your requirements.
+
+.. Keep the default storage options.
+
+.. Enter tags for the instance, if desired.
+
+.. Specify the required connection methods for the Cloud Manager instance: SSH, HTTP, and HTTPS.
+
+.. Click *Launch*.
+
+.Result
+
+AWS launches the software with the specified settings. The Cloud Manager instance and software should be running in approximately five minutes.
+
+.After you finish
+
+Log in to Cloud Manager by entering the public IP address or private IP address in a web browser and then complete the Setup wizard.

@@ -1,0 +1,64 @@
+---
+sidebar: sidebar
+permalink: reference_additional_info.html
+keywords: community, forums, help, support, videos, policies, json, api, ontap, release notes, bugs, limitations, known issues, permissions, apis
+summary: You can get help and find more information about Cloud Manager and Cloud Volumes ONTAP through various resources, including videos, forums, and support.
+---
+
+= Where to get help and find more information
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can get help and find more information about Cloud Manager and Cloud Volumes ONTAP through various resources, including videos, forums, and support.
+
+* https://www.youtube.com/playlist?list=PLdXI3bZJEw7lnoRo8FBKsX1zHbK8AQOoT[Videos for Cloud Manager and Cloud Volumes ONTAP^]
++
+Watch videos that show you how to deploy and manage Cloud Volumes ONTAP in AWS and Azure and how to replicate data across your hybrid cloud.
+
+* http://mysupport.netapp.com/cloudontap/support/iampolicies[Policies for Cloud Manager^]
++
+Download JSON files that include the permissions that Cloud Manager needs to perform actions in AWS and Azure.
+
+* link:api.html[Cloud Manager API Developer Guide^]
++
+Read an overview of the APIs, examples of how to use them, and an API reference.
+
+* Training for Cloud Volumes ONTAP
+** https://learningcenter.netapp.com/LC?ObjectType=WBT&ObjectID=00368390[Cloud Volumes ONTAP Fundamentals^]
+** https://learningcenter.netapp.com/LC?ObjectType=WBT&ObjectID=00369436[Cloud Volumes ONTAP Deployment and Management for Azure^]
+
+* Technical reports
+** https://www.netapp.com/us/media/tr-4383.pdf[NetApp Technical Report 4383: Performance Characterization of Cloud Volumes ONTAP in Amazon Web Services with Application Workloads^]
+** https://www.netapp.com/us/media/tr-4671.pdf[NetApp Technical Report 4671: Performance Characterization of Cloud Volumes ONTAP in Azure with Application Workloads^]
+
+* https://library.netapp.com/ecm/ecm_get_file/ECMLP2839856[Cloud Volumes ONTAP 9 SVM Disaster Recovery Preparation Express Guide^]
++
+Describes how to quickly configure a destination SVM in preparation for disaster recovery.
+
+* https://library.netapp.com/ecm/ecm_get_file/ECMLP2839857[Cloud Volumes ONTAP 9 SVM Disaster Recovery Express Guide^]
++
+Describes how to quickly activate a destination SVM after a disaster, and then reactivate the source SVM.
+
+* http://docs.netapp.com/ontap-9/index.jsp[ONTAP 9 Documentation Center^]
++
+Access product documentation for ONTAP, which can help you as you use Cloud Volumes ONTAP.
+
+* https://mysupport.netapp.com/cloudontap[NetApp Cloud Volumes ONTAP Support^]
++
+Access support resources to get help and troubleshoot issues with Cloud Volumes ONTAP.
+
+* https://community.netapp.com/t5/Cloud-Data-Services/ct-p/CDS[NetApp Community: Cloud Data Services^]
++
+Connect with peers, ask questions, exchange ideas, find resources, and share best practices.
+
+* http://cloud.netapp.com/[NetApp Cloud Central^]
++
+Find information about additional NetApp products and solutions for the cloud.
+
+* http://docs.netapp.com[NetApp Product Documentation^]
++
+Search NetApp product documentation for instructions, resources, and answers.

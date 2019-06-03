@@ -1,0 +1,68 @@
+---
+pagenav: false
+sidebar: sidebar
+permalink: task_getting_started_aws.html
+keywords: amazon web services, aws, netapp, data fabric, hybrid cloud, cloud, public cloud, networking, vpc, quick, getting started, install, installing, deploy, deploying, setup, setting up, launching, requirements, prerequisites, cloud central, get started, network, vpn, multi-cloud, tier, tiering, storage tier, data tier, vpc endpoint, endpoint, S3, subscribe, subscribing, marketplace, granting, permissions, policy, iam policy, ec2 console, ami, mediator, connectivity, internet, outbound, endpoint, connection, networks, replicating, ec2 service, policies, attach, iam user, access key, secret key, keys, sign up, cloud manager, cloud volumes ontap, cloud ontap, create
+summary: You can get started with Cloud Volumes ONTAP in AWS by completing a few quick steps.
+---
+
+= Getting started with Cloud Volumes ONTAP in AWS
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can get started with Cloud Volumes ONTAP in AWS from NetApp Cloud Central.
+
+=== image:number1.png[Number 1] Set up your networking
+
+[role="quick-margin-list"]
+.. Enable outbound internet access from the target VPC so Cloud Manager and Cloud Volumes ONTAP can contact several endpoints.
++
+This step is important because Cloud Manager cannot deploy Cloud Volumes ONTAP without outbound internet access. If you need to limit outbound connectivity, refer to the list of endpoints for link:reference_networking_cloud_manager.html#outbound-internet-access[Cloud Manager] and link:reference_networking_aws.html#general-aws-networking-requirements-for-cloud-volumes-ontap[Cloud Volumes ONTAP].
+
+.. Set up a VPC endpoint to the S3 service.
++
+A VPC endpoint is required if you want to tier cold data from Cloud Volumes ONTAP to low-cost object storage.
+
+=== image:number2.png[Number 2] Subscribe to Cloud Volumes ONTAP from the AWS Marketplace
+
+[role="quick-margin-para"]
+Subscribing from https://aws.amazon.com/marketplace/search/results?page=1&searchTerms=netapp+cloud+volumes+ontap[the AWS Marketplace^] is required to accept the software terms. You should only subscribe from the Marketplace. Launching Cloud Volumes ONTAP from anywhere but Cloud Manager is not supported.
+
+=== image:number3.png[Number 3] Provide the required AWS permissions
+
+[role="quick-margin-para"]
+When you deploy Cloud Manager from NetApp Cloud Central, you need to use an AWS account that has permissions to deploy the instance.
+
+[role="quick-margin-list"]
+.. Go to the AWS IAM console and create a policy by copying and pasting the contents of the https://mysupport.netapp.com/cloudontap/iampolicies[NetApp Cloud Central policy for AWS^].
+
+.. Attach the policy to the IAM user.
+
+=== image:number4.png[Number 4] Launch Cloud Manager from NetApp Cloud Central
+
+[role="quick-margin-para"]
+Cloud Manager software is required to deploy and manage Cloud Volumes ONTAP. It takes just a few minutes to launch a Cloud Manager instance from https://cloud.netapp.com[Cloud Central^].
+
+=== image:number5.png[Number 5] Launch Cloud Volumes ONTAP using Cloud Manager
+
+[role="quick-margin-para"]
+Once Cloud Manager is ready, just click Create, select the type of system that you would like to launch, and complete the steps in the wizard. After 25 minutes, your first Cloud Volumes ONTAP system should be up and running.
+
+Watch the following video for a walk through of these steps:
+
+video::au5qQDiPuzo[youtube, width=848, height=480]
+
+.Related links
+
+* link:concept_evaluating.html[Evaluating]
+* link:reference_networking_cloud_manager.html[Networking requirements for Cloud Manager]
+* link:reference_networking_aws.html[Networking requirements for Cloud Volumes ONTAP in AWS]
+* link:reference_security_groups.html[Security group rules for AWS]
+* link:task_adding_cloud_accounts.html[Adding Cloud Provider Accounts to Cloud Manager]
+* link:reference_permissions.html#what-cloud-manager-does-with-aws-permissions[What Cloud Manager does with AWS permissions]
+* link:task_deploying_otc_aws.html[Launching Cloud Volumes ONTAP in AWS]
+* link:task_launching_aws_mktp.html[Launching Cloud Manager from the AWS Marketplace]

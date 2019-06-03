@@ -1,0 +1,330 @@
+---
+sidebar: sidebar
+permalink: reference_permissions.html
+keywords: permissions, actions, API, aws, azure, json
+summary: Cloud Manager requires permissions to perform actions in AWS and Azure on your behalf. These permissions are included in the policies provided by NetApp. You might want to understand what Cloud Manager does with these permissions.
+---
+
+= AWS and Azure permissions for Cloud Manager
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Cloud Manager requires permissions to perform actions in AWS and Azure on your behalf. These permissions are included in https://mysupport.netapp.com/info/web/ECMP11022837.html[the policies provided by NetApp^]. You might want to understand what Cloud Manager does with these permissions.
+
+== What Cloud Manager does with AWS permissions
+
+Cloud Manager uses an AWS account to make API calls to several AWS services, including EC2, S3, CloudFormation, IAM, the Security Token Service (STS), and the Key Management Service (KMS).
+
+[cols=2*,options="header",cols="50,50"]
+|===
+
+| Actions
+| Purpose
+
+|
+"ec2:StartInstances",
+"ec2:StopInstances",
+"ec2:DescribeInstances",
+"ec2:DescribeInstanceStatus",
+"ec2:RunInstances",
+"ec2:TerminateInstances",
+"ec2:ModifyInstanceAttribute",
+
+| Launches a Cloud Volumes ONTAP instance and stops, starts, and monitors the instance.
+
+| "ec2:DescribeInstanceAttribute",
+
+| Verifies that enhanced networking is enabled for supported instance types.
+
+|
+"ec2:DescribeRouteTables",
+"ec2:DescribeImages",
+
+| Launches a Cloud Volumes ONTAP HA configuration.
+
+| "ec2:CreateTags",
+
+| Tags every resource that Cloud Manager creates with the "WorkingEnvironment" and "WorkingEnvironmentId" tags. Cloud Manager uses these tags for maintenance and cost allocation.
+
+|
+"ec2:CreateVolume",
+"ec2:DescribeVolumes",
+"ec2:ModifyVolumeAttribute",
+"ec2:AttachVolume",
+"ec2:DeleteVolume",
+"ec2:DetachVolume",
+
+| Manages the EBS volumes that Cloud Volumes ONTAP uses as back-end storage.
+
+|
+"ec2:CreateSecurityGroup",
+"ec2:DeleteSecurityGroup",
+"ec2:DescribeSecurityGroups",
+"ec2:RevokeSecurityGroupEgress",
+"ec2:AuthorizeSecurityGroupEgress",
+"ec2:AuthorizeSecurityGroupIngress",
+"ec2:RevokeSecurityGroupIngress",
+
+| Creates predefined security groups for Cloud Volumes ONTAP.
+
+|
+"ec2:CreateNetworkInterface",
+"ec2:DescribeNetworkInterfaces",
+"ec2:DeleteNetworkInterface",
+"ec2:ModifyNetworkInterfaceAttribute",
+
+| Creates and manages network interfaces for Cloud Volumes ONTAP in the target subnet.
+
+|
+"ec2:DescribeSubnets",
+"ec2:DescribeVpcs",
+
+| Gets the list of destination subnets and security groups, which is needed when creating a new working environment for Cloud Volumes ONTAP.
+
+| "ec2:DescribeDhcpOptions",
+
+| Determines DNS servers and the default domain name when launching Cloud Volumes ONTAP instances.
+
+|
+"ec2:CreateSnapshot",
+"ec2:DeleteSnapshot",
+"ec2:DescribeSnapshots",
+
+| Takes snapshots of EBS volumes during initial setup and whenever a Cloud Volumes ONTAP instance is stopped.
+
+| "ec2:GetConsoleOutput",
+
+| Captures the Cloud Volumes ONTAP console, which is attached to AutoSupport messages.
+
+| "ec2:DescribeKeyPairs",
+
+| Obtains the list of available key pairs when launching instances.
+
+| "ec2:DescribeRegions",
+
+| Gets a list of available AWS regions.
+
+|
+"ec2:DeleteTags",
+"ec2:DescribeTags",
+
+| Manages tags for resources associated with Cloud Volumes ONTAP instances.
+
+|
+"cloudformation:CreateStack",
+"cloudformation:DeleteStack",
+"cloudformation:DescribeStacks",
+"cloudformation:DescribeStackEvents",
+"cloudformation:ValidateTemplate",
+
+| Launches Cloud Volumes ONTAP instances.
+
+|
+"iam:PassRole",
+"iam:CreateRole",
+"iam:DeleteRole",
+"iam:PutRolePolicy",
+"iam:CreateInstanceProfile",
+"iam:DeleteRolePolicy",
+"iam:AddRoleToInstanceProfile",
+"iam:RemoveRoleFromInstanceProfile",
+"iam:DeleteInstanceProfile",
+
+| Launches a Cloud Volumes ONTAP HA configuration.
+
+|
+"iam:ListInstanceProfiles",
+"sts:DecodeAuthorizationMessage",
+"ec2:AssociateIamInstanceProfile",
+"ec2:DescribeIamInstanceProfileAssociations",
+"ec2:DisassociateIamInstanceProfile",
+
+| Manages instance profiles for Cloud Volumes ONTAP instances.
+
+|
+"s3:GetBucketTagging",
+"s3:GetBucketLocation",
+"s3:ListAllMyBuckets",
+"s3:ListBucket"
+
+| Obtains information about AWS S3 buckets so Cloud Manager can integrate with the NetApp Data Fabric Cloud Sync service.
+
+|
+"s3:CreateBucket",
+"s3:DeleteBucket",
+"s3:GetLifecycleConfiguration",
+"s3:PutLifecycleConfiguration",
+"s3:PutBucketTagging",
+"s3:ListBucketVersions",
+
+| Manages the S3 bucket that a Cloud Volumes ONTAP system uses as a capacity tier.
+
+|
+"kms:List*",
+"kms:Describe*"
+
+| Obtains information about keys from the AWS Key Management Service.
+
+|
+"ce:GetReservationUtilization",
+"ce:GetDimensionValues",
+"ce:GetCostAndUsage",
+"ce:GetTags"
+
+| Obtains AWS cost data for Cloud Volumes ONTAP.
+
+|
+"ec2:CreatePlacementGroup",
+"ec2:DeletePlacementGroup"
+
+| When you deploy an HA configuration in a single AWS Availability Zone, Cloud Manager launches the two HA nodes and the mediator in an AWS spread placement group.
+
+|===
+
+== What Cloud Manager does with Azure permissions
+
+The Cloud Manager Azure policy includes the permissions that Cloud Manager needs to deploy and manage Cloud Volumes ONTAP in Azure.
+
+[cols=2*,options="header",cols="50,50"]
+|===
+
+| Actions
+| Purpose
+
+|
+"Microsoft.Compute/locations/operations/read",
+"Microsoft.Compute/locations/vmSizes/read",
+"Microsoft.Compute/operations/read",
+"Microsoft.Compute/virtualMachines/instanceView/read",
+"Microsoft.Compute/virtualMachines/powerOff/action",
+"Microsoft.Compute/virtualMachines/read",
+"Microsoft.Compute/virtualMachines/restart/action",
+"Microsoft.Compute/virtualMachines/start/action",
+"Microsoft.Compute/virtualMachines/deallocate/action",
+"Microsoft.Compute/virtualMachines/vmSizes/read",
+"Microsoft.Compute/virtualMachines/write",
+
+| Creates Cloud Volumes ONTAP and stops, starts, deletes, and obtains the status of the system.
+
+|
+"Microsoft.Compute/images/write",
+"Microsoft.Compute/images/read",
+
+| Enables Cloud Volumes ONTAP deployment from a VHD.
+
+|
+"Microsoft.Compute/disks/delete",
+"Microsoft.Compute/disks/read",
+"Microsoft.Compute/disks/write",
+"Microsoft.Storage/checknameavailability/read",
+"Microsoft.Storage/operations/read",
+"Microsoft.Storage/storageAccounts/listkeys/action",
+"Microsoft.Storage/storageAccounts/read",
+"Microsoft.Storage/storageAccounts/regeneratekey/action",
+"Microsoft.Storage/storageAccounts/write"
+"Microsoft.Storage/storageAccounts/delete",
+"Microsoft.Storage/usages/read",
+
+| Manages Azure storage accounts and disks, and attaches the disks to Cloud Volumes ONTAP.
+
+|
+"Microsoft.Network/networkInterfaces/read",
+"Microsoft.Network/networkInterfaces/write",
+"Microsoft.Network/networkInterfaces/join/action",
+
+| Creates and manages network interfaces for Cloud Volumes ONTAP in the target subnet.
+
+|
+"Microsoft.Network/networkSecurityGroups/read",
+"Microsoft.Network/networkSecurityGroups/write",
+"Microsoft.Network/networkSecurityGroups/join/action",
+
+| Creates predefined network security groups for Cloud Volumes ONTAP.
+
+|
+"Microsoft.Resources/subscriptions/locations/read",
+"Microsoft.Network/locations/operationResults/read",
+"Microsoft.Network/locations/operations/read",
+"Microsoft.Network/virtualNetworks/read",
+"Microsoft.Network/virtualNetworks/checkIpAddressAvailability/read",
+"Microsoft.Network/virtualNetworks/subnets/read",
+"Microsoft.Network/virtualNetworks/subnets/virtualMachines/read",
+"Microsoft.Network/virtualNetworks/virtualMachines/read",
+"Microsoft.Network/virtualNetworks/subnets/join/action",
+
+| Gets network information about regions, the target VNet and subnet, and adds Cloud Volumes ONTAP to VNets.
+
+|
+"Microsoft.Network/virtualNetworks/subnets/write",
+"Microsoft.Network/routeTables/join/action",
+
+| Enables VNet service endpoints for data tiering.
+
+|
+"Microsoft.Resources/deployments/operations/read",
+"Microsoft.Resources/deployments/read",
+"Microsoft.Resources/deployments/write",
+
+| Deploys Cloud Volumes ONTAP from a template.
+
+|
+"Microsoft.Resources/deployments/operations/read",
+"Microsoft.Resources/deployments/read",
+"Microsoft.Resources/deployments/write",
+"Microsoft.Resources/resources/read",
+"Microsoft.Resources/subscriptions/operationresults/read",
+"Microsoft.Resources/subscriptions/resourceGroups/delete",
+"Microsoft.Resources/subscriptions/resourceGroups/read",
+"Microsoft.Resources/subscriptions/resourcegroups/resources/read",
+"Microsoft.Resources/subscriptions/resourceGroups/write",
+
+| Creates and manages resource groups for Cloud Volumes ONTAP.
+
+|
+"Microsoft.Compute/snapshots/write",
+"Microsoft.Compute/snapshots/read",
+"Microsoft.Compute/disks/beginGetAccess/action"
+
+| Creates and manages Azure managed snapshots.
+
+|
+"Microsoft.Compute/availabilitySets/write",
+"Microsoft.Compute/availabilitySets/read",
+
+| Creates and manages availability sets for Cloud Volumes ONTAP.
+
+|
+"Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/read",
+"Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/write"
+
+| Enables programmatic deployments from the Azure Marketplace.
+
+|
+"Microsoft.Network/loadBalancers/read",
+"Microsoft.Network/loadBalancers/write",
+"Microsoft.Network/loadBalancers/delete",
+"Microsoft.Network/loadBalancers/backendAddressPools/read",
+"Microsoft.Network/loadBalancers/backendAddressPools/join/action",
+"Microsoft.Network/loadBalancers/frontendIPConfigurations/read",
+"Microsoft.Network/loadBalancers/loadBalancingRules/read",
+"Microsoft.Network/loadBalancers/probes/read",
+"Microsoft.Network/loadBalancers/probes/join/action",
+
+| Manages an Azure load balancer for HA pairs.
+
+| "Microsoft.Authorization/locks/*"
+
+| Enables management of locks on Azure disks.
+
+|
+"Microsoft.Authorization/roleDefinitions/write",
+"Microsoft.Authorization/roleAssignments/write",
+"Microsoft.Web/sites/*"
+
+| Manages failover for HA pairs.
+
+|===

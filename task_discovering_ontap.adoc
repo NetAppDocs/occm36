@@ -1,0 +1,95 @@
+---
+sidebar: sidebar
+permalink: task_discovering_ontap.html
+keywords: ontap, cluster, discover, manage, provision, provisioning, volumes, add, adding, discovering, fas, aff
+summary: Cloud Manager can discover the ONTAP clusters in your on-premises environment, in a NetApp Private Storage configuration, and in the IBM Cloud. Discovering these clusters enables you to easily replicate data across your hybrid cloud environment directly from Cloud Manager.
+---
+
+= Discovering and managing ONTAP clusters
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+Cloud Manager can discover the ONTAP clusters in your on-premises environment, in a NetApp Private Storage configuration, and in the IBM Cloud. Discovering these clusters enables you to easily replicate data across your hybrid cloud environment directly from Cloud Manager.
+
+== Discovering ONTAP clusters
+
+Discovering an ONTAP cluster in Cloud Manager enables you to provision storage and replicate data across your hybrid cloud.
+
+.Before you begin
+
+You must have the cluster management IP address and the password for the admin user account to add the cluster to Cloud Manager.
+
+Cloud Manager discovers ONTAP clusters using HTTPS. If you use custom firewall policies, they must meet the following requirements:
+
+* The Cloud Manager host must allow outbound HTTPS access through port 443.
++
+If Cloud Manager is in AWS, all outbound communication is allowed by the predefined security group.
+
+* The ONTAP cluster must allow inbound HTTPS access through port 443.
++
+The default "mgmt" firewall policy allows inbound HTTPS access from all IP addresses. If you modified this default policy, or if you created your own firewall policy, you must associate the HTTPS protocol with that policy and enable access from the Cloud Manager host.
+
+.Steps
+
+. On the Working Environments page, click *Add Working Environment*.
+
+. Under *Discover*, select one of the icons to discover an ONTAP cluster.
++
+The following icon enables you to discover an on-premises cluster or a NetApp Private Storage configuration:
++
+image:screenshot_discover_ontap_onprem.gif[Shows the ONTAP icon for discovering an on-premises ONTAP cluster.]
++
+The following icon enables you to discover ONTAP in the IBM Cloud:
++
+image:screenshot_discover_ontap_ibm.gif[Shows the ONTAP icon for discovering ONTAP in the IBM Cloud.]
+
+. On the *ONTAP Cluster Details* page, enter the cluster management IP address and the password for the admin user account.
++
+If you selected the first icon, you must also choose the working environment type: either an on-premises cluster or a NetApp Private Storage configuration.
+
+. On the Details page, enter a name and description for the working environment, and then click *Go*.
+
+.Result
+
+Cloud Manager discovers the cluster. You can now create volumes, replicate data to and from the cluster, and launch OnCommand System Manager to perform advanced tasks.
+
+== Provisioning volumes on ONTAP clusters
+
+Cloud Manager enables you to provision NFS and CIFS volumes on ONTAP clusters.
+
+.Before you begin
+
+NFS or CIFS must be set up on the cluster. You can set up NFS and CIFS using System Manager or the CLI.
+
+.About this task
+
+You can create volumes on existing aggregates. You cannot create new aggregates from Cloud Manager.
+
+.Steps
+
+. On the Working Environments page, double-click the name of the ONTAP cluster on which you want to provision volumes.
+
+. Click *Add New Volume*.
+
+. On the Create New Volume page, enter details for the volume, and then click *Create*.
++
+Some of the fields in this page are self-explanatory. The following table describes fields for which you might need guidance:
++
+[cols=2*,options="header",cols="2,6"]
+|===
+| Field
+| Description
+
+| Size | The maximum size that you can enter largely depends on whether you enable thin provisioning, which enables you to create a volume that is bigger than the physical storage currently available to it.
+
+| Access control (for NFS only) | An export policy defines the clients in the subnet that can access the volume. By default, Cloud Manager enters a value that provides access to all instances in the subnet.
+
+| Permissions and Users / Groups (for CIFS only) | These fields enable you to control the level of access to a share for users and groups (also called access control lists or ACLs). You can specify local or domain Windows users or groups, or UNIX users or groups. If you specify a domain Windows user name, you must include the user's domain using the format domain\username.
+
+| Usage Profile | Usage profiles define the NetApp storage efficiency features that are enabled for a volume.
+
+| Snapshot Policy | A Snapshot copy policy specifies the frequency and number of automatically created NetApp Snapshot copies. A NetApp Snapshot copy is a point-in-time file system image that has no performance impact and requires minimal storage. You can choose the default policy or none. You might choose none for transient data: for example, tempdb for Microsoft SQL Server.
+|===

@@ -1,0 +1,34 @@
+---
+sidebar: sidebar
+permalink: task_configuring_proxy.html
+keywords: proxy, proxy server, proxy, internet
+summary: When you first deploy Cloud Manager, it prompts you to enter a proxy server if the system does not have internet access. You can also manually enter and modify the proxy from Cloud Manager's settings.
+---
+
+= Configuring Cloud Manager to use a proxy server
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+When you first deploy Cloud Manager, it prompts you to enter a proxy server if the system does not have internet access. You can also manually enter and modify the proxy from Cloud Manager's settings.
+
+.About this task
+
+If your corporate policies dictate that you use a proxy server for all HTTP communication to the internet, then you must configure Cloud Manager to use that proxy server. The proxy server can be in the cloud or in your network.
+
+When you configure Cloud Manager to use a proxy server, Cloud Manager, Cloud Volumes ONTAP, and the HA mediator all use the proxy server.
+
+.Steps
+
+. In the upper-right corner of the Cloud Manager console, click the task drop-down list, and then select *Settings*.
+
+. Under HTTP Proxy, enter the server using the syntax http://_address:port_, specify a user name and password if basic authentication is required for the server, and then click *Save*.
++
+NOTE: Cloud Manager does not support passwords that include the @ character.
+
+.Result
+
+After you specify the proxy server, new Cloud Volumes ONTAP systems are automatically configured to use the proxy server when sending AutoSupport messages. If you do not specify the proxy server before users create Cloud Volumes ONTAP systems, then they must use System Manager to manually set the proxy server in the AutoSupport options for each system.
