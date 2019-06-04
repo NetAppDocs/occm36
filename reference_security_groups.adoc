@@ -245,21 +245,21 @@ The predefined security group for the HA mediator includes the following outboun
 
 If you need rigid rules for outbound traffic, you can use the following information to open only those ports that are required for outbound communication by the HA mediator.
 
-[cols="10,10,10,20,50",width=70%,options="header"]
+[cols="10,10,30,40",width=70%,options="header"]
 |===
 
-| Service
 | Protocol
 | Port
 | Destination
 | Purpose
 
-| API	| HTTPS | 443 | AWS API services | Assist with storage failover
-| API	| UDP | 53 | AWS API services | Assist with storage failover
+| HTTP | 80 | Cloud Manager IP address | Download upgrades for the mediator
+| HTTPS | 443 | AWS API services | Assist with storage failover
+| UDP | 53 | AWS API services | Assist with storage failover
 
 |===
 
-NOTE: Rather than open these two ports, you can use a private endpoint instead.
+NOTE: Rather than open ports 443 and 53, you can create an interface VPC endpoint from the target subnet to the AWS EC2 service.
 
 == Rules for the HA mediator internal security group
 
