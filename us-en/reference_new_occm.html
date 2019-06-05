@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <title>What&#8217;s new in Cloud Manager 3.6 | NetApp Cloud Docs</title>
+  <meta charset="utf-8">
+  <meta property="og:title" content="What&#8217;s new in Cloud Manager 3.6 | NetApp Cloud Docs" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/occm36/us-en/reference_new_occm.html" />
+	<meta property="og:description" content="OnCommand Cloud Manager typically introduces a new release every month to bring you new features, enhancements, and bug fixes." />
+  <meta property="og:image" content="https://docs.netapp.com/occm36/us-en/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/>
+  
+  <meta http-equiv="nss-product" content="OnCommand"/>
+  
+  <meta name="description" content="OnCommand Cloud Manager typically introduces a new release every month to bring you new features, enhancements, and bug fixes.">
+  <meta name="keywords" content=" what's new, features, new, release notes, bugs, limitations, known issues, enhancements, fixes">
+  
+
+  <!-- Icons -->
+  <link rel="icon" href="/occm36/us-en/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed -->
+  
+  <link rel="alternate" type="application/rss+xml" title="NetApp Cloud Docs" href="/occm36/us-en/feed.xml">
+  
+
+  <!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- LUCI CSS Content -->
+  <link rel="stylesheet" href="/occm36/us-en/common/css/esb.min.css">
+  <link rel="stylesheet" href="/occm36/us-en/common/css/netapp-library.min.css">
+  <link rel="stylesheet" href="/occm36/us-en/common/css/doc.css">
+  <link rel="stylesheet" href="/occm36/us-en/common/css/doc-components.css">
+
+  <link rel="stylesheet" href='/occm36/us-en/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/occm36/us-en/css/na-search.css' type='text/css'>
+  <link rel='stylesheet' href='/occm36/us-en/css/clouddocs.css' type='text/css'>
+
+  <!-- Font awesome seems to affect our GitHub Icon and generic "arrow box" for external links. -->
+  <link rel="stylesheet" type="text/css" href="/occm36/us-en/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="/occm36/us-en/css/customstyles.css"> -->
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/occm36/us-en/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel='stylesheet' href='/occm36/us-en/css/netapp.css' type='text/css'>
+
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+  
+    <script src='/occm36/us-en/js/na-search.js'></script>
+  
+
+  
+  <link rel='stylesheet' href='/occm36/us-en/css/na-pagenav.css' type='text/css' id="pagenav-css">
+  <script src='/occm36/us-en/js/na-pagenav.js'></script>
+  
+
+  <link rel='stylesheet' href='/occm36/us-en/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/occm36/us-en/css/prism-netapp.css' type='text/css'>
+
+  <script src='/occm36/us-en/js/clouddocs.js'></script>
+  <script src='/occm36/us-en/js/s_code_impl.js'></script>
+  <script src='/occm36/us-en/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/occm36/us-en/js/toc.js'></script>
+  <script src='/occm36/us-en/js/customscripts.js'></script>
+
+  <script>
+      $(document).ready(function() {
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco({
+              caretHtml: '',
+              accordion: true,
+              openClass: 'active', // open
+              save: false, // leave false or nav highlighting doesn't work right
+              cookie: {
+                  name: 'navgoco',
+                  expires: false,
+                  path: '/'
+              },
+              slide: {
+                  duration: 400,
+                  easing: 'swing'
+              }
+          });
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script>
+
+  <!-- Controls the i18n Browser Redirection -->
+  <script>
+    var siteLocales = [];
+    
+      siteLocales.push("us-en");
+    
+
+    standardizeUrl(siteLocales, "clouddocs.netapp.com", "https://docs.netapp.com");
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-81697994-3');
+  }
+  </script>
+</head>
+
+
+  <body class="n-doc__component-detail">
+    <a href="#n-main-content" class="visually-hidden">Skip to main content</a>
+<div class="n-off-canvas-menu">
+  <div class="n-off-canvas-menu__menu">
+    <div class="n-off-canvas-menu__menu-inner">
+      <div class="n-off-canvas-menu__property-title">NetApp Cloud Docs</div>
+      <ul class="n-off-canvas-menu__property-navigation-list">
+        <li class="n-off-canvas-menu__property-navigation-list-item ">
+          <a href="https://docs.netapp.com/us-en/" class="n-off-canvas-menu__property-navigation-link">
+            Home
+          </a>
+          <div class="n-off-canvas-menu__child-menu">
+            <ul class="n-menu__list">
+
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="n-off-canvas-menu__global-navigation-list">
+         <li class="n-off-canvas-menu__global-navigation-list-header">More From NetApp</li>
+         <li class="n-off-canvas-menu__global-navigation-list-item"><a href="#" class="n-off-canvas-menu__global-navigation-link">Netapp.com</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+    <div class="n-off-canvas-menu__content-wrap">
+      <!-- Header -->
+      <header>
+  <!-- Top Hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+            <li class="n-top-hat__list-item">
+              <a href="http://www.netapp.com" class="n-top-hat__link">NetApp.com</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Property Bar -->
+  <div class="n-property-bar n-property-bar--v3">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link"><span class="n-property-bar__menu-toggle-text">Menu</span><svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+          <title>bars</title>
+          <use xlink:href="/occm36/us-en/common/svg/sprite.svg#bars"></use>
+        </svg></a>
+      </div>
+      <div class="n-property-bar__property-mark n-property-bar__property-mark--has-property-name">
+        <a class="n-property-bar__property-link" href="https://docs.netapp.com/us-en/">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/occm36/us-en/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-property-bar__logo-svg" aria-labelledby="title">
+              <title>NetApp</title>
+              <use xlink:href="/occm36/us-en/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+          <h2 class="n-property-bar__property-name">Cloud Docs</h2>
+        </a>
+      </div>
+
+      
+      <div id="search-demo-container" class="n-property-bar__search">
+        <div id="react-search"></div>
+      </div>
+      
+
+      <div id="ie-i18n-menu" class="n-property-bar__utils">
+        <ul class="n-property-navigation-bar__utils-list">
+          <li class="n-property-navigation-bar__utils-list-item ie-i18n-container">
+            <a href="#" class="n-property-navigation-bar__utils-link n-property-navigation-bar__nav-link n-property-navigation-bar__language-selector-toggle ie-i18n-link" data-menu-id="n-property-navigation-bar__menu--language-selector">
+              <span class="ie-i18n-lang">English</span>
+              <svg class="ie-i18n-icon-container" class="n-property-bar__logo-svg" aria-labelledby="title">
+                <title>globe</title>
+                <use xlink:href="/occm36/us-en/common/svg/sprite.svg#globe" class="n-icon-globe n-globe__icon"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="n-property-bar__menus">
+      <div id="n-property-navigation-bar__menu--language-selector" class="n-menu n-menu--v3">
+        <div class="n-language-selector-menu">
+          <div class="n-language-selector-menu__header">
+            <span class="n-language-selector-menu__title">Select Your Language</span>
+          </div>
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list">
+
+
+                
+                <li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="/occm36/us-en/" class="n-menu__header-text">English</a>
+                </li>
+                
+              </ul>
+            </li>
+          </ul>
+          <div class="menu__footer">
+            <p>Current Language: English
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+      <!-- Content -->
+      <main role="main" id="n-main-content" class="n-main-content">
+        <div class="n-container">
+  <div class="n-row">
+    <div class="n-doc n-doc__component-list">
+      <!-- Sidebar Column -->
+      
+      <div class="col-md-3" >
+          
+
+<ul id="mysidebar" class="nav">
+  
+
+  
+    <li><a href="index.html">Cloud Manager 3.6 docs</a></li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Release notes</a>
+      <ul>
+        
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Cloud Manager</a>
+      <ul>
+        
+
+  
+    <li class="active"><a href="reference_new_occm.html">What's new</a></li>
+  
+
+  
+    <li><a href="reference_issues.html">Known issues</a></li>
+  
+
+  
+    <li><a href="reference_limitations.html">Known limitations</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <li><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap/" target="_blank">Cloud Volumes ONTAP</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Concepts</a>
+      <ul>
+        
+
+  
+    <li><a href="concept_overview.html">Product overview</a></li>
+  
+
+  
+    <li><a href="concept_cloud_central.html">NetApp Cloud Central</a></li>
+  
+
+  
+    <li><a href="concept_accounts_and_permissions.html">Accounts and permissions</a></li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Storage</a>
+      <ul>
+        
+
+  
+    <li><a href="concept_storage.html">Overview</a></li>
+  
+
+  
+    <li><a href="concept_data_tiering.html">Data tiering</a></li>
+  
+
+  
+    <li><a href="concept_storage_management.html">Storage management</a></li>
+  
+
+  
+    <li><a href="concept_worm.html">WORM storage</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">High-availability pairs</a>
+      <ul>
+        
+
+  
+    <li><a href="concept_ha.html">HA pairs in AWS</a></li>
+  
+
+  
+    <li><a href="concept_ha_azure.html">HA pairs in Azure</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <li><a href="concept_evaluating.html">Evaluating</a></li>
+  
+
+  
+    <li><a href="concept_licensing.html">Licensing</a></li>
+  
+
+  
+    <li><a href="concept_security.html">Security</a></li>
+  
+
+  
+    <li><a href="concept_performance.html">Performance</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Getting started</a>
+      <ul>
+        
+
+  
+    <li><a href="reference_deployment_overview.html">Deployment overview</a></li>
+  
+
+  
+    <li><a href="task_getting_started_aws.html">Getting started in AWS</a></li>
+  
+
+  
+    <li><a href="task_getting_started_azure.html">Getting started in Azure</a></li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Setting up Cloud Manager</a>
+      <ul>
+        
+
+  
+    <li><a href="task_adding_cloud_accounts.html">Adding cloud provider accounts</a></li>
+  
+
+  
+    <li><a href="task_adding_nss_accounts.html">Adding NetApp Support Site accounts</a></li>
+  
+
+  
+    <li><a href="task_installing_https_cert.html">Installing an HTTPS certificate</a></li>
+  
+
+  
+    <li><a href="task_setting_up_users_tenants.html">Setting up users and tenants</a></li>
+  
+
+  
+    <li><a href="task_setting_up_kms.html">Setting up the AWS KMS</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Networking requirements</a>
+      <ul>
+        
+
+  
+    <li><a href="reference_networking_cloud_manager.html">Cloud Manager</a></li>
+  
+
+  
+    <li><a href="reference_networking_aws.html">Cloud Volumes ONTAP for AWS</a></li>
+  
+
+  
+    <li><a href="task_setting_up_transit_gateway.html">Setting up an AWS transit gateway</a></li>
+  
+
+  
+    <li><a href="reference_networking_azure.html">Cloud Volumes ONTAP for Azure</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Additional deployment options</a>
+      <ul>
+        
+
+  
+    <li><a href="reference_cloud_mgr_reqs.html">Cloud Manager host requirements</a></li>
+  
+
+  
+    <li><a href="task_installing_linux.html">Installing Cloud Manager on a Linux host</a></li>
+  
+
+  
+    <li><a href="task_launching_aws_mktp.html">Deploying Cloud Manager from the AWS Marketplace</a></li>
+  
+
+  
+    <li><a href="task_launching_azure_mktp.html">Deploying Cloud Manager from the Azure Marketplace</a></li>
+  
+
+  
+    <li><a href="task_installing_azure_gov.html">Deploying Cloud Manager in an Azure Gov region</a></li>
+  
+
+  
+    <li><a href="task_installing_azure_germany.html">Deploying Cloud Manager in the Azure Germany region</a></li>
+  
+
+  
+    <li><a href="media/c2s.pdf">Getting started in the AWS C2S environment</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Deploying Cloud Volumes ONTAP</a>
+      <ul>
+        
+
+  
+    <li><a href="reference_before.html">Before you begin</a></li>
+  
+
+  
+    <li><a href="task_logging_in.html">Logging in to Cloud Manager</a></li>
+  
+
+  
+    <li><a href="task_planning_your_config.html">Planning your configuration</a></li>
+  
+
+  
+    <li><a href="task_enabling_flash_cache.html">Enabling Flash Cache on Cloud Volumes ONTAP in AWS</a></li>
+  
+
+  
+    <li><a href="task_deploying_otc_aws.html">Launching Cloud Volumes ONTAP in AWS</a></li>
+  
+
+  
+    <li><a href="task_deploying_otc_azure.html">Launching Cloud Volumes ONTAP in Azure</a></li>
+  
+
+  
+    <li><a href="task_registering.html">Registering pay-as-you-go systems</a></li>
+  
+
+  
+    <li><a href="task_setting_up_ontap_cloud.html">Setting up Cloud Volumes ONTAP</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Provisioning storage</a>
+      <ul>
+        
+
+  
+    <li><a href="task_provisioning_storage.html">Creating volumes, aggregates, and LUNs</a></li>
+  
+
+  
+    <li><a href="task_tiering.html">Tiering inactive data to object storage</a></li>
+  
+
+  
+    <li><a href="task_connecting_kubernetes.html">Using Cloud Volumes ONTAP as persistent storage</a></li>
+  
+
+  
+    <li><a href="task_encrypting_volumes.html">Encrypting volumes with NetApp Volume Encryption</a></li>
+  
+
+  
+    <li><a href="task_managing_storage.html">Managing existing storage</a></li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Provisioning NFS volumes from the Volume View</a>
+      <ul>
+        
+
+  
+    <li><a href="task_changing_volume_view.html">Changing to the Volume View</a></li>
+  
+
+  
+    <li><a href="task_provisioning_volume_view.html">Creating and mounting NFS volumes</a></li>
+  
+
+  
+    <li><a href="task_managing_volume_view.html">Managing NFS volumes</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Managing data across a hybrid cloud</a>
+      <ul>
+        
+
+  
+    <li><a href="task_discovering_ontap.html">Discovering and managing ONTAP clusters</a></li>
+  
+
+  
+    <li><a href="task_replicating_data.html">Replicating data to and from the cloud</a></li>
+  
+
+  
+    <li><a href="task_syncing_s3.html">Syncing data to AWS S3</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Administering Cloud Volumes ONTAP</a>
+      <ul>
+        
+
+  
+    <li><a href="task_connecting_to_otc.html">Connecting to Cloud Volumes ONTAP</a></li>
+  
+
+  
+    <li><a href="task_updating_ontap_cloud.html">Updating software</a></li>
+  
+
+  
+    <li><a href="task_modifying_ontap_cloud.html">Modifying system configurations</a></li>
+  
+
+  
+    <li><a href="task_managing_state.html">Stopping and starting systems</a></li>
+  
+
+  
+    <li><a href="task_monitoring_costs.html">Monitoring AWS costs</a></li>
+  
+
+  
+    <li><a href="task_protecting_ransomware.html">Improving ransomware protection</a></li>
+  
+
+  
+    <li><a href="task_adding_ontap_cloud.html">Adding existing systems</a></li>
+  
+
+  
+    <li><a href="task_deleting_working_env.html">Deleting systems</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Administering Cloud Manager</a>
+      <ul>
+        
+
+  
+    <li><a href="task_updating_cloud_manager.html">Updating Cloud Manager</a></li>
+  
+
+  
+    <li><a href="task_backing_up_restoring.html">Backing up and restoring</a></li>
+  
+
+  
+    <li><a href="task_removing.html">Removing working environments</a></li>
+  
+
+  
+    <li><a href="task_editing_users.html">Editing user accounts</a></li>
+  
+
+  
+    <li><a href="task_configuring_proxy.html">Configuring proxy settings</a></li>
+  
+
+  
+    <li><a href="task_renewing_cert.html">Renewing the HTTPS certificate</a></li>
+  
+
+  
+    <li><a href="task_uninstalling.html">Uninstalling Cloud Manager</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">APIs and automation</a>
+      <ul>
+        
+
+  
+    <li><a href="https://docs.netapp.com/us-en/occm/api.html" target="_blank">API Developer Guide</a></li>
+  
+
+  
+    <li><a href="reference_infrastructure_as_code.html">Automation samples</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Reference</a>
+      <ul>
+        
+
+  
+    <li><a href="reference_integration_faq.html">FAQ for Cloud Central integration</a></li>
+  
+
+  
+    <li><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_supported_configs_95.html" target="_blank">Supported configurations for Cloud Volumes ONTAP</a></li>
+  
+
+  
+    <li><a href="https://cloud.netapp.com/cloud-volumes-global-regions" target="_blank">Supported regions</a></li>
+  
+
+  
+    <li><a href="reference_security_groups.html">Security group rules for AWS</a></li>
+  
+
+  
+    <li><a href="reference_security_groups_azure.html">Security group rules for Azure</a></li>
+  
+
+  
+    <li><a href="reference_permissions.html">Permissions</a></li>
+  
+
+  
+    <li><a href="reference_default_configs.html">Default configurations</a></li>
+  
+
+  
+    <li><a href="reference_user_roles.html">User roles</a></li>
+  
+
+  
+    <li><a href="reference_additional_info.html">Related links</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <li><a href="reference_earlier_versions.html">Earlier versions</a></li>
+  
+
+  
+    <li><a href="reference_legal_notices.html">Legal notices</a></li>
+  
+
+
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+      </div>
+      
+
+      <div class="n-doc__component-detail-content n-doc__component-detail-content--show-code">
+        <!-- Begin of page container -->
+        <article class="page-content">
+          
+<div class="sectionbody">
+  <div class="paragraph lead">
+    <p class="downlevel" id="downlevel-header">
+      This documentation is for a previous release of Cloud Manager. <a href="https://docs.netapp.com/us-en/occm/">Go to the docs for the latest release.</a>
+    </p>
+  </div>
+</div>
+
+
+<div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">What&#8217;s new in Cloud Manager 3.6
+    <span>
+      
+        <a target="_blank" href="https://github.com/NetAppDocs/occm36/blob/master/reference_new_occm.adoc" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a>
+        <a target="_blank" href="https://github.com/NetAppDocs/occm36/issues/new?body=Page%3A%20[What&#8217;s new in Cloud Manager 3.6](https://docs.netapp.com/us-en/occm36/reference_new_occm.html)" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Request doc changes</a>
+      
+    </span>
+  </h1>
+</div>
+
+<p class="page-details">
+
+<time datetime="2019-06-03 19:56:08 +0000">06/03/2019</time>
+
+
+<span>Contributors
+  
+  <a target="_blank" href="https://github.com/netapp-bcammett">
+    <img  class="avatar avatar-small"
+          alt="netapp-bcammett"
+          width="20" height="20"
+          src="https://avatars3.githubusercontent.com/u/18287750?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+</span>
+
+</p>
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>OnCommand Cloud Manager typically introduces a new release every month to bring you new features, enhancements, and bug fixes.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Looking for a previous release?<br>
+<a href="https://docs.netapp.com/us-en/occm35/reference_new_occm.html" target="_blank" rel="noopener">What&#8217;s new in 3.5</a><br>
+<a href="https://docs.netapp.com/us-en/occm34/reference_new_occm.html" target="_blank" rel="noopener">What&#8217;s new in 3.4</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="support-for-the-aws-c2s-environment-2-may-2019">Support for the AWS C2S Environment (2 May 2019)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cloud Volumes ONTAP 9.5 and Cloud Manager 3.6.4 are now available to the U.S. Intelligence Community (IC) through the AWS Commercial Cloud Services (C2S) environment. You can deploy HA pairs and single node systems in C2S.</p>
+</div>
+<div class="paragraph">
+<p><a href="media/c2s.pdf" target="_blank" rel="noopener">Quick Start Guide for the AWS Commercial Cloud Services Environment</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cloud-manager-3-6-6-1-may-2019">Cloud Manager 3.6.6 (1 May 2019)</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#support-for-6-tb-disks-in-aws">Support for 6 TB disks in AWS</a></p>
+</li>
+<li>
+<p><a href="#support-for-new-disk-sizes-with-single-node-systems-in-azure">Support for new disk sizes with single node systems in Azure</a></p>
+</li>
+<li>
+<p><a href="#support-for-standard-ssds-with-single-node-systems-in-azure">Support for Standard SSDs with single node systems in Azure</a></p>
+</li>
+<li>
+<p><a href="#automatic-discovery-of-kubernetes-clusters-created-with-the-netapp-kubernetes-service">Automatic discovery of Kubernetes clusters created with the NetApp Kubernetes Service</a></p>
+</li>
+<li>
+<p><a href="#ability-to-configure-an-ntp-server">Ability to configure an NTP server</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="support-for-6-tb-disks-in-aws">Support for 6 TB disks in AWS</h3>
+<div class="paragraph">
+<p>You can now choose an EBS disk size of 6 TB with Cloud Volumes ONTAP for AWS. With the recent <a href="https://aws.amazon.com/about-aws/whats-new/2018/12/amazon-ebs-increases-performance-of-general-purpose-ssd-gp2-volumes/" target="_blank" rel="noopener">increased performance of General Purpose SSDs</a>, a 6 TB disk is now the best choice for maximum performance.</p>
+</div>
+<div class="paragraph">
+<p>This change is supported with Cloud Volumes ONTAP 9.5, 9.4, and 9.3.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="support-for-new-disk-sizes-with-single-node-systems-in-azure">Support for new disk sizes with single node systems in Azure</h3>
+<div class="paragraph">
+<p>You can now use 8 TB, 16 TB, and 32 TB disks with single node systems in Azure. The increased disk sizes enable you to reach up to 368 TB of system capacity with disks alone when using the Premium or BYOL licenses.</p>
+</div>
+<div class="paragraph">
+<p>This change is supported with Cloud Volumes ONTAP 9.5, 9.4, and 9.3.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="support-for-standard-ssds-with-single-node-systems-in-azure">Support for Standard SSDs with single node systems in Azure</h3>
+<div class="paragraph">
+<p>Standard SSD Managed Disks are now supported with single node systems in Azure. These disks provide a level of performance in between Premium SSDs and Standard HDDs.</p>
+</div>
+<div class="paragraph">
+<p>This change is supported with Cloud Volumes ONTAP 9.5, 9.4, and 9.3.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://azure.microsoft.com/en-us/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/" target="_blank" rel="noopener">Learn more about Standard SSDs</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="automatic-discovery-of-kubernetes-clusters-created-with-the-netapp-kubernetes-service">Automatic discovery of Kubernetes clusters created with the NetApp Kubernetes Service</h3>
+<div class="paragraph">
+<p>Cloud Manager can now automatically discover the Kubernetes clusters that you deploy using the NetApp Kubernetes Service. This enables you to connect the Kubernetes clusters to your Cloud Volumes ONTAP systems so you can use them as persistent storage for your containers.</p>
+</div>
+<div class="paragraph">
+<p>The following image shows an automatically discovered Kubernetes cluster. The "Go to NKS" link brings you directly to the NetApp Kubernetes Service.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_kubernetes_nks.gif" alt="This screenshot shows a Kubernetes cluster in Cloud Manager&#8217;s Kubernetes Clusters page."></span></p>
+</div>
+<div class="paragraph">
+<p><a href="task_connecting_kubernetes.html">Learn how to connect your working environments to Kubernetes clusters</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ability-to-configure-an-ntp-server">Ability to configure an NTP server</h3>
+<div class="paragraph">
+<p>You can now configure Cloud Volumes ONTAP to use a Network Time Protocol (NTP) server. Specifying an NTP server synchronizes the time between the systems in your network, which can help prevent issues due to time differences.</p>
+</div>
+<div class="paragraph">
+<p>Specify an NTP server using the Cloud Manager API or from the user interface when you set up a CIFS server:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <a href="api.html" target="_blank" rel="noopener">Cloud Manager APIs</a> enable you to specify any address for the NTP server. Here&#8217;s the API for a single-node system in AWS:</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_ntp_server_api.gif" alt="A screenshot of the Swagger interface that shows the NTP API call."></span></p>
+</div>
+</li>
+<li>
+<p>When configuring a CIFS server, the Cloud Manager user interface enables you to specify an NTP server that uses the Active Directory domain. If you need to use a different address, then you should use the API.</p>
+<div class="paragraph">
+<p>The following image shows the NTP Server field, which is available when setting up CIFS.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_configure_cifs.gif" alt="A screenshot that shows the CIFS Setup screen" width="which includes the NTP Server field."></span></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cloud-manager-3-6-5-2-apr-2019">Cloud Manager 3.6.5 (2 Apr 2019)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cloud Manager 3.6.5 includes the following enhancements.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#kubernetes-enhancements">Kubernetes enhancements</a></p>
+</li>
+<li>
+<p><a href="#netapp-support-site-accounts-are-now-managed-at-the-system-level">NetApp Support Site accounts are now managed at the system level</a></p>
+</li>
+<li>
+<p><a href="#aws-transit-gateways-can-enable-access-to-floating-ip-addresses">AWS transit gateways can enable access to floating IP addresses</a></p>
+</li>
+<li>
+<p><a href="#azure-resource-groups-are-now-locked">Azure resource groups are now locked</a></p>
+</li>
+<li>
+<p><a href="#nfs-4-and-nfs-4-1-are-now-enabled-by-default">NFS 4 and NFS 4.1 are now enabled by default</a></p>
+</li>
+<li>
+<p><a href="#a-new-api-enables-you-to-delete-ontap-snapshot-copies">A new API enables you to delete ONTAP Snapshot copies</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="kubernetes-enhancements">Kubernetes enhancements</h3>
+<div class="paragraph">
+<p>We made a few enhancements that make it easier for you to use Cloud Volumes ONTAP as persistent storage for containers:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You can now add multiple Kubernetes clusters to Cloud Manager.</p>
+<div class="paragraph">
+<p>This enables you to connect different clusters to different Cloud Volumes ONTAP systems and multiple clusters to the same Cloud Volumes ONTAP system.</p>
+</div>
+</li>
+<li>
+<p>When you connect a cluster, you can now set Cloud Volumes ONTAP as the default storage class for the Kubernetes cluster.</p>
+<div class="paragraph">
+<p>When a user creates a persistent volume, the Kubernetes cluster can use Cloud Volumes ONTAP as the backend storage by default:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_storage_class.gif" alt="This screenshot shows the &quot;Set as default storage class&quot; option that is available when connecting a Kubernetes cluster to a Cloud Volumes ONTAP system."></span></p>
+</div>
+</li>
+<li>
+<p>We changed how Cloud Manager names the Kubernetes storage classes so they are more easily identifiable:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>netapp-file</strong>: for binding a Persistent Volume to a single-node Cloud Volumes ONTAP system</p>
+</li>
+<li>
+<p><strong>netapp-file-redundant</strong>: for binding a Persistent Volume to a Cloud Volumes ONTAP HA pair</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The version of NetApp Trident that Cloud Manager installs was updated to the latest version.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="task_connecting_kubernetes.html">Learn how to use Cloud Volumes ONTAP as persistent storage for Kubernetes</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="netapp-support-site-accounts-are-now-managed-at-the-system-level">NetApp Support Site accounts are now managed at the system level</h3>
+<div class="paragraph">
+<p>It&#8217;s now easier to manage NetApp Support Site accounts in Cloud Manager.</p>
+</div>
+<div class="paragraph">
+<p>In previous releases, you needed to link a NetApp Support Site account to a specific tenant. The accounts are now managed at the Cloud Manager system level in the same place that you manage cloud provider accounts. This change gives you the flexibility to choose between multiple NetApp Support Site accounts when registering your Cloud Volumes ONTAP systems.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_accounts.gif" alt="A screenshot that shows the add a new account option available from the Account Settings page."></span></p>
+</div>
+<div class="paragraph">
+<p>When you create a new working environment, you simply select the NetApp Support Site account to register the Cloud Volumes ONTAP system with:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_accounts_select_nss.gif" alt="A screenshot that shows the option to select a NetApp Support Site account from the create a working environment wizard."></span></p>
+</div>
+<div class="paragraph">
+<p>When Cloud Manager updates to 3.6.5, it automatically adds NetApp Support Site accounts for you, if you had previously linked tenants with an account.</p>
+</div>
+<div class="paragraph">
+<p><a href="task_adding_nss_accounts.html">Learn how to add NetApp Support Site accounts to Cloud Manager</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="aws-transit-gateways-can-enable-access-to-floating-ip-addresses">AWS transit gateways can enable access to floating IP addresses</h3>
+<div class="paragraph">
+<p>An HA pair in multiple AWS Availability Zones uses <em>floating IP addresses</em> for NAS data access and for management interfaces. Until now, those floating IP addresses haven&#8217;t been accessible from outside the VPC where the HA pair resides.</p>
+</div>
+<div class="paragraph">
+<p>We verified that you can use an <a href="https://aws.amazon.com/transit-gateway/" target="_blank" rel="noopener">AWS transit gateway</a> to enable access to the floating IP addresses from outside the VPC. That means NetApp management tools and NAS clients that are outside the VPC can access the floating IPs and take advantage of automatic failover.</p>
+</div>
+<div class="paragraph">
+<p><a href="task_setting_up_transit_gateway.html">Learn how to set up an AWS transit gateway for HA pairs in multiple AZs</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="azure-resource-groups-are-now-locked">Azure resource groups are now locked</h3>
+<div class="paragraph">
+<p>Cloud Manager now locks Cloud Volumes ONTAP resource groups in Azure when it creates them. Locking resource groups prevents users from accidentally deleting or modifying critical resources.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="nfs-4-and-nfs-4-1-are-now-enabled-by-default">NFS 4 and NFS 4.1 are now enabled by default</h3>
+<div class="paragraph">
+<p>Cloud Manager now enables the NFS 4 and NFS 4.1 protocols on every new Cloud Volumes ONTAP system that it creates. This change saves you time because you no longer need to manually enable those protocols yourself.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="a-new-api-enables-you-to-delete-ontap-snapshot-copies">A new API enables you to delete ONTAP Snapshot copies</h3>
+<div class="paragraph">
+<p>You can now delete Snapshot copies of read-write volumes by using a Cloud Manager API call.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example of the API call for an HA system in AWS:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_delete_snapshot_api.gif" alt="A screenshot that shows the DELETE API call for Cloud Manager: /aws/ha/volumes/{workingEnvironmentId}/{svmName}/{volumeName}/snapshot"></span></p>
+</div>
+<div class="paragraph">
+<p>Similar API calls are available for single-node systems in AWS and for single-node and HA systems in Azure.</p>
+</div>
+<div class="paragraph">
+<p><a href="api.html" target="_blank" rel="noopener">OnCommand Cloud Manager API Developer Guide</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cloud-manager-3-6-4-update-18-mar-2019">Cloud Manager 3.6.4 update (18 Mar 2019)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cloud Manager was updated to support the 9.5 P1 patch release for Cloud Volumes ONTAP. With this patch release, HA pairs in Azure are now Generally Available (GA).</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_new_95.html">Cloud Volumes ONTAP 9.5 Release Notes</a> for additional details, including important information about Azure region support for HA pairs.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cloud-manager-3-6-4-3-mar-2019">Cloud Manager 3.6.4 (3 Mar 2019)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cloud Manager 3.6.4 includes the following enhancements.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#aws-managed-encryption-with-a-key-from-another-account">AWS-managed encryption with a key from another account</a></p>
+</li>
+<li>
+<p><a href="#recovery-of-failed-disks">Recovery of failed disks</a></p>
+</li>
+<li>
+<p><a href="#azure-storage-accounts-enabled-for-https-when-data-tiering-to-blob-containers">Azure storage accounts enabled for HTTPS when data tiering to Blob containers</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="aws-managed-encryption-with-a-key-from-another-account">AWS-managed encryption with a key from another account</h3>
+<div class="paragraph">
+<p>When launching a Cloud Volumes ONTAP system in AWS, you can now enable <a href="http://docs.aws.amazon.com/kms/latest/developerguide/overview.html" target="_blank" rel="noopener">AWS-managed encryption</a> using a Customer Master Key (CMK) from another AWS user account.</p>
+</div>
+<div class="paragraph">
+<p>The following images show how to select the option when creating a new working environment:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_aws_encryption_cmk.gif" alt="image"></span></p>
+</div>
+<div class="paragraph">
+<p><a href="concept_security.html">Learn more about supported encryption technologies</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="recovery-of-failed-disks">Recovery of failed disks</h3>
+<div class="paragraph">
+<p>Cloud Manager now tries to recover failed disks from Cloud Volumes ONTAP systems. Successful attempts are noted in email notification reports. Here&#8217;s a sample notification:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_notification_failed_disk.png" alt="A screenshot that shows a message from the daily notification report. The message states that Cloud Manager successfully recovered a failed disk."></span></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can enable notification reports by editing your user account.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="azure-storage-accounts-enabled-for-https-when-data-tiering-to-blob-containers">Azure storage accounts enabled for HTTPS when data tiering to Blob containers</h3>
+<div class="paragraph">
+<p>When you set up a Cloud Volumes ONTAP system to tier inactive data to an Azure Blob container, Cloud Manager creates an Azure storage account for that container. Starting in this release, Cloud Manager now enables new storage accounts with secure transfer (HTTPS). Existing storage accounts continue to use HTTP.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cloud-manager-3-6-3-4-feb-2019">Cloud Manager 3.6.3 (4 Feb 2019)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cloud Manager 3.6.3 includes the following enhancements.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#support-for-cloud-volumes-ontap-9-5-ga">Support for Cloud Volumes ONTAP 9.5 GA</a></p>
+</li>
+<li>
+<p><a href="#368-tb-capacity-limit-for-all-premium-and-byol-configurations">368 TB capacity limit for all Premium and BYOL configurations</a></p>
+</li>
+<li>
+<p><a href="#support-for-new-aws-regions">Support for new AWS regions</a></p>
+</li>
+<li>
+<p><a href="#support-for-s3-intelligent-tiering">Support for S3 Intelligent-Tiering</a></p>
+</li>
+<li>
+<p><a href="#ability-to-disable-data-tiering-on-the-initial-aggregate">Ability to disable data tiering on the initial aggregate</a></p>
+</li>
+<li>
+<p><a href="#recommended-ec2-instance-type-now-t3-medium-for-cloud-manager">Recommended EC2 instance type now t3.medium for Cloud Manager</a></p>
+</li>
+<li>
+<p><a href="#postponement-of-scheduled-shutdowns-during-data-transfers">Postponement of scheduled shutdowns during data transfers</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="support-for-cloud-volumes-ontap-9-5-ga">Support for Cloud Volumes ONTAP 9.5 GA</h3>
+<div class="paragraph">
+<p>Cloud Manager now supports the General Availability (GA) release of Cloud Volumes ONTAP 9.5. This includes support for M5 and R5 instances in AWS. For more details about the 9.5 release, see the <a href="https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_new_95.html" target="_blank" rel="noopener">Cloud Volumes ONTAP 9.5 Release Notes</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="368-tb-capacity-limit-for-all-premium-and-byol-configurations">368 TB capacity limit for all Premium and BYOL configurations</h3>
+<div class="paragraph">
+<p>The system capacity limit for Cloud Volumes ONTAP Premium and BYOL is now 368 TB across all configurations: single node and HA in both AWS and Azure. This change applies to Cloud Volumes ONTAP 9.5, 9.4, and 9.3 (AWS only with 9.3).</p>
+</div>
+<div class="paragraph">
+<p>For some configurations, disk limits prevent you from reaching the 368 TB capacity limit by using disks alone. In those cases, you can reach the 368 TB capacity limit by <a href="https://docs.netapp.com/us-en/occm/concept_data_tiering.html" target="_blank" rel="noopener">tiering inactive data to object storage</a>. For example, a single node system in Azure could have 252 TB of disk-based capacity, which would allow up to 116 TB of inactive data in Azure Blob storage.</p>
+</div>
+<div class="paragraph">
+<p>For information about disk limits, refer to storage limits in the <a href="https://docs.netapp.com/us-en/cloud-volumes-ontap/" target="_blank" rel="noopener">Cloud Volumes ONTAP Release Notes</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="support-for-new-aws-regions">Support for new AWS regions</h3>
+<div class="paragraph">
+<p>Cloud Manager and Cloud Volumes ONTAP are now supported in the following AWS regions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Europe (Stockholm)</p>
+<div class="paragraph">
+<p>Single node systems only. HA pairs are not supported at this time.</p>
+</div>
+</li>
+<li>
+<p>GovCloud (US-East)</p>
+<div class="paragraph">
+<p>This is in addition to support for the AWS GovCloud (US-West) region.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="https://cloud.netapp.com/cloud-volumes-global-regions" target="_blank" rel="noopener">See the full list of supported regions</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="support-for-s3-intelligent-tiering">Support for S3 Intelligent-Tiering</h3>
+<div class="paragraph">
+<p>When you enable data tiering in AWS, Cloud Volumes ONTAP tiers inactive data to the S3 Standard storage class by default. You can now change the tiering level to the <em>Intelligent Tiering</em> storage class. This storage class optimizes storage costs by moving data between two tiers as data access patterns change. One tier is for frequent access and the other is for infrequent access.</p>
+</div>
+<div class="paragraph">
+<p>Just like in previous releases, you can also use the Standard-Infrequent Access tier and the One Zone-Infrequent Access tier.</p>
+</div>
+<div class="paragraph">
+<p><a href="concept_data_tiering.html">Learn more about data tiering</a> and <a href="task_tiering.html#changing-the-tiering-level">learn how to change the storage class</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ability-to-disable-data-tiering-on-the-initial-aggregate">Ability to disable data tiering on the initial aggregate</h3>
+<div class="paragraph">
+<p>In previous releases, Cloud Manager automatically enabled data tiering on the initial Cloud Volumes ONTAP aggregate. You can now choose to disable data tiering on this initial aggregate. (You can enable or disable data tiering on subsequent aggregates, as well.)</p>
+</div>
+<div class="paragraph">
+<p>This new option is available when choosing the underlying storage resources. The following image shows an example when launching a system in AWS:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_s3_tiering_initial_aggr.gif" alt="A screenshot that shows the S3 Tiering Edit option when choosing an underlying disk."></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="recommended-ec2-instance-type-now-t3-medium-for-cloud-manager">Recommended EC2 instance type now t3.medium for Cloud Manager</h3>
+<div class="paragraph">
+<p>The instance type for Cloud Manager is now t3.medium when deploying Cloud Manager in AWS from NetApp Cloud Central. It is also the recommended instance type in the AWS Marketplace. This change enables support in the latest AWS regions and reduces instance costs. The recommended instance type was previously t2.medium, which is still supported.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="postponement-of-scheduled-shutdowns-during-data-transfers">Postponement of scheduled shutdowns during data transfers</h3>
+<div class="paragraph">
+<p>If you scheduled an automatic shutdown of your Cloud Volumes ONTAP system, Cloud Manager now postpones the shutdown if an active data transfer is in progress. Cloud Manager shuts down the system after the transfer is complete.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cloud-manager-3-6-2-2-jan-2019">Cloud Manager 3.6.2 (2 Jan 2019)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cloud Manager 3.6.2 includes new features and enhancements.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#aws-spread-placement-group-for-cloud-volumes-ontap-ha-in-a-single-az">AWS spread placement group for Cloud Volumes ONTAP HA in a single AZ</a></p>
+</li>
+<li>
+<p><a href="#ransomware-protection">Ransomware protection</a></p>
+</li>
+<li>
+<p><a href="#new-data-replication-policies">New data replication policies</a></p>
+</li>
+<li>
+<p><a href="#volume-access-control-for-kubernetes">Volume access control for Kubernetes</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="aws-spread-placement-group-for-cloud-volumes-ontap-ha-in-a-single-az">AWS spread placement group for Cloud Volumes ONTAP HA in a single AZ</h3>
+<div class="paragraph">
+<p>When you deploy Cloud Volumes ONTAP HA in a single AWS Availability Zone, Cloud Manager now creates an <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html" target="_blank" rel="noopener">AWS spread placement group</a> and launches the two HA nodes in that placement group. The placement group reduces the risk of simultaneous failures by spreading the instances across distinct underlying hardware.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This feature improves redundancy from a compute perspective and not from disk failure perspective.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Cloud Manager requires new permissions for this feature. Ensure that the IAM policy that provides Cloud Manager with permissions includes the following actions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">"ec2:CreatePlacementGroup",
+"ec2:DeletePlacementGroup"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can find the entire list of required permissions in the <a href="https://s3.amazonaws.com/occm-sample-policies/Policy_for_Cloud_Manager_3.6.2.json" target="_blank" rel="noopener">latest AWS policy for Cloud Manager</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ransomware-protection">Ransomware protection</h3>
+<div class="paragraph">
+<p>Ransomware attacks can cost a business time, resources, and reputation. Cloud Manager now enables you to implement the NetApp solution for ransomware, which provides effective tools for visibility, detection, and remediation.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cloud Manager identifies volumes that are not protected by a Snapshot policy and enables you to activate the default Snapshot policy on those volumes.</p>
+<div class="paragraph">
+<p>Snapshot copies are read-only, which prevents ransomware corruption. They can also provide the granularity to create images of a single file copy or a complete disaster recovery solution.</p>
+</div>
+</li>
+<li>
+<p>Cloud Manager also enables you to block common ransomware file extensions by enabling ONTAP&#8217;s FPolicy solution.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_ransomware_protection.gif" alt="A screenshot that shows the Ransomware Protection page that is available from within a working environment. The screen shows the number of volumes without a Snapshot Policy and the ability to block ransomware file extensions."></span></p>
+</div>
+<div class="paragraph">
+<p><a href="task_protecting_ransomware.html">Learn how to implement the NetApp solution for ransomware</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new-data-replication-policies">New data replication policies</h3>
+<div class="paragraph">
+<p>Cloud Manager includes five new data replication policies that you can use for data protection.</p>
+</div>
+<div class="paragraph">
+<p>Three of the policies configure disaster recovery and long-term retention of backups on the same destination volume. Each policy provides a different backup retention period:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Mirror and Backup (7 year retention)</p>
+</li>
+<li>
+<p>Mirror and Backup (7 year retention with more weekly backups)</p>
+</li>
+<li>
+<p>Mirror and Backup (1 year retention, monthly)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The remaining policies provide more options for long-term retention of backups:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Backup (1 month retention)</p>
+</li>
+<li>
+<p>Backup (1 week retention)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Simply drag-and-drop a working environment to select one of the new policies.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="volume-access-control-for-kubernetes">Volume access control for Kubernetes</h3>
+<div class="paragraph">
+<p>You can now configure the export policy for Kubernetes Persistent Volumes. The export policy can enable access to clients if the Kubernetes cluster is in a different network than the Cloud Volumes ONTAP system.</p>
+</div>
+<div class="paragraph">
+<p>You can configure the export policy when you connect a working environment to a Kubernetes cluster and by editing an existing volume.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cloud-manager-3-6-1-4-dec-2018">Cloud Manager 3.6.1 (4 Dec 2018)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cloud Manager 3.6.1 includes new features and enhancements.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#support-for-cloud-volumes-ontap-9-5-in-azure">Support for Cloud Volumes ONTAP 9.5 in Azure</a></p>
+</li>
+<li>
+<p><a href="#cloud-provider-accounts">Cloud Provider Accounts</a></p>
+</li>
+<li>
+<p><a href="#enhancements-to-the-aws-cost-report">Enhancements to the AWS Cost report</a></p>
+</li>
+<li>
+<p><a href="#support-for-new-azure-regions">Support for new Azure regions</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="support-for-cloud-volumes-ontap-9-5-in-azure">Support for Cloud Volumes ONTAP 9.5 in Azure</h3>
+<div class="paragraph">
+<p>Cloud Manager now supports the Cloud Volumes ONTAP 9.5 release in Microsoft Azure, which includes a preview of high-availability (HA) pairs. You can request a preview license for an Azure HA pair by contacting us at <a href="mailto:ng-Cloud-Volume-ONTAP-preview@netapp.com">ng-Cloud-Volume-ONTAP-preview@netapp.com</a>.</p>
+</div>
+<div class="paragraph">
+<p>For more details about the 9.5 release, see the <a href="https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_new_95.html" target="_blank" rel="noopener">Cloud Volumes ONTAP 9.5 Release Notes</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="new-azure-permissions-required-for-cloud-volumes-ontap-9-5">New Azure permissions required for Cloud Volumes ONTAP 9.5</h4>
+<div class="paragraph">
+<p>Cloud Manager requires new Azure permissions for key features in the Cloud Volumes ONTAP 9.5 release. To ensure that Cloud Manager can deploy and manage Cloud Volumes ONTAP 9.5 systems, you should update your Cloud Manager policy by adding the following permissions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">"Microsoft.Network/loadBalancers/read",
+"Microsoft.Network/loadBalancers/write",
+"Microsoft.Network/loadBalancers/delete",
+"Microsoft.Network/loadBalancers/backendAddressPools/read",
+"Microsoft.Network/loadBalancers/backendAddressPools/join/action",
+"Microsoft.Network/loadBalancers/frontendIPConfigurations/read",
+"Microsoft.Network/loadBalancers/loadBalancingRules/read",
+"Microsoft.Network/loadBalancers/probes/read",
+"Microsoft.Network/loadBalancers/probes/join/action",
+"Microsoft.Network/routeTables/join/action"
+"Microsoft.Authorization/roleDefinitions/write",
+"Microsoft.Authorization/roleAssignments/write",
+"Microsoft.Web/sites/*"
+"Microsoft.Storage/storageAccounts/delete",
+"Microsoft.Storage/usages/read",</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can find the entire list of required permissions in the <a href="https://s3.amazonaws.com/occm-sample-policies/Policy_for_cloud_Manager_Azure_3.6.1.json" target="_blank" rel="noopener">latest Azure policy for Cloud Manager</a>.</p>
+</div>
+<div class="paragraph">
+<p><a href="reference_permissions.html">Learn how Cloud Manager uses these permissions</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cloud-provider-accounts">Cloud Provider Accounts</h3>
+<div class="paragraph">
+<p>It&#8217;s now easier to manage multiple AWS and Azure accounts in Cloud Manager by using Cloud Provider Accounts.</p>
+</div>
+<div class="paragraph">
+<p>In previous releases, you needed to specify cloud provider permissions for each Cloud Manager user account. The permissions are now managed at the Cloud Manager system level by using Cloud Provider Accounts.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_cloud_provider_accounts.gif" alt="A screenshot that shows the Cloud Provider Account Settings page" width="from which you can add new AWS and Azure accounts to Cloud Manager."></span></p>
+</div>
+<div class="paragraph">
+<p>When you create a new working environment, you simply select the account in which you want to deploy the Cloud Volumes ONTAP system:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_accounts_select_aws.gif" alt="A screenshot that shows the Switch Account option in the Details &amp; Credentials page."></span></p>
+</div>
+<div class="paragraph">
+<p>When you upgrade to 3.6.1, Cloud Manager automatically creates Cloud Provider Accounts for you, based on your current configuration. If you have scripts, backwards compatibility is in place so nothing breaks.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="concept_accounts_and_permissions.html">Learn how Cloud Provider Accounts and permissions work</a></p>
+</li>
+<li>
+<p><a href="task_adding_cloud_accounts.html">Learn how to set up and add Cloud Provider Accounts to Cloud Manager</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancements-to-the-aws-cost-report">Enhancements to the AWS Cost report</h3>
+<div class="paragraph">
+<p>The AWS Cost report now provides more information and is easier to set up.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The report breaks down the monthly resource costs associated with running Cloud Volumes ONTAP in AWS. You can view monthly costs for compute, EBS storage (including EBS snapshots), S3 storage, and data transfers.</p>
+</li>
+<li>
+<p>The report now shows cost savings when you tier inactive data to S3.</p>
+</li>
+<li>
+<p>We also simplified how Cloud Manager obtains cost data from AWS.</p>
+<div class="paragraph">
+<p>Cloud Manager no longer needs access to billing reports that you store in an S3 bucket. Instead, Cloud Manager uses the Cost Explorer API. You just need to ensure that the IAM policy that provides Cloud Manager with permissions includes the following actions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">"ce:GetReservationUtilization",
+"ce:GetDimensionValues",
+"ce:GetCostAndUsage",
+"ce:GetTags"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These actions are included in the latest <a href="https://s3.amazonaws.com/occm-sample-policies/Policy_for_Cloud_Manager_3.6.1.json" target="_blank" rel="noopener">NetApp-provided policy</a>. New systems deployed from NetApp Cloud Central automatically include these permissions.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_cost.gif" alt="Screen shot: Shows the costs per month for a Cloud Volumes ONTAP instance."></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="support-for-new-azure-regions">Support for new Azure regions</h3>
+<div class="paragraph">
+<p>You can now deploy Cloud Manager and Cloud Volumes ONTAP in the France Central region.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cloud-manager-3-6-4-nov-2018">Cloud Manager 3.6 (4 Nov 2018)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cloud Manager 3.6 includes a new feature.</p>
+</div>
+<div class="sect2">
+<h3 id="using-cloud-volumes-ontap-as-persistent-storage-for-a-kubernetes-cluster">Using Cloud Volumes ONTAP as persistent storage for a Kubernetes cluster</h3>
+<div class="paragraph">
+<p>Cloud Manager can now automate the deployment of <a href="https://netapp-trident.readthedocs.io/en/stable-v18.10/introduction.html" target="_blank" rel="noopener">NetApp Trident</a> on a single Kubernetes cluster so you can use Cloud Volumes ONTAP as persistent storage for containers. Users can then request and manage Persistent Volumes using native Kubernetes interfaces and constructs, while taking advantage of ONTAP&#8217;s advanced data management features without having to know anything about it.</p>
+</div>
+<div class="paragraph">
+<p><a href="task_connecting_kubernetes.html">Learn how to connect Cloud Volumes ONTAP systems to a Kubernetes cluster</a></p>
+</div>
+</div>
+</div>
+</div>
+
+        </article>
+        <!-- Page Container -->
+      </div>
+
+      
+      <div class="page-nav-container">
+        <nav class="page-nav-fixed">
+          <div class="page-nav-title">On this page:</div>
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </nav>
+      </div>
+      
+
+    </div>
+  </div>
+</div>
+
+      </main>
+
+      <!-- Footer -->
+      
+      <footer class="n-footer n-footer--v1" style="border-top: solid 10px #DFDFDF;">
+        <div class="n-footer__bottom">
+          <div class="n-container">
+            <div class="n-footer__bottom-left">
+              <div class="n-footer__copyright">
+                  <a href="//www.netapp.com/us/legal/copyright.aspx" class="n-footer__copyright-link">© 2019 NetApp, Inc.</a>
+              </div>
+              <div class="n-footer__copyright">
+                <a href="https://library.netapp.com/ecm/ecm_download_file/ECMLP2848669" class="n-footer__copyright-link">Notice</a>
+              </div>
+              <div class="n-footer__copyright">
+                <a href="//www.netapp.com/us/legal/index.aspx" class="n-footer__copyright-link">Legal</a>
+              </div>
+              <div class="n-footer__social-links n-footer__copyright">
+                <ul class="n-footer__social-link-list">
+                  <li class="n-footer__social-link-list-item">
+                    <a class="n-footer__social-link" data-ntap-social="follow-blog" href="http://blog.netapp.com" target="_blank" title="blog" alt="blog">
+                      <span class="n-footer__social-link-text">blog</span>
+                      <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+                        <title>blog@</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#blog"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li class="n-footer__social-link-list-item">
+                    <a class="n-footer__social-link" data-ntap-social="follow-community" href="http://community.netapp.com/" target="_blank" title="community" alt="community">
+                      <span class="n-footer__social-link-text">community</span>
+                      <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                        <title>community@</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#comments"></use>
+                      </svg>
+                    </a>
+                  </li>
+
+                  <li class="n-footer__social-link-list-item">
+                    <a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netappdoc" target="_blank" title="twitter" alt="twitter">
+                      <span class="n-footer__social-link-text">twitter</span>
+                      <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                        <title>twitter@</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#twitter"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li class="n-footer__social-link-list-item">
+                    <a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTechCommTV/" target="_blank" title="youtube" alt="youtube">
+                      <span class="n-footer__social-link-text">youtube</span>
+                      <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+                        <title>youtube@</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#youtube"></use>
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="n-footer__bottom-right">
+              <div class="n-footer__copyright">
+                <a href="https://docs.netapp.com/us-en/contribute/" class="n-footer__copyright-link">Contribute</a>
+              </div>
+              <div class="n-footer__copyright">
+                <a target="_self" class="n-footer__copyright-link" href="javascript:netapp_mailto()">Email your feedback</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <script src="/occm36/us-en/common/js/components.js"></script>
+    <script src="/occm36/us-en/common/js/doc-components.js"></script>
+
+    <!-- Elasticsearch JS -->
+    <script type="text/javascript" src='/occm36/us-en/js/bundle.js'></script>
+
+    <!-- Syntax Highlighting -->
+    <script type="text/javascript" src='/occm36/us-en/js/prism.js'></script>
+    <script type="text/javascript" src='/occm36/us-en/js/prism-curl.js'></script>
+
+  </body>
+
+  
+</html>

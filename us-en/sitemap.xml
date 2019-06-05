@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  
+    
+    
+  
+
+  
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/concept_accounts_and_permissions.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/concept_cloud_central.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/concept_data_tiering.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/concept_evaluating.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/concept_ha.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/concept_ha_azure.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/concept_licensing.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/concept_overview.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/concept_performance.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/concept_security.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/concept_storage.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/concept_storage_management.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/concept_worm.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/reference_additional_info.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/reference_before.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/reference_cloud_mgr_reqs.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/reference_default_configs.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/reference_deployment_overview.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/reference_earlier_versions.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/reference_infrastructure_as_code.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/reference_integration_faq.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/reference_issues.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/reference_legal_notices.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/reference_limitations.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/reference_networking_aws.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/reference_networking_azure.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/reference_networking_cloud_manager.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/reference_new_occm.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/reference_permissions.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/reference_regions.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/reference_security_groups.html</loc>
+      
+        <lastmod>2019-06-04T15:09:17+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/reference_security_groups_azure.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/reference_user_roles.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36//search.html</loc>
+      
+        <lastmod>2019-06-05T13:18:17+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_adding_cloud_accounts.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_adding_nss_accounts.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_adding_ontap_cloud.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_backing_up_restoring.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_changing_volume_view.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_configuring_proxy.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_connecting_kubernetes.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_connecting_to_otc.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_deleting_working_env.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_deploying_otc_aws.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_deploying_otc_azure.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_discovering_ontap.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_editing_users.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_enabling_flash_cache.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_encrypting_volumes.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_getting_started_aws.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_getting_started_azure.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_installing_azure_germany.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_installing_azure_gov.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_installing_https_cert.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_installing_linux.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_launching_aws_mktp.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_launching_azure_mktp.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_logging_in.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_managing_state.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_managing_storage.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_managing_volume_view.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_modifying_ontap_cloud.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_monitoring_costs.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_planning_your_config.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_protecting_ransomware.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_provisioning_storage.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_provisioning_volume_view.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_registering.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_removing.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_renewing_cert.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_replicating_data.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_setting_up_cloud_manager.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_setting_up_kms.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_setting_up_ontap_cloud.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_setting_up_transit_gateway.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_setting_up_users_tenants.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_syncing_s3.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_tiering.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_uninstalling.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_updating_cloud_manager.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      <loc>https://docs.netapp.com/us-en/occm36/task_updating_ontap_cloud.html</loc>
+      
+        <lastmod>2019-06-03T19:56:08+00:00</lastmod>
+      
+    </url>
+  
+
+  
+  
+</urlset>

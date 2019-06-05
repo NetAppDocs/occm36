@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <title>Modifying Cloud Volumes ONTAP systems | NetApp Cloud Docs</title>
+  <meta charset="utf-8">
+  <meta property="og:title" content="Modifying Cloud Volumes ONTAP systems | NetApp Cloud Docs" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/occm36/task_modifying_ontap_cloud.html" />
+	<meta property="og:description" content="You might need to change the configuration of Cloud Volumes ONTAP instances as your storage needs change. For example, you can change between pay-as-you-go c..." />
+  <meta property="og:image" content="https://docs.netapp.com/occm36/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/>
+  
+  <meta http-equiv="nss-product" content="OnCommand"/>
+  
+  <meta name="description" content="You might need to change the configuration of Cloud Volumes ONTAP instances as your storage needs change. For example, you can change between pay-as-you-go c...">
+  <meta name="keywords" content=" license, licensing, install, instance type, virtual machine type, VM type, change, modify, configuration, subscription, paygo, pay-as-you-go, pay as you go, byol, password, MTU, jumbo frames, c4.xlarge, c4.8xlarge, HA pair, file, license file, install, upload, change, modify, svm, storage virtual machine, password, route tables, nlf">
+  
+
+  <!-- Icons -->
+  <link rel="icon" href="/occm36/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed -->
+  
+  <link rel="alternate" type="application/rss+xml" title="NetApp Cloud Docs" href="/occm36/feed.xml">
+  
+
+  <!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- LUCI CSS Content -->
+  <link rel="stylesheet" href="/occm36/common/css/esb.min.css">
+  <link rel="stylesheet" href="/occm36/common/css/netapp-library.min.css">
+  <link rel="stylesheet" href="/occm36/common/css/doc.css">
+  <link rel="stylesheet" href="/occm36/common/css/doc-components.css">
+
+  <link rel="stylesheet" href='/occm36/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/occm36/css/na-search.css' type='text/css'>
+  <link rel='stylesheet' href='/occm36/css/clouddocs.css' type='text/css'>
+
+  <!-- Font awesome seems to affect our GitHub Icon and generic "arrow box" for external links. -->
+  <link rel="stylesheet" type="text/css" href="/occm36/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="/occm36/css/customstyles.css"> -->
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/occm36/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel='stylesheet' href='/occm36/css/netapp.css' type='text/css'>
+
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+  
+    <script src='/occm36/js/na-search.js'></script>
+  
+
+  
+  <link rel='stylesheet' href='/occm36/css/na-pagenav.css' type='text/css' id="pagenav-css">
+  <script src='/occm36/js/na-pagenav.js'></script>
+  
+
+  <link rel='stylesheet' href='/occm36/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/occm36/css/prism-netapp.css' type='text/css'>
+
+  <script src='/occm36/js/clouddocs.js'></script>
+  <script src='/occm36/js/s_code_impl.js'></script>
+  <script src='/occm36/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/occm36/js/toc.js'></script>
+  <script src='/occm36/js/customscripts.js'></script>
+
+  <script>
+      $(document).ready(function() {
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco({
+              caretHtml: '',
+              accordion: true,
+              openClass: 'active', // open
+              save: false, // leave false or nav highlighting doesn't work right
+              cookie: {
+                  name: 'navgoco',
+                  expires: false,
+                  path: '/'
+              },
+              slide: {
+                  duration: 400,
+                  easing: 'swing'
+              }
+          });
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script>
+
+  <!-- Controls the i18n Browser Redirection -->
+  <script>
+    var siteLocales = [];
+    
+      siteLocales.push("us-en");
+    
+
+    standardizeUrl(siteLocales, "clouddocs.netapp.com", "https://docs.netapp.com");
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-81697994-3');
+  }
+  </script>
+</head>
+
+
+  <body class="n-doc__component-detail">
+    <a href="#n-main-content" class="visually-hidden">Skip to main content</a>
+<div class="n-off-canvas-menu">
+  <div class="n-off-canvas-menu__menu">
+    <div class="n-off-canvas-menu__menu-inner">
+      <div class="n-off-canvas-menu__property-title">NetApp Cloud Docs</div>
+      <ul class="n-off-canvas-menu__property-navigation-list">
+        <li class="n-off-canvas-menu__property-navigation-list-item ">
+          <a href="https://docs.netapp.com/us-en/" class="n-off-canvas-menu__property-navigation-link">
+            Home
+          </a>
+          <div class="n-off-canvas-menu__child-menu">
+            <ul class="n-menu__list">
+
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="n-off-canvas-menu__global-navigation-list">
+         <li class="n-off-canvas-menu__global-navigation-list-header">More From NetApp</li>
+         <li class="n-off-canvas-menu__global-navigation-list-item"><a href="#" class="n-off-canvas-menu__global-navigation-link">Netapp.com</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+    <div class="n-off-canvas-menu__content-wrap">
+      <!-- Header -->
+      <header>
+  <!-- Top Hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+            <li class="n-top-hat__list-item">
+              <a href="http://www.netapp.com" class="n-top-hat__link">NetApp.com</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Property Bar -->
+  <div class="n-property-bar n-property-bar--v3">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link"><span class="n-property-bar__menu-toggle-text">Menu</span><svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+          <title>bars</title>
+          <use xlink:href="/occm36/common/svg/sprite.svg#bars"></use>
+        </svg></a>
+      </div>
+      <div class="n-property-bar__property-mark n-property-bar__property-mark--has-property-name">
+        <a class="n-property-bar__property-link" href="https://docs.netapp.com/us-en/">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/occm36/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-property-bar__logo-svg" aria-labelledby="title">
+              <title>NetApp</title>
+              <use xlink:href="/occm36/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+          <h2 class="n-property-bar__property-name">Cloud Docs</h2>
+        </a>
+      </div>
+
+      
+      <div id="search-demo-container" class="n-property-bar__search">
+        <div id="react-search"></div>
+      </div>
+      
+
+      <div id="ie-i18n-menu" class="n-property-bar__utils">
+        <ul class="n-property-navigation-bar__utils-list">
+          <li class="n-property-navigation-bar__utils-list-item ie-i18n-container">
+            <a href="#" class="n-property-navigation-bar__utils-link n-property-navigation-bar__nav-link n-property-navigation-bar__language-selector-toggle ie-i18n-link" data-menu-id="n-property-navigation-bar__menu--language-selector">
+              <span class="ie-i18n-lang">English</span>
+              <svg class="ie-i18n-icon-container" class="n-property-bar__logo-svg" aria-labelledby="title">
+                <title>globe</title>
+                <use xlink:href="/occm36/common/svg/sprite.svg#globe" class="n-icon-globe n-globe__icon"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="n-property-bar__menus">
+      <div id="n-property-navigation-bar__menu--language-selector" class="n-menu n-menu--v3">
+        <div class="n-language-selector-menu">
+          <div class="n-language-selector-menu__header">
+            <span class="n-language-selector-menu__title">Select Your Language</span>
+          </div>
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list">
+
+
+                
+                <li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="/occm36/us-en/" class="n-menu__header-text">English</a>
+                </li>
+                
+              </ul>
+            </li>
+          </ul>
+          <div class="menu__footer">
+            <p>Current Language: English
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+      <!-- Content -->
+      <main role="main" id="n-main-content" class="n-main-content">
+        <div class="n-container">
+  <div class="n-row">
+    <div class="n-doc n-doc__component-list">
+      <!-- Sidebar Column -->
+      
+      <div class="col-md-3" >
+          
+
+<ul id="mysidebar" class="nav">
+  
+
+  
+    <li><a href="index.html">Cloud Manager 3.6 docs</a></li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Release notes</a>
+      <ul>
+        
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Cloud Manager</a>
+      <ul>
+        
+
+  
+    <li><a href="reference_new_occm.html">What's new</a></li>
+  
+
+  
+    <li><a href="reference_issues.html">Known issues</a></li>
+  
+
+  
+    <li><a href="reference_limitations.html">Known limitations</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <li><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap/" target="_blank">Cloud Volumes ONTAP</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Concepts</a>
+      <ul>
+        
+
+  
+    <li><a href="concept_overview.html">Product overview</a></li>
+  
+
+  
+    <li><a href="concept_cloud_central.html">NetApp Cloud Central</a></li>
+  
+
+  
+    <li><a href="concept_accounts_and_permissions.html">Accounts and permissions</a></li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Storage</a>
+      <ul>
+        
+
+  
+    <li><a href="concept_storage.html">Overview</a></li>
+  
+
+  
+    <li><a href="concept_data_tiering.html">Data tiering</a></li>
+  
+
+  
+    <li><a href="concept_storage_management.html">Storage management</a></li>
+  
+
+  
+    <li><a href="concept_worm.html">WORM storage</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">High-availability pairs</a>
+      <ul>
+        
+
+  
+    <li><a href="concept_ha.html">HA pairs in AWS</a></li>
+  
+
+  
+    <li><a href="concept_ha_azure.html">HA pairs in Azure</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <li><a href="concept_evaluating.html">Evaluating</a></li>
+  
+
+  
+    <li><a href="concept_licensing.html">Licensing</a></li>
+  
+
+  
+    <li><a href="concept_security.html">Security</a></li>
+  
+
+  
+    <li><a href="concept_performance.html">Performance</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Getting started</a>
+      <ul>
+        
+
+  
+    <li><a href="reference_deployment_overview.html">Deployment overview</a></li>
+  
+
+  
+    <li><a href="task_getting_started_aws.html">Getting started in AWS</a></li>
+  
+
+  
+    <li><a href="task_getting_started_azure.html">Getting started in Azure</a></li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Setting up Cloud Manager</a>
+      <ul>
+        
+
+  
+    <li><a href="task_adding_cloud_accounts.html">Adding cloud provider accounts</a></li>
+  
+
+  
+    <li><a href="task_adding_nss_accounts.html">Adding NetApp Support Site accounts</a></li>
+  
+
+  
+    <li><a href="task_installing_https_cert.html">Installing an HTTPS certificate</a></li>
+  
+
+  
+    <li><a href="task_setting_up_users_tenants.html">Setting up users and tenants</a></li>
+  
+
+  
+    <li><a href="task_setting_up_kms.html">Setting up the AWS KMS</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Networking requirements</a>
+      <ul>
+        
+
+  
+    <li><a href="reference_networking_cloud_manager.html">Cloud Manager</a></li>
+  
+
+  
+    <li><a href="reference_networking_aws.html">Cloud Volumes ONTAP for AWS</a></li>
+  
+
+  
+    <li><a href="task_setting_up_transit_gateway.html">Setting up an AWS transit gateway</a></li>
+  
+
+  
+    <li><a href="reference_networking_azure.html">Cloud Volumes ONTAP for Azure</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Additional deployment options</a>
+      <ul>
+        
+
+  
+    <li><a href="reference_cloud_mgr_reqs.html">Cloud Manager host requirements</a></li>
+  
+
+  
+    <li><a href="task_installing_linux.html">Installing Cloud Manager on a Linux host</a></li>
+  
+
+  
+    <li><a href="task_launching_aws_mktp.html">Deploying Cloud Manager from the AWS Marketplace</a></li>
+  
+
+  
+    <li><a href="task_launching_azure_mktp.html">Deploying Cloud Manager from the Azure Marketplace</a></li>
+  
+
+  
+    <li><a href="task_installing_azure_gov.html">Deploying Cloud Manager in an Azure Gov region</a></li>
+  
+
+  
+    <li><a href="task_installing_azure_germany.html">Deploying Cloud Manager in the Azure Germany region</a></li>
+  
+
+  
+    <li><a href="media/c2s.pdf">Getting started in the AWS C2S environment</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Deploying Cloud Volumes ONTAP</a>
+      <ul>
+        
+
+  
+    <li><a href="reference_before.html">Before you begin</a></li>
+  
+
+  
+    <li><a href="task_logging_in.html">Logging in to Cloud Manager</a></li>
+  
+
+  
+    <li><a href="task_planning_your_config.html">Planning your configuration</a></li>
+  
+
+  
+    <li><a href="task_enabling_flash_cache.html">Enabling Flash Cache on Cloud Volumes ONTAP in AWS</a></li>
+  
+
+  
+    <li><a href="task_deploying_otc_aws.html">Launching Cloud Volumes ONTAP in AWS</a></li>
+  
+
+  
+    <li><a href="task_deploying_otc_azure.html">Launching Cloud Volumes ONTAP in Azure</a></li>
+  
+
+  
+    <li><a href="task_registering.html">Registering pay-as-you-go systems</a></li>
+  
+
+  
+    <li><a href="task_setting_up_ontap_cloud.html">Setting up Cloud Volumes ONTAP</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Provisioning storage</a>
+      <ul>
+        
+
+  
+    <li><a href="task_provisioning_storage.html">Creating volumes, aggregates, and LUNs</a></li>
+  
+
+  
+    <li><a href="task_tiering.html">Tiering inactive data to object storage</a></li>
+  
+
+  
+    <li><a href="task_connecting_kubernetes.html">Using Cloud Volumes ONTAP as persistent storage</a></li>
+  
+
+  
+    <li><a href="task_encrypting_volumes.html">Encrypting volumes with NetApp Volume Encryption</a></li>
+  
+
+  
+    <li><a href="task_managing_storage.html">Managing existing storage</a></li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Provisioning NFS volumes from the Volume View</a>
+      <ul>
+        
+
+  
+    <li><a href="task_changing_volume_view.html">Changing to the Volume View</a></li>
+  
+
+  
+    <li><a href="task_provisioning_volume_view.html">Creating and mounting NFS volumes</a></li>
+  
+
+  
+    <li><a href="task_managing_volume_view.html">Managing NFS volumes</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Managing data across a hybrid cloud</a>
+      <ul>
+        
+
+  
+    <li><a href="task_discovering_ontap.html">Discovering and managing ONTAP clusters</a></li>
+  
+
+  
+    <li><a href="task_replicating_data.html">Replicating data to and from the cloud</a></li>
+  
+
+  
+    <li><a href="task_syncing_s3.html">Syncing data to AWS S3</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Administering Cloud Volumes ONTAP</a>
+      <ul>
+        
+
+  
+    <li><a href="task_connecting_to_otc.html">Connecting to Cloud Volumes ONTAP</a></li>
+  
+
+  
+    <li><a href="task_updating_ontap_cloud.html">Updating software</a></li>
+  
+
+  
+    <li class="active"><a href="task_modifying_ontap_cloud.html">Modifying system configurations</a></li>
+  
+
+  
+    <li><a href="task_managing_state.html">Stopping and starting systems</a></li>
+  
+
+  
+    <li><a href="task_monitoring_costs.html">Monitoring AWS costs</a></li>
+  
+
+  
+    <li><a href="task_protecting_ransomware.html">Improving ransomware protection</a></li>
+  
+
+  
+    <li><a href="task_adding_ontap_cloud.html">Adding existing systems</a></li>
+  
+
+  
+    <li><a href="task_deleting_working_env.html">Deleting systems</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Administering Cloud Manager</a>
+      <ul>
+        
+
+  
+    <li><a href="task_updating_cloud_manager.html">Updating Cloud Manager</a></li>
+  
+
+  
+    <li><a href="task_backing_up_restoring.html">Backing up and restoring</a></li>
+  
+
+  
+    <li><a href="task_removing.html">Removing working environments</a></li>
+  
+
+  
+    <li><a href="task_editing_users.html">Editing user accounts</a></li>
+  
+
+  
+    <li><a href="task_configuring_proxy.html">Configuring proxy settings</a></li>
+  
+
+  
+    <li><a href="task_renewing_cert.html">Renewing the HTTPS certificate</a></li>
+  
+
+  
+    <li><a href="task_uninstalling.html">Uninstalling Cloud Manager</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">APIs and automation</a>
+      <ul>
+        
+
+  
+    <li><a href="https://docs.netapp.com/us-en/occm/api.html" target="_blank">API Developer Guide</a></li>
+  
+
+  
+    <li><a href="reference_infrastructure_as_code.html">Automation samples</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Reference</a>
+      <ul>
+        
+
+  
+    <li><a href="reference_integration_faq.html">FAQ for Cloud Central integration</a></li>
+  
+
+  
+    <li><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_supported_configs_95.html" target="_blank">Supported configurations for Cloud Volumes ONTAP</a></li>
+  
+
+  
+    <li><a href="https://cloud.netapp.com/cloud-volumes-global-regions" target="_blank">Supported regions</a></li>
+  
+
+  
+    <li><a href="reference_security_groups.html">Security group rules for AWS</a></li>
+  
+
+  
+    <li><a href="reference_security_groups_azure.html">Security group rules for Azure</a></li>
+  
+
+  
+    <li><a href="reference_permissions.html">Permissions</a></li>
+  
+
+  
+    <li><a href="reference_default_configs.html">Default configurations</a></li>
+  
+
+  
+    <li><a href="reference_user_roles.html">User roles</a></li>
+  
+
+  
+    <li><a href="reference_additional_info.html">Related links</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <li><a href="reference_earlier_versions.html">Earlier versions</a></li>
+  
+
+  
+    <li><a href="reference_legal_notices.html">Legal notices</a></li>
+  
+
+
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+      </div>
+      
+
+      <div class="n-doc__component-detail-content n-doc__component-detail-content--show-code">
+        <!-- Begin of page container -->
+        <article class="page-content">
+          
+<div class="sectionbody">
+  <div class="paragraph lead">
+    <p class="downlevel" id="downlevel-header">
+      This documentation is for a previous release of Cloud Manager. <a href="https://docs.netapp.com/us-en/occm/">Go to the docs for the latest release.</a>
+    </p>
+  </div>
+</div>
+
+
+<div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">Modifying Cloud Volumes ONTAP systems
+    <span>
+      
+        <a target="_blank" href="https://github.com/NetAppDocs/occm36/blob/master/task_modifying_ontap_cloud.adoc" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a>
+        <a target="_blank" href="https://github.com/NetAppDocs/occm36/issues/new?body=Page%3A%20[Modifying Cloud Volumes ONTAP systems](https://docs.netapp.com/us-en/occm36/task_modifying_ontap_cloud.html)" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Request doc changes</a>
+      
+    </span>
+  </h1>
+</div>
+
+<p class="page-details">
+
+<time datetime="2019-06-03 19:56:08 +0000">06/03/2019</time>
+
+
+<span>Contributors
+  
+  <a target="_blank" href="https://github.com/netapp-bcammett">
+    <img  class="avatar avatar-small"
+          alt="netapp-bcammett"
+          width="20" height="20"
+          src="https://avatars3.githubusercontent.com/u/18287750?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+</span>
+
+</p>
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>You might need to change the configuration of Cloud Volumes ONTAP instances as your storage needs change. For example, you can change between pay-as-you-go configurations, change the instance or VM type, and move to an alternate subscription.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="installing-license-files-on-cloud-volumes-ontap-byol-systems">Installing license files on Cloud Volumes ONTAP BYOL systems</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If Cloud Manager cannot obtain a BYOL license file from NetApp, you can obtain the file yourself and then manually upload the file to Cloud Manager so it can install the license on the Cloud Volumes ONTAP system.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>Go to the <a href="https://register.netapp.com/register/getlicensefile" target="_blank" rel="noopener">NetApp License File Generator</a> and log in using your NetApp Support Site credentials.</p>
+</li>
+<li>
+<p>Enter your password, choose your product (either <strong>NetApp Cloud Volumes ONTAP BYOL for AWS</strong>, <strong>NetApp Cloud Volumes ONTAP BYOL for Azure</strong>, or <strong>NetApp Cloud Volumes ONTAP BYOL HA for AWS</strong>), enter the serial number, confirm that you have read and accepted the privacy policy, and then click <strong>Submit</strong>.</p>
+<div class="paragraph">
+<p><strong>Example</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_license_generator.gif" alt="Screen shot: Shows an example of the NetApp License File Generator web page filled out" width="including a password" height="a product (NetApp Cloud Volumes ONTAP BYOL for AWS)"></span></p>
+</div>
+</li>
+<li>
+<p>Choose whether you want to receive the serialnumber.NLF JSON file through email or direct download.</p>
+</li>
+<li>
+<p>In Cloud Manager, open the Cloud Volumes ONTAP BYOL working environment.</p>
+</li>
+<li>
+<p>Click the menu icon and then click <strong>License</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_menu_license.gif" alt="A screenshot that shows menu icon in a working environment. The License option enables you to upload a license file."></span></p>
+</div>
+</li>
+<li>
+<p>Click <strong>Upload License File</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Upload</strong> and then select the file.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Result</div>
+<p>Cloud Manager installs the new license file on the Cloud Volumes ONTAP system.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="changing-the-instance-or-virtual-machine-type-for-cloud-volumes-ontap">Changing the instance or virtual machine type for Cloud Volumes ONTAP</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can choose from several instance or virtual machine types when you launch Cloud Volumes ONTAP in AWS or Azure. You can change the instance or virtual machine type at any time if you determine that it is undersized or oversized for your needs.</p>
+</div>
+<div class="ulist">
+<div class="title">About this task</div>
+<ul>
+<li>
+<p>The operation restarts Cloud Volumes ONTAP.</p>
+<div class="paragraph">
+<p>For single node systems, I/O is interrupted.</p>
+</div>
+<div class="paragraph">
+<p>For HA pairs, the change is nondisruptive. HA pairs continue to serve data.</p>
+</div>
+</li>
+<li>
+<p>Changing the instance or virtual machine type affects AWS or Azure service charges.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>From the working environment, click the menu icon, and then click <strong>Change license or instance</strong> for AWS or click <strong>Change license or VM</strong> for Azure.</p>
+</li>
+<li>
+<p>If you are using a pay-as-you-go configuration, you can optionally choose a different license.</p>
+</li>
+<li>
+<p>Select an instance or virtual machine type, select the check box to confirm that you understand the implications of the change, and then click <strong>OK</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Result</div>
+<p>Cloud Volumes ONTAP reboots with the new configuration.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="changing-between-pay-as-you-go-configurations">Changing between pay-as-you-go configurations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After you launch pay-as-you-go Cloud Volumes ONTAP systems, you can change between the Explore, Standard, and Premium configurations at any time by modifying the license. Changing the license increases or decreases the raw capacity limit and enables you to choose from different EC2 instance types or Azure virtual machine types.</p>
+</div>
+<div class="paragraph">
+<div class="title">About this task</div>
+<p>Note the following about changing between pay-as-you-go licenses:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The operation restarts Cloud Volumes ONTAP.</p>
+<div class="paragraph">
+<p>For single node systems, I/O is interrupted.</p>
+</div>
+<div class="paragraph">
+<p>For HA pairs, the change is nondisruptive. HA pairs continue to serve data.</p>
+</div>
+</li>
+<li>
+<p>Changing the instance or virtual machine type affects AWS or Azure service charges.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>From the working environment, click the menu icon, and then click <strong>Change license or instance</strong> for AWS or click <strong>Change license or VM</strong> for Azure.</p>
+</li>
+<li>
+<p>Select a license type and an instance type or virtual machine type, select the check box to confirm that you understand the implications of the change, and then click <strong>OK</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Result</div>
+<p>Cloud Volumes ONTAP reboots with the new license, instance type or virtual machine type, or both.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="moving-to-an-alternate-cloud-volumes-ontap-configuration">Moving to an alternate Cloud Volumes ONTAP configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you want to move between a pay-as-you-go subscription and a BYOL subscription or between a single Cloud Volumes ONTAP system and an HA pair, you can deploy a new system and then replicate data from the existing system to the new system.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>Create a new Cloud Volumes ONTAP working environment.</p>
+<div class="paragraph">
+<p><a href="task_deploying_otc_aws.html">Launching Cloud Volumes ONTAP in AWS</a><br>
+<a href="task_deploying_otc_azure.html">Launching Cloud Volumes ONTAP in Azure</a></p>
+</div>
+</li>
+<li>
+<p><a href="task_replicating_data.html">Set up one-time data replication</a> between the systems for each volume that you must replicate.</p>
+</li>
+<li>
+<p>Terminate the Cloud Volumes ONTAP system that you no longer need by <a href="task_deleting_working_env.html">deleting the original working environment</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="modifying-the-storage-virtual-machine-name">Modifying the storage virtual machine name</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cloud Manager automatically names the storage virtual machine (SVM) for Cloud Volumes ONTAP. You can modify the name of the SVM if you have strict naming standards. For example, you might want it to match how you name the SVMs for your ONTAP clusters.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>From the working environment, click the menu icon, and then click <strong>Information</strong>.</p>
+</li>
+<li>
+<p>Click the edit icon to the right of the SVM name.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_svm.gif" alt="Screen shot: Shows the SVM Name field and the edit icon that you must click to modify the SVM name."></span></p>
+</div>
+</li>
+<li>
+<p>In the Modify SVM Name dialog box, modify the SVM name, and then click <strong>Save</strong>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="changing-the-password-for-cloud-volumes-ontap">Changing the password for Cloud Volumes ONTAP</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cloud Volumes ONTAP includes a cluster admin account. You can change the password for this account from Cloud Manager, if needed.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+You should not change the password for the admin account through System Manager or the CLI. The password will not be reflected in Cloud Manager. As a result, Cloud Manager cannot monitor the instance properly.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>From the working environment, click the menu icon, and then click <strong>Advanced &gt; Set password</strong>.</p>
+</li>
+<li>
+<p>Enter the new password twice and then click <strong>Save</strong>.</p>
+<div class="paragraph">
+<p>The new password must be different than one of the last six passwords that you used.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="changing-the-network-mtu-for-c4-4xlarge-and-c4-8xlarge-instances">Changing the network MTU for c4.4xlarge and c4.8xlarge instances</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>By default, Cloud Volumes ONTAP is configured to use 9,000 MTU (also called jumbo frames) when you choose the c4.4xlarge instance or the c4.8xlarge instance in AWS. You can change the network MTU to 1,500 bytes if that is more appropriate for your network configuration.</p>
+</div>
+<div class="paragraph">
+<div class="title">About this task</div>
+<p>A network maximum transmission unit (MTU) of 9,000 bytes can provide the highest maximum network throughput possible for specific configurations.</p>
+</div>
+<div class="paragraph">
+<p>9,000 MTU is a good choice if clients in the same VPC communicate with the Cloud Volumes ONTAP system and some or all of those clients also support 9,000 MTU. If traffic leaves the VPC, packet fragmentation can occur, which degrades performance.</p>
+</div>
+<div class="paragraph">
+<p>A network MTU of 1,500 bytes is a good choice if clients or systems outside of the VPC communicate with the Cloud Volumes ONTAP system.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>From the working environment, click the menu icon and then click <strong>Advanced &gt; Network Utilization</strong>.</p>
+</li>
+<li>
+<p>Select <strong>Standard</strong> or <strong>Jumbo Frames</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Change</strong>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="changing-route-tables-associated-with-ha-pairs-in-multiple-aws-azs">Changing route tables associated with HA pairs in multiple AWS AZs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can modify the AWS route tables that include routes to the floating IP addresses for an HA pair. You might do this if new NFS or CIFS clients need to access an HA pair in AWS.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>From the working environment, click the menu icon and then click <strong>Information</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Route Tables</strong>.</p>
+</li>
+<li>
+<p>Modify the list of selected route tables and then click <strong>Save</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Result</div>
+<p>Cloud Manager sends an AWS request to modify the route tables.</p>
+</div>
+</div>
+</div>
+
+        </article>
+        <!-- Page Container -->
+      </div>
+
+      
+      <div class="page-nav-container">
+        <nav class="page-nav-fixed">
+          <div class="page-nav-title">On this page:</div>
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </nav>
+      </div>
+      
+
+    </div>
+  </div>
+</div>
+
+      </main>
+
+      <!-- Footer -->
+      
+      <footer class="n-footer n-footer--v1" style="border-top: solid 10px #DFDFDF;">
+        <div class="n-footer__bottom">
+          <div class="n-container">
+            <div class="n-footer__bottom-left">
+              <div class="n-footer__copyright">
+                  <a href="//www.netapp.com/us/legal/copyright.aspx" class="n-footer__copyright-link">© 2019 NetApp, Inc.</a>
+              </div>
+              <div class="n-footer__copyright">
+                <a href="https://library.netapp.com/ecm/ecm_download_file/ECMLP2848669" class="n-footer__copyright-link">Notice</a>
+              </div>
+              <div class="n-footer__copyright">
+                <a href="//www.netapp.com/us/legal/index.aspx" class="n-footer__copyright-link">Legal</a>
+              </div>
+              <div class="n-footer__social-links n-footer__copyright">
+                <ul class="n-footer__social-link-list">
+                  <li class="n-footer__social-link-list-item">
+                    <a class="n-footer__social-link" data-ntap-social="follow-blog" href="http://blog.netapp.com" target="_blank" title="blog" alt="blog">
+                      <span class="n-footer__social-link-text">blog</span>
+                      <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+                        <title>blog@</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/common/svg/sprite.svg#blog"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li class="n-footer__social-link-list-item">
+                    <a class="n-footer__social-link" data-ntap-social="follow-community" href="http://community.netapp.com/" target="_blank" title="community" alt="community">
+                      <span class="n-footer__social-link-text">community</span>
+                      <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                        <title>community@</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/common/svg/sprite.svg#comments"></use>
+                      </svg>
+                    </a>
+                  </li>
+
+                  <li class="n-footer__social-link-list-item">
+                    <a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netappdoc" target="_blank" title="twitter" alt="twitter">
+                      <span class="n-footer__social-link-text">twitter</span>
+                      <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                        <title>twitter@</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/common/svg/sprite.svg#twitter"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li class="n-footer__social-link-list-item">
+                    <a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTechCommTV/" target="_blank" title="youtube" alt="youtube">
+                      <span class="n-footer__social-link-text">youtube</span>
+                      <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+                        <title>youtube@</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/common/svg/sprite.svg#youtube"></use>
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="n-footer__bottom-right">
+              <div class="n-footer__copyright">
+                <a href="https://docs.netapp.com/us-en/contribute/" class="n-footer__copyright-link">Contribute</a>
+              </div>
+              <div class="n-footer__copyright">
+                <a target="_self" class="n-footer__copyright-link" href="javascript:netapp_mailto()">Email your feedback</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <script src="/occm36/common/js/components.js"></script>
+    <script src="/occm36/common/js/doc-components.js"></script>
+
+    <!-- Elasticsearch JS -->
+    <script type="text/javascript" src='/occm36/js/bundle.js'></script>
+
+    <!-- Syntax Highlighting -->
+    <script type="text/javascript" src='/occm36/js/prism.js'></script>
+    <script type="text/javascript" src='/occm36/js/prism-curl.js'></script>
+
+  </body>
+
+  
+</html>

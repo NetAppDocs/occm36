@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <title>Launching Cloud Volumes ONTAP in AWS | NetApp Cloud Docs</title>
+  <meta charset="utf-8">
+  <meta property="og:title" content="Launching Cloud Volumes ONTAP in AWS | NetApp Cloud Docs" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/occm36/us-en/task_deploying_otc_aws.html" />
+	<meta property="og:description" content="You can launch Cloud Volumes ONTAP instances in a single-system configuration or as an HA pair in AWS." />
+  <meta property="og:image" content="https://docs.netapp.com/occm36/us-en/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/>
+  
+  <meta http-equiv="nss-product" content="OnCommand"/>
+  
+  <meta name="description" content="You can launch Cloud Volumes ONTAP instances in a single-system configuration or as an HA pair in AWS.">
+  <meta name="keywords" content=" Cloud Volumes ONTAP, deploying, launching, creating, deploy, launch, create, aws, serial number, license key, byol, test instance, aws tags, tags, location, vpc, encryption, security group, aws-managed encryption, disk size, disk type, write speed, licensing, IAM role, preconfigured package, access control, volume protection, usage profile, register, CIFS share, quota, qtree, WorkingEnvironmentId, HA, high availability">
+  
+
+  <!-- Icons -->
+  <link rel="icon" href="/occm36/us-en/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed -->
+  
+  <link rel="alternate" type="application/rss+xml" title="NetApp Cloud Docs" href="/occm36/us-en/feed.xml">
+  
+
+  <!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- LUCI CSS Content -->
+  <link rel="stylesheet" href="/occm36/us-en/common/css/esb.min.css">
+  <link rel="stylesheet" href="/occm36/us-en/common/css/netapp-library.min.css">
+  <link rel="stylesheet" href="/occm36/us-en/common/css/doc.css">
+  <link rel="stylesheet" href="/occm36/us-en/common/css/doc-components.css">
+
+  <link rel="stylesheet" href='/occm36/us-en/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/occm36/us-en/css/na-search.css' type='text/css'>
+  <link rel='stylesheet' href='/occm36/us-en/css/clouddocs.css' type='text/css'>
+
+  <!-- Font awesome seems to affect our GitHub Icon and generic "arrow box" for external links. -->
+  <link rel="stylesheet" type="text/css" href="/occm36/us-en/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="/occm36/us-en/css/customstyles.css"> -->
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/occm36/us-en/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel='stylesheet' href='/occm36/us-en/css/netapp.css' type='text/css'>
+
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+  
+    <script src='/occm36/us-en/js/na-search.js'></script>
+  
+
+  
+  <link rel='stylesheet' href='/occm36/us-en/css/na-pagenav.css' type='text/css' id="pagenav-css">
+  <script src='/occm36/us-en/js/na-pagenav.js'></script>
+  
+
+  <link rel='stylesheet' href='/occm36/us-en/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/occm36/us-en/css/prism-netapp.css' type='text/css'>
+
+  <script src='/occm36/us-en/js/clouddocs.js'></script>
+  <script src='/occm36/us-en/js/s_code_impl.js'></script>
+  <script src='/occm36/us-en/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/occm36/us-en/js/toc.js'></script>
+  <script src='/occm36/us-en/js/customscripts.js'></script>
+
+  <script>
+      $(document).ready(function() {
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco({
+              caretHtml: '',
+              accordion: true,
+              openClass: 'active', // open
+              save: false, // leave false or nav highlighting doesn't work right
+              cookie: {
+                  name: 'navgoco',
+                  expires: false,
+                  path: '/'
+              },
+              slide: {
+                  duration: 400,
+                  easing: 'swing'
+              }
+          });
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script>
+
+  <!-- Controls the i18n Browser Redirection -->
+  <script>
+    var siteLocales = [];
+    
+      siteLocales.push("us-en");
+    
+
+    standardizeUrl(siteLocales, "clouddocs.netapp.com", "https://docs.netapp.com");
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-81697994-3');
+  }
+  </script>
+</head>
+
+
+  <body class="n-doc__component-detail">
+    <a href="#n-main-content" class="visually-hidden">Skip to main content</a>
+<div class="n-off-canvas-menu">
+  <div class="n-off-canvas-menu__menu">
+    <div class="n-off-canvas-menu__menu-inner">
+      <div class="n-off-canvas-menu__property-title">NetApp Cloud Docs</div>
+      <ul class="n-off-canvas-menu__property-navigation-list">
+        <li class="n-off-canvas-menu__property-navigation-list-item ">
+          <a href="https://docs.netapp.com/us-en/" class="n-off-canvas-menu__property-navigation-link">
+            Home
+          </a>
+          <div class="n-off-canvas-menu__child-menu">
+            <ul class="n-menu__list">
+
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="n-off-canvas-menu__global-navigation-list">
+         <li class="n-off-canvas-menu__global-navigation-list-header">More From NetApp</li>
+         <li class="n-off-canvas-menu__global-navigation-list-item"><a href="#" class="n-off-canvas-menu__global-navigation-link">Netapp.com</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+    <div class="n-off-canvas-menu__content-wrap">
+      <!-- Header -->
+      <header>
+  <!-- Top Hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+            <li class="n-top-hat__list-item">
+              <a href="http://www.netapp.com" class="n-top-hat__link">NetApp.com</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Property Bar -->
+  <div class="n-property-bar n-property-bar--v3">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link"><span class="n-property-bar__menu-toggle-text">Menu</span><svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+          <title>bars</title>
+          <use xlink:href="/occm36/us-en/common/svg/sprite.svg#bars"></use>
+        </svg></a>
+      </div>
+      <div class="n-property-bar__property-mark n-property-bar__property-mark--has-property-name">
+        <a class="n-property-bar__property-link" href="https://docs.netapp.com/us-en/">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/occm36/us-en/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-property-bar__logo-svg" aria-labelledby="title">
+              <title>NetApp</title>
+              <use xlink:href="/occm36/us-en/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+          <h2 class="n-property-bar__property-name">Cloud Docs</h2>
+        </a>
+      </div>
+
+      
+      <div id="search-demo-container" class="n-property-bar__search">
+        <div id="react-search"></div>
+      </div>
+      
+
+      <div id="ie-i18n-menu" class="n-property-bar__utils">
+        <ul class="n-property-navigation-bar__utils-list">
+          <li class="n-property-navigation-bar__utils-list-item ie-i18n-container">
+            <a href="#" class="n-property-navigation-bar__utils-link n-property-navigation-bar__nav-link n-property-navigation-bar__language-selector-toggle ie-i18n-link" data-menu-id="n-property-navigation-bar__menu--language-selector">
+              <span class="ie-i18n-lang">English</span>
+              <svg class="ie-i18n-icon-container" class="n-property-bar__logo-svg" aria-labelledby="title">
+                <title>globe</title>
+                <use xlink:href="/occm36/us-en/common/svg/sprite.svg#globe" class="n-icon-globe n-globe__icon"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="n-property-bar__menus">
+      <div id="n-property-navigation-bar__menu--language-selector" class="n-menu n-menu--v3">
+        <div class="n-language-selector-menu">
+          <div class="n-language-selector-menu__header">
+            <span class="n-language-selector-menu__title">Select Your Language</span>
+          </div>
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list">
+
+
+                
+                <li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="/occm36/us-en/" class="n-menu__header-text">English</a>
+                </li>
+                
+              </ul>
+            </li>
+          </ul>
+          <div class="menu__footer">
+            <p>Current Language: English
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+      <!-- Content -->
+      <main role="main" id="n-main-content" class="n-main-content">
+        <div class="n-container">
+  <div class="n-row">
+    <div class="n-doc n-doc__component-list">
+      <!-- Sidebar Column -->
+      
+      <div class="col-md-3" >
+          
+
+<ul id="mysidebar" class="nav">
+  
+
+  
+    <li><a href="index.html">Cloud Manager 3.6 docs</a></li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Release notes</a>
+      <ul>
+        
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Cloud Manager</a>
+      <ul>
+        
+
+  
+    <li><a href="reference_new_occm.html">What's new</a></li>
+  
+
+  
+    <li><a href="reference_issues.html">Known issues</a></li>
+  
+
+  
+    <li><a href="reference_limitations.html">Known limitations</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <li><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap/" target="_blank">Cloud Volumes ONTAP</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Concepts</a>
+      <ul>
+        
+
+  
+    <li><a href="concept_overview.html">Product overview</a></li>
+  
+
+  
+    <li><a href="concept_cloud_central.html">NetApp Cloud Central</a></li>
+  
+
+  
+    <li><a href="concept_accounts_and_permissions.html">Accounts and permissions</a></li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Storage</a>
+      <ul>
+        
+
+  
+    <li><a href="concept_storage.html">Overview</a></li>
+  
+
+  
+    <li><a href="concept_data_tiering.html">Data tiering</a></li>
+  
+
+  
+    <li><a href="concept_storage_management.html">Storage management</a></li>
+  
+
+  
+    <li><a href="concept_worm.html">WORM storage</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">High-availability pairs</a>
+      <ul>
+        
+
+  
+    <li><a href="concept_ha.html">HA pairs in AWS</a></li>
+  
+
+  
+    <li><a href="concept_ha_azure.html">HA pairs in Azure</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <li><a href="concept_evaluating.html">Evaluating</a></li>
+  
+
+  
+    <li><a href="concept_licensing.html">Licensing</a></li>
+  
+
+  
+    <li><a href="concept_security.html">Security</a></li>
+  
+
+  
+    <li><a href="concept_performance.html">Performance</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Getting started</a>
+      <ul>
+        
+
+  
+    <li><a href="reference_deployment_overview.html">Deployment overview</a></li>
+  
+
+  
+    <li><a href="task_getting_started_aws.html">Getting started in AWS</a></li>
+  
+
+  
+    <li><a href="task_getting_started_azure.html">Getting started in Azure</a></li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Setting up Cloud Manager</a>
+      <ul>
+        
+
+  
+    <li><a href="task_adding_cloud_accounts.html">Adding cloud provider accounts</a></li>
+  
+
+  
+    <li><a href="task_adding_nss_accounts.html">Adding NetApp Support Site accounts</a></li>
+  
+
+  
+    <li><a href="task_installing_https_cert.html">Installing an HTTPS certificate</a></li>
+  
+
+  
+    <li><a href="task_setting_up_users_tenants.html">Setting up users and tenants</a></li>
+  
+
+  
+    <li><a href="task_setting_up_kms.html">Setting up the AWS KMS</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Networking requirements</a>
+      <ul>
+        
+
+  
+    <li><a href="reference_networking_cloud_manager.html">Cloud Manager</a></li>
+  
+
+  
+    <li><a href="reference_networking_aws.html">Cloud Volumes ONTAP for AWS</a></li>
+  
+
+  
+    <li><a href="task_setting_up_transit_gateway.html">Setting up an AWS transit gateway</a></li>
+  
+
+  
+    <li><a href="reference_networking_azure.html">Cloud Volumes ONTAP for Azure</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Additional deployment options</a>
+      <ul>
+        
+
+  
+    <li><a href="reference_cloud_mgr_reqs.html">Cloud Manager host requirements</a></li>
+  
+
+  
+    <li><a href="task_installing_linux.html">Installing Cloud Manager on a Linux host</a></li>
+  
+
+  
+    <li><a href="task_launching_aws_mktp.html">Deploying Cloud Manager from the AWS Marketplace</a></li>
+  
+
+  
+    <li><a href="task_launching_azure_mktp.html">Deploying Cloud Manager from the Azure Marketplace</a></li>
+  
+
+  
+    <li><a href="task_installing_azure_gov.html">Deploying Cloud Manager in an Azure Gov region</a></li>
+  
+
+  
+    <li><a href="task_installing_azure_germany.html">Deploying Cloud Manager in the Azure Germany region</a></li>
+  
+
+  
+    <li><a href="media/c2s.pdf">Getting started in the AWS C2S environment</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Deploying Cloud Volumes ONTAP</a>
+      <ul>
+        
+
+  
+    <li><a href="reference_before.html">Before you begin</a></li>
+  
+
+  
+    <li><a href="task_logging_in.html">Logging in to Cloud Manager</a></li>
+  
+
+  
+    <li><a href="task_planning_your_config.html">Planning your configuration</a></li>
+  
+
+  
+    <li><a href="task_enabling_flash_cache.html">Enabling Flash Cache on Cloud Volumes ONTAP in AWS</a></li>
+  
+
+  
+    <li class="active"><a href="task_deploying_otc_aws.html">Launching Cloud Volumes ONTAP in AWS</a></li>
+  
+
+  
+    <li><a href="task_deploying_otc_azure.html">Launching Cloud Volumes ONTAP in Azure</a></li>
+  
+
+  
+    <li><a href="task_registering.html">Registering pay-as-you-go systems</a></li>
+  
+
+  
+    <li><a href="task_setting_up_ontap_cloud.html">Setting up Cloud Volumes ONTAP</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Provisioning storage</a>
+      <ul>
+        
+
+  
+    <li><a href="task_provisioning_storage.html">Creating volumes, aggregates, and LUNs</a></li>
+  
+
+  
+    <li><a href="task_tiering.html">Tiering inactive data to object storage</a></li>
+  
+
+  
+    <li><a href="task_connecting_kubernetes.html">Using Cloud Volumes ONTAP as persistent storage</a></li>
+  
+
+  
+    <li><a href="task_encrypting_volumes.html">Encrypting volumes with NetApp Volume Encryption</a></li>
+  
+
+  
+    <li><a href="task_managing_storage.html">Managing existing storage</a></li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Provisioning NFS volumes from the Volume View</a>
+      <ul>
+        
+
+  
+    <li><a href="task_changing_volume_view.html">Changing to the Volume View</a></li>
+  
+
+  
+    <li><a href="task_provisioning_volume_view.html">Creating and mounting NFS volumes</a></li>
+  
+
+  
+    <li><a href="task_managing_volume_view.html">Managing NFS volumes</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Managing data across a hybrid cloud</a>
+      <ul>
+        
+
+  
+    <li><a href="task_discovering_ontap.html">Discovering and managing ONTAP clusters</a></li>
+  
+
+  
+    <li><a href="task_replicating_data.html">Replicating data to and from the cloud</a></li>
+  
+
+  
+    <li><a href="task_syncing_s3.html">Syncing data to AWS S3</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Administering Cloud Volumes ONTAP</a>
+      <ul>
+        
+
+  
+    <li><a href="task_connecting_to_otc.html">Connecting to Cloud Volumes ONTAP</a></li>
+  
+
+  
+    <li><a href="task_updating_ontap_cloud.html">Updating software</a></li>
+  
+
+  
+    <li><a href="task_modifying_ontap_cloud.html">Modifying system configurations</a></li>
+  
+
+  
+    <li><a href="task_managing_state.html">Stopping and starting systems</a></li>
+  
+
+  
+    <li><a href="task_monitoring_costs.html">Monitoring AWS costs</a></li>
+  
+
+  
+    <li><a href="task_protecting_ransomware.html">Improving ransomware protection</a></li>
+  
+
+  
+    <li><a href="task_adding_ontap_cloud.html">Adding existing systems</a></li>
+  
+
+  
+    <li><a href="task_deleting_working_env.html">Deleting systems</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Administering Cloud Manager</a>
+      <ul>
+        
+
+  
+    <li><a href="task_updating_cloud_manager.html">Updating Cloud Manager</a></li>
+  
+
+  
+    <li><a href="task_backing_up_restoring.html">Backing up and restoring</a></li>
+  
+
+  
+    <li><a href="task_removing.html">Removing working environments</a></li>
+  
+
+  
+    <li><a href="task_editing_users.html">Editing user accounts</a></li>
+  
+
+  
+    <li><a href="task_configuring_proxy.html">Configuring proxy settings</a></li>
+  
+
+  
+    <li><a href="task_renewing_cert.html">Renewing the HTTPS certificate</a></li>
+  
+
+  
+    <li><a href="task_uninstalling.html">Uninstalling Cloud Manager</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">APIs and automation</a>
+      <ul>
+        
+
+  
+    <li><a href="https://docs.netapp.com/us-en/occm/api.html" target="_blank">API Developer Guide</a></li>
+  
+
+  
+    <li><a href="reference_infrastructure_as_code.html">Automation samples</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <!-- Check Container -->
+    <li class="subfolders">
+      <a href="#">Reference</a>
+      <ul>
+        
+
+  
+    <li><a href="reference_integration_faq.html">FAQ for Cloud Central integration</a></li>
+  
+
+  
+    <li><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_supported_configs_95.html" target="_blank">Supported configurations for Cloud Volumes ONTAP</a></li>
+  
+
+  
+    <li><a href="https://cloud.netapp.com/cloud-volumes-global-regions" target="_blank">Supported regions</a></li>
+  
+
+  
+    <li><a href="reference_security_groups.html">Security group rules for AWS</a></li>
+  
+
+  
+    <li><a href="reference_security_groups_azure.html">Security group rules for Azure</a></li>
+  
+
+  
+    <li><a href="reference_permissions.html">Permissions</a></li>
+  
+
+  
+    <li><a href="reference_default_configs.html">Default configurations</a></li>
+  
+
+  
+    <li><a href="reference_user_roles.html">User roles</a></li>
+  
+
+  
+    <li><a href="reference_additional_info.html">Related links</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+    <li><a href="reference_earlier_versions.html">Earlier versions</a></li>
+  
+
+  
+    <li><a href="reference_legal_notices.html">Legal notices</a></li>
+  
+
+
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+      </div>
+      
+
+      <div class="n-doc__component-detail-content n-doc__component-detail-content--show-code">
+        <!-- Begin of page container -->
+        <article class="page-content">
+          
+<div class="sectionbody">
+  <div class="paragraph lead">
+    <p class="downlevel" id="downlevel-header">
+      This documentation is for a previous release of Cloud Manager. <a href="https://docs.netapp.com/us-en/occm/">Go to the docs for the latest release.</a>
+    </p>
+  </div>
+</div>
+
+
+<div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">Launching Cloud Volumes ONTAP in AWS
+    <span>
+      
+        <a target="_blank" href="https://github.com/NetAppDocs/occm36/blob/master/task_deploying_otc_aws.adoc" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a>
+        <a target="_blank" href="https://github.com/NetAppDocs/occm36/issues/new?body=Page%3A%20[Launching Cloud Volumes ONTAP in AWS](https://docs.netapp.com/us-en/occm36/task_deploying_otc_aws.html)" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Request doc changes</a>
+      
+    </span>
+  </h1>
+</div>
+
+<p class="page-details">
+
+<time datetime="2019-06-03 19:56:08 +0000">06/03/2019</time>
+
+
+<span>Contributors
+  
+  <a target="_blank" href="https://github.com/netapp-bcammett">
+    <img  class="avatar avatar-small"
+          alt="netapp-bcammett"
+          width="20" height="20"
+          src="https://avatars3.githubusercontent.com/u/18287750?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+</span>
+
+</p>
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>You can launch Cloud Volumes ONTAP in a single-system configuration or as an HA pair in AWS.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="launching-a-single-cloud-volumes-ontap-system-in-aws">Launching a single Cloud Volumes ONTAP system in AWS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you want to launch Cloud Volumes ONTAP in AWS, you need to create a new working environment in Cloud Manager.</p>
+</div>
+<div class="ulist">
+<div class="title">Before you begin</div>
+<ul>
+<li>
+<p>You should have prepared by choosing a configuration and by obtaining AWS networking information from your administrator. For details, see <a href="task_planning_your_config.html">Planning your Cloud Volumes ONTAP configuration</a>.</p>
+</li>
+<li>
+<p>If you want to launch a BYOL system, you must have the 20-digit serial number (license key).</p>
+</li>
+<li>
+<p>If you want to use CIFS, you must have set up DNS and Active Directory. For details, see <a href="reference_networking_aws.html">Networking requirements for Cloud Volumes ONTAP in AWS</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title">About this task</div>
+<p>Immediately after you create the working environment, Cloud Manager launches a test instance in the specified VPC to verify connectivity. If successful, Cloud Manager immediately terminates the instance and then starts deploying the Cloud Volumes ONTAP system. If Cloud Manager cannot verify connectivity, creation of the working environment fails. The test instance is either a t2.nano (for default VPC tenancy) or m3.medium (for dedicated VPC tenancy).</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>On the Working Environments page, click <strong>Add Working Environment</strong>.</p>
+</li>
+<li>
+<p>Under Create, select <strong>Cloud Volumes ONTAP</strong>.</p>
+</li>
+<li>
+<p>On the Details and Credentials page, optionally change the AWS account, enter a working environment name, add tags if needed, and then enter a password.</p>
+<div class="paragraph">
+<p>Some of the fields in this page are self-explanatory. The following table describes fields for which you might need guidance:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Field</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Switch Account</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">You can choose a different account if you added additional Cloud Provider Accounts. For details, see <a href="task_adding_cloud_accounts.html">Adding Cloud Provider Accounts to Cloud Manager</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Working Environment Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cloud Manager uses the working environment name to name both the Cloud Volumes ONTAP system and the Amazon EC2 instance. It also uses the name as the prefix for the predefined security group, if you select that option.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS tags are metadata for your AWS resources. Cloud Manager adds the tags to the Cloud Volumes ONTAP instance and each AWS resource associated with the instance.<br>
+<br>
+You can add up to four tags from the user interface when creating a working environment, and then you can add more after its created. Note that the API does not limit you to four tags when creating a working environment.<br>
+<br>
+For information about tags, refer to <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html" target="_blank" rel="noopener">AWS Documentation: Tagging your Amazon EC2 Resources</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Credentials</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">These are the credentials for the Cloud Volumes ONTAP cluster admin account. You can use these credentials to connect to Cloud Volumes ONTAP through OnCommand System Manager or its CLI.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If AWS keys were not specified for your Cloud Manager account, you are prompted to enter them after you click Continue. You need to enter them before you can proceed.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>On the Location &amp; Connectivity page, enter the network information that you recorded in the AWS worksheet and then click <strong>Continue</strong>.</p>
+<div class="paragraph">
+<p>The following image shows the Location &amp; Connectivity page filled out:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_cot_vpc.gif" alt="Screen shot: Shows the VPC page filled out for a new Cloud Volumes ONTAP instance."></span></p>
+</div>
+</li>
+<li>
+<p>On the Data Encryption page, choose no data encryption or AWS-managed encryption.</p>
+<div class="paragraph">
+<p>For AWS-managed encryption, you can choose a different Customer Master Key (CMK) from your account or another AWS account.</p>
+</div>
+<div class="paragraph">
+<p><a href="task_setting_up_kms.html">Learn how to set up the AWS KMS for Cloud Volumes ONTAP</a>.</p>
+</div>
+<div class="paragraph">
+<p><a href="concept_security.html#encryption-of-data-at-rest">Learn more about supported encryption technologies</a>.</p>
+</div>
+</li>
+<li>
+<p>On the License and Support Site Account page, specify whether you want to use pay-as-you-go or BYOL, and then specify a NetApp Support Site account.</p>
+<div class="paragraph">
+<p>To understand how licenses work, see <a href="concept_licensing.html">Licensing</a>.</p>
+</div>
+<div class="paragraph">
+<p>A NetApp Support Site Account is optional for pay-as-you-go, but required for BYOL systems. <a href="task_adding_nss_accounts.html">Learn how to add NetApp Support Site accounts</a>.</p>
+</div>
+</li>
+<li>
+<p>On the Preconfigured Packages page, select one of the packages to quickly launch Cloud Volumes ONTAP, or click <strong>Create my own configuration</strong>.</p>
+<div class="paragraph">
+<p>If you choose one of the packages, you only need to specify a volume and then review and approve the configuration.</p>
+</div>
+</li>
+<li>
+<p>On the IAM Role page, you should keep the default option to let Cloud Manager create the role for you.</p>
+<div class="paragraph">
+<p>If you prefer to use your own policy, it must meet <a href="http://mysupport.netapp.com/cloudontap/support/iampolicies" target="_blank" rel="noopener">policy requirements for Cloud Volumes ONTAP nodes</a>.</p>
+</div>
+</li>
+<li>
+<p>On the Licensing page, change the Cloud Volumes ONTAP version as needed, select a license, an instance type, the instance tenancy, and then click <strong>Continue</strong>.</p>
+<div class="paragraph">
+<p>If your needs change after you launch the instance, you can modify the license or instance type later.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If a newer Release Candidate, General Availability, or patch release is available for the selected version, then Cloud Manager updates the system to that version when creating the working environment. For example, the update occurs if you select Cloud Volumes ONTAP 9.4 RC1 and 9.4 GA is available. The update does not occur from one release to another—for example, from 9.3 to 9.4.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>On the Underlying Storage Resources page, choose settings for the initial aggregate: a disk type, a size for each disk, and whether S3 tiering should be enabled.</p>
+<div class="paragraph">
+<p>The disk type is for the initial volume. You can choose a different disk type for subsequent volumes.</p>
+</div>
+<div class="paragraph">
+<p>The disk size is for all disks in the initial aggregate and for any additional aggregates that Cloud Manager creates when you use the simple provisioning option. You can create aggregates that use a different disk size by using the advanced allocation option.</p>
+</div>
+<div class="paragraph">
+<p>For help choosing a disk type and size, see <a href="task_planning_your_config.html#sizing-your-system-in-aws">Sizing your system in AWS</a>.</p>
+</div>
+</li>
+<li>
+<p>On the Write Speed &amp; WORM page, choose <strong>Normal</strong> or <strong>High</strong> write speed, and activate write once, read many (WORM) storage, if desired.</p>
+<div class="paragraph">
+<p><a href="task_planning_your_config.html#choosing-a-write-speed">Learn more about write speed</a>.</p>
+</div>
+<div class="paragraph">
+<p><a href="concept_worm.html">Learn more about WORM storage</a>.</p>
+</div>
+</li>
+<li>
+<p>On the Create Volume page, enter details for the new volume, and then click <strong>Continue</strong>.</p>
+<div class="paragraph">
+<p>You might skip this step if you want to create a volume for iSCSI. Cloud Manager sets up volumes for NFS and CIFS only.</p>
+</div>
+<div class="paragraph">
+<p>Some of the fields in this page are self-explanatory. The following table describes fields for which you might need guidance:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Field</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Size</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The maximum size that you can enter largely depends on whether you enable thin provisioning, which enables you to create a volume that is bigger than the physical storage currently available to it.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Access control (for NFS only)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An export policy defines the clients in the subnet that can access the volume. By default, Cloud Manager enters a value that provides access to all instances in the subnet.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Permissions and Users / Groups (for CIFS only)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">These fields enable you to control the level of access to a share for users and groups (also called access control lists or ACLs). You can specify local or domain Windows users or groups, or UNIX users or groups. If you specify a domain Windows user name, you must include the user&#8217;s domain using the format domain\username.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Snapshot Policy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A Snapshot copy policy specifies the frequency and number of automatically created NetApp Snapshot copies. A NetApp Snapshot copy is a point-in-time file system image that has no performance impact and requires minimal storage. You can choose the default policy or none. You might choose none for transient data: for example, tempdb for Microsoft SQL Server.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The following image shows the Volume page filled out for the CIFS protocol:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_cot_vol.gif" alt="Screen shot: Shows the Volume page filled out for a Cloud Volumes ONTAP instance."></span></p>
+</div>
+</li>
+<li>
+<p>If you chose the CIFS protocol, set up a CIFS server on the CIFS Setup page:</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Field</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNS Primary and Secondary IP Address</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The IP addresses of the DNS servers that provide name resolution for the CIFS server.<br>
+The listed DNS servers must contain the service location records (SRV) needed to locate the Active Directory LDAP servers and domain controllers for the domain that the CIFS server will join.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Active Directory Domain to join</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The FQDN of the Active Directory (AD) domain that you want the CIFS server to join.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Credentials authorized to join the domain</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name and password of a Windows account with sufficient privileges to add computers to the specified Organizational Unit (OU) within the AD domain.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CIFS server NetBIOS name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A CIFS server name that is unique in the AD domain.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Organizational Unit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The organizational unit within the AD domain to associate with the CIFS server. The default is CN=Computers.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNS Domain</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The DNS domain for the Cloud Volumes ONTAP storage virtual machine (SVM). In most cases, the domain is the same as the AD domain.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NTP Server</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Select <strong>Use Active Directory Domain</strong> to configure an NTP server using the Active Directory DNS. If you need to configure an NTP server using a different address, then you should use the API. See the <a href="api.html" target="_blank" rel="noopener">Cloud Manager API Developer Guide</a> for details.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>On the Usage Profile, Disk Type, and Tiering Policy page, choose whether you want to enable storage efficiency features and edit the S3 tiering policy, if needed.</p>
+<div class="paragraph">
+<p>For more information, see <a href="task_planning_your_config.html#choosing-a-volume-usage-profile">Understanding volume usage profiles</a> and <a href="concept_data_tiering.html">Data tiering overview</a>.</p>
+</div>
+</li>
+<li>
+<p>On the Review &amp; Approve page, review and confirm your selections:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Review details about the configuration.</p>
+</li>
+<li>
+<p>Click <strong>More information</strong> to review details about support and the AWS resources that Cloud Manager will purchase.</p>
+</li>
+<li>
+<p>Select the <strong>I understand&#8230;&#8203;</strong> check boxes.</p>
+</li>
+<li>
+<p>Click <strong>Go</strong>.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Result</div>
+<p>Cloud Manager launches the Cloud Volumes ONTAP instance. You can track the progress in the timeline.</p>
+</div>
+<div class="paragraph">
+<p>If you experience any issues launching the Cloud Volumes ONTAP instance, review the failure message. You can also select the working environment and click Re-create environment.</p>
+</div>
+<div class="paragraph">
+<p>For additional help, go to <a href="https://mysupport.netapp.com/cloudontap" target="_blank" rel="noopener">NetApp Cloud Volumes ONTAP Support</a>.</p>
+</div>
+<div class="ulist">
+<div class="title">After you finish</div>
+<ul>
+<li>
+<p>If you provisioned a CIFS share, give users or groups permissions to the files and folders and verify that those users can access the share and create a file.</p>
+</li>
+<li>
+<p>If you want to apply quotas to volumes, use System Manager or the CLI.</p>
+<div class="paragraph">
+<p>Quotas enable you to restrict or track the disk space and number of files used by a user, group, or qtree.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="launching-a-cloud-volumes-ontap-ha-pair-in-aws">Launching a Cloud Volumes ONTAP HA pair in AWS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you want to launch a Cloud Volumes ONTAP HA pair in AWS, you need to create an HA working environment in Cloud Manager.</p>
+</div>
+<div class="ulist">
+<div class="title">Before you begin</div>
+<ul>
+<li>
+<p>You should have prepared by choosing a configuration and by obtaining AWS networking information from your administrator. For details, see <a href="task_planning_your_config.html">Planning your Cloud Volumes ONTAP configuration</a>.</p>
+</li>
+<li>
+<p>If you purchased BYOL licenses, you must have a 20-digit serial number (license key) for each node.</p>
+</li>
+<li>
+<p>If you want to use CIFS, you must have set up DNS and Active Directory. For details, see <a href="reference_networking_aws.html">Networking requirements for Cloud Volumes ONTAP in AWS</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title">About this task</div>
+<p>Immediately after you create the working environment, Cloud Manager launches a test instance in the specified VPC to verify connectivity. If successful, Cloud Manager immediately terminates the instance and then starts deploying the Cloud Volumes ONTAP system. If Cloud Manager cannot verify connectivity, creation of the working environment fails. The test instance is either a t2.nano (for default VPC tenancy) or m3.medium (for dedicated VPC tenancy).</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>On the Working Environments page, click <strong>Add Working Environment</strong>.</p>
+</li>
+<li>
+<p>Under Create, select <strong>Cloud Volumes ONTAP HA</strong>.</p>
+</li>
+<li>
+<p>On the Details and Credentials page, optionally change the AWS account, enter a working environment name, add tags if needed, and then enter a password.</p>
+<div class="paragraph">
+<p>Some of the fields in this page are self-explanatory. The following table describes fields for which you might need guidance:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Field</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Switch Account</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">You can choose a different account if you added additional Cloud Provider Accounts. For details, see <a href="task_adding_cloud_accounts.html">Adding Cloud Provider Accounts to Cloud Manager</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Working Environment Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cloud Manager uses the working environment name to name both the Cloud Volumes ONTAP system and the Amazon EC2 instance. It also uses the name as the prefix for the predefined security group, if you select that option.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS tags are metadata for your AWS resources. Cloud Manager adds the tags to the Cloud Volumes ONTAP instance and each AWS resource associated with the instance. For information about tags, refer to <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html" target="_blank" rel="noopener">AWS Documentation: Tagging your Amazon EC2 Resources</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Credentials</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">These are the credentials for the Cloud Volumes ONTAP cluster admin account. You can use these credentials to connect to Cloud Volumes ONTAP through OnCommand System Manager or its CLI.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If AWS keys were not specified for your Cloud Manager account, you are prompted to enter them after you click Continue. You must enter the AWS keys before you proceed.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>On the HA Deployment Models page, choose an HA configuration.</p>
+<div class="paragraph">
+<p>For an overview of the deployment models, see <a href="concept_ha.html">Cloud Volumes ONTAP HA for AWS</a>.</p>
+</div>
+</li>
+<li>
+<p>On the Region &amp; VPC page, enter the network information that you recorded in the AWS worksheet and then click <strong>Continue</strong>.</p>
+<div class="paragraph">
+<p>The following image shows the Location page filled out for a multiple AZ configuration:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_cot_vpc_ha.gif" alt="Screen shot: Shows the VPC page filled out for an HA configuration. A different availability zone is selected for each instance."></span></p>
+</div>
+</li>
+<li>
+<p>On the Connectivity and SSH Authentication page, choose connection methods for the HA pair and the mediator.</p>
+</li>
+<li>
+<p>If you chose multiple AZs, specify the floating IP addresses and then click <strong>Continue</strong>.</p>
+<div class="paragraph">
+<p>The IP addresses must be outside of the CIDR block for all VPCs in the region. For additional details, see <a href="reference_networking_aws.html#aws-networking-requirements-for-cloud-volumes-ontap-ha-in-multiple-azs">AWS networking requirements for Cloud Volumes ONTAP HA in multiple AZs</a>.</p>
+</div>
+</li>
+<li>
+<p>If you chose multiple AZs, select the route tables that should include routes to the floating IP addresses and then click <strong>Continue</strong>.</p>
+<div class="paragraph">
+<p>If you have more than one route table, it is very important to select the correct route tables. Otherwise, some clients might not have access to the Cloud Volumes ONTAP HA pair. For more information about route tables, refer to <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Route_Tables.html" target="_blank" rel="noopener">AWS Documentation: Route Tables</a>.</p>
+</div>
+</li>
+<li>
+<p>On the Data Encryption page, choose no data encryption or AWS-managed encryption.</p>
+<div class="paragraph">
+<p>For AWS-managed encryption, you can choose a different Customer Master Key (CMK) from your account or another AWS account.</p>
+</div>
+<div class="paragraph">
+<p><a href="task_setting_up_kms.html">Learn how to set up the AWS KMS for Cloud Volumes ONTAP</a>.</p>
+</div>
+<div class="paragraph">
+<p><a href="concept_security.html#encryption-of-data-at-rest">Learn more about supported encryption technologies</a>.</p>
+</div>
+</li>
+<li>
+<p>On the License and Support Site Account page, specify whether you want to use pay-as-you-go or BYOL, and then specify a NetApp Support Site account.</p>
+<div class="paragraph">
+<p>To understand how licenses work, see <a href="concept_licensing.html">Licensing</a>.</p>
+</div>
+<div class="paragraph">
+<p>A NetApp Support Site Account is optional for pay-as-you-go, but required for BYOL systems. <a href="task_adding_nss_accounts.html">Learn how to add NetApp Support Site accounts</a>.</p>
+</div>
+</li>
+<li>
+<p>On the Preconfigured Packages page, select one of the packages to quickly launch a Cloud Volumes ONTAP system, or click <strong>Create my own configuration</strong>.</p>
+<div class="paragraph">
+<p>If you choose one of the packages, you only need to specify a volume and then review and approve the configuration.</p>
+</div>
+</li>
+<li>
+<p>On the IAM Role page, you should keep the default option to let Cloud Manager create the roles for you.</p>
+<div class="paragraph">
+<p>If you prefer to use your own policy, it must meet <a href="http://mysupport.netapp.com/cloudontap/support/iampolicies" target="_blank" rel="noopener">policy requirements for Cloud Volumes ONTAP nodes and the HA mediator</a>.</p>
+</div>
+</li>
+<li>
+<p>On the Licensing page, change the Cloud Volumes ONTAP version as needed, select a license, an instance type, the instance tenancy, and then click <strong>Continue</strong>.</p>
+<div class="paragraph">
+<p>If your needs change after you launch the instances, you can modify the license or instance type later.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If a newer Release Candidate, General Availability, or patch release is available for the selected version, then Cloud Manager updates the system to that version when creating the working environment. For example, the update occurs if you select Cloud Volumes ONTAP 9.4 RC1 and 9.4 GA is available. The update does not occur from one release to another—for example, from 9.3 to 9.4.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>On the Underlying Storage Resources page, choose settings for the initial aggregate: a disk type, a size for each disk, and whether S3 tiering should be enabled.</p>
+<div class="paragraph">
+<p>The disk type is for the initial volume. You can choose a different disk type for subsequent volumes.</p>
+</div>
+<div class="paragraph">
+<p>The disk size is for all disks in the initial aggregate and for any additional aggregates that Cloud Manager creates when you use the simple provisioning option. You can create aggregates that use a different disk size by using the advanced allocation option.</p>
+</div>
+<div class="paragraph">
+<p>For help choosing a disk type and size, see <a href="task_planning_your_config.html#sizing-your-system-in-aws">Sizing your system in AWS</a>.</p>
+</div>
+</li>
+<li>
+<p>On the WORM page, activate write once, read many (WORM) storage, if desired.</p>
+<div class="paragraph">
+<p><a href="concept_worm.html">Learn more about WORM storage</a>.</p>
+</div>
+</li>
+<li>
+<p>On the Create Volume page, enter details for the new volume, and then click <strong>Continue</strong>.</p>
+<div class="paragraph">
+<p>You might skip this step if you want to create a volume for iSCSI. Cloud Manager sets up volumes for NFS and CIFS only.</p>
+</div>
+<div class="paragraph">
+<p>Some of the fields in this page are self-explanatory. The following table describes fields for which you might need guidance:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Field</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Size</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The maximum size that you can enter largely depends on whether you enable thin provisioning, which enables you to create a volume that is bigger than the physical storage currently available to it.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Access control (for NFS only)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An export policy defines the clients in the subnet that can access the volume. By default, Cloud Manager enters a value that provides access to all instances in the subnet.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Permissions and Users / Groups (for CIFS only)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">These fields enable you to control the level of access to a share for users and groups (also called access control lists or ACLs). You can specify local or domain Windows users or groups, or UNIX users or groups. If you specify a domain Windows user name, you must include the user&#8217;s domain using the format domain\username.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Snapshot Policy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A Snapshot copy policy specifies the frequency and number of automatically created NetApp Snapshot copies. A NetApp Snapshot copy is a point-in-time file system image that has no performance impact and requires minimal storage. You can choose the default policy or none. You might choose none for transient data: for example, tempdb for Microsoft SQL Server.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The following image shows the Volume page filled out for the CIFS protocol:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/screenshot_cot_vol.gif" alt="Screen shot: Shows the Volume page filled out for a Cloud Volumes ONTAP instance."></span></p>
+</div>
+</li>
+<li>
+<p>If you selected the CIFS protocol, set up a CIFS server on the CIFS Setup page:</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Field</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNS Primary and Secondary IP Address</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The IP addresses of the DNS servers that provide name resolution for the CIFS server.<br>
+The listed DNS servers must contain the service location records (SRV) needed to locate the Active Directory LDAP servers and domain controllers for the domain that the CIFS server will join.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Active Directory Domain to join</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The FQDN of the Active Directory (AD) domain that you want the CIFS server to join.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Credentials authorized to join the domain</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name and password of a Windows account with sufficient privileges to add computers to the specified Organizational Unit (OU) within the AD domain.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CIFS server NetBIOS name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A CIFS server name that is unique in the AD domain.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Organizational Unit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The organizational unit within the AD domain to associate with the CIFS server. The default is CN=Computers.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNS Domain</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The DNS domain for the Cloud Volumes ONTAP storage virtual machine (SVM). In most cases, the domain is the same as the AD domain.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NTP Server</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Select <strong>Use Active Directory Domain</strong> to configure an NTP server using the Active Directory DNS. If you need to configure an NTP server using a different address, then you should use the API. See the <a href="api.html" target="_blank" rel="noopener">Cloud Manager API Developer Guide</a> for details.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>On the Usage Profile, Disk Type, and Tiering Policy page, choose whether you want to enable storage efficiency features and edit the S3 tiering policy, if needed.</p>
+<div class="paragraph">
+<p>For more information, see <a href="task_planning_your_config.html#choosing-a-volume-usage-profile">Understanding volume usage profiles</a> and <a href="concept_data_tiering.html">Data tiering overview</a>.</p>
+</div>
+</li>
+<li>
+<p>On the Review &amp; Approve page, review and confirm your selections:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Review details about the configuration.</p>
+</li>
+<li>
+<p>Click <strong>More information</strong> to review details about support and the AWS resources that Cloud Manager will purchase.</p>
+</li>
+<li>
+<p>Select the <strong>I understand&#8230;&#8203;</strong> check boxes.</p>
+</li>
+<li>
+<p>Click <strong>Go</strong>.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Result</div>
+<p>Cloud Manager launches the Cloud Volumes ONTAP HA pair. You can track the progress in the timeline.</p>
+</div>
+<div class="paragraph">
+<p>If you experience any issues launching the HA pair, review the failure message. You can also select the working environment and click Re-create environment.</p>
+</div>
+<div class="paragraph">
+<p>For additional help, go to <a href="https://mysupport.netapp.com/cloudontap" target="_blank" rel="noopener">NetApp Cloud Volumes ONTAP Support</a>.</p>
+</div>
+<div class="ulist">
+<div class="title">After you finish</div>
+<ul>
+<li>
+<p>If you provisioned a CIFS share, give users or groups permissions to the files and folders and verify that those users can access the share and create a file.</p>
+</li>
+<li>
+<p>If you want to apply quotas to volumes, use System Manager or the CLI.</p>
+<div class="paragraph">
+<p>Quotas enable you to restrict or track the disk space and number of files used by a user, group, or qtree.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+        </article>
+        <!-- Page Container -->
+      </div>
+
+      
+      <div class="page-nav-container">
+        <nav class="page-nav-fixed">
+          <div class="page-nav-title">On this page:</div>
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </nav>
+      </div>
+      
+
+    </div>
+  </div>
+</div>
+
+      </main>
+
+      <!-- Footer -->
+      
+      <footer class="n-footer n-footer--v1" style="border-top: solid 10px #DFDFDF;">
+        <div class="n-footer__bottom">
+          <div class="n-container">
+            <div class="n-footer__bottom-left">
+              <div class="n-footer__copyright">
+                  <a href="//www.netapp.com/us/legal/copyright.aspx" class="n-footer__copyright-link">© 2019 NetApp, Inc.</a>
+              </div>
+              <div class="n-footer__copyright">
+                <a href="https://library.netapp.com/ecm/ecm_download_file/ECMLP2848669" class="n-footer__copyright-link">Notice</a>
+              </div>
+              <div class="n-footer__copyright">
+                <a href="//www.netapp.com/us/legal/index.aspx" class="n-footer__copyright-link">Legal</a>
+              </div>
+              <div class="n-footer__social-links n-footer__copyright">
+                <ul class="n-footer__social-link-list">
+                  <li class="n-footer__social-link-list-item">
+                    <a class="n-footer__social-link" data-ntap-social="follow-blog" href="http://blog.netapp.com" target="_blank" title="blog" alt="blog">
+                      <span class="n-footer__social-link-text">blog</span>
+                      <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+                        <title>blog@</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#blog"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li class="n-footer__social-link-list-item">
+                    <a class="n-footer__social-link" data-ntap-social="follow-community" href="http://community.netapp.com/" target="_blank" title="community" alt="community">
+                      <span class="n-footer__social-link-text">community</span>
+                      <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                        <title>community@</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#comments"></use>
+                      </svg>
+                    </a>
+                  </li>
+
+                  <li class="n-footer__social-link-list-item">
+                    <a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netappdoc" target="_blank" title="twitter" alt="twitter">
+                      <span class="n-footer__social-link-text">twitter</span>
+                      <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                        <title>twitter@</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#twitter"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li class="n-footer__social-link-list-item">
+                    <a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTechCommTV/" target="_blank" title="youtube" alt="youtube">
+                      <span class="n-footer__social-link-text">youtube</span>
+                      <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+                        <title>youtube@</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#youtube"></use>
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="n-footer__bottom-right">
+              <div class="n-footer__copyright">
+                <a href="https://docs.netapp.com/us-en/contribute/" class="n-footer__copyright-link">Contribute</a>
+              </div>
+              <div class="n-footer__copyright">
+                <a target="_self" class="n-footer__copyright-link" href="javascript:netapp_mailto()">Email your feedback</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <script src="/occm36/us-en/common/js/components.js"></script>
+    <script src="/occm36/us-en/common/js/doc-components.js"></script>
+
+    <!-- Elasticsearch JS -->
+    <script type="text/javascript" src='/occm36/us-en/js/bundle.js'></script>
+
+    <!-- Syntax Highlighting -->
+    <script type="text/javascript" src='/occm36/us-en/js/prism.js'></script>
+    <script type="text/javascript" src='/occm36/us-en/js/prism-curl.js'></script>
+
+  </body>
+
+  
+</html>
