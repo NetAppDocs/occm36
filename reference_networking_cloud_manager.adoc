@@ -48,22 +48,24 @@ AWS services (amazonaws.com):
 The exact endpoint depends on the region in which you deploy Cloud Volumes ONTAP. https://docs.aws.amazon.com/general/latest/gr/rande.html[Refer to AWS documentation for details.^]
 | Enables Cloud Manager to deploy and manage Cloud Volumes ONTAP in AWS.
 
-| api.services.cloud.netapp.com:443 | API requests to NetApp Cloud Central.
+| \https://api.services.cloud.netapp.com:443 | API requests to NetApp Cloud Central.
 
-| cloud.support.netapp.com.s3.us-west-1.amazonaws.com	| Provides access to software images, manifests, and templates.
+| \https://cloud.support.netapp.com.s3.us-west-1.amazonaws.com	| Provides access to software images, manifests, and templates.
 
 |
-cognito-idp.us-east-1.amazonaws.com
-cognito-identity.us-east-1.amazonaws.com
+\https://cognito-idp.us-east-1.amazonaws.com
+\https://cognito-identity.us-east-1.amazonaws.com
 | Enables Cloud Manager to access and download manifests, templates, and Cloud Volumes ONTAP upgrade images.
 
-| kinesis.us-east-1.amazonaws.com	| Enables NetApp to stream data from audit records.
+| \https://kinesis.us-east-1.amazonaws.com	| Enables NetApp to stream data from audit records.
+
+| \https://cloudmanager.cloud.netapp.com | Communication with the Cloud Manager service, which includes Cloud Central accounts.
 
 | \https://netapp-cloud-account.auth0.com | Communication with NetApp Cloud Central for centralized user authentication.
 
 |
 \https://support.netapp.com/aods/asupmessage
-support.netapp.com/asupprod/post/1.0/postAsup
+\https://support.netapp.com/asupprod/post/1.0/postAsup
 | Communication with NetApp AutoSupport.
 |
 \https://support.netapp.com/svcgw
@@ -110,17 +112,17 @@ Cloud Manager requires outbound internet access to contact the following endpoin
 \https://login.microsoftonline.com
 | Enables Cloud Manager to deploy and manage Cloud Volumes ONTAP in the Azure US Gov regions.
 
-| api.services.cloud.netapp.com:443 | API requests to NetApp Cloud Central.
+| \https://api.services.cloud.netapp.com:443 | API requests to NetApp Cloud Central.
 
-| cloud.support.netapp.com.s3.us-west-1.amazonaws.com	| Provides access to software images, manifests, and templates.
+| \https://cloud.support.netapp.com.s3.us-west-1.amazonaws.com	| Provides access to software images, manifests, and templates.
 
 |
-cognito-idp.us-east-1.amazonaws.com
-cognito-identity.us-east-1.amazonaws.com
-sts.amazonaws.com
+\https://cognito-idp.us-east-1.amazonaws.com
+\https://cognito-identity.us-east-1.amazonaws.com
+\https://sts.amazonaws.com
 | Enables Cloud Manager to access and download manifests, templates, and Cloud Volumes ONTAP upgrade images.
 
-| kinesis.us-east-1.amazonaws.com	| Enables NetApp to stream data from audit records.
+| \https://kinesis.us-east-1.amazonaws.com	| Enables NetApp to stream data from audit records.
 
 | \https://netapp-cloud-account.auth0.com | Communication with NetApp Cloud Central for centralized user authentication.
 
@@ -158,10 +160,12 @@ The Cloud Manager host
 
 a| You must enter the host's IP address from a web browser to load the Cloud Manager console.
 
-If you deploy Cloud Manager in AWS, the easiest way to provide access is by allocating a public IP address. However, if you want to use a private IP address instead, users can access the console through either of the following:
+Depending on your connectivity to your cloud provider, you can use the private IP or a public IP assigned to the host:
 
-** A jump host in the VPC that has a connection to Cloud Manager
-** A host in your network that has a VPN connection to the private IP address
+- A private IP works if you have a VPN and direct connect access to your virtual network
+- A public IP works in any networking scenario
+
+In any case, you should secure network access by ensuring that security group rules allow access from only authorized IPs or subnets.
 
 |
 \https://auth0.com

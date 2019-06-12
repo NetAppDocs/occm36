@@ -25,7 +25,7 @@ Cloud Volumes ONTAP requires outbound internet access to send messages to NetApp
 Routing and firewall policies must allow AWS HTTP/HTTPS traffic to the following endpoints so Cloud Volumes ONTAP can send AutoSupport messages:
 +
 * \https://support.netapp.com/aods/asupmessage
-* support.netapp.com/asupprod/post/1.0/postAsup
+* \https://support.netapp.com/asupprod/post/1.0/postAsup
 
 Security groups::
 You do not need to create security groups because Cloud Manager does that for you. If you need to use your own, refer to link:reference_security_groups_azure.html[Security group rules].
