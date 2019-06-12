@@ -853,7 +853,7 @@
 
 <p class="page-details">
 
-<time datetime="2019-06-03 19:56:08 +0000">06/03/2019</time>
+<time datetime="2019-06-12 20:29:15 +0000">06/12/2019</time>
 
 
 <span>Contributors
@@ -955,21 +955,25 @@ If your network uses a proxy server for all communication to the internet, Cloud
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enables Cloud Manager to deploy and manage Cloud Volumes ONTAP in AWS.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">api.services.cloud.netapp.com:443</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">https://api.services.cloud.netapp.com:443</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">API requests to NetApp Cloud Central.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cloud.support.netapp.com.s3.us-west-1.amazonaws.com</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">https://cloud.support.netapp.com.s3.us-west-1.amazonaws.com</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Provides access to software images, manifests, and templates.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cognito-idp.us-east-1.amazonaws.com<br>
-cognito-identity.us-east-1.amazonaws.com</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">https://cognito-idp.us-east-1.amazonaws.com<br>
+https://cognito-identity.us-east-1.amazonaws.com</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enables Cloud Manager to access and download manifests, templates, and Cloud Volumes ONTAP upgrade images.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">kinesis.us-east-1.amazonaws.com</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">https://kinesis.us-east-1.amazonaws.com</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enables NetApp to stream data from audit records.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">https://cloudmanager.cloud.netapp.com</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Communication with the Cloud Manager service, which includes Cloud Central accounts.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">https://netapp-cloud-account.auth0.com</p></td>
@@ -977,7 +981,7 @@ cognito-identity.us-east-1.amazonaws.com</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">https://support.netapp.com/aods/asupmessage<br>
-support.netapp.com/asupprod/post/1.0/postAsup</p></td>
+https://support.netapp.com/asupprod/post/1.0/postAsup</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Communication with NetApp AutoSupport.</p></td>
 </tr>
 <tr>
@@ -1046,21 +1050,21 @@ https://login.microsoftonline.com</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enables Cloud Manager to deploy and manage Cloud Volumes ONTAP in the Azure US Gov regions.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">api.services.cloud.netapp.com:443</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">https://api.services.cloud.netapp.com:443</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">API requests to NetApp Cloud Central.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cloud.support.netapp.com.s3.us-west-1.amazonaws.com</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">https://cloud.support.netapp.com.s3.us-west-1.amazonaws.com</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Provides access to software images, manifests, and templates.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cognito-idp.us-east-1.amazonaws.com<br>
-cognito-identity.us-east-1.amazonaws.com<br>
-sts.amazonaws.com</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">https://cognito-idp.us-east-1.amazonaws.com<br>
+https://cognito-identity.us-east-1.amazonaws.com<br>
+https://sts.amazonaws.com</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enables Cloud Manager to access and download manifests, templates, and Cloud Volumes ONTAP upgrade images.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">kinesis.us-east-1.amazonaws.com</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">https://kinesis.us-east-1.amazonaws.com</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enables NetApp to stream data from audit records.</p></td>
 </tr>
 <tr>
@@ -1127,17 +1131,20 @@ https://github.com/NetApp/trident/releases/download/</p></td>
 <p>You must enter the host&#8217;s IP address from a web browser to load the Cloud Manager console.</p>
 </div>
 <div class="paragraph">
-<p>If you deploy Cloud Manager in AWS, the easiest way to provide access is by allocating a public IP address. However, if you want to use a private IP address instead, users can access the console through either of the following:</p>
+<p>Depending on your connectivity to your cloud provider, you can use the private IP or a public IP assigned to the host:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>A jump host in the VPC that has a connection to Cloud Manager</p>
+<p>A private IP works if you have a VPN and direct connect access to your virtual network</p>
 </li>
 <li>
-<p>A host in your network that has a VPN connection to the private IP address</p>
+<p>A public IP works in any networking scenario</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>In any case, you should secure network access by ensuring that security group rules allow access from only authorized IPs or subnets.</p>
 </div></div></td>
 </tr>
 <tr>
