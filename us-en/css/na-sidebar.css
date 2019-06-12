@@ -1,7 +1,3 @@
-body {
-  font-family:Roboto, sans-serif;
-}
-
 h2[id].n-property-bar__property-name {
   padding: 0px;
   margin-top: 0px;
@@ -13,36 +9,13 @@ h2[id].n-property-bar__property-name {
 }
 
 /* NetApp Sidebar Overrides */
-@media (max-width: 990px) {
-    #mysidebar {
-        position: relative;
-    }
-}
-
-@media (min-width: 1000px) {
-
-    ul#mysidebar {
-        width: 265px;
-    }
-}
-
-@media (max-width: 900px) {
-
-    ul#mysidebar {
-        max-width: 100%;
-    }
-}
-
-#mysidebar .nav ul {
-    background: #F7F7F7;
-}
-
 ul#mysidebar {
+    width: 265px;
     border-radius:0px;
-    background: #F7F7F7;
-    padding-top: 15px;
+    background: inherit;
+    padding-top: 0px;
+    box-shadow: 2px 0px 0px rgba(0,0,0,.08)
 }
-
 
 .nav, .nav ul, .nav li {
     list-style: none;
@@ -68,7 +41,6 @@ ul#mysidebar {
 }
 
 .nav a {
-    color: #444; /* Black */
     display: block;
     outline: none;
     /*-webkit-border-radius: 4px;
@@ -85,17 +57,23 @@ ul#mysidebar {
 
 
 .nav li > a > span:after {
-    content: '\25be';
+  content: '\276f';
+  transform: rotate(90deg);
+  display: block;
+  color: #444;
 }
 .nav li.active > a > span:after {
-    content: '\25b4';
+  content: '\276f';
+  transform: rotate(270deg);
+  display: block;
+  color: #444;
 }
 
 .nav a:hover, .nav li.active > a {
     /* background-color: #8D8D8D; */ /* Dark Grey */
     color: #0067C5; /* NetApp Blue */
     font-weight: bold;
-    background: #F7F7F7;
+    background: inherit;
     font-size: 14px;
 }
 
@@ -111,7 +89,7 @@ ul#mysidebar {
     font-size: 13px;
     line-height: 16px;
     padding: 7px 15px;
-    background: #F7F7F7;
+    background: inherit;
 }
 
 .nav > li > a {
@@ -134,12 +112,12 @@ ul#mysidebar {
 .nav li a:hover {
     /*background-color: #8D8D8D;*/
     font-weight: normal;
-    background: #F7F7F7;
+    background: inherit;
     color: #0067C5; /* NetApp Blue */
 }
 
 .nav ul li a {
-    background: #F7F7F7;
+    background: inherit;
     padding-left:30px;
     border-top: 0px;
 }

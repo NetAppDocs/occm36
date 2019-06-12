@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  const MASTHEAD_OFFSET = 165;
+  const MASTHEAD_OFFSET = 216;
   const SECTIONS = $("main h2, main h3");
   // PAGE NAV - Init
   if(SECTIONS.length == 0) {

@@ -1,5 +1,6 @@
 #search-demo-container {
   display: inline-block;
+  float: left;
   position: relative;
   text-align: left;
 }
@@ -10,7 +11,7 @@
     border-left: 1px solid #dedede;
     direction: ltr;
     display: none; /* Initial Value */
-    font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B',Helvetica,Arial,sans-serif;
+    font-family: inherit;
     font-size: 100%;
     height: 400px;
     line-height: 1.6;

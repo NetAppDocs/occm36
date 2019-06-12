@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head class="at-element-marker">
   <title>Security group rules for Azure | NetApp Cloud Docs</title>
   <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:title" content="Security group rules for Azure | NetApp Cloud Docs" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://docs.netapp.com/occm36/us-en/reference_security_groups_azure.html" />
 	<meta property="og:description" content="Cloud Manager creates Azure security groups that include the inbound and outbound rules that Cloud Manager and Cloud Volumes ONTAP need to operate successful..." />
   <meta property="og:image" content="https://docs.netapp.com/occm36/us-en/images/logo-tophat-social.png" />
   <meta property="og:image:alt" content="NetApp Logo" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
   <meta http-equiv="encoding" content="utf-8">
   <meta http-equiv="nss-type" content="Product Documentation"/>
   <meta http-equiv="nss-subtype" content="User Guide"/>
@@ -21,6 +22,7 @@
   
   <meta name="description" content="Cloud Manager creates Azure security groups that include the inbound and outbound rules that Cloud Manager and Cloud Volumes ONTAP need to operate successful...">
   <meta name="keywords" content=" security group, security groups, rules, ports, azure, inbound, outbound, rules">
+  
   
 
   <!-- Icons -->
@@ -36,26 +38,30 @@
   <!-- Elastic Search -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
 
-  <!-- LUCI CSS Content -->
-  <link rel="stylesheet" href="/occm36/us-en/common/css/esb.min.css">
-  <link rel="stylesheet" href="/occm36/us-en/common/css/netapp-library.min.css">
-  <link rel="stylesheet" href="/occm36/us-en/common/css/doc.css">
-  <link rel="stylesheet" href="/occm36/us-en/common/css/doc-components.css">
-
-  <link rel="stylesheet" href='/occm36/us-en/css/na-sidebar.css' type='text/css'>
-  <link rel='stylesheet' href='/occm36/us-en/css/na-search.css' type='text/css'>
-  <link rel='stylesheet' href='/occm36/us-en/css/clouddocs.css' type='text/css'>
-
-  <!-- Font awesome seems to affect our GitHub Icon and generic "arrow box" for external links. -->
+  <!-- Controls AsciiDoctor Admonition Blocks -->
   <link rel="stylesheet" type="text/css" href="/occm36/us-en/css/font-awesome.min.css">
-  <!-- <link rel="stylesheet" href="/occm36/us-en/css/customstyles.css"> -->
+
   <!-- Controls the shadow effect for search dropdown menu -->
   <link rel="stylesheet" href="/occm36/us-en/css/boxshadowproperties.css">
 
   <!-- NetApp CSS controls the technical content -->
   <link rel='stylesheet' href='/occm36/us-en/css/netapp.css' type='text/css'>
 
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" href="https://www.netapp.com/us/static/css/luci-dotcom.min.css?v10007269030243">
+  <link rel="stylesheet" href="https://www.netapp.com/us/static/css/netapp-dotcom.css?v10007269030243">
+  <link href="https://www.netapp.com/us/static/css/netapp-library-critical.min.css?v10007269030243" media="all" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.netapp.com/us/static/css/netapp-library-non-critical.min.css?v10007269030243" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="https://www.netapp.com/us/static/css/netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/occm36/us-en/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/occm36/us-en/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/occm36/us-en/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/occm36/us-en/css/na-pagenav.css' type='text/css'>
+
   
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
@@ -66,13 +72,14 @@
   
 
   
-  <link rel='stylesheet' href='/occm36/us-en/css/na-pagenav.css' type='text/css' id="pagenav-css">
   <script src='/occm36/us-en/js/na-pagenav.js'></script>
   
 
   <link rel='stylesheet' href='/occm36/us-en/css/prism.css' type='text/css'>
   <link rel='stylesheet' href='/occm36/us-en/css/prism-netapp.css' type='text/css'>
 
+
+<script src='/occm36/us-en/js/na-utility.js'></script>
   <script src='/occm36/us-en/js/clouddocs.js'></script>
   <script src='/occm36/us-en/js/s_code_impl.js'></script>
   <script src='/occm36/us-en/js/jquery.navgoco.min.js'></script>
@@ -82,22 +89,29 @@
 
   <script>
       $(document).ready(function() {
-          // Initialize navgoco with default options
-          $("#mysidebar").navgoco({
-              caretHtml: '',
-              accordion: true,
-              openClass: 'active', // open
-              save: false, // leave false or nav highlighting doesn't work right
-              cookie: {
-                  name: 'navgoco',
-                  expires: false,
-                  path: '/'
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
               },
-              slide: {
-                  duration: 400,
-                  easing: 'swing'
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
               }
-          });
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
 
           $("#collapseAll").click(function(e) {
               e.preventDefault();
@@ -146,97 +160,598 @@
 </head>
 
 
-  <body class="n-doc__component-detail">
-    <a href="#n-main-content" class="visually-hidden">Skip to main content</a>
-<div class="n-off-canvas-menu">
-  <div class="n-off-canvas-menu__menu">
-    <div class="n-off-canvas-menu__menu-inner">
-      <div class="n-off-canvas-menu__property-title">NetApp Cloud Docs</div>
-      <ul class="n-off-canvas-menu__property-navigation-list">
-        <li class="n-off-canvas-menu__property-navigation-list-item ">
-          <a href="https://docs.netapp.com/us-en/" class="n-off-canvas-menu__property-navigation-link">
-            Home
-          </a>
-          <div class="n-off-canvas-menu__child-menu">
-            <ul class="n-menu__list">
-
-            </ul>
-          </div>
-        </li>
-      </ul>
-
-      <ul class="n-off-canvas-menu__global-navigation-list">
-         <li class="n-off-canvas-menu__global-navigation-list-header">More From NetApp</li>
-         <li class="n-off-canvas-menu__global-navigation-list-item"><a href="#" class="n-off-canvas-menu__global-navigation-link">Netapp.com</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-    <div class="n-off-canvas-menu__content-wrap">
-      <!-- Header -->
-      <header>
-  <!-- Top Hat -->
+  <body class role="document">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  <!-- Start top_hat -->
   <div class="n-top-hat">
     <div class="n-container">
       <div class="n-top-hat__cross-property-nav">
         <ul class="n-top-hat__list">
-            <li class="n-top-hat__list-item">
-              <a href="http://www.netapp.com" class="n-top-hat__link">NetApp.com</a>
-            </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">Community</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">Blog</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">Customer Stories</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
+          </li>
         </ul>
       </div>
-    </div>
-  </div>
-
-  <!-- Property Bar -->
-  <div class="n-property-bar n-property-bar--v3">
-    <div class="n-property-bar__inner-wrap">
-      <div class="n-property-bar__menu-toggle">
-        <a href="#" class="n-property-bar__menu-toggle-link"><span class="n-property-bar__menu-toggle-text">Menu</span><svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
-          <title>bars</title>
-          <use xlink:href="/occm36/us-en/common/svg/sprite.svg#bars"></use>
-        </svg></a>
-      </div>
-      <div class="n-property-bar__property-mark n-property-bar__property-mark--has-property-name">
-        <a class="n-property-bar__property-link" href="https://docs.netapp.com/us-en/">
-          <div class="n-property-bar__logo">
-            <svg class="n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
-              <title>netapp-mark</title>
-              <use xlink:href="/occm36/us-en/common/svg/sprite.svg#netapp-mark"></use>
-            </svg>
-            <svg class="n-property-bar__logo-svg" aria-labelledby="title">
-              <title>NetApp</title>
-              <use xlink:href="/occm36/us-en/common/svg/sprite.svg#netapp-logo"></use>
-            </svg>
-          </div>
-          <h2 class="n-property-bar__property-name">Cloud Docs</h2>
-        </a>
-      </div>
-
-      
-      <div id="search-demo-container" class="n-property-bar__search">
-        <div id="react-search"></div>
-      </div>
-      
-
-      <div id="ie-i18n-menu" class="n-property-bar__utils">
-        <ul class="n-property-navigation-bar__utils-list">
-          <li class="n-property-navigation-bar__utils-list-item ie-i18n-container">
-            <a href="#" class="n-property-navigation-bar__utils-link n-property-navigation-bar__nav-link n-property-navigation-bar__language-selector-toggle ie-i18n-link" data-menu-id="n-property-navigation-bar__menu--language-selector">
-              <span class="ie-i18n-lang">English</span>
-              <svg class="ie-i18n-icon-container" class="n-property-bar__logo-svg" aria-labelledby="title">
-                <title>globe</title>
-                <use xlink:href="/occm36/us-en/common/svg/sprite.svg#globe" class="n-icon-globe n-globe__icon"></use>
-              </svg>
-            </a>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
           </li>
         </ul>
       </div>
     </div>
+  </div>
+  <!-- End top_hat -->
 
-    <div class="n-property-bar__menus">
-      <div id="n-property-navigation-bar__menu--language-selector" class="n-menu n-menu--v3">
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/occm36/us-en/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/occm36/us-en/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/occm36/us-en/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+      <div class="n-property-navigation-bar n-property-navigation-bar--embedded">
+        <nav class="n-property-navigation-bar__nav">
+          <div class="n-container">
+            <ul class="n-property-navigation-bar__nav-list">
+              <li class="n-property-navigation-bar__nav-list-item">
+                <a href="#" class="n-property-navigation-bar__nav-link" data-ntap-target="products-and-solutions" data-ntap-toggle="menu">
+                  <span class="n-property-navigation-bar__nav-link-text">Products and Solutions</span>
+                  <svg class="n-icon-chevron-down n-property-navigation-bar__menu-indicator" aria-labelledby="title">
+                    <title>chevron-down</title>
+                    <use xlink:href="/occm36/us-en/common/svg/sprite.svg#chevron-down"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="n-property-navigation-bar__nav-list-item">
+                <a href="#" class="n-property-navigation-bar__nav-link" data-ntap-target="support-and-training" data-ntap-toggle="menu">
+                  <span class="n-property-navigation-bar__nav-link-text">Support and Training</span>
+                  <svg class="n-icon-chevron-down n-property-navigation-bar__menu-indicator" aria-labelledby="title">
+                    <title>chevron-down</title>
+                    <use xlink:href="/occm36/us-en/common/svg/sprite.svg#chevron-down"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="n-property-navigation-bar__nav-list-item">
+                <a href="https://cloud.netapp.com/home" target="_blank" class="n-property-navigation-bar__nav-link">
+                <span class="n-property-navigation-bar__nav-link-text">Cloud Central</span>
+                </a>
+              </li>
+              <!--
+                <li class="n-property-navigation-bar__nav-list-item" data-ntap-ui="more-menu">
+                    <a href="#" class="n-property-navigation-bar__nav-link" data-ntap-target="more-menu">
+                    <span class="n-property-navigation-bar__nav-link-text">More</span>
+                    <svg class="n-icon-chevron-down n-property-navigation-bar__menu-indicator" aria-labelledby="title">
+                        <title>chevron-down</title>
+                        <use xlink:href="/common/svg/sprite.svg#chevron-down"></use>
+                    </svg>
+                    </a>
+                </li>
+                -->
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <!-- start copy from prototype here -->
+    <div class="n-property-navigation-bar__menus n-property-navigation-bar__menus--desktop-experience">
+      <div class="n-menu n-menu--mega" data-ntap-target="products-and-solutions" data-ntap-layout="4">
+        <div class="n-container">
+          <div class="n-menu--mega__default-content-container">
+            <section class="n-menu--mega__default-content">
+              <p class="n-menu--mega__default-content__intro-heading">Suggested for you</p>
+              <p class="n-menu--mega__default-content__heading"><span>RIGHT-SIZE YOUR STORAGE WITH A QUICK, 3-MINUTE ASSESSMENT.</span></p>
+              <p>Get data management recommendations that reflect your unique business needs.</p>
+              <a href="https://explore.netapp.com" target="_blank" class="luci-button luci-link--cta" title="TRY NOW">
+                <span class="luci-link__text"> TRY NOW </span>
+                <svg class="luci-icon luci-link__icon luci-link__icon--right" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 13 9">
+                  <polygon points="0,3.8 10.2,3.8 7.6,1.1 8.7,0 13,4.5 8.7,9 7.6,7.9 10.2,5.2 0,5.2"></polygon>
+                </svg>
+              </a>
+              <a href="https://explore.netapp.com" target="_blank"><img class="n-menu--mega__default-content__image" src="https://www.netapp.com/us/media/DXD363-McKinseyTool-Promos-465X294.png" alt="Try our 3-minute assessment"></a>
+            </section>
+          </div>
+          <canvas class="aim-awareness-container" style="display:inline-block;pointer-events:none;position:absolute;z-index:9999;"></canvas>
+          <ul class="n-menu--mega__sub-navigation">
+            <!-- Cloud services -->
+            <li class="n-menu--mega__sub-navigation__primary-nav">
+              <a class="n-menu--mega__sub-navigation__primary-nav__link" href="#" title="">
+                Cloud services
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 13 9">
+                  <polygon points="0,3.8 10.2,3.8 7.6,1.1 8.7,0 13,4.5 8.7,9 7.6,7.9 10.2,5.2 0,5.2"></polygon>
+                </svg>
+              </a>
+              <div class="n-menu--mega__content-container">
+                <section class="n-menu--mega__content n-menu--mega__content--col-1">
+                  <ul class="n-menu--mega__content--overview">
+                    <li>
+                      <h3>Overview</h3>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/products/cloud-services/why-netapp-for-cloud-services.aspx">Why NetApp for Cloud Services</a></li>
+                    <li><a href="https://www.netapp.com/us/products/cloud-services/use-cases-for-netapp-cloud-services.aspx">Discover What You Can Do with NetApp Cloud Services</a></li>
+                    <li><a href="https://www.netapp.com/us/products/cloud-services/netapp-cloud-services-tour.aspx">Cloud Services Tour</a></li>
+                  </ul>
+                </section>
+                <section class="n-menu--mega__content n-menu--mega__content--col-2">
+                  <ul class="n-menu--mega__content--product-list">
+                    <li>
+                      <h3>Products</h3>
+                    </li>
+                    <li><a href="https://cloud.netapp.com/azure-netapp-files" target="_blank">Azure NetApp Files</a></li>
+                    <li><a href="https://cloud.netapp.com/cloud-volumes-service-for-aws" target="_blank">Cloud Volumes Service for AWS</a></li>
+                    <li><a href="https://cloud.netapp.com/cloud-volumes-service-for-gcp" target="_blank">Cloud Volumes Service for Google Cloud</a></li>
+                    <li><a href="https://cloud.netapp.com/cloud-volumes-service-for-on-premises" target="_blank">Cloud Volumes Service for On-Premises</a></li>
+                    <li><a href="https://cloud.netapp.com/ontap-cloud" target="_blank">Cloud Volumes ONTAP</a></li>
+                    <li><a href="https://cloud.netapp.com/cloud-manager" target="_blank">Cloud Manager</a></li>
+                    <li><a href="https://cloud.netapp.com/kubernetes-service" target="_blank">NetApp Kubernetes Service</a></li>
+                    <li><a href="https://cloud.netapp.com/fabric-orchestrator" target="_blank">Fabric Orchestrator</a></li>
+                    <li><a href="https://cloud.netapp.com/cloud-insights" target="_blank">Cloud Insights</a></li>
+                    <li><a href="https://cloud.netapp.com/cloud-sync-service" target="_blank">Cloud Sync</a></li>
+                    <li><a href="https://cloud.netapp.com/cloud-tiering" target="_blank">Cloud Tiering</a></li>
+                    <li><a href="https://cloud.netapp.com/saas-backup" target="_blank">SaaS Backup</a></li>
+                    <li><a href="https://cloud.netapp.com/cloud-backup-service" target="_blank">Cloud Backup Service</a></li>
+                    <li><a href="https://cloud.netapp.com/cloud-compliance" target="_blank">Cloud Compliance</a></li>
+                  </ul>
+                </section>
+                <section class="n-menu--mega__content n-menu--mega__content--col-3">
+                  <ul class="n-menu--mega__content--usecase-list">
+                    <li>
+                      <h3>Best for</h3>
+                    </li>
+                    <li><a href="https://cloud.netapp.com/data-migration" target="_blank">Data Migration</a></li>
+                    <li><a href="https://cloud.netapp.com/data-protection" target="_blank">Data Protection</a></li>
+                    <li><a href="https://cloud.netapp.com/database" target="_blank">Databases</a></li>
+                    <li><a href="https://cloud.netapp.com/block-storage" target="_blank">Block Storage</a></li>
+                    <li><a href="https://cloud.netapp.com/cloud-native-applications" target="_blank">Cloud Native Applications</a></li>
+                    <li><a href="https://cloud.netapp.com/file-services" target="_blank">File Services</a></li>
+                    <li><a href="https://cloud.netapp.com/hpc-analytics" target="_blank">High Performance Computing and Analytics</a></li>
+                  </ul>
+                </section>
+              </div>
+            </li>
+            <!-- Hybrid Cloud Infrastructure -->
+            <li class="n-menu--mega__sub-navigation__primary-nav">
+              <a class="n-menu--mega__sub-navigation__primary-nav__link" href="#" title="">
+                Hybrid Cloud Infrastructure
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 13 9">
+                  <polygon points="0,3.8 10.2,3.8 7.6,1.1 8.7,0 13,4.5 8.7,9 7.6,7.9 10.2,5.2 0,5.2"></polygon>
+                </svg>
+              </a>
+              <div class="n-menu--mega__content-container">
+                <section class="n-menu--mega__content n-menu--mega__content--col-1">
+                  <ul class="n-menu--mega__content--usecase-list">
+                    <li>
+                      <h3>I need to</h3>
+                    </li>
+                    <li>
+                      <h4><a href="https://www.netapp.com/us/solutions/it-automation/index.aspx">Simplify and Automate Virtualized Workloads</a></h4>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/solutions/it-automation/google-clouds-anthos.aspx">Google Cloud's Anthos&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/it-automation/redhat.aspx">Red Hat Private Cloud&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/it-automation/openstack-private-cloud.aspx">OpenStack Private Cloud&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/it-automation/vmware-private-cloud.aspx">VMware Private Cloud&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/it-automation/desktop-virtualization.aspx">End User Computing (VDI)&nbsp;›</a></li>
+                  </ul>
+                  <ul class="n-menu--mega__content--usecase-list">
+                    <li>
+                      <h4><a href="https://www.netapp.com/us/solutions/build-cloud-infrastructure/index.aspx">Build Service Provider Infrastructure</a></h4>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/solutions/build-cloud-infrastructure/infrastructure-as-a-service.aspx">IaaS Solutions&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/build-cloud-infrastructure/platform-as-a-service.aspx">PaaS Solutions&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/build-cloud-infrastructure/software-as-a-service.aspx">SaaS Solutions&nbsp;› </a></li>
+                  </ul>
+                </section>
+                <section class="n-menu--mega__content n-menu--mega__content--col-2">
+                  <ul class="n-menu--mega__content--usecase-list">
+                    <li>
+                      <h4><a href="https://www.netapp.com/us/solutions/devops/index.aspx">Accelerate Your DevOps Journey</a></h4>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/solutions/devops/software-development-life-cycle.aspx">Software Development Lifecycle (SDLC)&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/devops/code-and-artifact-repository.aspx">Code and Artifact Repository&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/devops/continuous-integration-and-continuous-delivery.aspx">Continuous Integration/Continuous Delivery (CI/CD)&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/devops/configuration-management.aspx">Configuration and Resource Management&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/it-automation/containers.aspx">Containers&nbsp;›</a></li>
+                  </ul>
+                  <ul class="n-menu--mega__content--usecase-list">
+                    <li>
+                      <h4><a href="https://www.netapp.com/us/solutions/unstructured-data/index.aspx">Optimize Unstructured Data</a></h4>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/solutions/unstructured-data/rich-media.aspx">Rich Content Management&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/unstructured-data/distributed-content.aspx">Distributed Content Management&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/unstructured-data/internet-of-things.aspx">IoT&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/unstructured-data/video-surveillance.aspx">Video Surveillance&nbsp;›</a></li>
+                  </ul>
+                </section>
+                <section class="n-menu--mega__content n-menu--mega__content--col-3">
+                  <ul class="n-menu--mega__content--overview">
+                    <li>
+                      <h3>Overview</h3>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/private-cloud/index.aspx">NetApp Private Cloud Overview</a></li>
+                    <li><a href="https://www.netapp.com/us/hybrid-cloud-infrastructure.aspx">Why NetApp for Hybrid Multicloud</a></li>
+                  </ul>
+                  <ul class="n-menu--mega__content--product-list">
+                    <li>
+                      <h3>Products</h3>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/products/converged-systems/hyper-converged-infrastructure.aspx">NetApp HCI</a></li>
+                    <li><a href="https://www.netapp.com/us/products/data-management-software/object-storage-grid-sds.aspx">StorageGRID Object Storage</a></li>
+                  </ul>
+                </section>
+              </div>
+            </li>
+            <!-- Flash storage -->
+            <li class="n-menu--mega__sub-navigation__primary-nav">
+              <a class="n-menu--mega__sub-navigation__primary-nav__link" href="#" title="">
+                Flash storage
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 13 9">
+                  <polygon points="0,3.8 10.2,3.8 7.6,1.1 8.7,0 13,4.5 8.7,9 7.6,7.9 10.2,5.2 0,5.2"></polygon>
+                </svg>
+              </a>
+              <div class="n-menu--mega__content-container">
+                <section class="n-menu--mega__content n-menu--mega__content--col-1">
+                  <ul class="n-menu--mega__content--usecase-list">
+                    <li>
+                      <h3>I need to</h3>
+                    </li>
+                    <li>
+                      <h4><a href="https://www.netapp.com/us/solutions/applications/index.aspx">Accelerate Workloads and Analytics</a></h4>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/solutions/applications/sap/index.aspx">SAP Solutions&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/applications/oracle-database.aspx">Oracle Database Solutions&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/applications/big-data-analytics/index.aspx">Analytics: Splunk, Hadoop, NoSQL&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/applications/ai-deep-learning.aspx">AI and Deep Learning&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/applications/engineering/index.aspx">Engineering and Design Applications&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/applications/microsoft/index.aspx">MS Apps Solutions&nbsp;›</a></li>
+                  </ul>
+                  <ul class="n-menu--mega__content--usecase-list">
+                    <li>
+                      <h4><a href="https://www.netapp.com/us/solutions/data-center-efficiency/index.aspx">Gain Data Center Efficiencies</a></h4>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/solutions/data-center-efficiency/data-center-consolidation.aspx">Data Center Consolidation&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/data-center-efficiency/virtual-server-infrastructure.aspx">Virtual Server Infrastructure&nbsp;›</a></li>
+                  </ul>
+                </section>
+                <section class="n-menu--mega__content n-menu--mega__content--col-2">
+                  <ul class="n-menu--mega__content--usecase-list">
+                    <li>
+                      <h4><a href="https://www.netapp.com/us/solutions/data-protection/index.aspx">Protect and Secure Data</a></h4>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/solutions/data-protection/backup-recovery.aspx">Backup and Recovery&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/data-protection/disaster-recovery.aspx">Business Continuity/Disaster Recovery&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/a-z/storage-security/index.aspx">Data Security&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/a-z/storage-security/security-privacy.aspx">Data Privacy&nbsp;›</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/data-protection/data-compliance.aspx">Data Compliance&nbsp;›</a></li>
+                  </ul>
+                </section>
+                <section class="n-menu--mega__content n-menu--mega__content--col-3">
+                  <ul class="n-menu--mega__content--product-list">
+                    <li>
+                      <h3>Products</h3>
+                    </li>
+                    <li>
+                      <h4><a href="https://www.netapp.com/us/products/storage-systems/all-flash-array/index.aspx">All-Flash Arrays</a></h4>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/products/storage-systems/all-flash-array/aff-a-series.aspx">AFF A-Series</a></li>
+                    <li><a href="https://www.netapp.com/us/products/entry-level-aff.aspx">AFF C190</a></li>
+                    <li><a href="https://www.netapp.com/us/products/storage-systems/all-flash-array/nvme.aspx">NVMe Storage</a></li>
+                    <li><a href="https://www.netapp.com/us/products/storage-systems/all-flash-array/solidfire-web-scale.aspx">SolidFire</a></li>
+                    <li><a href="https://www.netapp.com/us/products/storage-systems/all-flash-array/ef-series.aspx">EF-Series</a></li>
+                    <li><a href="https://www.netapp.com/us/products/ontap-ai.aspx">ONTAP AI</a></li>
+                  </ul>
+                  <ul class="n-menu--mega__content--product-list">
+                    <li>
+                      <h4><a href="https://www.netapp.com/us/products/storage-systems/hybrid-flash-array/index.aspx">Hybrid Arrays</a></h4>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/products/storage-systems/hybrid-flash-array/fas.aspx">FAS</a></li>
+                    <li><a href="https://www.netapp.com/us/products/storage-systems/hybrid-flash-array/index.aspx">E-Series</a></li>
+                    <li><a href="https://www.netapp.com/us/products/converged-systems/flexpod-converged-infrastructure.aspx">FlexPod</a></li>
+                  </ul>
+                </section>
+              </div>
+            </li>
+            <!-- NetApp Keystone -->
+            <li>
+              <a href="#" title="">
+                NetApp Keystone
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 13 9">
+                  <polygon points="0,3.8 10.2,3.8 7.6,1.1 8.7,0 13,4.5 8.7,9 7.6,7.9 10.2,5.2 0,5.2"></polygon>
+                </svg>
+              </a>
+              <div class="n-menu--mega__content-container">
+                <section class="n-menu--mega__content n-menu--mega__content--col-1">
+                  <ul class="n-menu--mega__content--overview">
+                    <li>
+                      <h3>Overview</h3>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/solutions/keystone/index.aspx">A New Consumption Model</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/keystone/ownership-experience.aspx">A Better Ownership Experience</a></li>
+                    <li><a href="https://www.netapp.com/us/solutions/keystone/cloud-consumption.aspx">Keystone Cloud Consumption Services</a></li>
+                  </ul>
+                </section>
+              </div>
+            </li>
+            <!-- Data storage systems -->
+            <li>
+              <a href="#" title="">
+                Data storage systems
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 13 9">
+                  <polygon points="0,3.8 10.2,3.8 7.6,1.1 8.7,0 13,4.5 8.7,9 7.6,7.9 10.2,5.2 0,5.2"></polygon>
+                </svg>
+              </a>
+              <div class="n-menu--mega__content-container">
+                <section class="n-menu--mega__content n-menu--mega__content--col-1">
+                  <ul class="n-menu--mega__content--overview">
+                    <li>
+                      <h3>Overview</h3>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/products/storage-systems/index.aspx">Why Data Storage Systems</a></li>
+                  </ul>
+                  <ul class="n-menu--mega__content--product-list">
+                    <li>
+                      <h3>Products</h3>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/products/storage-systems/storage-area-network.aspx">SAN</a></li>
+                    <li><a href="https://www.netapp.com/us/products/storage-systems/virtualization-flexarray.aspx">FlexArray Storage Virtualization</a></li>
+                    <li><a href="https://www.netapp.com/us/products/storage-systems/disk-shelves-and-storage-media/index.aspx">Disk Shelves and Storage Media</a></li>
+                  </ul>
+                </section>
+              </div>
+            </li>
+            <!-- Data infrastructure management -->
+            <li>
+              <a href="#" title="">
+                Data infrastructure management
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 13 9">
+                  <polygon points="0,3.8 10.2,3.8 7.6,1.1 8.7,0 13,4.5 8.7,9 7.6,7.9 10.2,5.2 0,5.2"></polygon>
+                </svg>
+              </a>
+              <div class="n-menu--mega__content-container">
+                <section class="n-menu--mega__content n-menu--mega__content--col-1">
+                  <ul class="n-menu--mega__content--overview">
+                    <li>
+                      <h3>Overview</h3>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/products/data-infrastructure-management/index.aspx">Why Data Infrastructure Management</a></li>
+                  </ul>
+                  <ul class="n-menu--mega__content--product-list">
+                    <li>
+                      <h3>Products</h3>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/products/data-infrastructure-management/oncommand-insight.aspx">OnCommand Insight</a></li>
+                    <li><a href="https://www.netapp.com/us/products/data-infrastructure-management/workflow-automation.aspx">OnCommand Workflow Automation</a></li>
+                    <li><a href="https://www.netapp.com/us/products/data-infrastructure-management/cloud-manager.aspx">NetApp Cloud Manager</a></li>
+                    <li><a href="https://www.netapp.com/us/products/data-infrastructure-management/virtual-infrastructure.aspx">Virtual Infrastructure Management</a></li>
+                    <li><a href="https://www.netapp.com/us/products/data-infrastructure-management/active-iq.aspx">Active IQ Predictive Analytics and Support</a></li>
+                  </ul>
+                </section>
+              </div>
+            </li>
+            <!-- Data storage software -->
+            <li>
+              <a href="#" title="">
+                Data storage software
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 13 9">
+                  <polygon points="0,3.8 10.2,3.8 7.6,1.1 8.7,0 13,4.5 8.7,9 7.6,7.9 10.2,5.2 0,5.2"></polygon>
+                </svg>
+              </a>
+              <div class="n-menu--mega__content-container">
+                <section class="n-menu--mega__content n-menu--mega__content--col-1">
+                  <ul class="n-menu--mega__content--overview">
+                    <li>
+                      <h3>Overview</h3>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/products/data-management-software/index.aspx">Why Data Storage Software</a></li>
+                  </ul>
+                  <ul class="n-menu--mega__content--product-list">
+                    <li>
+                      <h3>Products</h3>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/products/data-management-software/ontap.aspx">ONTAP Data Management Software</a></li>
+                    <li><a href="https://www.netapp.com/us/products/data-management-software/element-os.aspx">Element Software</a></li>
+                    <li><a href="https://www.netapp.com/us/products/data-management-software/santricity-os.aspx">SANtricity Software</a></li>
+                    <li><a href="https://www.netapp.com/us/products/data-management-software/ontap-select-sds.aspx">ONTAP Select</a></li>
+                    <li><a href="https://www.netapp.com/us/products/data-management-software/object-storage-grid-sds.aspx">StorageGRID Software</a></li>
+                    <li><a href="https://www.netapp.com/us/products/data-management-software/max-data.aspx">MAX Data Software</a></li>
+                  </ul>
+                </section>
+              </div>
+            </li>
+            <!-- Data protection and security -->
+            <li>
+              <a href="#" title="">
+                DATA PROTECTION AND SECURITY
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 13 9">
+                  <polygon points="0,3.8 10.2,3.8 7.6,1.1 8.7,0 13,4.5 8.7,9 7.6,7.9 10.2,5.2 0,5.2"></polygon>
+                </svg>
+              </a>
+              <div class="n-menu--mega__content-container">
+                <section class="n-menu--mega__content n-menu--mega__content--col-1">
+                  <ul class="n-menu--mega__content--overview">
+                    <li>
+                      <h3>Overview</h3>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/products/backup-recovery/index.aspx">Why Backup and Recovery</a></li>
+                  </ul>
+                  <ul class="n-menu--mega__content--product-list">
+                    <li>
+                      <h3>Products</h3>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/products/backup-recovery/data-availability-services.aspx">Data Availability Services</a></li>
+                    <li><a href="https://www.netapp.com/us/products/backup-recovery/snapcenter-backup-management.aspx">SnapCenter Backup Management</a></li>
+                    <li><a href="https://www.netapp.com/us/products/backup-recovery/snapmirror-data-replication.aspx">SnapMirror Data Replication</a></li>
+                    <li><a href="https://www.netapp.com/us/products/backup-recovery/snaplock-compliance.aspx">SnapLock Data Compliance</a></li>
+                    <li><a href="https://www.netapp.com/us/products/data-security/index.aspx">ONTAP Data Security</a></li>
+                  </ul>
+                </section>
+              </div>
+            </li>
+            <!-- Professional services -->
+            <li>
+              <a href="#" title="">
+                Professional services
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 13 9">
+                  <polygon points="0,3.8 10.2,3.8 7.6,1.1 8.7,0 13,4.5 8.7,9 7.6,7.9 10.2,5.2 0,5.2"></polygon>
+                </svg>
+              </a>
+              <div class="n-menu--mega__content-container">
+                <section class="n-menu--mega__content n-menu--mega__content--col-1">
+                  <ul class="n-menu--mega__content--product-list">
+                    <li>
+                      <h3>Services</h3>
+                    </li>
+                    <li><a href="https://www.netapp.com/us/services/index.aspx">NetApp Services</a></li>
+                    <li><a href="https://www.netapp.com/us/services/index.aspx#business-consulting">Consulting</a></li>
+                    <li><a href="https://www.netapp.com/us/services/index.aspx#business-consulting">Professional Services</a></li>
+                    <li><a href="https://www.netapp.com/us/services/index.aspx#operational-support">Operational Support</a></li>
+                  </ul>
+                </section>
+              </div>
+            </li>
+          </ul>
+          <ul class="n-menu--mega__footer-nav">
+            <li><a href="https://www.netapp.com/us/try-and-buy/test-drive/index.aspx">Test Drive
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 13 9">
+                  <polygon points="0,3.8 10.2,3.8 7.6,1.1 8.7,0 13,4.5 8.7,9 7.6,7.9 10.2,5.2 0,5.2"></polygon>
+                </svg>
+             </a></li>
+           <li>
+              <a href="https://www.netapp.com/us/info/index.aspx" title="">
+                Knowledge Center
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 13 9">
+                  <polygon points="0,3.8 10.2,3.8 7.6,1.1 8.7,0 13,4.5 8.7,9 7.6,7.9 10.2,5.2 0,5.2"></polygon>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.netapp.com/us/products/a-z/index.aspx" title="">
+                All products A-Z
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 13 9">
+                  <polygon points="0,3.8 10.2,3.8 7.6,1.1 8.7,0 13,4.5 8.7,9 7.6,7.9 10.2,5.2 0,5.2"></polygon>
+                </svg>
+              </a>
+            </li>
+
+
+          </ul>
+          <div class="n-menu--mega__footer-nav__corrective-padding"></div>
+        </div>
+      </div>
+      <div class="n-menu n-menu--mega" data-ntap-target="support-and-training" data-ntap-layout="4">
+        <div class="n-container">
+          <!-- Support and training -->
+          <div class="n-menu--mega__support-and-training">
+            <div class="n-menu--mega__support-and-training__fake-button">Support and training</div>
+            <section class="n-menu--mega__support-and-training__col-container">
+              <ul class="n-menu--mega__support-and-training__col-1">
+                <li><a href="https://mysupport.netapp.com/">Support</a></li>
+                <li><a href="https://www.netapp.com/us/services-support/university/index.aspx">Training</a></li>
+                <li><a href="https://www.netapp.com/us/try-and-buy/test-drive/index.aspx">Test Drive</a></li>
+                <li><a href="https://www.netapp.com/us/documentation/index.aspx">Product Documentation</a></li>
+                <li><a href="https://mysupport.netapp.com/documentation/productsatoz/index.html">Install and Configure</a></li>
+                <li><a href="https://mysupport.netapp.com/GPS/index.html">Troubleshoot</a></li>
+                <li><a href="https://partner-connect.netapp.com/us/partner-directory">Find a Partner</a></li>
+              </ul>
+            </section>
+            <section class="n-menu--mega__support-and-training__col-container">
+              <ul class="n-menu--mega__support-and-training__col-2">
+                <li>
+                  <h3>REQUIRES NETAPP LOGIN</h3>
+                </li>
+                <li><a href="https://mysupport.netapp.com/NOW/cgi-bin/software/">Download Software</a></li>
+                <li><a href="https://mysupport.netapp.com/eservice/registerSNoAction.do?moduleName=RegisterMyProduct">Register a Product</a></li>
+                <li><a href="https://mysupport.netapp.com/apbu/3pr/frulkup?moduleName=3pr">View Contracts and Warranties</a></li>
+                <li><a href="https://mysupport.netapp.com/cssportal/faces/oracle/webcenter/portalapp/pages/css/casesparts/ViewCasesLanding.jspx">Check Case Status</a></li>
+              </ul>
+              <div class="n-menu--mega__signup-container">Not registered? <a href="https://mysupport.netapp.com/eservice/public/now.do">Sign up</a></div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end copy from prototype here -->
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+        <div class="ie-utility">
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector -->
+    <div id="ie-i18n" class="n-property-bar__lang-selector">
+      <div id="ie-i18n-menu">
+      <span class="ie-i18n-lang">English</span>
+        <button class="ie-i18n-icon-container" type="button">
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+
+      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none; right: auto;">
         <div class="n-language-selector-menu">
           <div class="n-language-selector-menu__header">
             <span class="n-language-selector-menu__title">Select Your Language</span>
@@ -244,13 +759,25 @@
           <ul class="n-menu__list">
             <li class="n-menu__list-column">
               <ul class="n-menu__list">
-
-
+                
                 
                 
                 <li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="/occm36/us-en/" class="n-menu__header-text">English</a>
+                  <a href="/occm36/us-en/" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
                 </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
               </ul>
@@ -263,19 +790,63 @@
         </div>
       </div>
     </div>
+    <!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+
+    
+    <div id="search-demo-container" class="searchbox n-property-bar__search">
+      <div id="react-search"></div>
+      <button class="n-property-bar__search-toggle-button" type="button">
+        <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+          <title>search</title>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#search"></use>
+        </svg>
+      </button>
+    </div>
+    
   </div>
-</header>
 
-
-      <!-- Content -->
-      <main role="main" id="n-main-content" class="n-main-content">
-        <div class="n-container">
-  <div class="n-row">
-    <div class="n-doc n-doc__component-list">
-      <!-- Sidebar Column -->
+  <div class="n-breadcrumb">
+    <ul class="n-breadcrumb__list">
+      <li class="n-breadcrumb__list-item">
+        <a href="https://www.netapp.com">Home</a>
+      </li>
+      <li class="n-breadcrumb__list-item">
+        <a href="https://docs.netapp.com">Documentation</a>
+      </li>
       
-      <div class="col-md-3" >
-          
+      <li class="n-breadcrumb__list-item">
+        <a href="https://docs.netapp.com/us-en/cloud/">Cloud Docs</a>
+      </li>
+      
+
+      <li class="n-breadcrumb__list-item">
+        <a href="/occm36/us-en/">Cloud&nbsp;Manager&nbsp;3.6</a>
+      </li>
+      <li class="n-breadcrumb__list-item">
+        Security group rules for Azure
+      </li>
+    </ul>
+  </div>
+
+  <div style="clear: both"></div><!-- Main needs to have height -->
+</div>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" >
+      <a class="n-pdf-button" target="_blank" href="/occm36/us-en/pdfs/fullsite_template.pdf"  role="button">
+        &#9662; Download as PDF
+      </a>
+      <br/>
+      <br/>
+
+      
 
 <ul id="mysidebar" class="nav">
   
@@ -826,37 +1397,33 @@
 <!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
 <script>$("li.active").parents('li').toggleClass("active");</script>
 
-      </div>
-      
-
-      <div class="n-doc__component-detail-content n-doc__component-detail-content--show-code">
-        <!-- Begin of page container -->
-        <article class="page-content">
-          
-<div class="sectionbody">
-  <div class="paragraph lead">
-    <p class="downlevel" id="downlevel-header">
-      This documentation is for a previous release of Cloud Manager. <a href="https://docs.netapp.com/us-en/occm/">Go to the docs for the latest release.</a>
-    </p>
   </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container -->
+    <article class="page-content">
+      
+<div class="previous-version">
+  <span class="previous-version-highlight">This documentation is for a previous release of Cloud Manager.</span><br>
+  <span><a href="https://docs.netapp.com/us-en/occm/">Go to the docs for the latest release.</a></span>
 </div>
 
 
+
+
 <div class="n-doc__component-detail-heading-wrap">
-  <h1 class="n-doc__component-detail-heading">Security group rules for Azure
-    <span>
-      
-        <a target="_blank" href="https://github.com/NetAppDocs/occm36/blob/master/reference_security_groups_azure.adoc" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit on GitHub</a>
-        <a target="_blank" href="https://github.com/NetAppDocs/occm36/issues/new?body=Page%3A%20[Security group rules for Azure](https://docs.netapp.com/us-en/occm36/reference_security_groups_azure.html)" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Request doc changes</a>
-      
-    </span>
-  </h1>
+  <h1 class="n-doc__component-detail-heading">Security group rules for Azure</h1>
 </div>
 
 <p class="page-details">
 
 <time datetime="2019-06-03 19:56:08 +0000">06/03/2019</time>
 
+|
+<a target="_blank" href="/occm36/us-en/pdfs/pages/reference_security_groups_azure.pdf" role="button">
+  &#9662; Download as PDF
+</a>
 
 <span>Contributors
   
@@ -1772,103 +2339,163 @@ The source is the interface (IP address) on the Cloud Volumes ONTAP system.
 </div>
 </div>
 
-        </article>
-        <!-- Page Container -->
-      </div>
+    </article>
+    <!-- Page Container -->
+  </div>
 
-      
-      <div class="page-nav-container">
-        <nav class="page-nav-fixed">
-          <div class="page-nav-title">On this page:</div>
+  
+  <!-- Start Page Toolbar -->
+  <div class="page-nav-toolbar">
+    <div class="page-nav-contribute"  >
+      <div class="page-nav-contribute-title">CONTRIBUTE</div>
+      <a target="_blank" href="https://github.com/NetAppDocs/occm36/blob/master/reference_security_groups_azure.adoc" class="btn btn-default githubEditButton" role="button"><img src="/occm36/us-en/images/github.png" class="github-icon" /> Edit on GitHub</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/occm36/issues/new?body=Page%3A%20[Security group rules for Azure](https://docs.netapp.com/us-en/occm36/reference_security_groups_azure.html)" class="btn btn-default githubEditButton" role="button"><img src="/occm36/us-en/images/github.png" class="github-icon" /> Request doc changes</a>
+      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >Contributor's Guide</a>
+    </div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">ON THIS PAGE</div>
+        <div class="page-nav-links">
           <ul class="page-nav-inner" id="page-menu"></ul>
-        </nav>
-      </div>
-      
-
+        </div>
+      </nav>
     </div>
   </div>
+  
+  <div style="clear: both"></div><!-- Main needs to have height -->
 </div>
 
-      </main>
+        </main>
 
-      <!-- Footer -->
-      
-      <footer class="n-footer n-footer--v1" style="border-top: solid 10px #DFDFDF;">
-        <div class="n-footer__bottom">
-          <div class="n-container">
-            <div class="n-footer__bottom-left">
-              <div class="n-footer__copyright">
-                  <a href="//www.netapp.com/us/legal/copyright.aspx" class="n-footer__copyright-link">© 2019 NetApp, Inc.</a>
-              </div>
-              <div class="n-footer__copyright">
-                <a href="//www.netapp.com/us/legal/index.aspx" class="n-footer__copyright-link">Legal</a>
-              </div>
-              <div class="n-footer__social-links n-footer__copyright">
-                <ul class="n-footer__social-link-list">
-                  <li class="n-footer__social-link-list-item">
-                    <a class="n-footer__social-link" data-ntap-social="follow-blog" href="http://blog.netapp.com" target="_blank" title="blog" alt="blog">
-                      <span class="n-footer__social-link-text">blog</span>
-                      <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
-                        <title>blog@</title>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#blog"></use>
-                      </svg>
-                    </a>
-                  </li>
-                  <li class="n-footer__social-link-list-item">
-                    <a class="n-footer__social-link" data-ntap-social="follow-community" href="http://community.netapp.com/" target="_blank" title="community" alt="community">
-                      <span class="n-footer__social-link-text">community</span>
-                      <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
-                        <title>community@</title>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#comments"></use>
-                      </svg>
-                    </a>
-                  </li>
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
 
-                  <li class="n-footer__social-link-list-item">
-                    <a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netappdoc" target="_blank" title="twitter" alt="twitter">
-                      <span class="n-footer__social-link-text">twitter</span>
-                      <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
-                        <title>twitter@</title>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#twitter"></use>
-                      </svg>
-                    </a>
-                  </li>
-                  <li class="n-footer__social-link-list-item">
-                    <a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTechCommTV/" target="_blank" title="youtube" alt="youtube">
-                      <span class="n-footer__social-link-text">youtube</span>
-                      <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
-                        <title>youtube@</title>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#youtube"></use>
-                      </svg>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="n-footer__bottom-right">
-              <div class="n-footer__copyright">
-                <a href="https://docs.netapp.com/us-en/contribute/" class="n-footer__copyright-link">Contribute</a>
-              </div>
-              <div class="n-footer__copyright">
-                <a target="_self" class="n-footer__copyright-link" href="javascript:netapp_mailto()">Email your feedback</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+            <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2020 NetApp</a>
+            </li>
+            <li class="n-footer__language">
+              <!-- <a class="n-footer__corp-link modaal" href="#n-language-selector-menu" data-modaal-scope="modaal_154143812867626e487b1a03c9"> -->
+              <a class="n-footer__corp-link modaal" href="#n-language-selector-menu">
+                <svg class="n-icon-baseline-language" aria-labelledby="title">
+                  <title>netapp-globe</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#globe"></use>
+                </svg>
+                English
+              </a>
+            </li>
 
+</ul>
+</div>
+<div class="n-footer__social-links">
+<ul class="n-footer__social-link-list">
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com" target="_blank" title="blog" alt="blog">
+<span class="n-footer__social-link-text">blog</span>
+<svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+  <title>blog@</title>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#blog"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/" target="_blank" title="community" alt="community">
+<span class="n-footer__social-link-text">community</span>
+<svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+<title>community@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#comments"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp" target="_blank" title="twitter" alt="twitter">
+<span class="n-footer__social-link-text">twitter</span>
+<svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+<title>twitter@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#twitter"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp" target="_blank" title="facebook" alt="facebook">
+<span class="n-footer__social-link-text">facebook</span>
+<svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+<title>facebook@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#facebook"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-linkedin" href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+<span class="n-footer__social-link-text">linkedin</span>
+<svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+<title>linkedin@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#linkedin"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+<span class="n-footer__social-link-text">youtube</span>
+<svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+<title>youtube@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#youtube"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-slideshare" href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+<span class="n-footer__social-link-text">slideshare</span>
+<svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+<title>slideshare@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/us-en/common/svg/sprite.svg#slideshare"></use>
+</svg>
+
+</a>
+</li>
+</ul>
+</div>
+
+</div>
+<div class="n-footer__bottom-right">
+  <p class="n-footer__fine-print">
+
+
+  Have feedback for our website?
+
+  <a target="_self" href="javascript:netapp_mailto()" class="n-footer__copyright">Let us know</a>
+  <a href="https://docs.netapp.com/us-en/announcements/" class="n-footer__copyright">Announcements</a>
+  </p>
+</div>
+</div>
+</div>
+</footer>
+
+      </div>
+
+      <!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/occm36/us-en/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/occm36/us-en/js/prism.js'></script>
+      <script type="text/javascript" src='/occm36/us-en/js/prism-curl.js'></script>
     </div>
-
-    <script src="/occm36/us-en/common/js/components.js"></script>
-    <script src="/occm36/us-en/common/js/doc-components.js"></script>
-
-    <!-- Elasticsearch JS -->
-    <script type="text/javascript" src='/occm36/us-en/js/bundle.js'></script>
-
-    <!-- Syntax Highlighting -->
-    <script type="text/javascript" src='/occm36/us-en/js/prism.js'></script>
-    <script type="text/javascript" src='/occm36/us-en/js/prism-curl.js'></script>
-
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/occm36/us-en/js/www-ntap.js'></script>
   </body>
 
   
