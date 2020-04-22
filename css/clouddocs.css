@@ -1,7 +1,7 @@
 
 /* NetApp.com Overrides */
 .n-property-bar {
-  background: #65D097;
+  background: #BEEAD3!important;
 }
 
 .n-property-bar__inner-wrap {
@@ -253,21 +253,8 @@ time+span+span {
   overflow: hidden;
 }
 
-/* Misc */
-@media (min-width: 48em) {
-  .ie-content-pane {
-    width: calc(100% - 310px);
-  }
-
-  .n-property-bar__property-mark--has-property-name{
-    padding-top: 6px;
-  }
-
-  .n-layout-flex__item:nth-child(7) {
-    margin-left: .83333%;
-    margin-right: .83333%;
-    margin-top: 0;
-  }
+.n-footer {
+  box-shadow: 0 -2px 0 rgba(0,0,0,.08);
 }
 
 .image:after {
@@ -368,7 +355,6 @@ time+span+span {
   font-weight: bold;
 }
 
-/* Mobile landscape */
 @media screen and (min-width: 400px) {
   #ie-i18n-menu {
     top: auto;
@@ -385,7 +371,23 @@ time+span+span {
   }
 }
 
-/* media queries */
+/* Mobile landscape */
+@media (min-width: 48em) {
+  .ie-content-pane {
+    width: calc(100% - 310px);
+  }
+
+  .n-property-bar__property-mark--has-property-name{
+    padding-top: 6px;
+  }
+
+  .n-layout-flex__item:nth-child(7) {
+    margin-left: .83333%;
+    margin-right: .83333%;
+    margin-top: 0;
+  }
+}
+
 @media screen and (min-width: 768px) {
   #ie-i18n {
     display: block;
@@ -468,6 +470,15 @@ time+span+span {
 
   .tableblock th, .tableblock p, .tableblock ul, .tableblock ol {
     font-size: inherit;
+  }
+}
+
+@media (min-width: 120.0625em) {
+  /* Prevent www collapsing navbar */
+  .n-property-bar.n-sticky-nav {
+    z-index: initial;
+    display: initial;
+    top: initial;
   }
 }
 
