@@ -18,7 +18,7 @@ You can reduce storage costs in AWS and Azure by combining an SSD or HDD perform
 
 To set up data tiering, you simply need to do the following:
 
-image:diagram_tiering.gif[A diagram that shows the workflow for enabling tiering: choose a supported configuration, ensure that connectivity is available between tiers, and then choose a tiering policy when creating, modifying, or replicating a volume.]
+image:diagram_tiering.gif["A diagram that shows the workflow for enabling tiering: choose a supported configuration, ensure that connectivity is available between tiers, and then choose a tiering policy when creating, modifying, or replicating a volume."]
 
 [NOTE]
 .What's not required for data tiering
