@@ -1,5 +1,9 @@
 
 /* NetApp.com Overrides */
+.n-property-bar {
+  background: #65D097;
+}
+
 .n-property-bar__inner-wrap {
   height: 38px;
 }
@@ -76,6 +80,8 @@ li.n-footer__language svg {
   vertical-align: inherit;
 }
 
+table.frame-all { border-width: 1px 0; }
+
 /* Override */
 
 
@@ -112,11 +118,14 @@ time+span+span {
 #ie-i18n {
   display: none;
   position: relative;
-  border: 1px solid #dbdbdb;
-  border-radius: 6px;
-  pointer-events: all;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  border-color: #ccc;
   cursor: pointer;
+  margin-right: 14px;
   margin-top: 13px;
+  pointer-events: all;
   float: left;
 }
 
@@ -124,9 +133,10 @@ time+span+span {
   display: inline-block;
   position: relative;
   text-align: left;
-  height: 40px;
+  height: 34px;
   vertical-align: top;
   margin-left: 12px;
+  width: 200px;
 }
 
 .ie-i18n-container {
@@ -159,6 +169,7 @@ time+span+span {
 
 .n-globe__icon {
   fill: #fff;
+  height: 15px;
   pointer-events: none;
   top: 0px;
   left: 0px;
@@ -174,19 +185,25 @@ time+span+span {
 
 .ie-i18n-lang {
   display: inline-block;
+  font-size: 14px;
+  font-family: proxima-nova,Arial,"Helvetica Neue",Helvetica,sans-serif;
+  font-weight: 600;
+  padding: 6px 12px;
   position: relative;
   vertical-align: middle;
-  padding: 0 12px;
+
 }
 
 .ie-i18n-icon-container {
   display: inline-block;
+  float: right;
   position: relative;
   top: 0px;
   left: 0px;
   background: #0A0B09;
-  border: 1px solid #0A0B09;
-  border-radius: 0 6px 6px 0;
+  background-image: none;
+  border: 0;
+  border-radius: 0 4px 4px 0;
   width: 30px;
   padding: 0 5px;
   margin: 0px;
@@ -196,7 +213,7 @@ time+span+span {
 .ie-i18n-results-container {
   position: absolute;
   top: 50px;
-  right: 0px;
+  right: auto;
   left: auto;
   background: #FFF;
   border-bottom: solid 4px #0A0B09;
@@ -233,6 +250,7 @@ time+span+span {
 
 .n-top-hat {
   background-color: #0A0B09;
+  overflow: hidden;
 }
 
 /* Misc */
@@ -356,9 +374,6 @@ time+span+span {
     top: auto;
     right: auto;
     margin-left: 0px;
-    position: relative;
-    height: 40px;
-    vertical-align: top;
   }
 
   .image img {
@@ -382,6 +397,7 @@ time+span+span {
 
   .n-property-bar__inner-wrap {
     height: 46px;
+    clear: left;
   }
 
   .ie-content-pane {
@@ -400,9 +416,6 @@ time+span+span {
     top: auto;
     right: auto;
     margin-left: 0px;
-    position: relative;
-    height: 40px;
-    vertical-align: top;
   }
 
   #n-main-content {
@@ -435,13 +448,14 @@ time+span+span {
     z-index: 1;
   }
 
+  .ie-i18n-results-container {
+    right: 0px;
+  }
+
   #ie-i18n-menu {
     top: auto;
     right: auto;
     margin-left: 0px;
-    position: relative;
-    height: 40px;
-    vertical-align: top;
   }
 
   #n-main-content {

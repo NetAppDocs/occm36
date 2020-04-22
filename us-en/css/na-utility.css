@@ -27,15 +27,32 @@
   height: 0px;
 }
 
-#search-demo-container {
-  position: fixed;
-  right: 0;
-  top: 0;
-  display: inline-block;
+#ie-i18n-tooltip {
+  display: none;
+  position: relative;
   float: left;
-  margin: 1px 10px;
-  margin-right: 30px;
-  text-align: left;
+  line-height: 61px;
+  height: 61px;
+  margin: 0 8px;
+}
+
+#luci-tooltip-1 {
+  top: 19px;
+}
+
+.search-property-bar {
+  display: inline-block;
+  height: 36px;
+  position: relative;
+  text-align: center;
+  width: calc(100% - 180px);
+}
+
+#search-demo-container {
+  position: relative;
+  display: inline-block;
+  margin: 1px 0;
+  width: 95%;
 }
 
 .search div._Search_display_wrapper {
@@ -66,7 +83,7 @@ div._Search_display_wrapper em {
 }
 
 .sk-search-box {
-  width: 150px;
+  width: 100%;
 }
 
 .sk-search-box__icon {
@@ -122,6 +139,7 @@ div._Search_display_wrapper em {
 
 #react-search {
   float: left;
+  width: calc(100% - 40px);
 }
 
 .searchbox {
@@ -139,6 +157,9 @@ button.n-property-bar__search-toggle-button {
 }
 
 .sk-search-box input.sk-search-box__text {
+  color: #454545 !important;
+  font-size: 16px;
+  font-family: proxima-nova,Arial,"Helvetica Neue",Helvetica,sans-serif;
   height: 34px;
 }
 
@@ -147,7 +168,7 @@ button.n-property-bar__search-toggle-button {
   color: #454545 !important;
   padding-left: 40px;
   border: 1px solid #A6A8AB;
-  width: 250px;
+  width: 600px;
   background: #FFF;
   -webkit-box-flex: unset;
   -webkit-flex: unset;
@@ -234,16 +255,20 @@ button.n-property-bar__search-toggle-button {
     clear: left;
   }
 
-  #search-demo-container {
-    position: relative;
-    right: auto;
-    top: auto;
-    margin: 8px;
-    margin-top: 13px;
+  .search-property-bar {
+    height: 100%;
+    padding-right: 118px;
+    width: calc(100% - 118px);
   }
 
-  .sk-search-box {
-    width: 250px;
+  #search-demo-container {
+    margin: 0px;
+    margin-right: 30px;
+    right: 0;
+    text-align: left;
+    top: 3px;
+    max-width: 40em;
+    width: inherit;
   }
 
   .sk-search-box input.sk-search-box__text {
@@ -252,6 +277,14 @@ button.n-property-bar__search-toggle-button {
 
   button.n-property-bar__search-toggle-button {
     height: 37px;
+  }
+
+  .search div._Search_display_wrapper {
+    width: 100%;
+  }
+
+  #ie-i18n-tooltip {
+    display: block;
   }
 }
 
@@ -266,7 +299,7 @@ button.n-property-bar__search-toggle-button {
     float: right;
   }
 
-  .n-breadcrumb__list {
-    width: calc(100vw - 450px);
+  .n-breadcrumb {
+    width: calc(100% - 470px);
   }
 }
