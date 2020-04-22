@@ -139,7 +139,7 @@ time+span+span {
 }
 
 .ie-i18n-icon-container {
-  background: #0067c5;
+  background: #0A0B09;
   display: inline-block;
   border: 0;
   border-top-right-radius: 3px;
@@ -184,8 +184,8 @@ time+span+span {
   position: relative;
   top: 0px;
   left: 0px;
-  background: #0067c5;
-  border: 1px solid #0067c5;
+  background: #0A0B09;
+  border: 1px solid #0A0B09;
   border-radius: 0 6px 6px 0;
   width: 30px;
   padding: 0 5px;
@@ -199,7 +199,7 @@ time+span+span {
   right: 0px;
   left: auto;
   background: #FFF;
-  border-bottom: solid 4px #0067C5;
+  border-bottom: solid 4px #0A0B09;
   display: none;
   min-width: 230px;
   z-index: 200;
@@ -229,6 +229,10 @@ time+span+span {
   font-size: 12px;
   padding: 6px 24px;
   text-transform: uppercase;
+}
+
+.n-top-hat {
+  background-color: #0A0B09;
 }
 
 /* Misc */
@@ -484,18 +488,22 @@ h1.n-doc__component-detail-heading {
   box-shadow: 2px 0px 0px rgba(0,0,0,.08);
 }
 .n-pdf-button {
-  color: #454545; 
+  color: #454545;
   font-family: proxima-nova,Arial,"Helvetica Neue",Helvetica,sans-serif;
-  font-style: normal; 
+  font-style: normal;
   text-decoration: none !important;
-  font-weight: 600; 
+  font-weight: 600;
   width: 100%
 }
+.n-pdf-button:before {
+  content: '\22ee';
+  color: #444;
+}
 .n-pdf-body {
-  border-bottom: 1px solid #e3e3e3 !important; 
-  margin-left: 0px; 
+  border-bottom: 1px solid #e3e3e3 !important;
+  margin-left: 0px;
   margin-bottom: 20px;
-  width: 265px; 
+  width: 265px;
   box-shadow: 2px 0px 0px rgba(0,0,0,.08);
 }
 
@@ -540,5 +548,3 @@ h1.n-doc__component-detail-heading {
     width: 100%;
 
 }
-
-

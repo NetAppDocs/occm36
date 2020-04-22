@@ -192,6 +192,10 @@ button.n-property-bar__search-toggle-button {
   z-index: 0;
 }
 
+.n-property-bar__search-toggle-button-icon {
+  fill: #0A0B09;
+}
+
 @media (min-width: 48em) {
   .n-property-bar__search-toggle {
     padding: 15px;

@@ -7,7 +7,7 @@ function netapp_mailto(subjectType) {
   }
 
   var email = "doccomments@netapp.com";
-  var loc = email + "?subject=clouddocs_feedback:%20" + pageurl;
+  var loc = email + "?subject=docs_feedback:%20" + pageurl;
   window.location = "mailto:" + loc;
 }
 
@@ -24,6 +24,10 @@ function redirectToWebserver(pathChunks, originUrl, proxyUrl) {
 	} else if(pathChanged) {
 		location.pathname = pathChunks.join("/");
 	}
+}
+
+function pageRedirect(url) {
+		location.href = url;
 }
 
 function getBrowserLocale(browserLocales, siteLocales) {

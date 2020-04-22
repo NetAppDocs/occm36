@@ -80,10 +80,33 @@ function sendAnalyticsPageLoad(cloudParams) {
 
 function sendAnalyticsSearchClick(searchParams, cloudParams) {
   cloudParams = cloudParams || {};
-  cloudParams.prop28 = cloudParams.channel+":Search Results";
-  cloudParams.prop29 = searchParams.searchString;
-  cloudParams.prop50 = searchParams.href;
-  cloudParams.linkTrackVars = "prop28,prop29,prop50";
+  var linkParams = {
+    "prop28": cloudParams.channel+":Search Results",
+    "prop29": searchParams.searchString,
+    "href": searchParams.href,
+  };
+  sendAnalyticsLinkClick(linkParams, cloudParams);
+}
+
+function sendAnalyticsPdfDownload(pdfParams, cloudParams) {
+  cloudParams = cloudParams || {};
+  var linkParams = {
+    "prop28": cloudParams.channel+":pdf:"+pdfParams.level,
+    "prop29": pdfParams.title,
+    "href": pdfParams.href,
+  };
+  sendAnalyticsLinkClick(linkParams, cloudParams);
+}
+
+function sendAnalyticsLinkClick(linkParams, cloudParams) {
+  cloudParams = cloudParams || {};
+  cloudParams.prop28 = linkParams.prop28;
+  cloudParams.prop29 = linkParams.prop29;
+  cloudParams.prop50 = linkParams.href;
+  cloudParams.eVar28 = cloudParams.prop28;
+  cloudParams.eVar29 = cloudParams.prop29;
+  cloudParams.eVar50 = cloudParams.prop50;
+  cloudParams.linkTrackVars = "prop28,prop29,prop50,eVar28,eVar29,eVar50,";
   cloudParams.linkTrackEvents = "None"; //(this allows to trigger following events)
 
   $.getScript(getApiUrl(), function () {
@@ -96,9 +119,15 @@ function sendAnalyticsSearchClick(searchParams, cloudParams) {
     delete cloudParams.prop28;
     delete cloudParams.prop29;
     delete cloudParams.prop50;
+    delete cloudParams.eVar28;
+    delete cloudParams.eVar29;
+    delete cloudParams.eVar50;
     delete s.prop28;
     delete s.prop29;
     delete s.prop50;
+    delete s.eVar28;
+    delete s.eVar29;
+    delete s.eVar50;
   });
 }
 
@@ -106,6 +135,20 @@ function qs(key) {
     key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
     var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
     return match && decodeURIComponent(match[1].replace(/\+/g, " "));
+}
+
+function pdfLevel(url) {
+  if (url == null) return "other";
+  else if(url.indexOf("pdfs/fullsite-sidebar") > -1) return "site";
+  else if(url.indexOf("pdfs/sidebar") > -1) return "section";
+  else if(url.indexOf("pdfs/pages") > -1) return "topic";
+  else return "other";
+}
+
+function cleanTitle(title) {
+  if(title == null) return "none";
+  var bar = title.indexOf("|");
+  return (bar > -1) ? title.substring(0, bar-1).trim() : title;
 }
 
 $(document).ready(function() {
@@ -147,4 +190,26 @@ $(document).ready(function() {
     sendAnalyticsSearchClick(searchParams, cloudParams);
   });
 
+  // Topic Link Click
+  $('article:first, #toggleContainerPdf').on("click", "a", function() {
+    var topicLink = this.href;
+    if (topicLink == null || topicLink.indexOf("http") != 0) {
+      var clickedLink = $( this ).attr("href");
+      topicLink = window.location.protocol + "//" + window.location.hostname;
+      topicLink = window.location.port ? pdfUrl+":"+window.location.port : topicLink;
+      topicLink = topicLink + (clickedLink.indexOf("/") == 0 ? "" : "/") + clickedLink;
+    }
+
+    var linkLevel = pdfLevel(topicLink);
+    var fromContainer = $( this ).parents('#toggleContainerPdf').length > 0;
+    if (fromContainer || linkLevel != "other") {
+      var pdfParams = {
+        "fileName": topicLink.substring(topicLink.lastIndexOf("/") + 1),
+        "title": fromContainer ? $( this ).text().trim() : cleanTitle(document.title),
+        "level": linkLevel,
+        "href": topicLink
+      };
+      sendAnalyticsPdfDownload(pdfParams, cloudParams);
+    }
+  });
 });

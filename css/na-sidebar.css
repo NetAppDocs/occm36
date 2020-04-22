@@ -50,9 +50,22 @@ ul#mysidebar {
 }
 
 .nav li > a > span {
+    width: 30px;
     float: right;
     font-size: 13px;
     font-weight: bolder;
+    padding: 7px;
+}
+
+
+.nav li > a.na-navbar-padding {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.nav li > a > div.na-navbar-padding {
+    padding-top: 7px;
+    padding-bottom: 7px;
 }
 
 
@@ -88,14 +101,14 @@ ul#mysidebar {
 .nav li a {
     font-size: 13px;
     line-height: 16px;
-    padding: 7px 15px;
+    padding-left: 7px;
     background: inherit;
 }
 
 .nav > li > a {
     font-size: 13px;
     line-height: 16px;
-    padding: 7px 15px;
+    padding-left: 7px;
 }
 
 .nav li.thirdlevel > a {
@@ -105,8 +118,7 @@ ul#mysidebar {
 }
 
 .nav li a {
-    padding-right:10px;
-
+    padding-right:0px;
 }
 
 .nav li a:hover {

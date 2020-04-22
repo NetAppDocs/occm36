@@ -7,7 +7,7 @@ function netapp_mailto(subjectType) {
   }
 
   var email = "doccomments@netapp.com";
-  var loc = email + "?subject=clouddocs_feedback:%20" + pageurl;
+  var loc = email + "?subject=docs_feedback:%20" + pageurl;
   window.location = "mailto:" + loc;
 }
 

@@ -45,20 +45,22 @@
   <link rel="stylesheet" href="/occm36/css/boxshadowproperties.css">
 
   <!-- NetApp CSS controls the technical content -->
-  <link rel='stylesheet' href='/occm36/css/netapp.css' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="/occm36/css/netapp.css">
 
   <!-- WWW CSS Content -->
-  <link rel="stylesheet" href="https://www.netapp.com/us/static/css/luci-dotcom.min.css?v10007269030243">
-  <link rel="stylesheet" href="https://www.netapp.com/us/static/css/netapp-dotcom.css?v10007269030243">
-  <link href="https://www.netapp.com/us/static/css/netapp-library-critical.min.css?v10007269030243" media="all" rel="stylesheet">
-  <link rel="stylesheet" href="https://www.netapp.com/us/static/css/netapp-library-non-critical.min.css?v10007269030243" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="stylesheet" href="https://www.netapp.com/us/static/css/netapp-library-global-header-footer.min.css">
+  <link rel="stylesheet" type="text/css" href="/occm36/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/occm36/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/occm36/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/occm36/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/occm36/css/www-netapp-library-global-header-footer.min.css">
 
   <!-- NetApp IE Customizations -->
   <link rel="stylesheet" href='/occm36/css/na-utility.css' type='text/css'>
   <link rel="stylesheet" href='/occm36/css/na-sidebar.css' type='text/css'>
   <link rel='stylesheet' href='/occm36/css/clouddocs.css' type='text/css'>
   <link rel='stylesheet' href='/occm36/css/na-pagenav.css' type='text/css'>
+
+  
 
   
   <link rel='stylesheet' href='/occm36/css/na-feature.css' type='text/css'>
@@ -84,7 +86,7 @@
 <script src='/occm36/js/na-utility.js'></script>
   <script src='/occm36/js/clouddocs.js'></script>
   
-  <script src='/occm36/js/s_code_impl-v2.js'></script>
+  <script src='/occm36/js/s_code_impl.js'></script>
   
 
   <script src='/occm36/js/jquery.navgoco.min.js'></script>
@@ -151,9 +153,7 @@
     
 
     standardizeUrl(siteLocales, "clouddocs.netapp.com", "https://docs.netapp.com");
-  </script>
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
+  </script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
   <script>
   if (document.location.hostname === "docs.netapp.com") {
     window.dataLayer = window.dataLayer || [];
@@ -743,99 +743,101 @@
 </header>
 
         <div class="ie-utility">
-  <div class="n-property-bar__toolbar">
-    <!-- Start Language Selector -->
-    <div id="ie-i18n" class="n-property-bar__lang-selector">
-      <div id="ie-i18n-menu">
-      <span class="ie-i18n-lang">English</span>
-        <button class="ie-i18n-icon-container" type="button">
-          <svg class="n-globe__icon" aria-labelledby="title">
-            <title>globe</title>
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/common/svg/sprite.svg#globe"></use>
-          </svg>
-        </button>
-      </div>
+  <div class="ie-menu">
+    <div class="n-property-bar__toolbar">
+      <!-- Start Language Selector -->
+      <div id="ie-i18n" class="n-property-bar__lang-selector">
+        <div id="ie-i18n-menu">
+        <span class="ie-i18n-lang">English</span>
+          <button class="ie-i18n-icon-container" type="button">
+            <svg class="n-globe__icon" aria-labelledby="title">
+              <title>globe</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/common/svg/sprite.svg#globe"></use>
+            </svg>
+          </button>
+        </div>
 
-      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none; right: auto;">
-        <div class="n-language-selector-menu">
-          <div class="n-language-selector-menu__header">
-            <span class="n-language-selector-menu__title">Select Your Language</span>
-          </div>
-          <ul class="n-menu__list">
-            <li class="n-menu__list-column">
-              <ul class="n-menu__list">
-                
-                
-                
-                <li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="/occm36/us-en/" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
-                </li>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-              </ul>
-            </li>
-          </ul>
-          <div class="menu__footer">
-            <p>Current Language: English
-            </p>
+        <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none; right: auto;">
+          <div class="n-language-selector-menu">
+            <div class="n-language-selector-menu__header">
+              <span class="n-language-selector-menu__title">Select Your Language</span>
+            </div>
+            <ul class="n-menu__list">
+              <li class="n-menu__list-column">
+                <ul class="n-menu__list">
+                  
+                  
+                  
+                  <li class="n-menu__list-item n-menu__list-item--level-1">
+                    <a href="/occm36/us-en/" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                  </li>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                </ul>
+              </li>
+            </ul>
+            <div class="menu__footer">
+              <p>Current Language: English
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- End Language Selector -->
+      <!-- End Language Selector -->
 
-    <div class="n-property-bar__cta"></div>
+      <div class="n-property-bar__cta"></div>
 
-    
-    <div id="search-demo-container" class="searchbox n-property-bar__search">
-      <div id="react-search"></div>
-      <button class="n-property-bar__search-toggle-button" type="button">
-        <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
-          <title>search</title>
-          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/common/svg/sprite.svg#search"></use>
-        </svg>
-      </button>
-    </div>
-    
-  </div>
-
-  <div class="n-breadcrumb">
-    <ul class="n-breadcrumb__list">
-      <li class="n-breadcrumb__list-item">
-        <a href="https://www.netapp.com">Home</a>
-      </li>
-      <li class="n-breadcrumb__list-item">
-        <a href="https://docs.netapp.com">Documentation</a>
-      </li>
       
-      <li class="n-breadcrumb__list-item">
-        <a href="https://docs.netapp.com/us-en/cloud/">Cloud Docs</a>
-      </li>
+      <div id="search-demo-container" class="searchbox n-property-bar__search">
+        <div id="react-search"></div>
+        <button class="n-property-bar__search-toggle-button" type="button">
+          <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+            <title>search</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/occm36/common/svg/sprite.svg#search"></use>
+          </svg>
+        </button>
+      </div>
       
+    </div>
 
-      <li class="n-breadcrumb__list-item">
-        <a href="/occm36/">Cloud&nbsp;Manager&nbsp;3.6</a>
-      </li>
-      <li class="n-breadcrumb__list-item">
-        Syncing data to AWS S3
-      </li>
-    </ul>
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://www.netapp.com">Home</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">Documentation</a>
+        </li>
+        
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com/us-en/cloud/">Cloud Docs</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/occm36/">Cloud&nbsp;Manager&nbsp;3.6</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          Syncing data to AWS S3
+        </li>
+      </ul>
+    </div>
+
+    <div style="clear: both"></div><!-- Main needs to have height -->
   </div>
-
-  <div style="clear: both"></div><!-- Main needs to have height -->
 </div>
 
 
@@ -845,545 +847,759 @@
   <!-- Sidebar Column -->
   
   <div class="col-md-3" >
-      
-
-
-
-<div class="n-pdf-header">
+      <div class="n-pdf-header">
   <a id="toggleButtonPdf" class="n-pdf-button" type="button">
-    &vellip; Download PDF
+    Download PDF
     <span>
       <img src="/occm36/images/pdf.png" width="20" height="20"/>
     </span>
   </a>
 </div>
-<ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;">
-  
-    
-
-    <div class="n-pdf-section">
+<ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><div class="n-pdf-section">
       <span class="n-pdf-section-title">
-        Site 
+        Site
       </span>
     </div>
     <li>
-      <a target="_blank" href="/occm36/pdfs/fullsite-sidebar/Cloud_Manager_3_6_docs.pdf" >
+      <a target="_blank" href="/occm36/pdfs/fullsite-sidebar/Cloud_Manager_and_Cloud_Volumes_ONTAP_documentation.pdf" >
         <img src="/occm36/images/pdf.png" width="20" height="20"/>
-        Cloud Manager 3.6 docs
+        Cloud Manager and Cloud Volumes ONTAP documentation
       </a>
     </li>
-   
-  
   
 
+
   
-    <span class="subfolders" style="display:none;">
-      
-        <div class="n-pdf-section">
-          <span class="n-pdf-section-title">
-            Sections
-          </span>
-        </div>
-      
-      <li>
-        <a target="_blank" href="/occm36/pdfs/sidebar/Release_notes.pdf" >
-          <img src="/occm36/images/pdf.png" width="20" height="20"/>
-          Release notes
-        </a>
-      </li>
-      <span>
+
+    
+      <span class="subfolders" style="display:none;">
         
-  
-    <span class="subfolders" style="display:none;">
-      
-      <li>
-        <a target="_blank" href="/occm36/pdfs/sidebar/Cloud_Manager.pdf" >
-          <img src="/occm36/images/pdf.png" width="20" height="20"/>
-          Cloud Manager
-        </a>
-      </li>
-      <span>
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              
+                Sections
+              
+            </span>
+          </div>
         
+        <li>
+          <a target="_blank" href="/occm36/pdfs/sidebar/Release_notes.pdf" >
+            <img src="/occm36/images/pdf.png" width="20" height="20"/>
+            Release notes
+          </a>
+        </li>
+        <span>
+          
   
 
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/occm36/pdfs/sidebar/Cloud_Manager.pdf" >
+            <img src="/occm36/images/pdf.png" width="20" height="20"/>
+            Cloud Manager
+          </a>
+        </li>
+        <span>
+          
   
 
+
   
 
 
+  
+
+
+
+
+          
+        </span>
       </span>
-    </span>
-  
+    
 
   
 
 
+  
+
+
+
+
+          
+        </span>
       </span>
-    </span>
-  
+    
 
   
-    <span class="subfolders" style="display:none;">
-      
-        <div class="n-pdf-section">
-          <span class="n-pdf-section-title">
-            Sections
-          </span>
-        </div>
-      
-      <li>
-        <a target="_blank" href="/occm36/pdfs/sidebar/Concepts.pdf" >
-          <img src="/occm36/images/pdf.png" width="20" height="20"/>
-          Concepts
-        </a>
-      </li>
-      <span>
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
         
-  
-
-  
-
-  
-
-  
-    <span class="subfolders" style="display:none;">
-      
-      <li>
-        <a target="_blank" href="/occm36/pdfs/sidebar/Storage.pdf" >
-          <img src="/occm36/images/pdf.png" width="20" height="20"/>
-          Storage
-        </a>
-      </li>
-      <span>
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              
+                Sections
+              
+            </span>
+          </div>
         
+        <li>
+          <a target="_blank" href="/occm36/pdfs/sidebar/Concepts.pdf" >
+            <img src="/occm36/images/pdf.png" width="20" height="20"/>
+            Concepts
+          </a>
+        </li>
+        <span>
+          
   
 
-  
 
   
 
+
   
 
 
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/occm36/pdfs/sidebar/Storage.pdf" >
+            <img src="/occm36/images/pdf.png" width="20" height="20"/>
+            Storage
+          </a>
+        </li>
+        <span>
+          
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+          
+        </span>
       </span>
-    </span>
-  
+    
 
   
-    <span class="subfolders" style="display:none;">
-      
-      <li>
-        <a target="_blank" href="/occm36/pdfs/sidebar/High_availability_pairs.pdf" >
-          <img src="/occm36/images/pdf.png" width="20" height="20"/>
-          High-availability pairs
-        </a>
-      </li>
-      <span>
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
         
+        <li>
+          <a target="_blank" href="/occm36/pdfs/sidebar/High_availability_pairs.pdf" >
+            <img src="/occm36/images/pdf.png" width="20" height="20"/>
+            High-availability pairs
+          </a>
+        </li>
+        <span>
+          
   
 
+
   
 
 
+
+
+          
+        </span>
       </span>
-    </span>
-  
-
-  
-
-  
-
-  
+    
 
   
 
 
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+          
+        </span>
       </span>
-    </span>
-  
+    
 
   
-    <span class="subfolders" style="display:none;">
-      
-        <div class="n-pdf-section">
-          <span class="n-pdf-section-title">
-            Sections
-          </span>
-        </div>
-      
-      <li>
-        <a target="_blank" href="/occm36/pdfs/sidebar/Getting_started.pdf" >
-          <img src="/occm36/images/pdf.png" width="20" height="20"/>
-          Getting started
-        </a>
-      </li>
-      <span>
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
         
-  
-
-  
-
-  
-
-  
-    <span class="subfolders" style="display:none;">
-      
-      <li>
-        <a target="_blank" href="/occm36/pdfs/sidebar/Setting_up_Cloud_Manager.pdf" >
-          <img src="/occm36/images/pdf.png" width="20" height="20"/>
-          Setting up Cloud Manager
-        </a>
-      </li>
-      <span>
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              
+                Sections
+              
+            </span>
+          </div>
         
+        <li>
+          <a target="_blank" href="/occm36/pdfs/sidebar/Getting_started.pdf" >
+            <img src="/occm36/images/pdf.png" width="20" height="20"/>
+            Getting started
+          </a>
+        </li>
+        <span>
+          
   
+
 
   
 
-  
 
   
 
-  
-
-
-      </span>
-    </span>
-  
 
   
-    <span class="subfolders" style="display:none;">
-      
-      <li>
-        <a target="_blank" href="/occm36/pdfs/sidebar/Networking_requirements.pdf" >
-          <img src="/occm36/images/pdf.png" width="20" height="20"/>
-          Networking requirements
-        </a>
-      </li>
-      <span>
+
+    
+      <span class="subfolders" style="display:none;">
         
+        <li>
+          <a target="_blank" href="/occm36/pdfs/sidebar/Setting_up_Cloud_Manager.pdf" >
+            <img src="/occm36/images/pdf.png" width="20" height="20"/>
+            Setting up Cloud Manager
+          </a>
+        </li>
+        <span>
+          
   
 
-  
 
   
 
+
   
 
 
+  
+
+
+  
+
+
+
+
+          
+        </span>
       </span>
-    </span>
-  
+    
 
   
-    <span class="subfolders" style="display:none;">
-      
-      <li>
-        <a target="_blank" href="/occm36/pdfs/sidebar/Additional_deployment_options.pdf" >
-          <img src="/occm36/images/pdf.png" width="20" height="20"/>
-          Additional deployment options
-        </a>
-      </li>
-      <span>
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
         
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
+        <li>
+          <a target="_blank" href="/occm36/pdfs/sidebar/Networking_requirements.pdf" >
+            <img src="/occm36/images/pdf.png" width="20" height="20"/>
+            Networking requirements
+          </a>
+        </li>
+        <span>
+          
   
 
 
+  
+
+
+  
+
+
+  
+
+
+
+
+          
+        </span>
       </span>
-    </span>
+    
+
   
 
 
-      </span>
-    </span>
   
 
-  
-    <span class="subfolders" style="display:none;">
-      
-        <div class="n-pdf-section">
-          <span class="n-pdf-section-title">
-            Sections
-          </span>
-        </div>
-      
-      <li>
-        <a target="_blank" href="/occm36/pdfs/sidebar/Deploying_Cloud_Volumes_ONTAP.pdf" >
-          <img src="/occm36/images/pdf.png" width="20" height="20"/>
-          Deploying Cloud Volumes ONTAP
-        </a>
-      </li>
-      <span>
+    
+      <span class="subfolders" style="display:none;">
         
+        <li>
+          <a target="_blank" href="/occm36/pdfs/sidebar/Additional_deployment_options.pdf" >
+            <img src="/occm36/images/pdf.png" width="20" height="20"/>
+            Additional deployment options
+          </a>
+        </li>
+        <span>
+          
   
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
   
 
 
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+          
+        </span>
       </span>
-    </span>
-  
-
-  
-    <span class="subfolders" style="display:none;">
-      
-        <div class="n-pdf-section">
-          <span class="n-pdf-section-title">
-            Sections
-          </span>
-        </div>
-      
-      <li>
-        <a target="_blank" href="/occm36/pdfs/sidebar/Provisioning_storage.pdf" >
-          <img src="/occm36/images/pdf.png" width="20" height="20"/>
-          Provisioning storage
-        </a>
-      </li>
-      <span>
-        
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <span class="subfolders" style="display:none;">
-      
-      <li>
-        <a target="_blank" href="/occm36/pdfs/sidebar/Provisioning_NFS_volumes_from_the_Volume_View.pdf" >
-          <img src="/occm36/images/pdf.png" width="20" height="20"/>
-          Provisioning NFS volumes from the Volume View
-        </a>
-      </li>
-      <span>
-        
-  
-
-  
+    
 
   
 
 
+
+
+          
+        </span>
       </span>
-    </span>
+    
+
   
 
 
-      </span>
-    </span>
   
 
-  
-    <span class="subfolders" style="display:none;">
-      
-        <div class="n-pdf-section">
-          <span class="n-pdf-section-title">
-            Sections
-          </span>
-        </div>
-      
-      <li>
-        <a target="_blank" href="/occm36/pdfs/sidebar/Managing_data_across_a_hybrid_cloud.pdf" >
-          <img src="/occm36/images/pdf.png" width="20" height="20"/>
-          Managing data across a hybrid cloud
-        </a>
-      </li>
-      <span>
+    
+      <span class="subfolders" style="display:none;">
         
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              
+                Sections
+              
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/occm36/pdfs/sidebar/Deploying_Cloud_Volumes_ONTAP.pdf" >
+            <img src="/occm36/images/pdf.png" width="20" height="20"/>
+            Deploying Cloud Volumes ONTAP
+          </a>
+        </li>
+        <span>
+          
   
 
+
   
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              
+                Sections
+              
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/occm36/pdfs/sidebar/Provisioning_storage.pdf" >
+            <img src="/occm36/images/pdf.png" width="20" height="20"/>
+            Provisioning storage
+          </a>
+        </li>
+        <span>
+          
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/occm36/pdfs/sidebar/Provisioning_NFS_volumes_from_the_Volume_View.pdf" >
+            <img src="/occm36/images/pdf.png" width="20" height="20"/>
+            Provisioning NFS volumes from the Volume View
+          </a>
+        </li>
+        <span>
+          
+  
+
+
+  
+
+
+  
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              
+                Sections
+              
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/occm36/pdfs/sidebar/Managing_data_across_a_hybrid_cloud.pdf" >
+            <img src="/occm36/images/pdf.png" width="20" height="20"/>
+            Managing data across a hybrid cloud
+          </a>
+        </li>
+        <span>
+          
+  
+
+
+  
+
 
   
     <div class="n-pdf-section">
-      <span class="n-pdf-section-title">
-        This topic
+  <span class="n-pdf-section-title">
+    This page
+  </span>
+</div>
+
+<li class="active">
+  <a target="_blank" href="/occm36/pdfs/pages/task_syncing_s3.pdf" >
+    <img src="/occm36/images/pdf.png" width="20" height="20"/>
+    Syncing data to AWS S3
+  </a>
+</li>
+
+
+  
+
+
+
+
+          
+        </span>
       </span>
-    </div>
-
-    <li class="active">
-      <a target="_blank" href="/occm36/pdfs/pages/task_syncing_s3.pdf" >
-        <img src="/occm36/images/pdf.png" width="20" height="20"/>
-        Syncing data to AWS S3
-      </a>
-    </li>
-  
-
-
-      </span>
-    </span>
-  
+    
 
   
-    <span class="subfolders" style="display:none;">
-      
-        <div class="n-pdf-section">
-          <span class="n-pdf-section-title">
-            Sections
-          </span>
-        </div>
-      
-      <li>
-        <a target="_blank" href="/occm36/pdfs/sidebar/Administering_Cloud_Volumes_ONTAP.pdf" >
-          <img src="/occm36/images/pdf.png" width="20" height="20"/>
-          Administering Cloud Volumes ONTAP
-        </a>
-      </li>
-      <span>
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
         
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-      </span>
-    </span>
-  
-
-  
-    <span class="subfolders" style="display:none;">
-      
-        <div class="n-pdf-section">
-          <span class="n-pdf-section-title">
-            Sections
-          </span>
-        </div>
-      
-      <li>
-        <a target="_blank" href="/occm36/pdfs/sidebar/Administering_Cloud_Manager.pdf" >
-          <img src="/occm36/images/pdf.png" width="20" height="20"/>
-          Administering Cloud Manager
-        </a>
-      </li>
-      <span>
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              
+                Sections
+              
+            </span>
+          </div>
         
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
+        <li>
+          <a target="_blank" href="/occm36/pdfs/sidebar/Administering_Cloud_Volumes_ONTAP.pdf" >
+            <img src="/occm36/images/pdf.png" width="20" height="20"/>
+            Administering Cloud Volumes ONTAP
+          </a>
+        </li>
+        <span>
+          
   
 
 
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+          
+        </span>
       </span>
-    </span>
-  
+    
 
   
-    <span class="subfolders" style="display:none;">
-      
-        <div class="n-pdf-section">
-          <span class="n-pdf-section-title">
-            Sections
-          </span>
-        </div>
-      
-      <li>
-        <a target="_blank" href="/occm36/pdfs/sidebar/APIs_and_automation.pdf" >
-          <img src="/occm36/images/pdf.png" width="20" height="20"/>
-          APIs and automation
-        </a>
-      </li>
-      <span>
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
         
-  
-
-  
-
-
-      </span>
-    </span>
-  
-
-  
-    <span class="subfolders" style="display:none;">
-      
-        <div class="n-pdf-section">
-          <span class="n-pdf-section-title">
-            Sections
-          </span>
-        </div>
-      
-      <li>
-        <a target="_blank" href="/occm36/pdfs/sidebar/Reference.pdf" >
-          <img src="/occm36/images/pdf.png" width="20" height="20"/>
-          Reference
-        </a>
-      </li>
-      <span>
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              
+                Sections
+              
+            </span>
+          </div>
         
+        <li>
+          <a target="_blank" href="/occm36/pdfs/sidebar/Administering_Cloud_Manager.pdf" >
+            <img src="/occm36/images/pdf.png" width="20" height="20"/>
+            Administering Cloud Manager
+          </a>
+        </li>
+        <span>
+          
   
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
   
 
 
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+          
+        </span>
       </span>
-    </span>
-  
+    
 
   
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              
+                Sections
+              
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/occm36/pdfs/sidebar/APIs_and_automation.pdf" >
+            <img src="/occm36/images/pdf.png" width="20" height="20"/>
+            APIs and automation
+          </a>
+        </li>
+        <span>
+          
+  
+
+
+  
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              
+                Sections
+              
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/occm36/pdfs/sidebar/Reference.pdf" >
+            <img src="/occm36/images/pdf.png" width="20" height="20"/>
+            Reference
+          </a>
+        </li>
+        <span>
+          
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+  
+
 
   
 
@@ -1396,555 +1612,226 @@
   $("#toggleButtonPdf").click(function () {
     $("#toggleContainerPdf").toggle('display');
   });
-</script>
-
-
-
-<ul id="mysidebar" class="nav">
-  
-
-  
-    <li><a href="index.html">Cloud Manager 3.6 docs</a></li>
-  
-
-  
-    <!-- Check Container -->
-    <li class="subfolders">
-      <a href="#">Release notes</a>
-      <ul>
-        
-
-  
-    <!-- Check Container -->
-    <li class="subfolders">
-      <a href="#">Cloud Manager</a>
-      <ul>
-        
-
-  
-    <li><a href="reference_new_occm.html">What's new</a></li>
-  
-
-  
-    <li><a href="reference_issues.html">Known issues</a></li>
-  
-
-  
-    <li><a href="reference_limitations.html">Known limitations</a></li>
-  
-
-
-      </ul>
-    </li>
-  
-
-  
-    <li><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap/" target="_blank">Cloud Volumes ONTAP</a></li>
-  
-
-
-      </ul>
-    </li>
-  
-
-  
-    <!-- Check Container -->
-    <li class="subfolders">
-      <a href="#">Concepts</a>
-      <ul>
-        
-
-  
-    <li><a href="concept_overview.html">Product overview</a></li>
-  
-
-  
-    <li><a href="concept_cloud_central.html">NetApp Cloud Central</a></li>
-  
-
-  
-    <li><a href="concept_accounts_and_permissions.html">Accounts and permissions</a></li>
-  
-
-  
-    <!-- Check Container -->
-    <li class="subfolders">
-      <a href="#">Storage</a>
-      <ul>
-        
-
-  
-    <li><a href="concept_storage.html">Overview</a></li>
-  
-
-  
-    <li><a href="concept_data_tiering.html">Data tiering</a></li>
-  
-
-  
-    <li><a href="concept_storage_management.html">Storage management</a></li>
-  
-
-  
-    <li><a href="concept_worm.html">WORM storage</a></li>
-  
-
-
-      </ul>
-    </li>
-  
-
-  
-    <!-- Check Container -->
-    <li class="subfolders">
-      <a href="#">High-availability pairs</a>
-      <ul>
-        
-
-  
-    <li><a href="concept_ha.html">HA pairs in AWS</a></li>
-  
-
-  
-    <li><a href="concept_ha_azure.html">HA pairs in Azure</a></li>
-  
-
-
-      </ul>
-    </li>
-  
-
-  
-    <li><a href="concept_evaluating.html">Evaluating</a></li>
-  
-
-  
-    <li><a href="concept_licensing.html">Licensing</a></li>
-  
-
-  
-    <li><a href="concept_security.html">Security</a></li>
-  
-
-  
-    <li><a href="concept_performance.html">Performance</a></li>
-  
-
-
-      </ul>
-    </li>
-  
-
-  
-    <!-- Check Container -->
-    <li class="subfolders">
-      <a href="#">Getting started</a>
-      <ul>
-        
-
-  
-    <li><a href="reference_deployment_overview.html">Deployment overview</a></li>
-  
-
-  
-    <li><a href="task_getting_started_aws.html">Getting started in AWS</a></li>
-  
-
-  
-    <li><a href="task_getting_started_azure.html">Getting started in Azure</a></li>
-  
-
-  
-    <!-- Check Container -->
-    <li class="subfolders">
-      <a href="#">Setting up Cloud Manager</a>
-      <ul>
-        
-
-  
-    <li><a href="task_adding_cloud_accounts.html">Adding cloud provider accounts</a></li>
-  
-
-  
-    <li><a href="task_adding_nss_accounts.html">Adding NetApp Support Site accounts</a></li>
-  
-
-  
-    <li><a href="task_installing_https_cert.html">Installing an HTTPS certificate</a></li>
-  
-
-  
-    <li><a href="task_setting_up_users_tenants.html">Setting up users and tenants</a></li>
-  
-
-  
-    <li><a href="task_setting_up_kms.html">Setting up the AWS KMS</a></li>
-  
-
-
-      </ul>
-    </li>
-  
-
-  
-    <!-- Check Container -->
-    <li class="subfolders">
-      <a href="#">Networking requirements</a>
-      <ul>
-        
-
-  
-    <li><a href="reference_networking_cloud_manager.html">Cloud Manager</a></li>
-  
-
-  
-    <li><a href="reference_networking_aws.html">Cloud Volumes ONTAP for AWS</a></li>
-  
-
-  
-    <li><a href="task_setting_up_transit_gateway.html">Setting up an AWS transit gateway</a></li>
-  
-
-  
-    <li><a href="reference_networking_azure.html">Cloud Volumes ONTAP for Azure</a></li>
-  
-
-
-      </ul>
-    </li>
-  
-
-  
-    <!-- Check Container -->
-    <li class="subfolders">
-      <a href="#">Additional deployment options</a>
-      <ul>
-        
-
-  
-    <li><a href="reference_cloud_mgr_reqs.html">Cloud Manager host requirements</a></li>
-  
-
-  
-    <li><a href="task_installing_linux.html">Installing Cloud Manager on a Linux host</a></li>
-  
-
-  
-    <li><a href="task_launching_aws_mktp.html">Deploying Cloud Manager from the AWS Marketplace</a></li>
-  
-
-  
-    <li><a href="task_launching_azure_mktp.html">Deploying Cloud Manager from the Azure Marketplace</a></li>
-  
-
-  
-    <li><a href="task_installing_azure_gov.html">Deploying Cloud Manager in an Azure Gov region</a></li>
-  
-
-  
-    <li><a href="task_installing_azure_germany.html">Deploying Cloud Manager in the Azure Germany region</a></li>
-  
-
-  
-    <li><a href="media/c2s.pdf">Getting started in the AWS C2S environment</a></li>
-  
-
-
-      </ul>
-    </li>
-  
-
-
-      </ul>
-    </li>
-  
-
-  
-    <!-- Check Container -->
-    <li class="subfolders">
-      <a href="#">Deploying Cloud Volumes ONTAP</a>
-      <ul>
-        
-
-  
-    <li><a href="reference_before.html">Before you begin</a></li>
-  
-
-  
-    <li><a href="task_logging_in.html">Logging in to Cloud Manager</a></li>
-  
-
-  
-    <li><a href="task_planning_your_config.html">Planning your configuration</a></li>
-  
-
-  
-    <li><a href="task_enabling_flash_cache.html">Enabling Flash Cache on Cloud Volumes ONTAP in AWS</a></li>
-  
-
-  
-    <li><a href="task_deploying_otc_aws.html">Launching Cloud Volumes ONTAP in AWS</a></li>
-  
-
-  
-    <li><a href="task_deploying_otc_azure.html">Launching Cloud Volumes ONTAP in Azure</a></li>
-  
-
-  
-    <li><a href="task_registering.html">Registering pay-as-you-go systems</a></li>
-  
-
-  
-    <li><a href="task_setting_up_ontap_cloud.html">Setting up Cloud Volumes ONTAP</a></li>
-  
-
-
-      </ul>
-    </li>
-  
-
-  
-    <!-- Check Container -->
-    <li class="subfolders">
-      <a href="#">Provisioning storage</a>
-      <ul>
-        
-
-  
-    <li><a href="task_provisioning_storage.html">Creating volumes, aggregates, and LUNs</a></li>
-  
-
-  
-    <li><a href="task_tiering.html">Tiering inactive data to object storage</a></li>
-  
-
-  
-    <li><a href="task_connecting_kubernetes.html">Using Cloud Volumes ONTAP as persistent storage</a></li>
-  
-
-  
-    <li><a href="task_encrypting_volumes.html">Encrypting volumes with NetApp Volume Encryption</a></li>
-  
-
-  
-    <li><a href="task_managing_storage.html">Managing existing storage</a></li>
-  
-
-  
-    <!-- Check Container -->
-    <li class="subfolders">
-      <a href="#">Provisioning NFS volumes from the Volume View</a>
-      <ul>
-        
-
-  
-    <li><a href="task_changing_volume_view.html">Changing to the Volume View</a></li>
-  
-
-  
-    <li><a href="task_provisioning_volume_view.html">Creating and mounting NFS volumes</a></li>
-  
-
-  
-    <li><a href="task_managing_volume_view.html">Managing NFS volumes</a></li>
-  
-
-
-      </ul>
-    </li>
-  
-
-
-      </ul>
-    </li>
-  
-
-  
-    <!-- Check Container -->
-    <li class="subfolders">
-      <a href="#">Managing data across a hybrid cloud</a>
-      <ul>
-        
-
-  
-    <li><a href="task_discovering_ontap.html">Discovering and managing ONTAP clusters</a></li>
-  
-
-  
-    <li><a href="task_replicating_data.html">Replicating data to and from the cloud</a></li>
-  
-
-  
-    <li class="active"><a href="task_syncing_s3.html">Syncing data to AWS S3</a></li>
-  
-
-
-      </ul>
-    </li>
-  
-
-  
-    <!-- Check Container -->
-    <li class="subfolders">
-      <a href="#">Administering Cloud Volumes ONTAP</a>
-      <ul>
-        
-
-  
-    <li><a href="task_connecting_to_otc.html">Connecting to Cloud Volumes ONTAP</a></li>
-  
-
-  
-    <li><a href="task_updating_ontap_cloud.html">Updating software</a></li>
-  
-
-  
-    <li><a href="task_modifying_ontap_cloud.html">Modifying system configurations</a></li>
-  
-
-  
-    <li><a href="task_managing_state.html">Stopping and starting systems</a></li>
-  
-
-  
-    <li><a href="task_monitoring_costs.html">Monitoring AWS costs</a></li>
-  
-
-  
-    <li><a href="task_protecting_ransomware.html">Improving ransomware protection</a></li>
-  
-
-  
-    <li><a href="task_adding_ontap_cloud.html">Adding existing systems</a></li>
-  
-
-  
-    <li><a href="task_deleting_working_env.html">Deleting systems</a></li>
-  
-
-
-      </ul>
-    </li>
-  
-
-  
-    <!-- Check Container -->
-    <li class="subfolders">
-      <a href="#">Administering Cloud Manager</a>
-      <ul>
-        
-
-  
-    <li><a href="task_updating_cloud_manager.html">Updating Cloud Manager</a></li>
-  
-
-  
-    <li><a href="task_backing_up_restoring.html">Backing up and restoring</a></li>
-  
-
-  
-    <li><a href="task_removing.html">Removing working environments</a></li>
-  
-
-  
-    <li><a href="task_editing_users.html">Editing user accounts</a></li>
-  
-
-  
-    <li><a href="task_configuring_proxy.html">Configuring proxy settings</a></li>
-  
-
-  
-    <li><a href="task_renewing_cert.html">Renewing the HTTPS certificate</a></li>
-  
-
-  
-    <li><a href="task_uninstalling.html">Uninstalling Cloud Manager</a></li>
-  
-
-
-      </ul>
-    </li>
-  
-
-  
-    <!-- Check Container -->
-    <li class="subfolders">
-      <a href="#">APIs and automation</a>
-      <ul>
-        
-
-  
-    <li><a href="https://docs.netapp.com/us-en/occm/api.html" target="_blank">API Developer Guide</a></li>
-  
-
-  
-    <li><a href="reference_infrastructure_as_code.html">Automation samples</a></li>
-  
-
-
-      </ul>
-    </li>
-  
-
-  
-    <!-- Check Container -->
-    <li class="subfolders">
-      <a href="#">Reference</a>
-      <ul>
-        
-
-  
-    <li><a href="reference_integration_faq.html">FAQ for Cloud Central integration</a></li>
-  
-
-  
-    <li><a href="https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_supported_configs_95.html" target="_blank">Supported configurations for Cloud Volumes ONTAP</a></li>
-  
-
-  
-    <li><a href="https://cloud.netapp.com/cloud-volumes-global-regions" target="_blank">Supported regions</a></li>
-  
-
-  
-    <li><a href="reference_security_groups.html">Security group rules for AWS</a></li>
-  
-
-  
-    <li><a href="reference_security_groups_azure.html">Security group rules for Azure</a></li>
-  
-
-  
-    <li><a href="reference_permissions.html">Permissions</a></li>
-  
-
-  
-    <li><a href="reference_default_configs.html">Default configurations</a></li>
-  
-
-  
-    <li><a href="reference_user_roles.html">User roles</a></li>
-  
-
-  
-    <li><a href="reference_additional_info.html">Related links</a></li>
-  
-
-
-      </ul>
-    </li>
-  
-
-  
-    <li><a href="reference_earlier_versions.html">Earlier versions</a></li>
-  
-
-  
-    <li><a href="reference_legal_notices.html">Legal notices</a></li>
-  
-
-
-</ul>
+</script><ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="index.html">
+        Cloud Manager 3.6 docs
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Release notes</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Cloud Manager</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="reference_new_occm.html">
+        What's new
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_issues.html">
+        Known issues
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_limitations.html">
+        Known limitations
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="https://docs.netapp.com/us-en/cloud-volumes-ontap/">
+        Cloud Volumes ONTAP
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Concepts</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_overview.html">
+        Product overview
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_cloud_central.html">
+        NetApp Cloud Central
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_accounts_and_permissions.html">
+        Accounts and permissions
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Storage</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_storage.html">
+        Overview
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_data_tiering.html">
+        Data tiering
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_storage_management.html">
+        Storage management
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_worm.html">
+        WORM storage
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> High-availability pairs</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_ha.html">
+        HA pairs in AWS
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_ha_azure.html">
+        HA pairs in Azure
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="concept_evaluating.html">
+        Evaluating
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_licensing.html">
+        Licensing
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_security.html">
+        Security
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_performance.html">
+        Performance
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Getting started</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="reference_deployment_overview.html">
+        Deployment overview
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_getting_started_aws.html">
+        Getting started in AWS
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_getting_started_azure.html">
+        Getting started in Azure
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Setting up Cloud Manager</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_adding_cloud_accounts.html">
+        Adding cloud provider accounts
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_adding_nss_accounts.html">
+        Adding NetApp Support Site accounts
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_installing_https_cert.html">
+        Installing an HTTPS certificate
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_setting_up_users_tenants.html">
+        Setting up users and tenants
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_setting_up_kms.html">
+        Setting up the AWS KMS
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Networking requirements</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="reference_networking_cloud_manager.html">
+        Cloud Manager
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_networking_aws.html">
+        Cloud Volumes ONTAP for AWS
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_setting_up_transit_gateway.html">
+        Setting up an AWS transit gateway
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_networking_azure.html">
+        Cloud Volumes ONTAP for Azure
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Additional deployment options</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="reference_cloud_mgr_reqs.html">
+        Cloud Manager host requirements
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_installing_linux.html">
+        Installing Cloud Manager on a Linux host
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_launching_aws_mktp.html">
+        Deploying Cloud Manager from the AWS Marketplace
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_launching_azure_mktp.html">
+        Deploying Cloud Manager from the Azure Marketplace
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_installing_azure_gov.html">
+        Deploying Cloud Manager in an Azure Gov region
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_installing_azure_germany.html">
+        Deploying Cloud Manager in the Azure Germany region
+      </a></li><li class=" "><a class="na-navbar-padding" href="media/c2s.pdf">
+        Getting started in the AWS C2S environment
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Deploying Cloud Volumes ONTAP</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="reference_before.html">
+        Before you begin
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_logging_in.html">
+        Logging in to Cloud Manager
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_planning_your_config.html">
+        Planning your configuration
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_enabling_flash_cache.html">
+        Enabling Flash Cache on Cloud Volumes ONTAP in AWS
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_deploying_otc_aws.html">
+        Launching Cloud Volumes ONTAP in AWS
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_deploying_otc_azure.html">
+        Launching Cloud Volumes ONTAP in Azure
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_registering.html">
+        Registering pay-as-you-go systems
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_setting_up_ontap_cloud.html">
+        Setting up Cloud Volumes ONTAP
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Provisioning storage</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_provisioning_storage.html">
+        Creating volumes, aggregates, and LUNs
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_tiering.html">
+        Tiering inactive data to object storage
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_connecting_kubernetes.html">
+        Using Cloud Volumes ONTAP as persistent storage
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_encrypting_volumes.html">
+        Encrypting volumes with NetApp Volume Encryption
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_managing_storage.html">
+        Managing existing storage
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Provisioning NFS volumes from the Volume View</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_changing_volume_view.html">
+        Changing to the Volume View
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_provisioning_volume_view.html">
+        Creating and mounting NFS volumes
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_managing_volume_view.html">
+        Managing NFS volumes
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Managing data across a hybrid cloud</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_discovering_ontap.html">
+        Discovering and managing ONTAP clusters
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_replicating_data.html">
+        Replicating data to and from the cloud
+      </a></li><li class="  active "><a class="na-navbar-padding" href="task_syncing_s3.html">
+        Syncing data to AWS S3
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Administering Cloud Volumes ONTAP</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_connecting_to_otc.html">
+        Connecting to Cloud Volumes ONTAP
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_updating_ontap_cloud.html">
+        Updating software
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_modifying_ontap_cloud.html">
+        Modifying system configurations
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_managing_state.html">
+        Stopping and starting systems
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_monitoring_costs.html">
+        Monitoring AWS costs
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_protecting_ransomware.html">
+        Improving ransomware protection
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_adding_ontap_cloud.html">
+        Adding existing systems
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_deleting_working_env.html">
+        Deleting systems
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Administering Cloud Manager</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_updating_cloud_manager.html">
+        Updating Cloud Manager
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_backing_up_restoring.html">
+        Backing up and restoring
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_removing.html">
+        Removing working environments
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_editing_users.html">
+        Editing user accounts
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_configuring_proxy.html">
+        Configuring proxy settings
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_renewing_cert.html">
+        Renewing the HTTPS certificate
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_uninstalling.html">
+        Uninstalling Cloud Manager
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> APIs and automation</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="https://docs.netapp.com/us-en/occm/api.html">
+        API Developer Guide
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_infrastructure_as_code.html">
+        Automation samples
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Reference</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="reference_integration_faq.html">
+        FAQ for Cloud Central integration
+      </a></li><li class=" "><a class="na-navbar-padding" href="https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_supported_configs_95.html">
+        Supported configurations for Cloud Volumes ONTAP
+      </a></li><li class=" "><a class="na-navbar-padding" href="https://cloud.netapp.com/cloud-volumes-global-regions">
+        Supported regions
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_security_groups.html">
+        Security group rules for AWS
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_security_groups_azure.html">
+        Security group rules for Azure
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_permissions.html">
+        Permissions
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_default_configs.html">
+        Default configurations
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_user_roles.html">
+        User roles
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_additional_info.html">
+        Related links
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="reference_earlier_versions.html">
+        Earlier versions
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_legal_notices.html">
+        Legal notices
+      </a></li></ul>
 
 <!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
 <script>$("li.active").parents('li').toggleClass("active");</script>
@@ -1969,9 +1856,11 @@
 </div>
 
 <p class="page-details">
-
-<time datetime="2019-06-03 19:56:08 +0000">06/03/2019</time>
-
+  
+    
+    <time datetime="2019-06-03 19:56:08 +0000">06/03/2019</time>
+    
+  
 
 <span>Contributors
   
@@ -1988,7 +1877,7 @@
 
   <span>
     <a target="_blank" href="/occm36/pdfs/pages/task_syncing_s3.pdf" role="button">
-      <img src="/occm36/images/pdf.png" width="20" height="20"/> Download PDF of this topic
+      <img src="/occm36/images/pdf.png" width="20" height="20"/> Download PDF of this page
     </a>
   </span>
 
