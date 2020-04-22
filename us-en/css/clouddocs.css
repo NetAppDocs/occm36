@@ -90,6 +90,12 @@ time+span {
   padding-left: 12px;
 }
 
+time+span+span {
+  border-left: solid 1px #686868;
+  margin-left: 12px;
+  padding-left: 12px;
+}
+
 .n-footer__copyright {
   border-right: 0px;
   margin-right: 0px;
@@ -460,7 +466,7 @@ h1.n-doc__component-detail-heading {
   margin-bottom: .1em;
 }
 
-.n-pdf-button {
+.n-pdf-header {
   border: #e3e3e3;
   align-items: center;
   border: 1px solid transparent;
@@ -469,10 +475,70 @@ h1.n-doc__component-detail-heading {
   border-bottom: 1px solid #e3e3e3 !important;
   font-size: .875rem;
   padding-left: .75em;
-  padding-right: .75em;
+  padding-right: .40em;
   height: 2.25em;
   line-height: 1.5;
   color: #454545;
   font-weight: bolder;
   width: 265px;
+  box-shadow: 2px 0px 0px rgba(0,0,0,.08);
 }
+.n-pdf-button {
+  color: #454545; 
+  font-family: proxima-nova,Arial,"Helvetica Neue",Helvetica,sans-serif;
+  font-style: normal; 
+  text-decoration: none !important;
+  font-weight: 600; 
+  width: 100%
+}
+.n-pdf-body {
+  border-bottom: 1px solid #e3e3e3 !important; 
+  margin-left: 0px; 
+  margin-bottom: 20px;
+  width: 265px; 
+  box-shadow: 2px 0px 0px rgba(0,0,0,.08);
+}
+
+.n-pdf-button > span {
+  float: right;
+}
+
+.n-pdf-body li {
+  list-style: none;
+}
+.n-pdf-body li a {
+  font-size: 13px;
+  line-height: 16px;
+  padding: 3px 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+}
+
+.n-pdf-section {
+    background-color: #e3e3e3;
+    border: #e3e3e3;
+    align-items: center;
+    border: 1px solid transparent;
+    display: inline-flex;
+    font-size: .675rem;
+    padding-left: 1.2em;
+    padding-right: .40em;
+    height: 2em;
+    line-height: 1;
+    color: #454545;
+    font-weight: bolder;
+    width: 265px;
+    box-shadow: 2px 0px 0px rgba(0,0,0,.08);
+}
+.n-pdf-section-title {
+    color: #454545;
+    font-family: proxima-nova,Arial,&quot;Helvetica Neue&quot;,Helvetica,sans-serif;
+    font-style: normal;
+    text-decoration: none !important;
+    font-weight: 600;
+    width: 100%;
+
+}
+
+
