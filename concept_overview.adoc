@@ -22,7 +22,7 @@ Cloud Manager is required to deploy and manage Cloud Volumes ONTAP, but it can a
 
 You can run Cloud Manager in the cloud or in your network—it just needs a connection to the networks in which you want to deploy Cloud Volumes ONTAP. The following image shows Cloud Manager running in AWS and managing Cloud Volumes ONTAP systems in AWS and Azure. It also shows data replication across a hybrid cloud.
 
-image:diagram_cloud_manager_overview.png[Shows the components that Cloud Manager can manage across your hybrid cloud: a Cloud Volumes ONTAP system serving EBS storage to EC2 compute, a Cloud Volumes ONTAP system serving Azure storage to virtual machines, and data replication across a hybrid cloud and multi-cloud environment.]
+image:diagram_cloud_manager_overview.png["Shows the components that Cloud Manager can manage across your hybrid cloud: a Cloud Volumes ONTAP system serving EBS storage to EC2 compute, a Cloud Volumes ONTAP system serving Azure storage to virtual machines, and data replication across a hybrid cloud and multi-cloud environment."]
 
 https://www.netapp.com/us/products/data-infrastructure-management/cloud-manager.aspx[Learn more about Cloud Manager^]
 

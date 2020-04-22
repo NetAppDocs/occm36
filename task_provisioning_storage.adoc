@@ -18,7 +18,7 @@ You can provision additional NFS and CIFS storage for your Cloud Volumes ONTAP s
 
 IMPORTANT: All disks and aggregates must be created and deleted directly from Cloud Manager. You should not perform these actions from another management tool. Doing so can impact system stability, hamper the ability to add disks in the future, and potentially generate redundant cloud provider fees.
 
-image:workflow_storage_provisioning.png[This illustration shows the steps to provision storage for Cloud Volumes ONTAP: if using NFS, create volumes in Cloud Manager and if using CIFS or iSCSI, create aggregates in Cloud Manager and then provision storage in System Manager.]
+image:workflow_storage_provisioning.png["This illustration shows the steps to provision storage for Cloud Volumes ONTAP: if using NFS, create volumes in Cloud Manager and if using CIFS or iSCSI, create aggregates in Cloud Manager and then provision storage in System Manager."]
 
 == Provisioning volumes
 
