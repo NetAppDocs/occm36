@@ -154,9 +154,6 @@ ul#mysidebar {
     padding-right: 5px;
 }
 
-.nav ul li ul li ul li a {
-    padding-left:60px;
-}
 /* newstyle end */
 li.subfolders.active > ul li.active:after {
     content: '';

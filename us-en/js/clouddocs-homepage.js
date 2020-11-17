@@ -68,7 +68,7 @@ function standardizeUrl(siteLocales, originUrl, proxyUrl) {
 
 // Handles the Anchor Tags with Fixed Header
 $(document).ready(function() {
-	const OFFSET = 165;
+	const OFFSET = 175;
 	$('a[href*=#]:not([href=#])').click(function() {
 		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
 			&& location.hostname == this.hostname) {
