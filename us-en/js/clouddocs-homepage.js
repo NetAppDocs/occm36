@@ -84,15 +84,39 @@ $(document).ready(function() {
 		}
 	});
 	//Executed on page load with URL containing an anchor tag.
+	// if($(location.href.split("#")[1])) {
+	// 	var target = $('#'+location.href.split("#")[1]);
+	// 	console.log("Q1", target);
+	// 	console.log("Q2",target.offset().top );
+	// 	console.log("Q3", target.offset().top - OFFSET);
+	// 	if (target.length) {
+	// 		$('html,body').animate({
+	// 			scrollTop: target.offset().top - OFFSET
+	// 		});
+	// 		return false;
+	// 	}
+	// }
+	setTimeout(function() {
 	if($(location.href.split("#")[1])) {
+		//event.preventDefault();
 		var target = $('#'+location.href.split("#")[1]);
+
 		if (target.length) {
+			var scrollval = target.offset().top - OFFSET
+			console.log(scrollval);
 			$('html,body').animate({
-				scrollTop: target.offset().top - OFFSET
-			});
-			return false;
+				scrollTop: scrollval
+			}, 1000);
+				return false;
 		}
 	}
+}, 1000);
+
+	var newtarget = $(".subfolders.active");
+	//console.log(newtarget.offset().top);
+	$('.col-md-3').animate({
+		scrollTop: newtarget.offset().top - 175
+	});
 
 	"use strict";
 

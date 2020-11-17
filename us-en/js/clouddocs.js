@@ -88,16 +88,38 @@ $(document).ready(function() {
 		}
 	});
 	//Executed on page load with URL containing an anchor tag.
+	setTimeout(function() {
 	if($(location.href.split("#")[1])) {
+		//event.preventDefault();
+
 		var target = $('#'+location.href.split("#")[1]);
+
 		if (target.length) {
+			var scrollval = target.offset().top - OFFSET
+			//console.log(scrollval);
 			$('html,body').animate({
-				scrollTop: target.offset().top - OFFSET
+				scrollTop: scrollval
 			});
-			return false;
+				return false;
+				$('.col-md-3').animate({
+		 			scrollTop: 0
+		 		});
 		}
 	}
+}, 1000);
 
+setTimeout(function() {
+	//console.log("yes");
+	var newtarget = $(".nav > li.active");
+	if ($(".nav > li").hasClass("active")) {
+		let scrollnewval = newtarget.offset().top - 200
+		//console.log(scrollnewval);
+	 $('.col-md-3').animate({
+			scrollTop: scrollnewval
+		});
+
+	}
+}, 100);
 
 	"use strict";
 

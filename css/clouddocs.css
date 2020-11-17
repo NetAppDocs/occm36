@@ -1,13 +1,13 @@
 
 /* NetApp.com Overrides */
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400&display=swap');
-*, body, html{font-family: "Source Sans Pro", sans-serif !important; font-style: normal;font-weight: 400;}
+ body, html{font-family: "Source Sans Pro", sans-serif; font-weight: 400;}
 
 .n-list__term,.fonts-loaded body, button,.button--inline-action,.luci-link__text,.n-menu__list .n-menu__list--grouped .n-menu__list--grouped-title,[lang="ja-JP"] .n-menu__link-header,.n-menu__list-title,[data-ntap-target="cloud-marketplace"] .n-menu__list-item--cloud-trials .n-menu__list-description,.n-property-bar__property-name,.n-property-bar__social-link-text,.n-property-navigation-bar__nav-link,.n-property-navigation-bar__nav-link.n-property-navigation-bar__nav-link--is-active,.n-property-bar__search--exp .autocomplete-search .ui-menu-item,.n-property-bar__search-toggle-input,.n-property-bar__search-form-input,.n-footer__property-link-list-header,
 h1, h2, h3, h4, h5, h6, .n-paragraph-lead,.n-paragraph-fine-print, .n-section-title .n-section-title__heading,ul,.ntap-button:not(.luci-button--input),.n-anchor-link__link,.button--inline-action,.n-menu__link,
 .n-menu__list .n-menu__list--grouped .n-menu__list--grouped-title,.n-property-bar__property-name,.n-property-bar__social-link-text,.n-property-navigation-bar__nav-link ,.n-property-navigation-bar__nav-link.n-property-navigation-bar__nav-link--is-active,.n-search-form__input, .n-property-bar__search-toggle-input,.n-property-bar__search-form-input,.n-page-header__date,
 .n-page-header__link--author,.n-page-header__pre-heading,.n-paragraph-lead,.n-paragraph-fine-print,
-.n-section-title .n-section-title__heading,.n-band .n-band__heading,.ntap-feature__title,.ntap-feature--band .ntap-feature__title{font-family: "Source Sans Pro", sans-serif !important ;}
+.n-section-title .n-section-title__heading,.n-band .n-band__heading,.ntap-feature__title,.ntap-feature--band .ntap-feature__title,.n-paragraph, p{font-family: "Source Sans Pro", sans-serif !important ;}
 .n-heading-level-4--bold-apb,
 [data-ntap-theme="dark blue"] .n-banner__ad-subtitle-asset,
 [data-ntap-theme="dark blue"] .n-banner__ad-title-asset,
@@ -19,10 +19,13 @@ h1, h2, h3, h4, h5, h6, .n-paragraph-lead,.n-paragraph-fine-print, .n-section-ti
 .n-button-apb--orange-on-dark:not(.luci-button--input),.n-card__promo .n-card__title,.n-content-hub-filter__show-all-button,.rc-pagination,.n-data-table td.n-data-table__cell-header, .n-data-table td.n-data-table__cell-label,.n-feature-block__text,.n-search-form__input,.n-property-bar__search--exp .autocomplete-search .ui-menu-item,	.n-property-bar__search-toggle-input,.n-footer__corp-link-list-header,
 .n-footer__corp-link-list-header .n-footer__corp-link,
 .n-footer__property-link-list-header,.n-form__input,.n-form__label,.n-form__select-input,.n-search-filter__list-item--active .n-search-filter__link{font-family: "Source Sans Pro", sans-serif !important ;}
-.n-property-bar {background: #BEEAD3!important;}
+.n-property-bar {background: #BEEAD3!important; height: 89px;}
 a, a:hover{color:#0065B3;}
 .n-property-bar__inner-wrap {
   height: 38px;
+}
+.n-blockquote p, code {
+  margin: 0;
 }
 
 .site-header {
@@ -366,6 +369,7 @@ time+span+span {
 #n-main-content {
   margin-top: 70px;
   min-height: 86vh;
+
 }
 
 .previous-version {
@@ -643,7 +647,7 @@ h1.n-doc__component-detail-heading {
     left: -94%;
     width: 89%;
   max-height: 88vh}
-  .ie-content-pane {padding: 24px 0px;  margin: 0px;  width: 100%;}
+  .ie-content-pane {padding: 24px 15px;  margin: 0px;  width: 100%;}
   .nav li > a ,li.subfolders.active > ul li.active > a, li.subfolders.active > ul li.active > a:hover ,li.subfolders.active > a, li.subfolders.active > a:hover,.n-pdf-button ,.n-pdf-button:before {color: #fff;}
 
 }

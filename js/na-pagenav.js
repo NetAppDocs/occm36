@@ -38,11 +38,10 @@ $(document).ready(function() {
       }
     }
   });
-    
+
   $(".n-pdf-button").click(function(){
     $(this).toggleClass("active");
   });
-
 });
 
 function getActiveSection(sections, offset) {
@@ -50,7 +49,7 @@ function getActiveSection(sections, offset) {
   var activeSection;
   for (var i = 0; i < sections.length; i++) {
     var el = $(sections[i]);
-    var activePosition = el.offset().top;
+    var activePosition = el.offset().top ;
     if(activePosition > scrollPosition) {
       break;
     }
