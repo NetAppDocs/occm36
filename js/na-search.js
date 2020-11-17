@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $("#react-search").on('click', function() {
-    if($('._Search_display_wrapper').is(":hidden")) {
+    if($('._Search_display_wrapper').is(":hidden") && $('._Search_display_wrapper').length > 1) {
       $('._Search_display_wrapper').show();
     }
   });

@@ -37,11 +37,11 @@
     display: block;
     float: right;
     max-height: 75vh;
-    margin-top: 25px;
+    margin-top: 15px;
     overflow-x: hidden;
     overflow-y: auto;
     position: fixed;
-    right: 0;
+    right: 10px;
     top: 170px;
     width: 225px;
     z-index: 1;
@@ -73,7 +73,8 @@
 }
 
 .page-nav-contribute-link {
-  color: #0067C5;
+  color:#0065B3;
+  /* color: #0067C5; */
   display: block;
   padding: 4px 8px;
   text-decoration: none;
@@ -124,9 +125,11 @@
 .page-nav-item {
   display: list-item;
 }
-
+/* .page-nav__link:hover {
+    color: #0065B3;
+} */
 .page-nav__link {
-  color: #0067C5;
+  color: #0065B3;
   display: block;
   padding: 4px 8px;
   text-decoration: none;

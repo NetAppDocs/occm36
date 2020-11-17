@@ -38,6 +38,11 @@ $(document).ready(function() {
       }
     }
   });
+    
+  $(".n-pdf-button").click(function(){
+    $(this).toggleClass("active");
+  });
+
 });
 
 function getActiveSection(sections, offset) {
