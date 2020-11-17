@@ -50,10 +50,6 @@ Cloud Manager software is required to deploy and manage Cloud Volumes ONTAP. It 
 [role="quick-margin-para"]
 Once Cloud Manager is ready, just click Create, select the type of system that you would like to deploy, and complete the steps in the wizard. After 25 minutes, your first Cloud Volumes ONTAP system should be up and running.
 
-Watch the following video for a walk through of these steps:
-
-video::S2gP6ii9LAU[youtube, width=848, height=480]
-
 .Related links
 
 * link:concept_evaluating.html[Evaluating]
