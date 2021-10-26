@@ -1,3 +1,14 @@
+---
+settings:
+  name: Cloud Manager 3.6
+  nss_product: OnCommand Cloud Manager
+  downlevel: true
+  internal:
+    pdf_enabled: false
+  prod:
+    pdf_enabled: true
+    harmony_enabled: true
+    langs: us-en,ja-jp,zh-cn
 sidebar:
   entries:
     - title: Cloud Manager 3.6 docs
