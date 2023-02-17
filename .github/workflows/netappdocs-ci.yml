@@ -4,7 +4,7 @@ on: [push, pull_request, workflow_dispatch]
 
 env:
   DEPLOY_VERSION: v3
-  FRAMEWORK_BRANCH: bnorberg-js-review
+  FRAMEWORK_BRANCH: main
   INTERNAL_FLAG: ${{ endsWith(github.event.repository.name, '-internal') }}
   ES_API: ${{ endsWith(github.event.repository.name, '-internal') &&  secrets.ES_API_INTERNAL || secrets.ES_API }}
   ES_AUTH: ${{ endsWith(github.event.repository.name, '-internal') &&  secrets.ES_AUTH_INTERNAL || secrets.ES_AUTH }}
