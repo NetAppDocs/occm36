@@ -1,0 +1,2403 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head class="at-element-marker">
+  <title>Uninstalling Cloud Manager</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Uninstalling Cloud Manager" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/us-en/occm36/task_uninstalling.html" />
+	<meta property="og:description" content="Cloud Manager includes an uninstallation script that you can use to uninstall the software to troubleshoot issues or to permanently remove the software from ..." />
+  <meta property="og:image" content="https://docs.netapp.com/us-en/occm36/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta http-equiv="nss-product" content="OnCommand Cloud Manager"/><meta name="description" content="Cloud Manager includes an uninstallation script that you can use to uninstall the software to troubleshoot issues or to permanently remove the software from ...">
+  <meta name="keywords" content=" uninstalling, uninstall, reinstall"><!-- Icons -->
+  <link rel="icon" href="/us-en/occm36/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+
+  <!-- Combined CSS -->
+  <link rel="stylesheet" type="text/css" href="/us-en/occm36/css/ie-netappdocs.css">
+
+  
+  <link rel="stylesheet" href="/us-en/occm36/css/ie-landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/us-en/occm36/css/ie-tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel="canonical" href="https://docs.netapp.com/us-en/occm36/task_uninstalling.html" />
+  <link rel="alternate" hreflang="x-default" href="https://docs.netapp.com/us-en/occm36/task_uninstalling.html" />
+  <link rel="alternate" hreflang="en" href="https://docs.netapp.com/us-en/occm36/task_uninstalling.html" />
+  <link rel="alternate" hreflang="ja" href="https://docs.netapp.com/ja-jp/occm36/task_uninstalling.html" />
+  <link rel="alternate" hreflang="ko" href="https://docs.netapp.com/ko-kr/occm36/task_uninstalling.html" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://docs.netapp.com/zh-cn/occm36/task_uninstalling.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/occm36/task_uninstalling.html" />
+  <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/occm36/task_uninstalling.html" />
+  <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/occm36/task_uninstalling.html" />
+  <link rel="alternate" hreflang="fr" href="https://docs.netapp.com/fr-fr/occm36/task_uninstalling.html" />
+  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/occm36/task_uninstalling.html" />
+  <!-- Top level site integrations -->
+<script type="text/javascript" src="https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js"></script>
+    <script type="text/javascript" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" charset="UTF-8" data-document-language="true" data-domain-script="72570c5c-fe30-465f-b0e0-b77f7fb4ae34"></script>
+    <script type="text/javascript">function OptanonWrapper() { }</script>
+    <script type="text/plain" class="optanon-category-C0002" src="https://assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js"></script>
+    <script class="optanon-category-C0001">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAttribute('data-ot-ignore'));j.setAttribute('class','optanon-category-C0001');j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'';f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MD73T9M');</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      const MASTHEAD_OFFSET = 65;
+      const SECTIONS = $("main h2, main h3");
+      // PAGE NAV - Init
+      if (SECTIONS.length == 0) {
+        // remove if there is no elements
+        /*
+        $("#ie-right-navbar").remove();
+        $("#ie-right-navbar-collapse").remove();
+        */
+      } else {
+        $(".page-nav-title").css('display', 'block');
+        for (var i = 0; i < SECTIONS.length; i++) {
+          var sectionId = $(SECTIONS[i]).attr('id');
+          var sectionName = $(SECTIONS[i]).text();
+          var subClass = $(SECTIONS[i]).is("h3") ? ' page-nav__sublink' : '';
+          $("#page-menu").append('<li class="page-nav-item"><a href="#' + sectionId + '" class="page-nav__link' + subClass + '">' + sectionName + '</a></li>');
+        }
+      }
+    });
+  </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/us-en/occm36/js/na-search.js'></script><script src='/us-en/occm36/js/ie-clouddocs.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script>
+    /*
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+      */
+  </script>
+  <script src='/us-en/occm36/js/custom-dropdown.js'></script>
+  <script src='/us-en/occm36/js/FileSaver.min.js'></script>
+  <script src='/us-en/occm36/js/jszip-utils.min.js'></script>
+  <script src='/us-en/occm36/js/jszip.min.js'></script><script src='/us-en/occm36/js/ie-pdf-ux.js'></script></head>
+
+
+  <body class role="document" data-flavor="">
+    <div class="skip-to-main">
+      <a href="#main" >Skip to main content</a>
+    </div><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MD73T9M"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><div id="page" class="">
+      <div id="ie-phone-menu" class=""></div>
+      <div id="ie-content-wrap" class="">
+        <nav id="ie-new-header">
+    <ul>
+        <li id="ie-phone-menu-button">
+            <a href="#">
+                <image id="" src="/us-en/occm36/images/hamburger.svg" alt="menu" />
+            </a>
+        </li>
+
+        <li>
+            <a href="https://www.netapp.com/">
+                <image id="ie-header-logo" src="/us-en/occm36/images/netapp_logo.svg" alt="netapp" />
+            </a>
+        </li>
+        <li id="ie-header-docs">
+            <a href="https://www.netapp.com/support-and-training/documentation/">Docs</a>
+        </li>
+
+        <!-- Empty container to push header left with or without lang selector -->
+        <li id="empty-container" style="margin-left: auto">
+        </li>
+        <!-- Start Language Selector --><li id="ie-language-dropdown">
+            <div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+                <div class="custom-dropdown-select custom-dropdown-select-lang">
+                    <img src="/us-en/occm36/images/language_white_24dp.svg" class="n-globe__icon" />
+                    <span class="lang-name">English</span>
+                    <img src="/us-en/occm36/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/us-en/occm36/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu"><li>
+                        <a href="https://docs.netapp.com/us-en/occm36/task_uninstalling.html"
+                            target="_self"><span translate="no" class="notranslate">English</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ja-jp/occm36/task_uninstalling.html"
+                            target="_self"><span translate="no" class="notranslate">日本語</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ko-kr/occm36/task_uninstalling.html"
+                            target="_self"><span translate="no" class="notranslate">한국어</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-cn/occm36/task_uninstalling.html"
+                            target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-tw/occm36/task_uninstalling.html"
+                            target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/de-de/occm36/task_uninstalling.html"
+                            target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/es-es/occm36/task_uninstalling.html"
+                            target="_self"><span translate="no" class="notranslate">Español</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/fr-fr/occm36/task_uninstalling.html"
+                            target="_self"><span translate="no" class="notranslate">Français</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/it-it/occm36/task_uninstalling.html"
+                            target="_self"><span translate="no" class="notranslate">Italiano</span></a>
+                    </li></ul>
+            </div>
+            </li>
+        <!-- End Language Selector -->
+
+
+        <li id="ie-allnetapp">
+            <div id="allnetapp-dropdown" class="custom-dropdown custom-dropdown-allnetapp">
+                <div class="custom-dropdown-select custom-dropdown-select-allnetapp">
+                    <img src="/us-en/occm36/images/apps_white_24dp.svg" alt="" class="allnetapp-icon" />
+                    <span class="allnetapp-name">All NetApp</span>
+                    <img src="/us-en/occm36/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/us-en/occm36/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu allnetapp-dropdown">
+                    <li>
+                        <a href="https://bluexp.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">BlueXP</span></a>
+                    </li>
+                    <li>
+                        <a href="https://mysupport.netapp.com/site/"
+                            target="_self"><span translate="no" class="notranslate">Support</span></a>
+                    </li>
+                    <li>
+                        <a href="https://kb.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">Knowledge Base</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.netapp.com/support-and-training/netapp-learning-services/"
+                            target="_self"><span translate="no" class="notranslate">Training</span></a>
+                    </li>
+                </ul>
+            </div>
+
+        </li>
+
+    </ul>
+</nav>
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+
+<div id="ie-new-sidebar-collapse" style="display: none">
+    <img id="sidebar-expand" class="ie-searchbox-icon" src="/us-en/occm36/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-new-sidebar">
+    <div id="ie-product-identity-lockup">
+        <div id="sidebar-collapse" class="">
+            <img src="/us-en/occm36/images/double_arrow.svg" alt="" />
+        </div>
+        <div id="ie-breadcrumb" class="">
+  <ul class="ie-breadcrumb">
+    <li class="">
+      <a href="https://docs.netapp.com">All docs</a>
+    </li>
+    
+    
+
+    
+  </ul>
+  
+  <div class="ie-product-name" >
+    <!--<a href="/us-en/occm36/">-->
+      Cloud Manager 3.6
+    <!--</a>-->
+  </div>
+</div>
+
+            
+
+        
+        
+
+<div id="ie-searchbox" class="ie-searchbox-sidebar ">
+    <img class="ie-searchbox-icon" src="/us-en/occm36/images/loupe.svg" alt=""/>
+    <div id="react-search" 
+        data-search-html="/us-en/occm36/search.html" 
+        data-type="widget"
+        data-placeholder="Search documentation"
+        data-no-results-found="No results were found for {query}"
+        data-did-you-mean="Search for {suggestion}."
+        data-no-results-found-did-you-mean="No results found for {query}. Did you mean {suggestion}?"
+        data-results-found="{hitCount} results found"
+        data-error-message="An error occurred. Please try again."
+        data-error-reset="Reset search"
+        data-sk-es-pf-indexes="" 
+        data-flavor="">
+    </div>
+</div>
+        
+    </div>
+    <div id="ie-new-toc"><script>
+  let sidebarAccordion = true;
+
+  /* specific css rules for Mac */
+  if(navigator.platform.match('Mac') !== null) {
+    document.body.setAttribute('class', 'OSX');
+  }
+
+</script>
+
+<div id="ie-sidebar-container">
+  <ul id="ie-sidebar-list" ><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Manager 3.6 docs"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/index.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/us-en/occm36/index.html">
+        Cloud Manager 3.6 docs
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Release notes"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/occm36/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/occm36/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Release notes</div>-->
+         Release notes
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Manager"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/occm36/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/occm36/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Cloud Manager</div>-->
+         Cloud Manager
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="What's new"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/reference_new_occm.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/reference_new_occm.html">
+        What's new
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Known issues"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/reference_issues.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/reference_issues.html">
+        Known issues
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Known limitations"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/reference_limitations.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/reference_limitations.html">
+        Known limitations
+      </a></li></ul></li><li 
+      data-pdf-exists="false" 
+      data-pdf-filename="Cloud Volumes ONTAP"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="https://docs.netapp.com/us-en/cloud-volumes-ontap/" 
+    ><a class="ie-sidebar-menuitem-2 " href="https://docs.netapp.com/us-en/cloud-volumes-ontap/">
+        Cloud Volumes ONTAP
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Concepts"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/occm36/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/occm36/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Concepts</div>-->
+         Concepts
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Product overview"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/concept_overview.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/concept_overview.html">
+        Product overview
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="NetApp Cloud Central"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/concept_cloud_central.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/concept_cloud_central.html">
+        NetApp Cloud Central
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Accounts and permissions"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/concept_accounts_and_permissions.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/concept_accounts_and_permissions.html">
+        Accounts and permissions
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Storage"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/occm36/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/occm36/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Storage</div>-->
+         Storage
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Overview"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/concept_storage.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/concept_storage.html">
+        Overview
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Data tiering"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/concept_data_tiering.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/concept_data_tiering.html">
+        Data tiering
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Storage management"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/concept_storage_management.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/concept_storage_management.html">
+        Storage management
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="WORM storage"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/concept_worm.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/concept_worm.html">
+        WORM storage
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="High-availability pairs"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/occm36/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/occm36/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> High-availability pairs</div>-->
+         High-availability pairs
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="HA pairs in AWS"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/concept_ha.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/concept_ha.html">
+        HA pairs in AWS
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="HA pairs in Azure"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/concept_ha_azure.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/concept_ha_azure.html">
+        HA pairs in Azure
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Evaluating"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/concept_evaluating.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/concept_evaluating.html">
+        Evaluating
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Licensing"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/concept_licensing.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/concept_licensing.html">
+        Licensing
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Security"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/concept_security.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/concept_security.html">
+        Security
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Performance"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/concept_performance.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/concept_performance.html">
+        Performance
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Getting started"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/occm36/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/occm36/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Getting started</div>-->
+         Getting started
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Deployment overview"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/reference_deployment_overview.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/reference_deployment_overview.html">
+        Deployment overview
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Getting started in AWS"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_getting_started_aws.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_getting_started_aws.html">
+        Getting started in AWS
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Getting started in Azure"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_getting_started_azure.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_getting_started_azure.html">
+        Getting started in Azure
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Setting up Cloud Manager"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/occm36/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/occm36/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Setting up Cloud Manager</div>-->
+         Setting up Cloud Manager
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Adding cloud provider accounts"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_adding_cloud_accounts.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/task_adding_cloud_accounts.html">
+        Adding cloud provider accounts
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Adding NetApp Support Site accounts"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_adding_nss_accounts.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/task_adding_nss_accounts.html">
+        Adding NetApp Support Site accounts
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Installing an HTTPS certificate"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_installing_https_cert.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/task_installing_https_cert.html">
+        Installing an HTTPS certificate
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Setting up users and tenants"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_setting_up_users_tenants.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/task_setting_up_users_tenants.html">
+        Setting up users and tenants
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Setting up the AWS KMS"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_setting_up_kms.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/task_setting_up_kms.html">
+        Setting up the AWS KMS
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Networking requirements"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/occm36/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/occm36/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Networking requirements</div>-->
+         Networking requirements
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Manager"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/reference_networking_cloud_manager.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/reference_networking_cloud_manager.html">
+        Cloud Manager
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes ONTAP for AWS"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/reference_networking_aws.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/reference_networking_aws.html">
+        Cloud Volumes ONTAP for AWS
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Setting up an AWS transit gateway"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_setting_up_transit_gateway.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/task_setting_up_transit_gateway.html">
+        Setting up an AWS transit gateway
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Volumes ONTAP for Azure"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/reference_networking_azure.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/reference_networking_azure.html">
+        Cloud Volumes ONTAP for Azure
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Additional deployment options"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/occm36/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/occm36/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Additional deployment options</div>-->
+         Additional deployment options
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloud Manager host requirements"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/reference_cloud_mgr_reqs.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/reference_cloud_mgr_reqs.html">
+        Cloud Manager host requirements
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Installing Cloud Manager on a Linux host"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_installing_linux.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/task_installing_linux.html">
+        Installing Cloud Manager on a Linux host
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Deploying Cloud Manager from the AWS Marketplace"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_launching_aws_mktp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/task_launching_aws_mktp.html">
+        Deploying Cloud Manager from the AWS Marketplace
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Deploying Cloud Manager from the Azure Marketplace"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_launching_azure_mktp.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/task_launching_azure_mktp.html">
+        Deploying Cloud Manager from the Azure Marketplace
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Deploying Cloud Manager in an Azure Gov region"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_installing_azure_gov.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/task_installing_azure_gov.html">
+        Deploying Cloud Manager in an Azure Gov region
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Deploying Cloud Manager in the Azure Germany region"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_installing_azure_germany.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/task_installing_azure_germany.html">
+        Deploying Cloud Manager in the Azure Germany region
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Getting started in the AWS C2S environment"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/media/c2s.pdf" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/media/c2s.pdf">
+        Getting started in the AWS C2S environment
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Deploying Cloud Volumes ONTAP"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/occm36/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/occm36/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Deploying Cloud Volumes ONTAP</div>-->
+         Deploying Cloud Volumes ONTAP
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Before you begin"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/reference_before.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/reference_before.html">
+        Before you begin
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Logging in to Cloud Manager"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_logging_in.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_logging_in.html">
+        Logging in to Cloud Manager
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Planning your configuration"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_planning_your_config.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_planning_your_config.html">
+        Planning your configuration
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Enabling Flash Cache on Cloud Volumes ONTAP in AWS"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_enabling_flash_cache.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_enabling_flash_cache.html">
+        Enabling Flash Cache on Cloud Volumes ONTAP in AWS
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Launching Cloud Volumes ONTAP in AWS"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_deploying_otc_aws.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_deploying_otc_aws.html">
+        Launching Cloud Volumes ONTAP in AWS
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Launching Cloud Volumes ONTAP in Azure"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_deploying_otc_azure.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_deploying_otc_azure.html">
+        Launching Cloud Volumes ONTAP in Azure
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Registering pay-as-you-go systems"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_registering.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_registering.html">
+        Registering pay-as-you-go systems
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Setting up Cloud Volumes ONTAP"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_setting_up_ontap_cloud.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_setting_up_ontap_cloud.html">
+        Setting up Cloud Volumes ONTAP
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Provisioning storage"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/occm36/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/occm36/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Provisioning storage</div>-->
+         Provisioning storage
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Creating volumes, aggregates, and LUNs"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_provisioning_storage.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_provisioning_storage.html">
+        Creating volumes, aggregates, and LUNs
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Tiering inactive data to object storage"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_tiering.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_tiering.html">
+        Tiering inactive data to object storage
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Using Cloud Volumes ONTAP as persistent storage"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_connecting_kubernetes.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_connecting_kubernetes.html">
+        Using Cloud Volumes ONTAP as persistent storage
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Encrypting volumes with NetApp Volume Encryption"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_encrypting_volumes.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_encrypting_volumes.html">
+        Encrypting volumes with NetApp Volume Encryption
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Managing existing storage"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_managing_storage.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_managing_storage.html">
+        Managing existing storage
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Provisioning NFS volumes from the Volume View"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/occm36/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/occm36/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Provisioning NFS volumes from the Volume View</div>-->
+         Provisioning NFS volumes from the Volume View
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Changing to the Volume View"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_changing_volume_view.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/task_changing_volume_view.html">
+        Changing to the Volume View
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Creating and mounting NFS volumes"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_provisioning_volume_view.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/task_provisioning_volume_view.html">
+        Creating and mounting NFS volumes
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Managing NFS volumes"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_managing_volume_view.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/us-en/occm36/task_managing_volume_view.html">
+        Managing NFS volumes
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Managing data across a hybrid cloud"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/occm36/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/occm36/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Managing data across a hybrid cloud</div>-->
+         Managing data across a hybrid cloud
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Discovering and managing ONTAP clusters"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_discovering_ontap.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_discovering_ontap.html">
+        Discovering and managing ONTAP clusters
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Replicating data to and from the cloud"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_replicating_data.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_replicating_data.html">
+        Replicating data to and from the cloud
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Syncing data to AWS S3"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_syncing_s3.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_syncing_s3.html">
+        Syncing data to AWS S3
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Administering Cloud Volumes ONTAP"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/occm36/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/occm36/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Administering Cloud Volumes ONTAP</div>-->
+         Administering Cloud Volumes ONTAP
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Connecting to Cloud Volumes ONTAP"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_connecting_to_otc.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_connecting_to_otc.html">
+        Connecting to Cloud Volumes ONTAP
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Updating software"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_updating_ontap_cloud.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_updating_ontap_cloud.html">
+        Updating software
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Modifying system configurations"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_modifying_ontap_cloud.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_modifying_ontap_cloud.html">
+        Modifying system configurations
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Stopping and starting systems"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_managing_state.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_managing_state.html">
+        Stopping and starting systems
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Monitoring AWS costs"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_monitoring_costs.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_monitoring_costs.html">
+        Monitoring AWS costs
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Improving ransomware protection"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_protecting_ransomware.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_protecting_ransomware.html">
+        Improving ransomware protection
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Adding existing systems"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_adding_ontap_cloud.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_adding_ontap_cloud.html">
+        Adding existing systems
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Deleting systems"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_deleting_working_env.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_deleting_working_env.html">
+        Deleting systems
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Administering Cloud Manager"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/occm36/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/occm36/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Administering Cloud Manager</div>-->
+         Administering Cloud Manager
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Updating Cloud Manager"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_updating_cloud_manager.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_updating_cloud_manager.html">
+        Updating Cloud Manager
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Backing up and restoring"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_backing_up_restoring.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_backing_up_restoring.html">
+        Backing up and restoring
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Removing working environments"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_removing.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_removing.html">
+        Removing working environments
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Editing user accounts"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_editing_users.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_editing_users.html">
+        Editing user accounts
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configuring proxy settings"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_configuring_proxy.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_configuring_proxy.html">
+        Configuring proxy settings
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Renewing the HTTPS certificate"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_renewing_cert.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_renewing_cert.html">
+        Renewing the HTTPS certificate
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Uninstalling Cloud Manager"
+      data-li-level="2#" 
+      class="  ie-sidebar-selected    "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/task_uninstalling.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/task_uninstalling.html">
+        Uninstalling Cloud Manager
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="APIs and automation"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/occm36/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/occm36/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> APIs and automation</div>-->
+         APIs and automation
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="false" 
+      data-pdf-filename="API Developer Guide"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="https://docs.netapp.com/us-en/occm/api.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="https://docs.netapp.com/us-en/occm/api.html">
+        API Developer Guide
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Automation samples"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/reference_infrastructure_as_code.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/reference_infrastructure_as_code.html">
+        Automation samples
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Reference"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/us-en/occm36/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/us-en/occm36/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Reference</div>-->
+         Reference
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="FAQ for Cloud Central integration"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/reference_integration_faq.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/reference_integration_faq.html">
+        FAQ for Cloud Central integration
+      </a></li><li 
+      data-pdf-exists="false" 
+      data-pdf-filename="Supported configurations for Cloud Volumes ONTAP"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_supported_configs_95.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="https://docs.netapp.com/us-en/cloud-volumes-ontap/reference_supported_configs_95.html">
+        Supported configurations for Cloud Volumes ONTAP
+      </a></li><li 
+      data-pdf-exists="false" 
+      data-pdf-filename="Supported regions"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="https://cloud.netapp.com/cloud-volumes-global-regions" 
+    ><a class="ie-sidebar-menuitem-2 " href="https://cloud.netapp.com/cloud-volumes-global-regions">
+        Supported regions
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Security group rules for AWS"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/reference_security_groups.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/reference_security_groups.html">
+        Security group rules for AWS
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Security group rules for Azure"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/reference_security_groups_azure.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/reference_security_groups_azure.html">
+        Security group rules for Azure
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Permissions"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/reference_permissions.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/reference_permissions.html">
+        Permissions
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Default configurations"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/reference_default_configs.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/reference_default_configs.html">
+        Default configurations
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="User roles"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/reference_user_roles.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/reference_user_roles.html">
+        User roles
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Related links"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/reference_additional_info.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/us-en/occm36/reference_additional_info.html">
+        Related links
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Legal notices"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/task_uninstalling.html" 
+      dale-entry-url="/reference_legal_notices.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/us-en/occm36/reference_legal_notices.html">
+        Legal notices
+      </a></li></ul>
+</div>
+<script>
+
+  $(".ie-sidebar-button").click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    expandedLI = $('li.ie-sidebar-expand')
+
+    const li = $(this).closest("li");
+
+    const parentsLI = $(li).parents('li');
+
+    expandedLI.map(element => {
+      if (sidebarAccordion && !li.hasClass('ie-sidebar-expand') && jQuery.inArray(expandedLI[element], parentsLI) == -1) {
+        $(expandedLI[element]).toggleClass('ie-sidebar-expand');
+        $(expandedLI[element]).children("ul").animate({ height: 'toggle' }, 400, function () {
+          $(li).children("ul").toggleClass('ie-sidebar-open');
+
+        })
+      }
+
+    })
+
+    $(li).toggleClass('ie-sidebar-expand');
+    $(li).children("ul").animate({ height: 'toggle' }, 400, function () {
+      $(li).children("ul").toggleClass('ie-sidebar-open');
+    })
+  });
+
+
+  
+    $("li.ie-sidebar-selected").parents('ul').toggleClass("ie-sidebar-open");
+    $("li.ie-sidebar-selected").toggleClass("ie-sidebar-expand")
+    $("ul.ie-sidebar-open").parent().toggleClass("ie-sidebar-expand");
+    $("li.ie-sidebar-selected").children('ul').toggleClass("ie-sidebar-open")
+  
+  
+</script>
+    </div>
+</div>
+<script>
+
+    
+    let sidebarScrollTopPosition = 0;
+    $("#ie-new-toc").on("scroll", function () {
+        if (sidebarScrollTopPosition == 0) {
+            $.cookie("sidebarScroll", $("#ie-new-toc").scrollTop(), {
+                path: "/us-en/occm36"
+            });
+        }
+
+        if ($("#ie-new-toc").scrollTop() > 0) {
+            $('#ie-product-identity-lockup').addClass('ie-addShadow');
+        } else {
+            $('#ie-product-identity-lockup').removeClass('ie-addShadow');
+        }
+    });
+
+    $(function () {
+        if ($.cookie("sidebarScroll")) {
+            $("#ie-new-toc").scrollTop($.cookie("sidebarScroll"));
+        }
+    });
+
+    function setSidebarBottom() {
+        const footerGap = PXinViewport($(".n-footer"));
+        document.getElementById("ie-new-sidebar").style.bottom = Math.max(0, footerGap) + "px";
+    }
+
+    window.onscroll = () => {
+        setSidebarBottom();
+    };
+
+    $("#sidebar-collapse").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        if ($.cookie("sidebarScroll")) {
+            sidebarScrollTopPosition = $.cookie("sidebarScroll");
+        }
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 350, function () {
+            $("#ie-new-sidebar-collapse").show();
+            $("#ie-new-sidebar").removeClass("open")
+            $("#ie-new-sidebar").addClass("close")
+            $("#ie-new-sidebar").removeAttr("style")
+        });
+        $(".ie-content-pane").animate({ width: (width + sidebarWidth), marginLeft: (marginLeft - sidebarWidth) }, 350, function () {
+            resizeContent()
+        })
+
+    });
+    $("#sidebar-expand").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 250, function () {
+            $('#ie-new-sidebar').css('display', 'flex');
+            $("#ie-new-sidebar-collapse").hide();
+            $("#ie-new-sidebar").removeClass("close")
+            $("#ie-new-sidebar").addClass("open")
+            setSidebarBottom();
+
+            if (sidebarScrollTopPosition != 0) {
+                $.cookie("sidebarScroll", sidebarScrollTopPosition, {
+                    path: "/us-en/occm36"
+                })
+                $("#ie-new-toc").scrollTop(sidebarScrollTopPosition);
+                sidebarScrollTopPosition = 0;
+            }
+        });
+        $(".ie-content-pane").animate({ width: (width - sidebarWidth), 'marginLeft': (marginLeft + sidebarWidth) }, 250, function () {
+            resizeContent()
+        })
+    });
+    function resizeContent() {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        const rightNavbarVisible =  $("#ie-right-navbar").css('display') && $("#ie-right-navbar").css('display') != 'none';
+        const sidebarVisible = $("#ie-new-sidebar").css('display') != 'none';
+        const rightNavbarWidth = $("#ie-right-navbar").width();
+        const rightNavbarCollapseWidth = $("#ie-right-navbar-collapse").width();
+        const rightNavbarCollapseVisible = $("#ie-right-navbar-collapse").css('display') && $("#ie-right-navbar-collapse").css('display') != 'none';
+        
+        if (rightNavbarVisible && sidebarVisible) {
+            $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarWidth}px)`)
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+        } else if (sidebarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarCollapseWidth}px)`)
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar").width()}px)`)
+            }
+
+        } else if (rightNavbarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            $(".ie-content-pane").width(`calc(100% - ${rightNavbarWidth}px)`)
+        } else {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${rightNavbarCollapseWidth}px)`);
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar-collapse").width()}px) `);
+            }
+            
+        }
+    }
+    $(window).on("resize load", function () {
+        setSidebarBottom();
+        resizeContent()
+    });
+
+
+</script>
+
+<div class="ie-content-pane ie-component-detail-content ie-component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content" id="main">
+      <!-- include utility.html -->
+      
+  <div class="ie-info-disclaimer" id="downlevel-banner">
+    <span>
+      <div class="ie-info-disclaimer-container">
+        <div class="ie-info-disclaimer-icon">
+          <img src="/us-en/occm36/images/notification-icons.svg" class="luci-icon" alt="" />
+        </div>
+        <div class="ie-info-disclaimer-content">
+          <span>A newer release of this product is available.</span><br>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+    </span>
+  </div>
+<div class="ie-component-detail-heading-wrap">
+  <h1 class="ie-component-detail-heading">Uninstalling Cloud Manager</h1>
+</div>
+
+<div id="ie-byline">
+  
+<div class="page-details">
+    
+        
+            <time datetime="2019-06-03 19:56:08 +0000">06/03/2019</time>
+        
+    
+    
+        <span>Contributors
+            <a target="_blank" class="ext-link-indicator" href="https://github.com/netapp-bcammett"><img  class="avatar avatar-small" alt="netapp-bcammett" width="20" height="20" src="https://avatars.githubusercontent.com/u/18287750?v=4" style="border-radius: 50%;"/></a>
+        
+        </span>
+    
+    
+</div>
+<div class="page-controls">
+    <div id="contribute-dropdown" class="custom-dropdown custom-dropdown-contrib" >
+        <div class="custom-dropdown-select custom-dropdown-select-contrib">
+        <span class="contrib-name"><img src="/us-en/occm36/images/discuss-sm.svg" alt="" class="github-icon" />Suggest changes</span>
+        <img src="/us-en/occm36/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown invisible" />
+        <img src="/us-en/occm36/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup" />
+        </div>
+        <ul class="custom-dropdown-menu suggested-changes-dropdown"><li>
+                <a target="_blank" href="https://github.com/NetAppDocs/occm36/issues/new?template=new-from-page.yml&page-url=https://docs.netapp.com/us-en/occm36/task_uninstalling.html&page-title=Uninstalling Cloud Manager" class="page-nav-contribute-link" role="button">Request doc changes</a>
+            </li><li> 
+                <a target="_blank" href="https://github.com/NetAppDocs/occm36/blob/main/task_uninstalling.adoc" class="page-nav-contribute-link" role="button">Edit this page</a>
+            </li><li><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >Learn how to contribute</a></li>
+        </ul>
+    </div>
+    <div id="pdf-control-container">
+        <div class="n-pdf-header">
+            <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+                <img class="adobe-icon" src="/us-en/occm36/images/pdf-icon.png" alt="" width="16" height="16"/>PDFs<img src="/us-en/occm36/images/dropdown-arrow.svg" class="custom-icon" alt="" />
+            </a>
+        </div>
+        <div class="n-pdf-body-container">
+            <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+                    
+                    
+                    
+                    <a target="_blank" class="pdf-download-link" href="/us-en/occm36/pdfs/fullsite-sidebar/Cloud_Manager_and_Cloud_Volumes_ONTAP_documentation.pdf" >
+                    <img src="/us-en/occm36/images/pdf-icon.png" alt="" width="16" height="16"/>PDF of this doc site</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/occm36/pdfs/sidebar/Release_notes.pdf" 
+            
+          >
+            <img src="/us-en/occm36/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Release notes
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/occm36/pdfs/sidebar/Cloud_Manager.pdf" 
+            
+          >
+            <img src="/us-en/occm36/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Cloud Manager
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/occm36/pdfs/sidebar/Concepts.pdf" 
+            
+          >
+            <img src="/us-en/occm36/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Concepts
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/occm36/pdfs/sidebar/Storage.pdf" 
+            
+          >
+            <img src="/us-en/occm36/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Storage
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/occm36/pdfs/sidebar/High_availability_pairs.pdf" 
+            
+          >
+            <img src="/us-en/occm36/images/pdf-icon.png" alt="" width="16" height="16"/>
+            High-availability pairs
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/occm36/pdfs/sidebar/Getting_started.pdf" 
+            
+          >
+            <img src="/us-en/occm36/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Getting started
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/occm36/pdfs/sidebar/Setting_up_Cloud_Manager.pdf" 
+            
+          >
+            <img src="/us-en/occm36/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Setting up Cloud Manager
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/occm36/pdfs/sidebar/Networking_requirements.pdf" 
+            
+          >
+            <img src="/us-en/occm36/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Networking requirements
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/occm36/pdfs/sidebar/Additional_deployment_options.pdf" 
+            
+          >
+            <img src="/us-en/occm36/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Additional deployment options
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/occm36/pdfs/sidebar/Deploying_Cloud_Volumes_ONTAP.pdf" 
+            
+          >
+            <img src="/us-en/occm36/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Deploying Cloud Volumes ONTAP
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/occm36/pdfs/sidebar/Provisioning_storage.pdf" 
+            
+          >
+            <img src="/us-en/occm36/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Provisioning storage
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/occm36/pdfs/sidebar/Provisioning_NFS_volumes_from_the_Volume_View.pdf" 
+            
+          >
+            <img src="/us-en/occm36/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Provisioning NFS volumes from the Volume View
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/occm36/pdfs/sidebar/Managing_data_across_a_hybrid_cloud.pdf" 
+            
+          >
+            <img src="/us-en/occm36/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Managing data across a hybrid cloud
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/occm36/pdfs/sidebar/Administering_Cloud_Volumes_ONTAP.pdf" 
+            
+          >
+            <img src="/us-en/occm36/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Administering Cloud Volumes ONTAP
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/occm36/pdfs/sidebar/Administering_Cloud_Manager.pdf" 
+            
+          >
+            <img src="/us-en/occm36/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Administering Cloud Manager
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/occm36/pdfs/sidebar/APIs_and_automation.pdf" 
+            
+          >
+            <img src="/us-en/occm36/images/pdf-icon.png" alt="" width="16" height="16"/>
+            APIs and automation
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/us-en/occm36/pdfs/sidebar/Reference.pdf" 
+            
+          >
+            <img src="/us-en/occm36/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Reference
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+</li></ul>
+            <div class="zip-pdf-link-container" style="display: none;">   
+                <a href="#" id="zipPdf">
+                <img src="/us-en/occm36/images/pdf-zip.png" alt="" width="16" height="16"/>
+                <pre>Collection of separate PDF docs<span class="zip-size"></span></pre>
+                </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+        </div>
+    </div>        
+<script>
+$("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+$("#toggleButtonPdf").on('click', function(e){ 
+    e.stopPropagation();
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+});
+
+//hide is by clicking outside pdfcontainer
+$(document).on('click', function (e) {
+    if ($('#toggleContainerPdf').is(':visible') && !$('.n-pdf-body-container').is(e.target) && !$('.n-pdf-body-container').has(e.target).length)  {
+        
+        $("#toggleContainerPdf").toggle('display');
+        $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+        $("#toggleButtonPdf").removeClass("active");
+    }
+});
+</script>
+<script>
+    function getPdfLocation() {
+        const pdfLocation = window.scrollX + document.querySelector('#pdf-control-container').getBoundingClientRect().left
+        if (pdfLocation < 450) {
+            $(".n-pdf-body-container").addClass("block")
+        } else {
+            $(".n-pdf-body-container").removeClass("block")
+        }
+    
+    }
+    $( window ).on( "resize", function() {
+        getPdfLocation()
+} );
+</script>
+<script>
+    const pdfButtonWidth =  $(".n-pdf-header").width();
+    const pdfMenuWidth = $(".n-pdf-body-container").width();
+    $(".n-pdf-body-container").css('margin-left', `calc(${pdfButtonWidth - pdfMenuWidth}px)`);
+</script>
+</div>
+
+    
+
+</div>
+
+
+
+
+<div class="content-to-index">
+<div class="paragraph lead">
+<p>Cloud Manager includes an uninstallation script that you can use to uninstall the software to troubleshoot issues or to permanently remove the software from the host.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>If you are going to reinstall Cloud Manager, back up the database before you uninstall the software:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>In the upper-right corner of the Cloud Manager console, click the task drop-down list, and then select <strong>Tools</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Backup</strong> and save the backup file to your local machine.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>From the Linux host, run the uninstallation script:</p>
+<div class="paragraph">
+<p><strong>/opt/application/netapp/cloudmanager/bin/uninstall.sh [silent]</strong></p>
+</div>
+<div class="paragraph">
+<p><em>silent</em> runs the script without prompting you for confirmation.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+
+
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+<div id="ie-right-navbar-collapse" class="close">
+  <img id="navbar-expand" class="ie-searchbox-icon" src="/us-en/occm36/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-right-navbar" class="open">
+  <div id="right-navbar-collapse">
+    <img src="/us-en/occm36/images/double_arrow.svg" alt="" />
+  </div>
+  <div class="page-nav-container">
+    <nav class="page-nav-fixed">
+      <div class="page-nav-title">On this page</div>
+      <div class="page-nav-links">
+        <ul class="page-nav-inner" id="page-menu"></ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+<script>
+  resizeContent();
+  function setRightBarHeight() {
+    var h = 0;
+
+    // header 1
+    h += PXinViewport($('.n-footer'));
+    h += PXinViewport($('#ie-new-header'));
+
+    if ($('#ie-right-navbar').length) {
+      $('#ie-right-navbar').css({ height: `calc(100vh - ${h}px)` });
+    }
+    if ($('.page-nav-links').length) {
+      h += 98;
+      $('.page-nav-links').css({ height: `calc(100vh - ${h}px)` });
+    }
+  }
+
+  $(document).ready(function () {
+    // PAGE NAV - Click
+    const MASTHEAD_OFFSET = 65;
+    const SECTIONS = $("main h2, main h3");
+    let calculateActiveSection = false;
+    setTimeout(() => {
+      calculateActiveSection = true;
+    }, 100)
+
+    $(".page-nav__link").click(function (event) {
+      calculateActiveSection = false;
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      var target = $(event.target);
+      target.addClass('page-nav__link--active');
+      location.hash = event.target.hash;
+      setTimeout(() => {
+        calculateActiveSection = true;
+      }, 100)
+
+    });
+
+    // PAGE NAV - Scroll
+    $(window).on('resize scroll', function () {
+      if (calculateActiveSection) {
+        var activeSection = getActiveSection(SECTIONS, MASTHEAD_OFFSET);
+        if (activeSection) {
+          var activeHref = $(activeSection).attr('id');
+          $(".page-nav__link").removeClass('page-nav__link--active');
+          $("#page-menu a[href=#" + activeHref + "]").addClass('page-nav__link--active');
+          if (location.hash != "#" + activeHref) {
+            if (history.replaceState) {
+              history.replaceState(null, null, "#" + activeHref);
+            }
+          }
+        }
+      }
+    });
+
+    $(".n-pdf-button").click(function () {
+      $(this).toggleClass("active");
+    });
+
+    $.fn.isVisibleAndInViewport = function () {
+      var elementTop = $(this).offset().top;
+      var elementBottom = elementTop + $(this).outerHeight();
+
+      var viewportTop = $(window).scrollTop();
+      var viewportBottom = viewportTop + $(window).height();
+
+      return elementBottom > viewportTop && elementTop < viewportBottom && $(this).is(":visible");
+    };
+
+
+    $(window).on('resize scroll', function () {
+      setRightBarHeight();
+    });
+
+    $(window).trigger('resize');
+
+
+  });
+
+  $("#right-navbar-collapse").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 350, function () {
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+    });
+    $(".ie-content-pane").animate({ width: (width + rightNavbarWidth) }, 350, function () {
+      resizeContent()
+      setSidebarBottom();
+    })
+
+  });
+  $("#navbar-expand").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 250, function () {
+      $("#ie-right-navbar-collapse").removeClass("open")
+      $("#ie-right-navbar-collapse").addClass("close")
+      $("#ie-right-navbar").removeClass("close")
+      $("#ie-right-navbar").addClass("open")
+      setRightBarHeight();
+      setSidebarBottom();
+    });
+    $(".ie-content-pane").animate({ width: (width - rightNavbarWidth) }, 250, function () {
+      resizeContent()
+    })
+  });
+
+  function navbarResize() {
+    const rightNavbarResized = $("#ie-right-navbar-collapse").hasClass('resized');
+    if (window.innerWidth < 1024) {
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+      $("#ie-right-navbar").removeAttr("style")
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar-collapse").addClass("resized")
+    } else {
+      if (rightNavbarResized) {
+        $('#ie-right-navbar').removeClass('close');
+        $('#ie-right-navbar').addClass('open');
+        $("#ie-right-navbar-collapse").removeClass("resized")
+        $("#ie-right-navbar-collapse").removeClass("open")
+        $("#ie-right-navbar-collapse").addClass("close")
+      }
+    }
+    resizeContent()
+  }
+  navbarResize();
+  $(window).on('resize load', function () {
+    navbarResize()
+  });
+
+  function getActiveSection(sections, offset) {
+    var scrollPosition = $(window).scrollTop() + offset + 5;
+    var activeSection;
+    for (var i = 0; i < sections.length; i++) {
+      var el = $(sections[i]);
+      var activePosition = el.offset().top;
+      if (activePosition > scrollPosition) {
+        break;
+      }
+
+      activeSection = sections[i];
+    }
+
+    return activeSection;
+  }
+
+  $("a[href*=#]:not([href=#])").click(function () {
+    setTimeout(() => {
+      $(window).trigger('scroll');
+    }, 105)
+  })
+
+  const hashOnLoad = location.href.split("#")[1];
+  setTimeout(function () {
+    if (hashOnLoad) {
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      $("#page-menu a[href=#" + hashOnLoad + "]").addClass('page-nav__link--active');
+    }
+  }, 100)
+
+</script>
+
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+        <div class="n-footer__left">
+          <li class="n-footer__copyright-link">
+                    <a href="https://www.netapp.com/company/legal/copyright/">© 2024 NetApp, Inc.</a>
+          </li>
+        </div>
+        <div class="n-footer__center">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">Terms of use</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">Privacy policy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">Cookie policy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">Cookie settings</a>
+            </li>
+          </ul>
+       </div>
+        <div class="n-footer__right">
+              <li class="n-footer__copyright-link">
+                <a target="_self" href="javascript:netapp_mailto()">Send feedback about this page</a>
+              </li>
+        </div>
+     </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/us-en/occm36/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/us-en/occm36/js/prism.js'></script>
+      <script type="text/javascript" src='/us-en/occm36/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/us-en/occm36/js/ie-tabbed-blocks.js'></script>
+    <script src='/us-en/occm36/js/ie-sidebar.js'></script>
+  </body>
+
+</html>
