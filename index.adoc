@@ -13,6 +13,12 @@ summary: Welcome to the documentation portal for Cloud Manager and Cloud Volumes
 
 OnCommand Cloud Manager enables you to deploy and manage NetApp Cloud Volumes ONTAP, which is a data management solution that provides protection, visibility, and control for your cloud-based workloads.
 
+== BlueXP
+
+NetApp BlueXP extends and enhances the capabilities that were provided through Cloud Manager.
+
+https://docs.netapp.com/us-en/bluexp-family/[Go to the BlueXP documentation^]
+
 == Discover what's new
 
 * link:reference_new_occm.html[What's new in Cloud Manager]
