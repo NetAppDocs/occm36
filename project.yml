@@ -1,5 +1,5 @@
 ---
-jekyll: staging
+jekyll: chatbot-rm-version
 settings:
   name: Cloud Manager 3.6
   nss_product: OnCommand Cloud Manager
