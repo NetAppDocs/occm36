@@ -1,5 +1,4 @@
 ---
-jekyll: skip-index
 settings:
   name: Cloud Manager 3.6
   nss_product: OnCommand Cloud Manager
