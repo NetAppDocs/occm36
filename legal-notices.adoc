@@ -1,0 +1,19 @@
+---
+permalink: legal-notices.html
+sidebar: sidebar
+keywords: legal, notices, copyright, trademarks, patents
+summary: Legal notices provide access to copyright statements, trademarks, patents, and more.
+---
+= Legal notices
+:icons: font
+:imagesdir: ./media/
+
+// Include the common notices
+include::https://raw.githubusercontent.com/NetAppDocs/common/main/_include/common-legal-notices.adoc[]
+
+// Include the open source notice intro
+include::https://raw.githubusercontent.com/NetAppDocs/common/main/_include/open-source-notice-intro.adoc[]
+
+* link:media/notice_cloud_manager_3.6.6.pdf[Notice for OnCommand Cloud Manager 3.6.6^]
+* link:media/notice_cloud_manager_3.6.1.pdf[Notice for OnCommand Cloud Manager 3.6.1^]
+* link:media/notice_cloud_manager_3.6.pdf[Notice for OnCommand Cloud Manager 3.6^]
